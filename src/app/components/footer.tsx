@@ -1,0 +1,185 @@
+"use client"
+
+import type React from "react"
+
+import Link from "next/link"
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { useState } from "react"
+
+export default function Footer() {
+  const [email, setEmail] = useState("")
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault()
+    setEmail("")
+  }
+
+  return (
+    <footer className="bg-primary text-primary-foreground">
+      {/* Newsletter Section */}
+      {/*<div className="border-b border-primary-foreground/20">
+        <div className="container mx-auto px-4 py-8 md:py-12">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Suscríbete a nuestro boletín</h3>
+              <p className="opacity-90">Recibe las últimas noticias y actualizaciones de UGEL Ambo</p>
+            </div>
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <Input
+                type="email"
+                placeholder="Tu correo electrónico"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                required
+              />
+              <Button size="icon" className="bg-white text-primary hover:bg-gray-100 flex-shrink-0">
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </form>
+          </div>
+        </div>
+      </div> */}
+
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          {/* About */}
+          <div>
+            <h3 className="font-bold text-lg mb-4">UGEL Ambo</h3>
+            <p className="text-sm opacity-90 mb-4">
+              Unidad de Gestión Educativa Local comprometida con la excelencia educativa en la región.
+            </p>
+            <p className="text-xs opacity-75">Transformando la educación, transformamos el futuro</p>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-bold mb-4">Enlaces Rápidos</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <Link href="/servicios" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                  Servicios
+                </Link>
+              </li>
+              <li>
+                <Link href="/convocatorias" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                  Convocatorias
+                </Link>
+              </li>
+              <li>
+                <Link href="/tramites" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                  Trámites
+                </Link>
+              </li>
+              <li>
+                <Link href="/noticias" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                  Noticias
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Consultas */}
+          <div>
+            <h4 className="font-bold mb-4">Consultas</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/expediente" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                  Expedientes
+                </Link>
+              </li>
+              <li>
+                <Link href="/becas" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                  Becas
+                </Link>
+              </li>
+              <li>
+                <Link href="/videos" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                  Videos
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                  Documentos
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-bold mb-4">Contacto</h4>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-2">
+                <Phone className="w-4 h-4 flex-shrink-0" />
+                <span>(064) 123-4567</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="w-4 h-4 flex-shrink-0" />
+                <span>info@ugelambo.edu.pe</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
+                <span>Ambo, Huánuco, Perú</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Social Links */}
+        <div className="border-t border-primary-foreground/20 pt-8 mb-8">
+          <h4 className="font-bold mb-4">Síguenos en redes sociales</h4>
+          <div className="flex gap-4">
+            <Link
+              href="#"
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+              aria-label="Facebook"
+            >
+              <Facebook className="w-5 h-5" />
+            </Link>
+            <Link
+              href="#"
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+              aria-label="Twitter"
+            >
+              <Twitter className="w-5 h-5" />
+            </Link>
+            <Link
+              href="#"
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Bottom Footer */}
+        <div className="border-t border-primary-foreground/20 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm opacity-75">
+            <p>&copy; 2025 UGEL Ambo. Todos los derechos reservados.</p>
+            <div className="flex gap-6 mt-4 md:mt-0">
+              <Link href="#" className="hover:opacity-100 transition-opacity">
+                Política de Privacidad
+              </Link>
+              <Link href="#" className="hover:opacity-100 transition-opacity">
+                Términos de Uso
+              </Link>
+              <Link href="#" className="hover:opacity-100 transition-opacity">
+                Accesibilidad
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
