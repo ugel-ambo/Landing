@@ -119,15 +119,15 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Contacto</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 flex-shrink-0" />
+                <Phone className="w-4 h-4 shrink-0" />
                 <span>(064) 123-4567</span>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 flex-shrink-0" />
+                <Mail className="w-4 h-4 shrink-0" />
                 <span>info@ugelambo.edu.pe</span>
               </li>
               <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
+                <MapPin className="w-4 h-4 mt-1 shrink-0" />
                 <span>Ambo, Huánuco, Perú</span>
               </li>
             </ul>

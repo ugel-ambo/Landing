@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Award, Users, BookOpen, Sparkles } from "lucide-react"
+import { Award, Users, University, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import TypingText from "@/components/ui/shadcn-io/typing-text"
 
@@ -26,8 +26,8 @@ const heroImages = [
 ]
 
 const stats = [
-    { icon: Users, label: "Estudiantes", value: "15,000+" },
-    { icon: BookOpen, label: "Instituciones", value: "120+" },
+    { icon: Users, label: "Estudiantes", value: "15 K +" },
+    { icon: University, label: "Instituciones", value: "200+" },
     { icon: Award, label: "Años de excelencia", value: "12+" },
 ]
 
@@ -54,9 +54,6 @@ export default function Hero() {
         handleTransition(() => index)
     }
 
-    const nextSlide = () => {
-        handleTransition((prev) => (prev + 1) % heroImages.length)
-    }
 
     const prevSlide = () => {
         handleTransition((prev) => (prev - 1 + heroImages.length) % heroImages.length)

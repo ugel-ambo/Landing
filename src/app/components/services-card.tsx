@@ -11,7 +11,7 @@ const services = [
     title: "Consulta tu Expediente",
     description: "Accede a tu expediente académico y documentación",
     icon: FileText,
-    href: "/consultas/expediente",
+    href: "https://digital.regionhuanuco.gob.pe/registro/mpv/obs/3",
     external: false,
     color: "from-blue-50 to-blue-100/50",
     iconColor: "text-primary",
