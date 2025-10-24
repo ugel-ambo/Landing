@@ -1,11 +1,8 @@
 "use client"
 
 import type React from "react"
-
 import Link from "next/link"
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, ArrowRight } from "lucide-react"
 import { useState } from "react"
 
 export default function Footer() {
@@ -139,18 +136,18 @@ export default function Footer() {
           <h4 className="font-bold mb-4">Síguenos en redes sociales</h4>
           <div className="flex gap-4">
             <Link
-              href="#"
+              href="https://www.facebook.com/UGELAmbo"
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
               aria-label="Facebook"
             >
               <Facebook className="w-5 h-5" />
             </Link>
             <Link
-              href="#"
+              href="https://www.instagram.com/ugelambo/"
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-              aria-label="Twitter"
+              aria-label="Instagram"
             >
-              <Twitter className="w-5 h-5" />
+              <Instagram className="w-5 h-5" />
             </Link>
             <Link
               href="#"

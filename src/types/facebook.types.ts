@@ -46,6 +46,7 @@ export interface NewsItem {
   title: string;
   description: string;
   date: string;
+  time: string; // Nueva propiedad para la hora
   category: string;
   image: string;
   url?: string;

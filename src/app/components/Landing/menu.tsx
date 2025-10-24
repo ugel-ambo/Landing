@@ -52,7 +52,7 @@ export default function Menu() {
             <div className="flex flex-col">
               <span
                 className={`text-lg md:text-xl font-bold tracking-tight leading-none ${
-                  isScrolled ? "text-gray-900" : "text-gray-900"
+                  isScrolled ? "text-[#049DD9]" : "text-[#049DD9]"
                 }`}
               >
                 UGEL AMBO
