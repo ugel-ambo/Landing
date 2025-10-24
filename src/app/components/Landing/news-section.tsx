@@ -141,7 +141,7 @@ export default function NewsSection() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <h2 className="text-3xl md:text-4xl font-bold">Noticias y Actualizaciones</h2>
             {aiFormatted && (
-              <span className="inline-flex items-center gap-1 px-2 py-1 text-xs bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full">
+              <span className="inline-flex items-center gap-1 px-2 py-1 text-xs bg-linear-to-r from-purple-500 to-pink-500 text-white rounded-full">
                 <Sparkles className="w-3 h-3" />
                 AI
               </span>
