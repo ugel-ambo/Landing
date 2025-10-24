@@ -3,7 +3,7 @@ import { GeminiFormattedPost, GeminiFormatRequest } from "@/types/gemini.types";
 
 class GeminiService {
   private genAI: GoogleGenerativeAI;
-  private model: any;
+  private model: { generateContent: (prompt: string) => Promise<{ response: { text: () => string } }> };
 
   constructor() {
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY || '';
@@ -155,7 +155,7 @@ IMPORTANTE:
       category = 'Materiales';
     }
 
-    return { title, description, category };
+    return { title, description: finalDescription, category };
   }
 }
 
