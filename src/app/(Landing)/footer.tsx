@@ -8,37 +8,9 @@ import { useState } from "react"
 export default function Footer() {
   const [email, setEmail] = useState("")
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault()
-    setEmail("")
-  }
-
+  
   return (
     <footer className="bg-primary text-primary-foreground">
-      {/* Newsletter Section */}
-      {/*<div className="border-b border-primary-foreground/20">
-        <div className="container mx-auto px-4 py-8 md:py-12">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">Suscríbete a nuestro boletín</h3>
-              <p className="opacity-90">Recibe las últimas noticias y actualizaciones de UGEL Ambo</p>
-            </div>
-            <form onSubmit={handleSubscribe} className="flex gap-2">
-              <Input
-                type="email"
-                placeholder="Tu correo electrónico"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-                required
-              />
-              <Button size="icon" className="bg-white text-primary hover:bg-gray-100 flex-shrink-0">
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </form>
-          </div>
-        </div>
-      </div> */}
 
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-12">

@@ -1,4 +1,4 @@
-import { Target, Eye, ArrowRight } from "lucide-react"
+import { Target, Eye } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 
 const MisionYVision = () => {

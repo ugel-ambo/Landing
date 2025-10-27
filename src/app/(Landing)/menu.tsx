@@ -2,7 +2,7 @@
 
 import { NavigationMenuDemo } from "./navigation";
 import Image from "next/image";
-import { Menu as MenuIcon, X } from "lucide-react";
+import { Menu as MenuIcon} from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
