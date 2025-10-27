@@ -78,3 +78,4 @@ El sistema ahora incluye logs detallados en la consola del navegador que te ayud
 2. Reinicia el servidor de desarrollo
 3. Ve a la página principal para verificar que las noticias se cargan
 4. Si hay problemas, revisa la página de debug en `/debug`
+

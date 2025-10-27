@@ -67,16 +67,16 @@ export function NavigationMenuDemo() {
             <NavigationMenuTrigger>Nosotros</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] ">
-                  <ListItem href="/docs" title="Quiénes somos">
+                  <ListItem href="/Nosotros/Quienes-Somos" title="Quiénes somos">
                   Conoce quiénes somos y nuestro compromiso con la educación.
                 </ListItem>
-                <ListItem href="/docs/installation" title="Misión y visión">
+                <ListItem href="/Nosotros/Mision-Vision" title="Misión y visión">
                   Nuestra razón de ser y el propósito que guía nuestro trabajo.
                 </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Nuestra historia">
+                <ListItem href="/Nosotros/Nuestra-Historia" title="Nuestra historia">
                   Recorrido institucional y logros alcanzados a lo largo del tiempo.
                 </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Valores Institucionales">
+                <ListItem href="/Nosotros/Valores-Institucional" title="Valores Institucionales">
                   Principios que guían nuestras acciones y decisiones.
                 </ListItem>
               </ul>

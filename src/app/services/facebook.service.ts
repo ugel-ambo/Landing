@@ -42,12 +42,18 @@ class FacebookService {
         headers: {
           'Content-Type': 'application/json',
         },
-        next: { revalidate: 300 } // Revalidar cada 5 minutos
+        next: { revalidate: 300 } //  5 mn
       });
 
       if (!response.ok) {
         const errorText = await response.text();
         console.error('Facebook API Error:', response.status, errorText);
+        
+        // Verificar si es un error de token expirado
+        if (response.status === 400 && errorText.includes('Session has expired')) {
+          throw new Error(`Token de Facebook expirado. Error: ${errorText}. Por favor, renueva el token en Facebook Graph API Explorer.`);
+        }
+        
         throw new Error(`Error al obtener posts: ${response.status} - ${errorText}`);
       }
 
@@ -71,15 +77,12 @@ class FacebookService {
       // Usar datos formateados por Gemini si están disponibles
       const formatted = formattedData[index];
       
-      // Formatear fecha y hora
       const { date, time } = this.formatDateTime(post.created_time);
       
-      // Obtener imagen
       const image = post.full_picture || 
                     post.attachments?.data[0]?.media?.image?.src || 
                     '/placeholder.svg';
       
-      // Obtener URL
       const url = post.attachments?.data[0]?.url;
 
       return {

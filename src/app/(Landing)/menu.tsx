@@ -81,35 +81,35 @@ export default function Menu() {
                 
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="nosotros" className="border-none">
-                    <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline">
+                    <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
                       Nosotros
                     </AccordionTrigger>
                     <AccordionContent className="pl-4 pb-0">
                       <div className="flex flex-col space-y-1">
                         <Link 
-                          href="/docs" 
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md"
+                          href="/Nosotros/Quienes-Somos" 
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           Quiénes somos
                         </Link>
                         <Link 
-                          href="/docs/installation" 
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md"
+                          href="/Nosotros/Mision-Vision" 
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           Misión y visión
                         </Link>
                         <Link 
-                          href="/docs/primitives/typography" 
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md"
+                          href="/Nosotros/Nuestra-Historia" 
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           Nuestra historia
                         </Link>
                         <Link 
-                          href="/docs/primitives/typography" 
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md"
+                          href="/Nosotros/Valores-Institucional" 
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           Valores Institucionales
@@ -119,93 +119,87 @@ export default function Menu() {
                   </AccordionItem>
 
                   <AccordionItem value="documentos" className="border-none">
-                    <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline">
+                    <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
                       Documentos
                     </AccordionTrigger>
                     <AccordionContent className="pl-4 pb-0">
-                      <div className="flex flex-col space-y-2">
+                      <div className="flex flex-col space-y-2 ">
                         <Link 
                           href="/docs/primitives/alert-dialog" 
                           className="px-4 py-2 hover:bg-accent rounded-md"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">MOP</div>
-                          <div className="text-xs text-muted-foreground">Manual de Organización y Funciones del Personal</div>
+                          <div className="font-medium text-sm hover:text-white">MOP</div>
                         </Link>
                         <Link 
                           href="/docs/primitives/hover-card" 
-                          className="px-4 py-2 hover:bg-accent rounded-md"
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">MOF</div>
-                          <div className="text-xs text-muted-foreground">Manual de Organización y Funciones</div>
+                          <div className="font-medium text-sm hover:text-white">MOF</div>
                         </Link>
                         <Link 
                           href="/docs/primitives/progress" 
-                          className="px-4 py-2 hover:bg-accent rounded-md"
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">RISC</div>
-                          <div className="text-xs text-muted-foreground">Reglamento Interno de Servidores Civiles</div>
+                          <div className="font-medium text-sm hover:text-white">RISC</div>
                         </Link>
                         <Link 
                           href="/docs/primitives/scroll-area" 
-                          className="px-4 py-2 hover:bg-accent rounded-md"
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">TUPA</div>
-                          <div className="text-xs text-muted-foreground">Texto Único de Procedimientos Administrativos</div>
+                          <div className="font-medium text-sm hover:text-white">TUPA</div>
                         </Link>
                         <Link 
                           href="/docs/primitives/tabs" 
-                          className="px-4 py-2 hover:bg-accent rounded-md"
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">PEI</div>
-                          <div className="text-xs text-muted-foreground">Proyecto Educativo Institucional</div>
+                          <div className="font-medium text-sm hover:text-white">PEI</div>
                         </Link>
                         <Link 
                           href="/docs/primitives/tooltip" 
-                          className="px-4 py-2 hover:bg-accent rounded-md"
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">PER</div>
-                          <div className="text-xs text-muted-foreground">Proyecto Educativo Regional</div>
+                          <div className="font-medium text-sm hover:text-white">PER</div>
                         </Link>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="areas" className="border-none">
-                    <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline">
+                  <AccordionItem value="areas" className="border-none ">
+                    <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
                       Áreas
                     </AccordionTrigger>
-                    <AccordionContent className="pl-4 pb-0">
-                      <div className="flex flex-col space-y-2">
+                    <AccordionContent className="pl-4 pb-0 ">
+                      <div className="flex flex-col space-y-2 ">
                         <Link 
                           href="#" 
-                          className="px-4 py-2 hover:bg-accent rounded-md"
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm">Dirección</div>
                         </Link>
                         <Link 
                           href="#" 
-                          className="px-4 py-2 hover:bg-accent rounded-md"
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm">Gestión Pedagógica</div>
                         </Link>
                         <Link 
                           href="#" 
-                          className="px-4 py-2 hover:bg-accent rounded-md"
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm">Gestión Administrativa</div>
                         </Link>
                         <Link 
                           href="#" 
-                          className="px-4 py-2 hover:bg-accent rounded-md"
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm">Planeamiento y Desarrollo Institucional</div>
@@ -217,7 +211,7 @@ export default function Menu() {
 
                 <Link 
                   href="/docs" 
-                  className="px-4 py-3 hover:bg-accent rounded-md transition-colors font-medium"
+                  className="px-4 py-3 hover:bg-accent rounded-md transition-colors font-medium hover:text-white"
                   onClick={() => setOpen(false)}
                 >
                   Convocatorias

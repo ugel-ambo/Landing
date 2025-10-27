@@ -8,8 +8,8 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Clock, Sparkles } from "lucide-react"
 import Image from "next/image"
 
-import { NewsItem } from "@/types/facebook.types"
-import { facebookService } from "../../services/facebook.service"
+import { NewsItem, FacebookPostsResponse } from "@/types/facebook.types"
+import { facebookService } from "../services/facebook.service"
 
 export default function NewsSection() {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([])
@@ -30,7 +30,17 @@ export default function NewsSection() {
       
       // 1. Obtener posts de Facebook
       console.log('NewsSection - Obteniendo posts de Facebook')
-      const postsResponse = await facebookService.getPosts(6)
+      const res = await fetch("/api/facebook");
+      const json = await res.json();
+
+      if (!json.success) throw new Error(json.error);
+      
+      // Construir la estructura completa esperada por FacebookPostsResponse
+      const postsResponse: FacebookPostsResponse = {
+        data: json.data,
+        paging: json.paging || { cursors: { before: '', after: '' } }
+      };
+      
       console.log('NewsSection - Posts obtenidos:', postsResponse.data.length)
       
       // 2. Extraer mensajes para formatear con AI
@@ -55,7 +65,6 @@ export default function NewsSection() {
           setAiFormatted(true)
           console.log('NewsSection - Gemini AI exitoso:', formattedData.length, 'posts formateados')
         } else {
-          // Nuevo logging para depuración
           const text = await aiResponse.text().catch(() => '')
           console.warn('NewsSection - AI formatting failed, status=', aiResponse.status, 'body=', text)
           formattedData = []
@@ -141,7 +150,7 @@ export default function NewsSection() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <h2 className="text-3xl md:text-4xl font-bold">Noticias y Actualizaciones</h2>
             {aiFormatted && (
-              <span className="inline-flex items-center gap-1 px-2 py-1 text-xs bg-linear-to-r from-purple-500 to-pink-500 text-white rounded-full">
+              <span className="inline-flex items-center gap-1 px-2 py-1 text-xs bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full">
                 <Sparkles className="w-3 h-3" />
                 AI
               </span>
