@@ -170,35 +170,42 @@ export default function Menu() {
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="areas" className="border-none ">
+                  <AccordionItem value="Areas" className="border-none ">
                     <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
                       Áreas
                     </AccordionTrigger>
                     <AccordionContent className="pl-4 pb-0 ">
                       <div className="flex flex-col space-y-2 ">
                         <Link 
-                          href="#" 
+                          href="/Areas/Direccion" 
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm">Dirección</div>
                         </Link>
                         <Link 
-                          href="#" 
+                          href="/Areas/Gestion-Pedagogica" 
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm">Gestión Pedagógica</div>
                         </Link>
                         <Link 
-                          href="#" 
+                          href="/Areas/Gestion-Administrativa" 
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm">Gestión Administrativa</div>
                         </Link>
                         <Link 
-                          href="#" 
+                          href="/Areas/RRHH" 
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          <div className="font-medium text-sm">Unidad de Gestión de Recursos Humanos</div>
+                        </Link>
+                        <Link 
+                          href="/Areas/Planeamiento-y-Desarrollo-Institucional" 
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >

@@ -59,7 +59,7 @@ export function NavigationMenuDemo() {
         <NavigationMenuList className="flex-wrap">
           <NavigationMenuItem>
             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href="/docs">UGEL</Link>
+              <Link href="/">UGEL</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>    
   
@@ -106,35 +106,28 @@ export function NavigationMenuDemo() {
               <ul className="grid w-[300px] gap-4">
                 <li>
                   <NavigationMenuLink asChild>
-                    <Link href="#">
+                    <Link href="/Areas/Direccion">
                       <div className="font-medium">Dirección</div>
-                      <div className="text-muted-foreground">
-                        Información sobre el despacho de dirección y sus funciones.
-                      </div>
                     </Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
-                    <Link href="#">
+                    <Link href="/Areas/Gestion-Pedagogica">
                       <div className="font-medium">Gestión Pedagógica</div>
-                      <div className="text-muted-foreground">
-                        Coordinación de la calidad educativa y acompañamiento docente.
-                      </div>
                     </Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
-                    <Link href="#">
+                    <Link href="/Areas/Gestion-Administrativa">
                       <div className="font-medium">Gestión Administrativa</div>
-                      <div className="text-muted-foreground">
-                        Administración de recursos humanos, materiales y financieros.
-                      </div>
                     </Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
-                    <Link href="#">
+                    <Link href="/Areas/RRHH">
+                      <div className="font-medium">Unidad de Gestión de Recursos Humanos</div>
+                    </Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <Link href="/Areas/Planeamiento-y-Desarrollo-Institucional">
                       <div className="font-medium">Planeamiento y Desarrollo Institucional</div>
-                      <div className="text-muted-foreground">
-                        Planificación estratégica y desarrollo institucional sostenible.
-                      </div>
                     </Link>
                   </NavigationMenuLink>
                 </li>
@@ -144,7 +137,7 @@ export function NavigationMenuDemo() {
   
           <NavigationMenuItem>
             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href="/docs">Convocatoria</Link>
+              <Link href="http://ugelambo.regionhuanuco.gob.pe/convocatorias">Convocatoria</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
   

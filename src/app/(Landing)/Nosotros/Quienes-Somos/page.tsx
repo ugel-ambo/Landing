@@ -1,6 +1,5 @@
 import { MapPin, Users, GraduationCap, Building2, CheckCircle2 } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 
 const QuienesSomos = () => {
   const distritos = [
@@ -104,7 +103,7 @@ const QuienesSomos = () => {
                   className="border-2 hover:border-primary/50 hover:shadow-lg transition-all duration-300 group"
                 >
                   <CardContent className="p-6 text-center">
-                    <div className="inline-flex p-4 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl mb-4 group-hover:scale-110 transition-transform">
+                    <div className="inline-flex p-4 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl mb-4 group-hover:scale-110 transition-transform">
                       <Icon className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="text-lg font-semibold text-[#223F59] mb-2">
@@ -121,7 +120,7 @@ const QuienesSomos = () => {
         </div>
 
         {/* Distritos Atendidos */}
-        <Card className="border-2 bg-gradient-to-br from-primary/5 to-primary/10">
+        <Card className="border-2 bg-linear-to-br from-primary/5 to-primary/10">
           <CardContent className="p-6 md:p-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-primary rounded-lg">
@@ -143,7 +142,7 @@ const QuienesSomos = () => {
                   key={index}
                   className="flex items-center gap-2 p-3 bg-white rounded-lg hover:shadow-md transition-shadow group"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-primary group-hover:scale-110 transition-transform flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-primary group-hover:scale-110 transition-transform shrink-0" />
                   <span className="text-sm font-medium text-[#223F59]">
                     {distrito}
                   </span>

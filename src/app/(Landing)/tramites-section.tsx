@@ -24,17 +24,17 @@ const tramites = [
   },
   {
     id: 3,
-    title: "Sistema de Gestión Digital (SGD)",
+    title: "Sistema de Gestión Documental (SGD)",
     description: "Plataforma digital para gestión de documentos",
     icon: Database,
-    href: "/tramites/sgd",
+    href: "https://digital.regionhuanuco.gob.pe/login",
   },
   {
     id: 4,
     title: "Registro de Visitas",
     description: "Control y registro de visitas a la institución",
     icon: LogIn,
-    href: "/tramites/registro-visitas",
+    href: "http://ugelambo.regionhuanuco.gob.pe/visitas",
   },
 ]
 
