@@ -18,7 +18,7 @@ const areaData = {
             position: "Jefe de la Unidad de Planeamiento y Desarrollo Institucional",
             email: "rider.ortega@ugel308.edu.pe",
             linkedinUrl: "https://linkedin.com/in/riderortega",
-            image: "/Directorio/agi/Rider-ortega.png",
+            image: "/Directorio/agi/Rider-Ortega.png",
         },
         {
             id: "2",

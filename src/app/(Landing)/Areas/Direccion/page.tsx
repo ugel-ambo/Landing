@@ -51,7 +51,7 @@ const areaData = {
       position: "Asesor Jurídico",
       email: "maria.garcia@ugel308.edu.pe",
       linkedinUrl: "https://linkedin.com/in/mariagarcia",
-      image: "/Directorio/direccion/Cesar-luis.png",
+      image: "/Directorio/direccion/Cesar-Luis.png",
     },
   ],
 }
