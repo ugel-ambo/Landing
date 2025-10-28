@@ -2,12 +2,10 @@
 
 import type React from "react"
 import Link from "next/link"
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, ArrowRight } from "lucide-react"
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, } from "lucide-react"
 import { useState } from "react"
 
 export default function Footer() {
-  const [email, setEmail] = useState("")
-
   
   return (
     <footer className="bg-primary text-primary-foreground">
