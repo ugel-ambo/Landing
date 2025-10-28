@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <>
     <Hero/>
-    <TramitesSection />
-    <NewsSection />
     <ServicesCards />
+    <NewsSection />
+    <TramitesSection />
     </>
   );
 }

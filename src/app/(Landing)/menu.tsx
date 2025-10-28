@@ -39,7 +39,7 @@ export default function Menu() {
           {/* Logo y Nombre */}
           
 
-          <Link href="#inicio" className="flex items-center gap-2 md:gap-3 group">
+          <Link href="/" className="flex items-center gap-2 md:gap-3 group">
             <div className="relative w-8 h-8 md:w-10 md:h-10  rounded-lg flex items-center justify-center font-bold text-white text-lg md:text-xl">
               <Image
                 src="/Logo1.jpg"

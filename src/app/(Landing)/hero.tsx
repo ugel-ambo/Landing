@@ -147,8 +147,9 @@ export default function Hero() {
                                 size="lg"
                                 variant="outline"
                                 className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 hover:bg-white/20 font-semibold shadow-xl rounded-full transition-all duration-300 transform hover:scale-105"
-                            >
-                                Conocer Más
+                                onClick={() => document.getElementById("noticias")?.scrollIntoView({ behavior: "smooth" })}
+                           >
+                                Ultimas Noticias
                             </Button>
                         </div>
 

@@ -34,22 +34,17 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/servicios" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link href="/#servicios" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
                   Servicios
                 </Link>
               </li>
               <li>
-                <Link href="/convocatorias" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
-                  Convocatorias
-                </Link>
-              </li>
-              <li>
-                <Link href="/tramites" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link href="/#tramite" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
                   Trámites
                 </Link>
               </li>
               <li>
-                <Link href="/noticias" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link href="/#noticias" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
                   Noticias
                 </Link>
               </li>
@@ -61,17 +56,17 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Consultas</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/expediente" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link href="#" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
                   Expedientes
                 </Link>
               </li>
               <li>
-                <Link href="/becas" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link href="#" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
                   Becas
                 </Link>
               </li>
               <li>
-                <Link href="/videos" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link href="#" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
                   Videos
                 </Link>
               </li>

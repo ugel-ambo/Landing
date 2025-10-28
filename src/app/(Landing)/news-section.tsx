@@ -144,7 +144,7 @@ export default function NewsSection() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
+    <section id="noticias" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
