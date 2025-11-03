@@ -4,6 +4,8 @@ import "./globals.css";
 import Menu from "./(Landing)/menu";
 import Footer from "./(Landing)/footer";
 import { Analytics } from "@vercel/analytics/next"
+import 'leaflet/dist/leaflet.css';
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
