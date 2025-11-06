@@ -111,7 +111,7 @@ export function NavigationMenuDemo() {
                     </Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
-                    <Link href="/Areas/Gestion-Pedagogica">
+                    <Link href="/Gestion-Pedagogica">
                       <div className="font-medium">Gestión Pedagógica</div>
                     </Link>
                   </NavigationMenuLink>

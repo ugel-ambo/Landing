@@ -1,6 +1,5 @@
 "use client"
 
-
 import Image from "next/image";
 import { Menu as MenuIcon} from "lucide-react";
 import { useEffect, useState } from "react";
@@ -34,7 +33,7 @@ export default function Menu() {
   }, []);
 
   return (
-    <div className="w-full border-b bg-background sticky top-0 z-50 ">
+    <div className="w-full bg-background sticky top-0 z-50 ">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between lg:justify-evenly h-16 md:h-20">
           {/* Logo y Nombre */}
@@ -52,7 +51,7 @@ export default function Menu() {
             </div>
             <div className="flex flex-col">
               <span
-                className={`text-lg md:text-xl font-bold tracking-tight leading-none ${
+                className={`text-lg md:text-xl font-extrabold tracking-tight leading-none ${
                   isScrolled ? "text-[#049DD9]" : "text-[#049DD9]"
                 }`}
               >

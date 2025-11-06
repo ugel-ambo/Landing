@@ -45,7 +45,7 @@ const areaData = {
             image: "/Directorio/agi/Maryori-Mishel.jpeg",
         },
         {
-            id: "4",
+            id: "5",
             name: "Antonio Percy Chavez Alcantara",
             position: "Coordinador de Proyectos",
             email: "antonio.chavez@ugel308.edu.pe",
@@ -53,7 +53,7 @@ const areaData = {
             image: "/Directorio/agi/Antonio-Percy.png",
         },
         {
-            id: "4",
+            id: "6",
             name: "Delmer Jmes Villareal Morales",
             position: "Coordinador de Proyectos",
             email: "delmer.villareal@ugel308.edu.pe",
