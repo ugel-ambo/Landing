@@ -9,7 +9,7 @@ export default function Home() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative w-full overflow-hidden">
-        <div className="absolute inset-0 h-1/3 w-full bg-linear-to-b from-white via-white/90 via-20% to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-0 h-1/5 w-full bg-linear-to-b  to-transparent pointer-events-none z-10" />
 
         {/* Background Image */}
         <div
@@ -33,7 +33,7 @@ export default function Home() {
             <div className="flex flex-col w-full max-w-6xl items-center lg:items-start ">
 
               {/* Title */}
-              <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl uppercase lg:text-6xl font-bold text-white drop-shadow-lg text-left">
+              <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl  lg:text-6xl font-bold text-white drop-shadow-lg text-left">
                 Fortaleciendo la
                 <br />
                 <ColourfulText
@@ -62,14 +62,14 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-white text-[#049DD9] hover:bg-blue-50 font-semibold text-base shadow-lg">
-                  Recursos Pedagógicos
+                  Fortalecimiento Pedagógico
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   className="bg-white/20 text-white border-2 border-white hover:bg-white/30 font-semibold text-base backdrop-blur-sm"
                 >
-                  Monitores
+                  Monitoreo Pedagógico
                 </Button>
               </div>
             </div>

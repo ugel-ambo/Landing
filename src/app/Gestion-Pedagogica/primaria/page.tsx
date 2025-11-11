@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { ColourfulText } from "@/components/ui/shadcn-io/colourful-text";
 import Image from "next/image";
 
 export default function Home() {
@@ -19,38 +20,17 @@ export default function Home() {
             backgroundSize: "cover",
           }}
         >
+          {/* Badge centrado */}
+          <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-30 inline-flex items-center gap-2 rounded-full uppercase bg-white/95 backdrop-blur-sm px-5 py-2.5 text-sm font-bold text-[#049DD9] shadow-xl border border-blue-100">
+            <span className="text-xl">📚</span>
+            Educación Primaria
+          </div>
+
           {/* Content Row → móvil (col) | desktop (row) */}
-          <div className="relative z-20 h-full flex flex-col md:flex-row items-center justify-center px-6 sm:px-8 gap-6">
+          <div className="relative z-20 h-full flex flex-col md:flex-row items-center justify-center px-6 sm:px-8 gap-8 pt-16 md:pt-0">
 
-            {/* -------- TEXT COLUMN -------- */}
-            <div className="w-full md:w-1/2 flex flex-col items-start text-left pt-10 lg:pt-2">
-              
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full uppercase bg-white/90 backdrop-blur-sm px-4 py-2 text-sm font-bold text-[#049DD9] shadow-lg">
-                <span className="text-xl">📚</span>
-                Educación Primaria
-              </div>
-
-              <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
-                Creciendo juntos en la
-                <br />
-                <span className="text-white">Educación Inicial</span>
-              </h1>
-
-              <p className="mb-8 max-w-xl text-base sm:text-lg md:text-xl text-white drop-shadow-md font-medium">
-                Un espacio donde los niños descubren, aprenden y se desarrollan con alegría.
-                Educación de calidad desde los primeros años.
-              </p>
-
-              <Button
-                size="lg"
-                className="bg-white text-blue-600 hover:bg-blue-50 font-semibold text-base shadow-lg"
-              >
-                Conocer Más
-              </Button>
-            </div>
-
-            {/* -------- IMAGE COLUMN -------- */}
-            <div className="w-full md:w-1/2 relative h-64 sm:h-80 md:h-full">
+            {/* -------- IMAGE COLUMN (primero en desktop para que esté a la izquierda) -------- */}
+            <div className="w-full md:w-1/2 relative h-80 sm:h-96 md:h-[500px] lg:h-[550px] order-2 md:order-1">
               <Image
                 src="/gp/primaria/hero.png"
                 alt="Unidad de Gestión Pedagógica"
@@ -61,10 +41,64 @@ export default function Home() {
               />
             </div>
 
+            {/* -------- TEXT COLUMN (más a la derecha) -------- */}
+            <div className="w-full md:w-1/2 flex flex-col items-centers text-right order-1 md:order-2 md:pl-8 lg:pl-12">
+
+              <h1 className="mb-4 max-w-xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+                <span
+                  className="inline-block bg-linear-to-r text-[#039DD8] "
+                >
+                  Fortaleciendo la
+                </span>
+                <br />
+                <span
+                  className="inline-block bg-linear-to-r text-[#039DD8]"
+                  style={{ animation: "pulse 2s infinite", display: "inline-block", animationDelay: "0.12s" }}
+                >
+                  Educación Primaria
+                </span>
+              </h1>
+              <style>{`
+                @keyframes bounce {
+                  0%,100% { transform: translateY(0); }
+                  50% { transform: translateY(-8px); }
+                }
+                @keyframes pulse {
+                  0% { transform: scale(1); opacity: 1; }
+                  50% { transform: scale(1.03); opacity: 0.95; }
+                  100% { transform: scale(1); opacity: 1; }
+                }
+                @keyframes float {
+                  0% { transform: translateY(0); }
+                  50% { transform: translateY(-6px); }
+                  100% { transform: translateY(0); }
+                }
+              `}</style>
+
+              <p className="mb-8 max-w-xl text-base sm:text-lg md:text-xl text-[#049DD9] font-medium ">
+                Un espacio donde los niños descubren, aprenden y se desarrollan con alegría.
+                Educación de calidad desde los primeros años.
+              </p>
+
+              <div className="flex  max-w-xl flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-white text-[#049DD9] hover:bg-blue-50 font-semibold text-base shadow-lg">
+                  Fortalecimiento Pedagógico
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-white/20 text-white border-2 border-white hover:bg-white/30 font-semibold text-base backdrop-blur-sm"
+                >
+                  Monitoreo Pedagógico
+                </Button>
+              </div>
+
+            </div>
+
             {/* Floating Elements */}
-            <div className="hidden sm:block absolute top-8 left-8 md:left-12 text-2xl md:text-3xl animate-bounce opacity-80">🏐</div>
+            <div className="hidden sm:block absolute top-20 left-8 md:left-12 text-2xl md:text-3xl animate-bounce opacity-70">🏐</div>
             <div
-              className="hidden sm:block absolute top-16 right-8 md:right-12 text-2xl md:text-3xl opacity-80"
+              className="hidden sm:block absolute top-24 right-8 md:right-16 text-2xl md:text-3xl opacity-70"
               style={{ animation: "bounce 2s infinite 0.2s" }}
             >
               🎨

@@ -68,7 +68,7 @@ function ColourfulText({
             duration: animationDuration,
             delay: index * staggerDelay,
           }}
-          className="inline-block whitespace-pre font-sans tracking-tight will-change-transform will-change-opacity will-change-filter"
+          className="inline-block text-white uppercase whitespace-pre font-sans tracking-tight will-change-transform will-change-opacity will-change-filter"
         >
           {char}
         </motion.span>
