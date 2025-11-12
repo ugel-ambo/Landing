@@ -16,7 +16,6 @@ export default function ChatPage() {
   const [input, setInput] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // API v2.x: useChat ahora usa sendMessage en lugar de handleSubmit
   const {
     messages,
     status,
@@ -29,7 +28,6 @@ export default function ChatPage() {
 
   });
 
-  // status puede ser: 'ready', 'submitted', 'error'
   const isLoading = status === 'submitted';
 
 
@@ -54,9 +52,8 @@ export default function ChatPage() {
     e.preventDefault();
     if (!input || !input.trim()) return;
 
-    // En v2.x usamos sendMessage con un objeto que contiene el texto
     sendMessage({ text: input });
-    setInput(''); // Limpiar el input después de enviar
+    setInput('');
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -66,7 +63,7 @@ export default function ChatPage() {
     }
   };
 
-  // Helper para renderizar el contenido de los mensajes
+
   const renderMessageContent = (message: ChatMessage) => {
     if (!message.parts) return '';
 
@@ -223,7 +220,6 @@ export default function ChatPage() {
   );
 }
 
-// Tipos locales para los mensajes del chat (evitan el uso de `any`)
 type ChatPart = {
   type: 'text' | string;
   text?: string;
