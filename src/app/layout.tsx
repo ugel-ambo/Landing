@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Menu from "./(Landing)/menu";
-import Footer from "./(Landing)/footer";
 import { Analytics } from "@vercel/analytics/next"
 import 'leaflet/dist/leaflet.css';
-
+import Superhero from "./(Landing)/superhero";
+import ChatPage from "./(Landing)/chat";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,9 +29,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Menu />
+        <Superhero />
+        <ChatPage />
         {children}
-        <Footer />
         <Analytics />
       </body>
     </html>
