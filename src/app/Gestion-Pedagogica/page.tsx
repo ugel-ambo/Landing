@@ -1,4 +1,4 @@
-import { AreaSection } from "../(Landing)/Areas/components/area-section"
+
 import Hero from "./hero"
 
 
@@ -169,17 +169,6 @@ const areaData = {
     },
 
   ],
-}
-
-function RRHH() {
-  return (
-    <main className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <Hero />
-      <AreaSection {...areaData} />
-      </div>
-    </main>
-  )
 }
 
 export default function GP() {

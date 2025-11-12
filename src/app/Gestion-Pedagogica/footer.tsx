@@ -3,7 +3,6 @@
 import type React from "react"
 import Link from "next/link"
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, } from "lucide-react"
-import { useState } from "react"
 
 export default function Footer() {
   

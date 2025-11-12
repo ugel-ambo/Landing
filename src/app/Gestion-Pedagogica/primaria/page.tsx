@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ColourfulText } from "@/components/ui/shadcn-io/colourful-text";
 import Image from "next/image";
 
 export default function Home() {
@@ -13,7 +12,7 @@ export default function Home() {
 
         {/* Background Image */}
         <div
-          className="relative w-full h-[70vh] sm:h-[75vh] md:h-[80vh] lg:h-[90vh] bg-cover bg-center"
+          className="relative w-full h-[70vh] sm:h-[75vh] md:h-[60vh] lg:h-[85vh] bg-cover bg-center"
           style={{
             backgroundImage: "url(/gp/primaria/fondo.png)",
             backgroundPosition: "center bottom",
@@ -21,8 +20,8 @@ export default function Home() {
           }}
         >
           {/* Badge centrado */}
-          <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-30 inline-flex items-center gap-2 rounded-full uppercase bg-white/95 backdrop-blur-sm px-5 py-2.5 text-sm font-bold text-[#049DD9] shadow-xl border border-blue-100">
-            <span className="text-xl">📚</span>
+          <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-30 inline-flex items-center gap-2 rounded-full uppercase bg-white/95 backdrop-blur-sm px-4 sm:px-5 py-2 text-xs sm:text-sm lg:text-base font-bold text-[#049DD9] shadow-xl border border-blue-100">
+            <span className="text-sm lg:text-xl">📚</span>
             Educación Primaria
           </div>
 
@@ -42,9 +41,9 @@ export default function Home() {
             </div>
 
             {/* -------- TEXT COLUMN (más a la derecha) -------- */}
-            <div className="w-full md:w-1/2 flex flex-col items-centers text-right order-1 md:order-2 md:pl-8 lg:pl-12">
+            <div className="w-full md:w-1/2 flex flex-col items-centers text-center order-1 md:order-2 lg:text-right ">
 
-              <h1 className="mb-4 max-w-xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+              <h1 className="mb-4 max-w-xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold ">
                 <span
                   className="inline-block bg-linear-to-r text-[#039DD8] "
                 >

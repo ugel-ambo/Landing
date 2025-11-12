@@ -4,7 +4,7 @@ import { useChat } from "@ai-sdk/react";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
-import { MessageCircle, ArrowDownCircle, X, Send } from "lucide-react";
+import { ArrowDownCircle, X, Send, BotMessageSquare } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Input } from '@/components/ui/input';
@@ -26,13 +26,13 @@ export default function ChatPage() {
     transport: new DefaultChatTransport({
       api: '/api/chat',
     }),
-    
+
   });
 
   // status puede ser: 'ready', 'submitted', 'error'
   const isLoading = status === 'submitted';
-  
-   
+
+
   useEffect(() => {
     const handleScroll = () => {
       setShowChatIcon(window.scrollY > 50);
@@ -53,7 +53,7 @@ export default function ChatPage() {
   const onSubmit = (e: React.FormEvent | React.MouseEvent) => {
     e.preventDefault();
     if (!input || !input.trim()) return;
-    
+
     // En v2.x usamos sendMessage con un objeto que contiene el texto
     sendMessage({ text: input });
     setInput(''); // Limpiar el input después de enviar
@@ -62,17 +62,17 @@ export default function ChatPage() {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      onSubmit(e as any);
+      onSubmit(e as React.FormEvent);
     }
   };
 
   // Helper para renderizar el contenido de los mensajes
-  const renderMessageContent = (message: any) => {
+  const renderMessageContent = (message: ChatMessage) => {
     if (!message.parts) return '';
-    
+
     return message.parts
-      .filter((part: any) => part.type === 'text')
-      .map((part: any) => part.text)
+      .filter((part: ChatPart) => part.type === 'text')
+      .map((part: ChatPart) => part.text ?? '')
       .join('');
   };
 
@@ -94,9 +94,9 @@ export default function ChatPage() {
               aria-label={isChatOpen ? "Cerrar chat" : "Abrir chat"}
             >
               {!isChatOpen ? (
-                <MessageCircle className="w-7 h-7" aria-hidden="true" />
+                <BotMessageSquare className="w-7 h-7 size-10" aria-hidden="true" />
               ) : (
-                <ArrowDownCircle className="w-7 h-7" aria-hidden="true" />
+                <ArrowDownCircle className="w-7 h-7 size-10" aria-hidden="true" />
               )}
             </Button>
           </motion.div>
@@ -115,8 +115,8 @@ export default function ChatPage() {
             <Card className="border-0 h-full px-0 py-0">
               <CardHeader className="bg-linear-to-r from-[#049DD9] to-[#0284c7] text-white flex flex-row items-center justify-between space-y-0 pb-4 pt-4 px-5">
                 <div className="flex items-center gap-2">
-                  <MessageCircle className="w-5 h-5" />
-                  <CardTitle className="text-lg font-bold">Asistente Virtual</CardTitle>
+                  <BotMessageSquare className="w-5 h-5" />
+                  <CardTitle className="text-sm font-semibold">Asistente Virtual </CardTitle>
                 </div>
                 <Button
                   onClick={toggleChat}
@@ -135,14 +135,14 @@ export default function ChatPage() {
                   {messages?.length === 0 && (
                     <div className="flex flex-col items-center justify-center h-full text-center p-6">
                       <div className="bg-linear-to-br from-[#049DD9]/10 to-[#0284c7]/10 rounded-full p-4 mb-4">
-                        <MessageCircle className="w-12 h-12 text-[#049DD9]" />
+                        <BotMessageSquare className="w-12 h-12 text-[#049DD9]" />
                       </div>
                       <p className="text-gray-600 font-medium mb-1">¡Hola! 👋</p>
-                      <p className="text-gray-500 text-sm">¿En qué puedo ayudarte hoy?</p>
+                      <p className="text-gray-500 text-sm">¿Somos la UGEL Ambo, en qué te podemos ayudar?</p>
                     </div>
                   )}
 
-                  {messages?.map((message: any, index: number) => (
+                  {messages?.map((message: ChatMessage, index: number) => (
                     <motion.div
                       key={message.id ?? index}
                       initial={{ opacity: 0, y: 10 }}
@@ -152,7 +152,7 @@ export default function ChatPage() {
                     >
                       <div
                         className={`max-w-[80%] rounded-2xl px-4 py-2.5 ${message.role === 'user'
-                          ? 'bg-linear-to-r from-[#049DD9] to-[#0284c7] text-white rounded-br-sm'
+                          ? 'bg-[#049DD9] text-white rounded-br-sm'
                           : 'bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-sm'
                           }`}
                       >
@@ -222,3 +222,15 @@ export default function ChatPage() {
     </div>
   );
 }
+
+// Tipos locales para los mensajes del chat (evitan el uso de `any`)
+type ChatPart = {
+  type: 'text' | string;
+  text?: string;
+};
+
+type ChatMessage = {
+  id?: string;
+  role?: 'user' | 'assistant' | 'system' | string;
+  parts?: ChatPart[];
+};

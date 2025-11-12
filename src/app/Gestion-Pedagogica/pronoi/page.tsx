@@ -2,61 +2,69 @@
 
 
 import { Button } from "@/components/ui/button";
-import { HighlightText } from "@/components/ui/shadcn-io/highlight-text";
+import { ColourfulText } from "@/components/ui/shadcn-io/colourful-text";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative w-full overflow-hidden">
-        <div className="absolute inset-0 max-h-1/5 w-full bg-linear-to-b  pointer-events-none z-10" />
+        <div className="absolute inset-0 h-1/5 w-full bg-linear-to-b  to-transparent pointer-events-none z-10" />
 
         {/* Background Image */}
         <div
           className="relative w-full h-[70vh] sm:h-[75vh] md:h-[80vh] lg:h-[90vh] xl:h-[85vh] bg-cover bg-center"
           style={{
-            backgroundImage: "url(/gp/secundaria/hero.png)",
+            backgroundImage: "url(/gp/pronoi/hero.png)",
             backgroundPosition: "center bottom",
             backgroundSize: "cover",
           }}
         >
           {/* Content Container */}
-          
-          <div className="relative z-20 h-full flex flex-col items-center justify-start pt-10 sm:pt-10 md:pt-10 px-4 sm:px-6 md:px-8 lg:pt-0 xl:pt-24">
+          <div className="relative z-20 h-full flex flex-col items-center justify-start pt-10 sm:pt-32 md:pt-24 px-4 lg:pt-10 xl:pt-24 sm:px-6 md:px-8">
 
             {/* ✅ Badge centrado */}
             <div className="mb-6 inline-flex items-center gap-2 rounded-full uppercase bg-white/90 backdrop-blur-sm px-4 py-2 text-sm font-bold text-[#049DD9] shadow-lg">
-              <span className="text-xl ">📚</span>
-              Educación Secundaria
+              <span className="text-lg xl:text-xl ">📚</span>
+              Educación Inicial No Escolarizada
             </div>
 
             {/* ✅ Contenedor del texto alineado a la izquierda */}
-            <div className="flex flex-col w-full max-w-6xl items-center lg:items-end ">
+            <div className="flex flex-col w-full max-w-6xl items-center lg:items-start xl:pt-10">
 
               {/* Title */}
-
-              <h1 className="mb-8 text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-[#028ec7] drop-shadow-lg text-center lg:text-right leading-snug sm:leading-snug lg:leading-relaxed">
-              Fortaleciendo la
+              <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl  lg:text-6xl xl:text-6xl  text-center font-bold text-white drop-shadow-lg lg:text-left">
+              Programa No 
+              <br />
+              Escolarizado de 
                 <br />
-                <HighlightText 
-                  text="Educación Secundaria"
-                  inView={true}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  className="align-middle"
+                <ColourfulText
+                  text="Educación Inicial"
+                  interval={4000}
+                  animationDuration={0.8}
+                  colors={[
+                    "#FF6B9D",  // Rosa vibrante
+                    "#FFA500",  // Naranja brillante
+                    "#FFD700",  // Dorado
+                    "#00CED1",  // Turquesa
+                    "#9370DB",  // Púrpura medio
+                    "#FF69B4",  // Rosa fucsia
+                    "#32CD32",  // Verde lima
+                  ]}
                 />
               </h1>
 
               {/* Subtitle */}
-              <p className="mb-8 max-w-lg text-base sm:text-lg md:text-xl text-[#028ec7] font-medium text-center lg:text-right">
+              <p className="mb-8 max-w-lg text-base sm:text-lg md:text-xl text-white drop-shadow-md font-medium text-left">
                 Portal de recursos pedagógicos y gestión para docentes
-                del nivel Secundario. Acompañamiento permanente
+                del nivel inicial. Acompañamiento permanente
                 para la mejora de los aprendizajes.
               </p>
-
+              
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-white text-[#049DD9] hover:bg-blue-50 font-semibold text-base shadow-lg">
-                Fortalecimiento Pedagógico
+                  Fortalecimiento Pedagógico
                 </Button>
                 <Button
                   size="lg"
@@ -66,6 +74,15 @@ export default function Home() {
                   Monitoreo Pedagógico
                 </Button>
               </div>
+            </div>
+
+            {/* Floating Elements */}
+            <div className="hidden sm:block absolute top-8 left-8 md:left-12 text-2xl md:text-3xl animate-bounce opacity-80">✏️</div>
+            <div
+              className="hidden sm:block absolute top-16 right-8 md:right-12 text-2xl md:text-3xl opacity-80"
+              style={{ animation: "bounce 2s infinite 0.2s" }}
+            >
+              🎨
             </div>
 
           </div>

@@ -33,7 +33,7 @@ const stats = [
 
 export default function Hero() {
     const [currentSlide, setCurrentSlide] = useState(0)
-    const [isTransitioning, setIsTransitioning] = useState(false)
+    const [, setIsTransitioning] = useState(false)
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -54,10 +54,6 @@ export default function Hero() {
         handleTransition(() => index)
     }
 
-
-    const prevSlide = () => {
-        handleTransition((prev) => (prev - 1 + heroImages.length) % heroImages.length)
-    }
 
     return (
         <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">

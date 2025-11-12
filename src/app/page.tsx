@@ -8,12 +8,10 @@ import ServicesCards from './(Landing)/services-card';
 import TramitesSection from './(Landing)/tramites-section';
 import Menu from './(Landing)/menu';
 import Footer from './(Landing)/footer';
-import ChatPage from './(Landing)/chat';
 
 export default function Home() {
   return (
     <>
-      <ChatPage />
       <Menu />
       <Hero />
       <ServicesCards />

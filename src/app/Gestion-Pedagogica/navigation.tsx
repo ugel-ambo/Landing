@@ -28,7 +28,7 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger>Inicial</NavigationMenuTrigger>
+          <Link href="/Gestion-Pedagogica/inicial"><NavigationMenuTrigger>Inicial</NavigationMenuTrigger></Link>
           <NavigationMenuContent>
           <ul className="grid w-[150px] gap-4">
               <li>
@@ -61,7 +61,7 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger>Primaria</NavigationMenuTrigger>
+        <Link href="/Gestion-Pedagogica/primaria"><NavigationMenuTrigger>Primaria</NavigationMenuTrigger></Link>
           <NavigationMenuContent>
             <ul className="grid w-[150px] gap-4">
               <li>
@@ -94,7 +94,7 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger>Secundaria</NavigationMenuTrigger>
+          <Link href="/Gestion-Pedagogica/secundaria"><NavigationMenuTrigger>Secundaria</NavigationMenuTrigger></Link>
           <NavigationMenuContent>
             <ul className="grid w-[150px] gap-4">
               <li>
