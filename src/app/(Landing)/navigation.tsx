@@ -16,38 +16,38 @@ import {
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "MOP ",
-    href: "/docs/primitives/alert-dialog",
+    href: "/docs/mop.pdf",
     description:
       "Manual de Organización y Funciones del Personal",
   },
   {
     title: "MOF ",
-    href: "/docs/primitives/hover-card",
+    href: "/docs/mof.pdf",
     description:
       "Manual de Organización y Funciones",
   },
   {
     title: "RISC ",
-    href: "/docs/primitives/progress",
+    href: "/docs/risc.pdf",
     description:
       "Reglamento Interno de Servidores Civiles",
   },
   {
     title: "TUPA",
-    href: "/docs/primitives/scroll-area",
+    href: "/docs/tupa.pdf",
     description: "Texto Único de Procedimientos Administrativos",
   },
   {
     title: "PEI",
-    href: "/docs/primitives/tabs",
+    href: "/docs/pei.pdf",
     description:
       "Proyecto Educativo Institucional",
   },
   {
-    title: "PER",
-    href: "/docs/primitives/tooltip",
+    title: "POI",
+    href: "/docs/poi.pdf",
     description:
-      "Proyecto Educativo Regional",
+      "Plan Operativo Institucional",
   },
 ]
 

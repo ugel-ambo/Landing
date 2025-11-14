@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import { Menu as MenuIcon} from "lucide-react";
+import { Menu as MenuIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -37,10 +37,9 @@ export default function Menu() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between lg:justify-evenly h-16 md:h-20">
           {/* Logo y Nombre */}
-          
 
           <Link href="/" className="flex items-center gap-2 md:gap-3 group">
-            <div className="relative w-8 h-8 md:w-10 md:h-10  rounded-lg flex items-center justify-center font-bold text-white text-lg md:text-xl">
+            <div className="relative w-8 h-8 md:w-10 md:h-10  lg:w-12 lg:h-12  rounded-lg flex items-center justify-center font-bold text-white text-lg md:text-xl">
               <Image
                 src="/Logo1.jpg"
                 alt="Logo "
@@ -51,9 +50,8 @@ export default function Menu() {
             </div>
             <div className="flex flex-col">
               <span
-                className={`text-lg md:text-xl font-extrabold tracking-tight leading-none ${
-                  isScrolled ? "text-[#049DD9]" : "text-[#049DD9]"
-                }`}
+                className={`text-lg md:text-xl font-extrabold tracking-tight leading-none ${isScrolled ? "text-[#049DD9]" : "text-[#049DD9]"
+                  }`}
               >
                 UGEL AMBO
               </span>
@@ -76,154 +74,139 @@ export default function Menu() {
               <SheetHeader>
                 <SheetTitle className="text-left">Menú</SheetTitle>
               </SheetHeader>
-              
+
               <nav className="flex flex-col space-y-2 mt-6">
-                
+
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="nosotros" className="border-none">
-                    <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      Nosotros
+                    <Link href="/Gestion-Pedagogica/inicial"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                      Inicial
                     </AccordionTrigger>
+                    </Link>
                     <AccordionContent className="pl-4 pb-0">
                       <div className="flex flex-col space-y-1">
-                        <Link 
-                          href="/Nosotros/Quienes-Somos" 
+                        <Link
+                          href="/Gestion-Pedagogica/inicial/especialistas"
                           className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          Quiénes somos
+                          Especialistas
                         </Link>
-                        <Link 
-                          href="/Nosotros/Mision-Vision" 
+                        <Link
+                          href="/Gestion-Pedagogica/inicial/monitoreo"
                           className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          Misión y visión
+                          Monitoreo
                         </Link>
-                        <Link 
-                          href="/Nosotros/Nuestra-Historia" 
+                        <Link
+                          href="/Gestion-Pedagogica/inicial/fortalecimiento"
                           className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          Nuestra historia
-                        </Link>
-                        <Link 
-                          href="/Nosotros/Valores-Institucional" 
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          Valores Institucionales
+                          Fortalecimiento
                         </Link>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="documentos" className="border-none">
-                    <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      Documentos
+                  <AccordionItem value="nosotros" className="border-none">
+                    <Link href="/Gestion-Pedagogica/primaria"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                      Primaria
                     </AccordionTrigger>
+                    </Link>
                     <AccordionContent className="pl-4 pb-0">
-                      <div className="flex flex-col space-y-2 ">
-                        <Link 
-                          href="/docs/primitives/alert-dialog" 
-                          className="px-4 py-2 hover:bg-accent rounded-md"
+                      <div className="flex flex-col space-y-1">
+                        <Link
+                          href="/Gestion-Pedagogica/primaria/especialistas"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm hover:text-white">MOP</div>
+                          Especialistas
                         </Link>
-                        <Link 
-                          href="/docs/primitives/hover-card" 
-                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
+                        <Link
+                          href="/Gestion-Pedagogica/primaria/monitoreo"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm hover:text-white">MOF</div>
+                          Monitoreo
                         </Link>
-                        <Link 
-                          href="/docs/primitives/progress" 
-                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
+                        <Link
+                          href="/Gestion-Pedagogica/primaria/fortalecimiento"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm hover:text-white">RISC</div>
-                        </Link>
-                        <Link 
-                          href="/docs/primitives/scroll-area" 
-                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          <div className="font-medium text-sm hover:text-white">TUPA</div>
-                        </Link>
-                        <Link 
-                          href="/docs/primitives/tabs" 
-                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          <div className="font-medium text-sm hover:text-white">PEI</div>
-                        </Link>
-                        <Link 
-                          href="/docs/primitives/tooltip" 
-                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          <div className="font-medium text-sm hover:text-white">PER</div>
+                          Fortalecimiento
                         </Link>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="Areas" className="border-none ">
-                    <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      Áreas
+                  <AccordionItem value="nosotros" className="border-none">
+                    <Link href="/Gestion-Pedagogica/secundaria"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                      Secundaria
                     </AccordionTrigger>
-                    <AccordionContent className="pl-4 pb-0 ">
-                      <div className="flex flex-col space-y-2 ">
-                        <Link 
-                          href="/Areas/Direccion" 
-                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
+                    </Link>
+                    <AccordionContent className="pl-4 pb-0">
+                      <div className="flex flex-col space-y-1">
+                        <Link
+                          href="/Gestion-Pedagogica/secundaria/especialistas"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">Dirección</div>
+                          Especialistas
                         </Link>
-                        <Link 
-                          href="/Gestion-Pedagogica" 
-                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
+                        <Link
+                          href="/Gestion-Pedagogica/secundaria/monitoreo"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">Gestión Pedagógica</div>
+                          Monitoreo
                         </Link>
-                        <Link 
-                          href="/Areas/Gestion-Administrativa" 
-                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
+                        <Link
+                          href="/Gestion-Pedagogica/secundaria/fortalecimiento"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">Gestión Administrativa</div>
-                        </Link>
-                        <Link 
-                          href="/Areas/RRHH" 
-                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          <div className="font-medium text-sm">Unidad de Gestión de Recursos Humanos</div>
-                        </Link>
-                        <Link 
-                          href="/Areas/Planeamiento-y-Desarrollo-Institucional" 
-                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          <div className="font-medium text-sm">Planeamiento y Desarrollo Institucional</div>
+                          Fortalecimiento
                         </Link>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
+
+                  <AccordionItem value="nosotros" className="border-none">
+                    <Link href="/Gestion-Pedagogica/pronoi"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                      PRONOI
+                    </AccordionTrigger>
+                    </Link>
+                    <AccordionContent className="pl-4 pb-0">
+                      <div className="flex flex-col space-y-1">
+                        <Link
+                          href="/Gestion-Pedagogica/pronoi/especialistas"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          Especialistas
+                        </Link>
+                        <Link
+                          href="/Gestion-Pedagogica/pronoi/monitoreo"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          Monitoreo
+                        </Link>
+                        <Link
+                          href="/Gestion-Pedagogica/pronoi/fortalecimiento"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          Fortalecimiento
+                        </Link>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+
                 </Accordion>
-
-                <Link 
-                  href="/docs" 
-                  className="px-4 py-3 hover:bg-accent rounded-md transition-colors font-medium hover:text-white"
-                  onClick={() => setOpen(false)}
-                >
-                  Convocatorias
-                </Link>
-
               </nav>
             </SheetContent>
           </Sheet>
