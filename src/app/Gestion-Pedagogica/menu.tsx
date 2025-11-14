@@ -205,6 +205,37 @@ export default function Menu() {
                       </div>
                     </AccordionContent>
                   </AccordionItem>
+                  <AccordionItem value="nosotros" className="border-none">
+                    <Link href="/Gestion-Pedagogica/ceba"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                      CEBA
+                    </AccordionTrigger>
+                    </Link>
+                    <AccordionContent className="pl-4 pb-0">
+                      <div className="flex flex-col space-y-1">
+                        <Link
+                          href="/Gestion-Pedagogica/ceba/especialistas"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          Especialistas
+                        </Link>
+                        <Link
+                          href="/Gestion-Pedagogica/ceba/monitoreo"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          Monitoreo
+                        </Link>
+                        <Link
+                          href="/Gestion-Pedagogica/ceba/fortalecimiento"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          Fortalecimiento
+                        </Link>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
 
                 </Accordion>
               </nav>
