@@ -20,7 +20,7 @@ export default function Home() {
           }}
         >
           {/* Badge centrado */}
-          <div className="absolute top-14 left-1/2 transform -translate-x-1/2 z-30 inline-flex items-center gap-2 rounded-full uppercase bg-white/95 backdrop-blur-sm px-4 sm:px-5 py-2 text-xs sm:text-sm lg:text-base font-bold text-[#049DD9] shadow-xl border border-blue-100">
+          <div className="absolute top-14 left-1/2 transform -translate-x-1/2 z-30 inline-flex items-center gap-2 rounded-full uppercase bg-white/95 backdrop-blur-sm px-4 sm:px-5 py-2 text-xs sm:text-sm lg:text-base font-bold text-[#0b1f27] shadow-xl border border-blue-100">
             <span className="text-sm lg:text-xl">📚</span>
             Educación Primaria
           </div>

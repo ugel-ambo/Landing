@@ -6,9 +6,9 @@ export default function App() {
       <div className="min-h-screen">
         <EspecialistasSection 
           data={especialistasData}
-          title="Especialistas de Nivel PRONOI"
-          subtitle="Conoce a nuestro equipo comprometido con la educación inicial"
-          nivel="PRONOI"
+          title="Especialistas de Educación Básica Alternativa"
+          subtitle="Conoce a nuestro equipo comprometido con la educación básica alternativa"
+          nivel="Básica Alternativa"
         />
       </div>
     );

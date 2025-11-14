@@ -330,7 +330,7 @@ const especialistasData =[
   },
   {
     "especialista_responsable": "MAGLORIO ORTIZ ROJAS",
-    "image": "/Directorio/agp/Maglorio-Ortiz.png",
+    "image": "/Directorio/agp/Maglorio-Ortiz.jpeg",
     "presentacion": "Especialista comprometido con el desarrollo educativo del nivel correspondiente.",
     "colegios": [
       {
@@ -499,23 +499,6 @@ const especialistasData =[
         "ubicacion": "AMBO",
         "colegio": "GALILEO GALILEI COLLEGE",
         "nivel_modalidad": "Inicial"
-      }
-    ]
-  },
-  {
-    "especialista_responsable": "RAMON GIOVANNI FIGUEREDO ONEEGLIO",
-    "image": "/Directorio/agp/Ramon-Giovanni.png",
-    "presentacion": "Especialista comprometido con el desarrollo educativo del nivel correspondiente.",
-    "colegios": [
-      {
-        "ubicacion": "AMBO",
-        "colegio": "SAN MARCOS",
-        "nivel_modalidad": "Básica alternativa - inicial e intermedio"
-      },
-      {
-        "ubicacion": "AMBO",
-        "colegio": "JUAN JOSE CRESPO Y CASTILLO",
-        "nivel_modalidad": "Básica alternativa - inicial e intermedio"
       }
     ]
   }

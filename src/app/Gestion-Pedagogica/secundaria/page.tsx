@@ -25,7 +25,7 @@ export default function Home() {
           <div className="relative z-20 h-full flex flex-col items-center 2xl:items-end 2xl:pr-40 justify-start pt-10 sm:pt-10 md:pt-10 px-4 sm:px-6 md:px-8 lg:pt-0 xl:pt-24">
 
           {/* ✅ Badge centrado */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full uppercase bg-white/90 backdrop-blur-sm px-4 py-2 text-sm font-bold text-[#049DD9] shadow-lg 2xl:self-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full uppercase bg-white/90 backdrop-blur-sm px-4 py-2 text-sm font-bold text-[#0b1f27] shadow-lg 2xl:self-center">
               <span className="text-xl ">📚</span>
               Educación Secundaria
             </div>

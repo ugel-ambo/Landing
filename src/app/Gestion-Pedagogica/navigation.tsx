@@ -161,6 +161,41 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
+        <NavigationMenuItem className="hidden md:block">
+        <Link href="/Gestion-Pedagogica/ceba"><NavigationMenuTrigger>CEBA</NavigationMenuTrigger></Link>
+          <NavigationMenuContent>
+          <ul className="grid w-[150px] gap-4">
+              <li>
+                <NavigationMenuLink asChild>
+                  <Link href="/Gestion-Pedagogica/ceba/especialistas">
+                    <div className="flex hover:text-white items-center">
+                      <Users className="mr-2 hover:text-white " strokeWidth={2} />
+                      <div className="font-medium">Especialistas</div>
+                    </div>
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="/Gestion-Pedagogica/ceba/monitoreo">
+                    <div className="flex hover:text-white items-center">
+                      <ListChecks className="mr-2 hover:text-white " strokeWidth={2} />
+                      <div className="font-medium">Monitoreo</div>
+                    </div>
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="/Gestion-Pedagogica/ceba/fortalecimiento">
+                    <div className="flex hover:text-white items-center">
+                      <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
+                      <div className="font-medium">Fortalecimiento</div>
+                    </div>
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+
       </NavigationMenuList>
     </NavigationMenu>
   )
