@@ -87,13 +87,13 @@ export default function ChatPage() {
             <Button
               onClick={toggleChat}
               size="icon"
-              className="rounded-full w-14 h-14 shadow-2xl bg-linear-to-r from-[#049DD9] to-[#0284c7] hover:from-[#037bbd] hover:to-[#0369a1] text-white transition-all duration-300 hover:scale-110"
+              className="rounded-full w-14 h-14 p-8 lg:p-10 shadow-2xl bg-linear-to-r from-[#049DD9] to-[#0284c7] hover:from-[#037bbd] hover:to-[#0369a1] text-white transition-all duration-300 hover:scale-110"
               aria-label={isChatOpen ? "Cerrar chat" : "Abrir chat"}
             >
               {!isChatOpen ? (
-                <BotMessageSquare className="w-7 h-7 size-10" aria-hidden="true" />
+                <BotMessageSquare className="w-7 h-7 lg:w-10 lg:h-10 size-14" aria-hidden="true" />
               ) : (
-                <ArrowDownCircle className="w-7 h-7 size-10" aria-hidden="true" />
+                <ArrowDownCircle className="w-7 h-7 lg:w-10 lg:h-10 size-14" aria-hidden="true" />
               )}
             </Button>
           </motion.div>
@@ -107,7 +107,7 @@ export default function ChatPage() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ duration: 0.3, type: "spring" }}
-            className="fixed bottom-24 right-6 z-50 w-80 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-28 right-6 z-50 w-80 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             <Card className="border-0 h-full px-0 py-0">
               <CardHeader className="bg-linear-to-r from-[#049DD9] to-[#0284c7] text-white flex flex-row items-center justify-between space-y-0 pb-4 pt-4 px-5">

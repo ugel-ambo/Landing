@@ -8,10 +8,13 @@ import ServicesCards from './(Landing)/services-card';
 import TramitesSection from './(Landing)/tramites-section';
 import Menu from './(Landing)/menu';
 import Footer from './(Landing)/footer';
+import VisitorCounter from '@/components/visitor-counter';
+import NoticiaModal from '@/components/noticia-modal';
 
 export default function Home() {
   return (
     <>
+      <NoticiaModal />
       <Menu />
       <Hero />
       <ServicesCards />
@@ -19,6 +22,7 @@ export default function Home() {
       <TramitesSection />
       <MapsPage />
       <Footer />
+      <VisitorCounter />
     </>
   );
 }

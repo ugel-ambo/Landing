@@ -2,7 +2,7 @@ import { AreaSection } from "../components/area-section"
 
 
 const areaData = {
-  areaName: "Unidad de Gestión de Recursos Humanos",
+  areaName: "DIRECCIÓN",
   areaImage: "/Directorio/direccion/image.png",
   functions: [
     "Planificar, dirigir, evaluar y hacer cumplir las actividades asignadas al ÁREA a su cargo.",

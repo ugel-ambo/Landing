@@ -33,7 +33,7 @@ export function NavigationMenuDemo() {
           <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
-                  <Link href="/Areas/Direccion">
+                  <Link href="/Gestion-Pedagogica/inicial/especialistas">
                     <div className="flex hover:text-white items-center">
                       <Users className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Especialistas</div>
@@ -41,7 +41,7 @@ export function NavigationMenuDemo() {
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
-                  <Link href="/Areas/Direccion">
+                  <Link href="/Gestion-Pedagogica/inicial/monitoreo">
                     <div className="flex hover:text-white items-center">
                       <ListChecks className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Monitoreo</div>
@@ -49,7 +49,7 @@ export function NavigationMenuDemo() {
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
-                  <Link href="/Gestion-Pedagogica">
+                  <Link href="/Gestion-Pedagogica/inicial/fortalecimiento">
                     <div className="flex hover:text-white items-center">
                       <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Fortalecimiento</div>
@@ -66,7 +66,7 @@ export function NavigationMenuDemo() {
             <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
-                  <Link href="/Areas/Direccion">
+                  <Link href="/Gestion-Pedagogica/primaria/especialistas">
                     <div className="flex hover:text-white items-center">
                       <Users className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Especialistas</div>
@@ -74,7 +74,7 @@ export function NavigationMenuDemo() {
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
-                  <Link href="/Areas/Direccion">
+                  <Link href="/Gestion-Pedagogica/primaria/monitoreo">
                     <div className="flex hover:text-white items-center">
                       <ListChecks className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Monitoreo</div>
@@ -82,7 +82,7 @@ export function NavigationMenuDemo() {
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
-                  <Link href="/Gestion-Pedagogica">
+                  <Link href="/Gestion-Pedagogica/primaria/fortalecimiento">
                     <div className="flex hover:text-white items-center">
                       <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Fortalecimiento</div>
@@ -99,40 +99,7 @@ export function NavigationMenuDemo() {
             <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
-                  <Link href="/Areas/Direccion">
-                    <div className="flex hover:text-white items-center">
-                      <Users className="mr-2 hover:text-white " strokeWidth={2} />
-                      <div className="font-medium">Directorio</div>
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="/Areas/Direccion">
-                    <div className="flex hover:text-white items-center">
-                      <ListChecks className="mr-2 hover:text-white " strokeWidth={2} />
-                      <div className="font-medium">Monitoreo</div>
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="/Gestion-Pedagogica">
-                    <div className="flex hover:text-white items-center">
-                      <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
-                      <div className="font-medium">Repositorio</div>
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-              </li>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger>CEBA</NavigationMenuTrigger>
-          <NavigationMenuContent>
-          <ul className="grid w-[150px] gap-4">
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link href="/Areas/Direccion">
+                  <Link href="/Gestion-Pedagogica/secundaria/especialistas">
                     <div className="flex hover:text-white items-center">
                       <Users className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Especialistas</div>
@@ -140,7 +107,7 @@ export function NavigationMenuDemo() {
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
-                  <Link href="/Areas/Direccion">
+                  <Link href="/Gestion-Pedagogica/secundaria/monitoreo">
                     <div className="flex hover:text-white items-center">
                       <ListChecks className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Monitoreo</div>
@@ -148,7 +115,7 @@ export function NavigationMenuDemo() {
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
-                  <Link href="/Gestion-Pedagogica">
+                  <Link href="/Gestion-Pedagogica/secundaria/fortalecimiento">
                     <div className="flex hover:text-white items-center">
                       <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Fortalecimiento</div>
@@ -159,13 +126,14 @@ export function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+        
         <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger>PRONOI</NavigationMenuTrigger>
+        <Link href="/Gestion-Pedagogica/pronoi"><NavigationMenuTrigger>PRONOI</NavigationMenuTrigger></Link>
           <NavigationMenuContent>
           <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
-                  <Link href="/Areas/Direccion">
+                  <Link href="/Gestion-Pedagogica/pronoi/especialistas">
                     <div className="flex hover:text-white items-center">
                       <Users className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Especialistas</div>
@@ -173,7 +141,7 @@ export function NavigationMenuDemo() {
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
-                  <Link href="/Areas/Direccion">
+                  <Link href="/Gestion-Pedagogica/pronoi/monitoreo">
                     <div className="flex hover:text-white items-center">
                       <ListChecks className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Monitoreo</div>
@@ -181,7 +149,7 @@ export function NavigationMenuDemo() {
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
-                  <Link href="/Gestion-Pedagogica">
+                  <Link href="/Gestion-Pedagogica/pronoi/fortalecimiento">
                     <div className="flex hover:text-white items-center">
                       <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Fortalecimiento</div>
