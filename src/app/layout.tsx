@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import 'leaflet/dist/leaflet.css';
 import Superhero from "./(Landing)/superhero";
 import ChatPage from "./(Landing)/chat";
+import Footer from "./(Landing)/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <ChatPage />
         {children}
         <Analytics />
+        <Footer />
       </body>
     </html>
   );

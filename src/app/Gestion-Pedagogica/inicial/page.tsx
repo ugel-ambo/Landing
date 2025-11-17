@@ -118,7 +118,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 px-6 sm:px-8 bg-gradient-to-b from-blue-50 to-white">
+      <section className="py-20 px-6 sm:px-8 bg-linear-to-b from-blue-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -172,7 +172,7 @@ export default function Home() {
               { icon: "🌟", title: "Inclusión Educativa", desc: "Recursos para la atención a la diversidad" },
               { icon: "🔍", title: "Monitoreo y Acompañamiento", desc: "Herramientas de seguimiento pedagógico" },
             ].map((item, i) => (
-              <div key={i} className="p-5 rounded-lg bg-gradient-to-br from-blue-50 to-white border border-blue-200 hover:shadow-lg transition hover:border-[#049DD9]">
+              <div key={i} className="p-5 rounded-lg bg-linear-to-br from-blue-50 to-white border border-blue-200 hover:shadow-lg transition hover:border-[#049DD9]">
                 <div className="text-3xl mb-3">{item.icon}</div>
                 <h3 className="text-lg font-semibold text-blue-900 mb-2">{item.title}</h3>
                 <p className="text-sm text-gray-600">{item.desc}</p>
@@ -183,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 sm:px-8 bg-gradient-to-r from-[#049DD9] to-[#028ec7] text-white">
+      <section className="py-20 px-6 sm:px-8 bg-linear-to-r from-[#049DD9] to-[#028ec7] text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
             ¿Necesitas Apoyo Pedagógico?
