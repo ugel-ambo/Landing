@@ -1,64 +1,102 @@
 "use client"
 
+import Image from "next/image"
 import { Card } from "@/components/ui/card"
 
-import Image from "next/image"
 import { EmployeeCard } from "./employee-card"
 
-interface Employee {
-    id: string
-    name: string
-    position: string
-    email: string
-    linkedinUrl?: string
-    image?: string
+export interface Employee {
+  id: string
+  name: string
+  position: string
+  image?: string
 }
 
-interface AreaSectionProps {
-    areaName: string
-    areaImage: string
-    functions: string[]
-    employees: Employee[]
+export interface HeroContent {
+  title: string
+  description: string
+  subtitle?: string
+  badge?: string
+  image?: string
 }
 
-export function AreaSection({ areaName, areaImage, functions, employees }: AreaSectionProps) {
-    return (
-        <section className="w-full lg:w-3/4 mx-auto px-4">
-            <div className="mb-8 text-center justify-center uppercase">
-                <h1 className="text-3xl md:text-4xl font-bold text-[#049DD9]">{areaName}</h1>
-            </div>
+export interface AreaContent {
+  hero: HeroContent
+  functions: string[]
+  employees: Employee[]
+  functionsIntro?: string
+  teamIntro?: string
+}
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                {/* Area image - vertical */}
-                <div className="rounded-lg overflow-hidden relative h-96 lg:h-auto">
-                    <Image src={areaImage || "/placeholder.svg"} alt={areaName} fill className="object-cover" />
-                </div>
-                {/* Functions section */}
-                <div>
-                    <Card className="p-6 border border-gray-200 bg-white h-full">
-                        <h2 className="text-2xl font-semibold text-foreground ">Funciones</h2>
-                        <ul className="space-y-3 ">
-                            {functions.map((func, index) => (
-                                <li key={index} className="flex gap-3 text-sm text-foreground leading-relaxed">
-                                    <span className="font-semibold text-primary shrink-0">{index + 1}.</span>
-                                    <span>{func}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </Card>
-                </div>
+export function AreaSection({ hero, functions, employees, functionsIntro, teamIntro }: AreaContent) {
+  return (
+    <section className="w-full max-w-7xl mx-auto space-y-16">
+      {/* Hero */}
+      <div className="rounded-3xl border border-blue-100 bg-linear-to-br from-blue-50 via-white to-white p-8 md:p-12 shadow-sm">
+        <div className="grid gap-10 lg:grid-cols-2 items-center">
+          <div>
+            {hero.badge && (
+              <span className="inline-flex  items-center rounded-full bg-white/90 px-4 py-1 text-sm font-semibold uppercase tracking-widest text-[#049DD9] shadow">
+                {hero.badge}
+              </span>
+            )}
+            <h1 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900 text-center lg:text-left">{hero.title}</h1>
+            {hero.subtitle && <p className="mt-2 text-lg font-semibold text-slate-600 text-center lg:text-left">{hero.subtitle}</p>}
+            <p className="mt-4 text-base md:text-lg text-slate-600 leading-relaxed text-center lg:text-left">{hero.description}</p>
+          </div>
+          <div className="relative h-64 md:h-80 lg:h-96 xl:w-full">
+            {hero.image ? (
+              <Image
+                src={hero.image}
+                alt={hero.title}
+                fill
+                priority
+                sizes="(min-width: 1024px) 32rem, 100vw"
+                className="rounded-2xl border border-blue-100 object-cover shadow-lg"
+              />
+            ) : (
+              <div className="h-full w-full rounded-2xl bg-linear-to-br from-[#049DD9] to-cyan-400 shadow-inner" />
+            )}
+          </div>
+        </div>
+      </div>
 
-            </div>
+      {/* Functions */}
+      <div className="space-y-8">
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#049DD9]">Funciones</p>
+          <h2 className="mt-3 text-3xl font-bold text-slate-900">Funciones del área</h2>
+          <p className="mt-3 text-base text-slate-600">
+            {functionsIntro ?? "Responsabilidades principales que guían nuestro trabajo diario."}
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {functions.map((func, index) => (
+            <Card key={index} className="flex gap-4 border border-blue-100 bg-white/80 p-6 shadow-sm">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#049DD9]/10 text-xl font-bold text-[#049DD9]">
+                {index + 1}
+              </div>
+              <p className="text-base leading-relaxed text-slate-700">{func}</p>
+            </Card>
+          ))}
+        </div>
+      </div>
 
-            {/* Employees section */}
-            <div>
-                <h2 className="text-2xl font-semibold text-foreground mb-6">Personal del Área</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {employees.map((employee) => (
-                        <EmployeeCard key={employee.id} {...employee} />
-                    ))}
-                </div>
-            </div>
-        </section>
-    )
+      {/* Team */}
+      <div className="space-y-8">
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#049DD9]">Equipo</p>
+          <h2 className="mt-3 text-3xl font-bold text-slate-900">Personal del área</h2>
+          <p className="mt-3 text-base text-slate-600">
+            {teamIntro ?? "Conoce a las personas que brindan soporte especializado a nuestra comunidad educativa."}
+          </p>
+        </div>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {employees.map((employee) => (
+            <EmployeeCard key={employee.id || employee.name} {...employee} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }

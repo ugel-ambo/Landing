@@ -44,10 +44,31 @@ export default function GP() {
                 icon: "🎓",
                 stats: "40+ instituciones"
               },
+              {
+                title: "PRONOI",
+                description: "Programa No Escolarizado de Educación Inicial que atiende a niños y niñas menores de 6 años en zonas rurales y de difícil acceso.",
+                href: "/Gestion-Pedagogica/pronoi",
+                icon: "🏫",
+                stats: "40+ instituciones"
+              },
+              {
+                title: "CEBA (Centro de Educación Básica Alternativa)",
+                description: "Modalidad educativa flexible que ofrece oportunidades de formación a jóvenes y adultos que no pudieron acceder a la educación regular.",
+                href: "/Gestion-Pedagogica/ceba",
+                icon: "📖",
+                stats: "40+ instituciones"
+              },
+              {
+                title: "PRITE (Programa de Intervención Temprana)",
+                description: "Atención especializada para niños menores de 3 años con discapacidad o en riesgo de adquirirla, promoviendo su desarrollo integral.",
+                href: "/Gestion-Pedagogica/prite",
+                icon: "🧸",
+                stats: "40+ instituciones"
+              },
             ].map((nivel, i) => (
               <Card key={i} className="hover:shadow-xl transition-shadow border-2 border-blue-100 hover:border-[#049DD9]">
                 <CardHeader>
-                  <div className="text-5xl mb-4">{nivel.icon}</div>
+                  <div className="text-5xl mb-4 ">{nivel.icon}</div>
                   <CardTitle className="text-2xl text-blue-900">{nivel.title}</CardTitle>
                   <CardDescription className="text-gray-600 pt-2">
                     {nivel.description}
@@ -84,38 +105,38 @@ export default function GP() {
             {[
               {
                 icon: "📋",
-                title: "Planificación y Evaluación",
-                description: "Planificar, dirigir, evaluar y hacer cumplir las actividades asignadas al área de gestión pedagógica."
-              },
-              {
-                icon: "🤝",
-                title: "Coordinación Interinstitucional",
-                description: "Coordinar con otras áreas sobre la formulación de presupuestos y recursos educativos."
-              },
-              {
-                icon: "📊",
-                title: "Gestión Administrativa",
-                description: "Revisar y firmar informes de ejecución presupuestaria, propuestas de modificación y documentación relacionada."
+                title: "Políticas y Normativas Educativas",
+                description: "Difundir, orientar y supervisar la aplicación de políticas educativas nacionales y regionales, evaluando sus resultados y garantizando la mejora continua del servicio educativo."
               },
               {
                 icon: "📚",
-                title: "Acompañamiento Pedagógico",
-                description: "Brindar acompañamiento técnico-pedagógico a docentes y directores de instituciones educativas."
+                title: "Diversificación y Desarrollo Curricular",
+                description: "Facilitar procesos de diversificación curricular, uso de materiales educativos y desarrollo de recursos pedagógicos adaptados a cada contexto sociocultural."
               },
               {
                 icon: "🎓",
-                title: "Capacitación Docente",
-                description: "Organizar y desarrollar programas de capacitación y actualización para el personal docente."
+                title: "Formación y Actualización Docente",
+                description: "Ejecutar programas de capacitación continua para personal directivo, docente y administrativo, fortaleciendo sus competencias pedagógicas y profesionales."
               },
               {
-                icon: "📈",
-                title: "Monitoreo y Supervisión",
-                description: "Monitorear y supervisar el cumplimiento de las actividades pedagógicas en las instituciones educativas."
+                icon: "💻",
+                title: "Innovación y Tecnología Educativa",
+                description: "Desarrollar nuevas tecnologías de comunicación, implementar centros de recursos educativos y ejecutar proyectos de investigación e innovación pedagógica."
+              },
+              {
+                icon: "🌍",
+                title: "Programas Estratégicos e Inclusión",
+                description: "Promover estrategias de alfabetización, educación intercultural, bienestar estudiantil y programas de prevención social en coordinación con gobiernos locales."
+              },
+              {
+                icon: "🤝",
+                title: "Articulación Productiva y Cultural",
+                description: "Orientar centros de educación técnico-productiva, fortalecer centros culturales, gestionar cooperación técnica-financiera y vincular educación con desarrollo regional."
               },
             ].map((funcion, i) => (
               <div key={i} className="p-6 bg-white rounded-lg border-2 border-blue-100 hover:shadow-lg transition">
                 <div className="flex items-start gap-4">
-                  <div className="text-4xl shrink-0">{funcion.icon}</div>
+                  <div className="text-4xl shrink-0 justify-center text-center">{funcion.icon}</div>
                   <div>
                     <h3 className="text-xl font-bold text-blue-900 mb-2">{funcion.title}</h3>
                     <p className="text-gray-600">{funcion.description}</p>
@@ -213,32 +234,7 @@ export default function GP() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-6 sm:px-8 bg-linear-to-r from-[#049DD9] to-[#028ec7] text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-            ¿Necesitas Apoyo Pedagógico?
-          </h2>
-          <p className="text-lg mb-8 opacity-90">
-            Nuestro equipo de especialistas está disponible para brindarte asesoramiento, 
-            recursos y acompañamiento en tu labor educativa. Contáctanos y trabajemos juntos 
-            por una educación de calidad en Ambo.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-[#049DD9] hover:bg-blue-50 font-semibold shadow-lg">
-              Contactar Especialistas
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-transparent text-white border-2 border-white hover:bg-white/10 font-semibold"
-            >
-              Ver Niveles Educativos
-            </Button>
-          </div>
-        </div>
-      </section>
+      
     </main>
   )
 }

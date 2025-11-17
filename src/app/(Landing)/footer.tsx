@@ -81,7 +81,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 shrink-0" />
-                <span>(064) 123-4567</span>
+                <span>(+51) 123-456-789</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 shrink-0" />
@@ -112,13 +112,6 @@ export default function Footer() {
               aria-label="Instagram"
             >
               <Instagram className="w-5 h-5" />
-            </Link>
-            <Link
-              href="#"
-              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-5 h-5" />
             </Link>
           </div>
         </div>
