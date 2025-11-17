@@ -56,6 +56,37 @@ export const planeamientoData: AreaContent = {
       position: "Coordinador de Proyectos",
       image: "/Directorio/agi/Delmer-Jmes.png",
     },
+    {
+      id: "7",
+      name: "Irene Martel Condezo",
+      position: "Coordinador de Proyectos",
+      image: "/Directorio/agi/Irene-Martel.png",
+    },
+    {
+      id: "8",
+      name: "Katherine Haydeé Osorio Celis",
+      position: "Coordinador de Proyectos",
+      image: "/Directorio/agi/Katherine-Haydee.png",
+    },
+    {
+      id: "9",
+      name: "Mayck Christian Bardon Dionicio",
+      position: "Coordinador de Proyectos",
+      image: "/Directorio/agi/Mayck-Christian.png",
+    },
+    {
+      id: "10",
+      name: "Indira Venecia Davila del Valle",
+      position: "Coordinador de Proyectos",
+      image: "/Directorio/agi/Indira-Venecia.png",
+    },
+    {
+      id: "11",
+      name: "Ruth Gieze Zuñiga Quinto",
+      position: "Coordinador de Proyectos",
+      image: "/Directorio/agi/Ruth-Gieze.png",
+    },
+
   ],
 }
 

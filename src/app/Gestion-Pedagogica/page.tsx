@@ -4,6 +4,8 @@ import Hero from "./hero"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { PersonalSection } from "./personal"
+import { gestionPedagogicaData } from "./components/data"
 
 export default function GP() {
   return (
@@ -148,33 +150,6 @@ export default function GP() {
         </div>
       </section>
 
-      {/* Estadísticas Section */}
-      <section className="py-20 px-6 sm:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">
-              Nuestro Impacto
-            </h2>
-            <p className="text-lg text-gray-600">
-              Cifras que demuestran nuestro compromiso con la educación en Ambo
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: "200+", label: "Instituciones Educativas" },
-              { number: "1000+", label: "Docentes Capacitados" },
-              { number: "11000+", label: "Estudiantes Atendidos" },
-              { number: "13", label: "Especialistas Dedicados" },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-5xl md:text-6xl font-bold text-[#049DD9] mb-3">{stat.number}</div>
-                <div className="text-sm md:text-base text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Servicios Section */}
       <section className="py-20 px-6 sm:px-8 bg-linear-to-b from-white to-blue-50">
         <div className="max-w-6xl mx-auto">
@@ -230,6 +205,34 @@ export default function GP() {
                   </CardDescription>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+      <PersonalSection employees={gestionPedagogicaData.employees} />
+
+      {/* Estadísticas Section */}
+      <section className="py-20 px-6 sm:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">
+              Nuestro Impacto
+            </h2>
+            <p className="text-lg text-gray-600">
+              Cifras que demuestran nuestro compromiso con la educación en Ambo
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { number: "200+", label: "Instituciones Educativas" },
+              { number: "1000+", label: "Docentes Capacitados" },
+              { number: "11000+", label: "Estudiantes Atendidos" },
+              { number: "13", label: "Especialistas Dedicados" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="text-5xl md:text-6xl font-bold text-[#049DD9] mb-3">{stat.number}</div>
+                <div className="text-sm md:text-base text-gray-600">{stat.label}</div>
+              </div>
             ))}
           </div>
         </div>
