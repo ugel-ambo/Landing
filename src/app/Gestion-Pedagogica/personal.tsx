@@ -23,7 +23,7 @@ export function PersonalSection({ employees,}:AreaContent ) {
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#049DD9]">Equipo</p>
           <h2 className="mt-3 text-3xl font-bold text-slate-900">Personal del área</h2>
           <p className="mt-3 text-base text-slate-600">
-            "Conoce a las personas que brindan soporte especializado a nuestra comunidad educativa."
+          Conoce a las personas que brindan soporte especializado a nuestra comunidad educativa.
           </p>
         </div>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
