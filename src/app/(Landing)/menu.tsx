@@ -109,46 +109,46 @@ export default function Menu() {
                     <AccordionContent className="pl-4 pb-0">
                       <div className="flex flex-col space-y-2 ">
                         <Link
-                          href="/docs/primitives/alert-dialog"
+                          href="/Docs/mop"
                           className="px-4 py-2 hover:bg-accent rounded-md"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm hover:text-white">MOP</div>
                         </Link>
                         <Link
-                          href="/docs/primitives/hover-card"
+                          href="/Docs/mof"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm hover:text-white">MOF</div>
                         </Link>
                         <Link
-                          href="/docs/primitives/progress"
+                          href="/Docs/risc"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm hover:text-white">RISC</div>
                         </Link>
                         <Link
-                          href="/docs/primitives/scroll-area"
+                          href="/Docs/tupa"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm hover:text-white">TUPA</div>
                         </Link>
                         <Link
-                          href="/docs/primitives/tabs"
+                          href="/Docs/pei"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm hover:text-white">PEI</div>
                         </Link>
                         <Link
-                          href="/docs/primitives/tooltip"
+                          href="/Docs/poi"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm hover:text-white">PER</div>
+                          <div className="font-medium text-sm hover:text-white">POI</div>
                         </Link>
                       </div>
                     </AccordionContent>
