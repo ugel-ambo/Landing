@@ -58,7 +58,7 @@ const especialistasData =[
   },
   {
     "especialista_responsable": "MARCOS ANTONIO ARQUEÑO GARAY",
-    "image": "/Directorio/agp/Marcos-Antonio.png",
+    "image": "/Directorio/agp/Marcos-Antonio-Arqueño.png",
     "presentacion": "Especialista comprometido con el desarrollo educativo del nivel correspondiente.",
     "colegios": [
       {

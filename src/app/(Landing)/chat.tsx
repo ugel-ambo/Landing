@@ -9,6 +9,8 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/componen
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Input } from '@/components/ui/input';
 import { DefaultChatTransport } from 'ai';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export default function ChatPage() {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -25,11 +27,9 @@ export default function ChatPage() {
     transport: new DefaultChatTransport({
       api: '/api/chat',
     }),
-
   });
 
   const isLoading = status === 'submitted';
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,7 +62,6 @@ export default function ChatPage() {
       onSubmit(e as React.FormEvent);
     }
   };
-
 
   const renderMessageContent = (message: ChatMessage) => {
     if (!message.parts) return '';
@@ -135,7 +134,7 @@ export default function ChatPage() {
                         <BotMessageSquare className="w-12 h-12 text-[#049DD9]" />
                       </div>
                       <p className="text-gray-600 font-medium mb-1">¡Hola! 👋</p>
-                      <p className="text-gray-500 text-sm">¿Somos la UGEL Ambo, en qué te podemos ayudar?</p>
+                      <p className="text-gray-500 text-sm">Somos la UGEL Ambo, ¿en qué te podemos ayudar?</p>
                     </div>
                   )}
 
@@ -148,14 +147,54 @@ export default function ChatPage() {
                       className={`flex mb-4 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                       <div
-                        className={`max-w-[80%] rounded-2xl px-4 py-2.5 ${message.role === 'user'
-                          ? 'bg-[#049DD9] text-white rounded-br-sm'
-                          : 'bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-sm'
-                          }`}
+                        className={`max-w-[80%] rounded-2xl px-4 py-2.5 ${
+                          message.role === 'user'
+                            ? 'bg-[#049DD9] text-white rounded-br-sm'
+                            : 'bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-sm'
+                        }`}
                       >
-                        <p className="text-sm leading-relaxed whitespace-pre-wrap wrap-break-words">
-                          {renderMessageContent(message)}
-                        </p>
+                        <div className="text-sm leading-relaxed markdown-content">
+                          <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
+                            components={{
+                              p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                              strong: ({ children }) => <strong className="font-bold">{children}</strong>,
+                              em: ({ children }) => <em className="italic">{children}</em>,
+                              ul: ({ children }) => <ul className="list-disc list-inside mb-2 space-y-1">{children}</ul>,
+                              ol: ({ children }) => <ol className="list-decimal list-inside mb-2 space-y-1">{children}</ol>,
+                              li: ({ children }) => <li className="ml-2">{children}</li>,
+                              code: ({ children, className }) => {
+                                const isInline = !className;
+                                return isInline ? (
+                                  <code className="bg-gray-200 text-gray-800 px-1.5 py-0.5 rounded text-xs font-mono">
+                                    {children}
+                                  </code>
+                                ) : (
+                                  <code className="block bg-gray-900 text-gray-100 p-2 rounded text-xs font-mono overflow-x-auto mt-1 mb-2">
+                                    {children}
+                                  </code>
+                                );
+                              },
+                              a: ({ children, href }) => (
+                                <a
+                                  href={href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-[#049DD9] hover:underline"
+                                >
+                                  {children}
+                                </a>
+                              ),
+                              blockquote: ({ children }) => (
+                                <blockquote className="border-l-4 border-gray-300 pl-3 italic my-2">
+                                  {children}
+                                </blockquote>
+                              ),
+                            }}
+                          >
+                            {renderMessageContent(message)}
+                          </ReactMarkdown>
+                        </div>
                       </div>
                     </motion.div>
                   ))}

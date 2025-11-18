@@ -16,36 +16,36 @@ import {
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "MOP ",
-    href: "/docs/mop.pdf",
+    href: "/Docs/mop",
     description:
       "Manual de Organización y Funciones del Personal",
   },
   {
     title: "MOF ",
-    href: "/docs/mof.pdf",
+    href: "/Docs/mof",
     description:
       "Manual de Organización y Funciones",
   },
   {
     title: "RISC ",
-    href: "/docs/risc.pdf",
+    href: "/Docs/risc",
     description:
       "Reglamento Interno de Servidores Civiles",
   },
   {
     title: "TUPA",
-    href: "/docs/tupa.pdf",
+    href: "/Docs/tupa",
     description: "Texto Único de Procedimientos Administrativos",
   },
   {
     title: "PEI",
-    href: "/docs/pei.pdf",
+    href: "/Docs/pei",
     description:
       "Proyecto Educativo Institucional",
   },
   {
     title: "POI",
-    href: "/docs/poi.pdf",
+    href: "/Docs/poi",
     description:
       "Plan Operativo Institucional",
   },
@@ -71,6 +71,8 @@ export function NavigationMenuDemo() {
                 Conoce quiénes somos y nuestro compromiso con la educación.
               </ListItem>
               <ListItem href="/Nosotros/Mision-Vision" title="Misión y visión" className="hover:text-white">
+                Nuestra razón de ser y el propósito que guía nuestro trabajo.
+              </ListItem><ListItem href="/Nosotros/Organigrama" title="Organigrama" className="hover:text-white">
                 Nuestra razón de ser y el propósito que guía nuestro trabajo.
               </ListItem>
             </ul>
