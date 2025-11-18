@@ -26,6 +26,11 @@ export function NavigationMenuDemo() {
             <Link href="/">UGEL</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link href="/Gestion-Pedagogica">Inicio</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
 
         <NavigationMenuItem className="hidden md:block">
           <Link href="/Gestion-Pedagogica/inicial"><NavigationMenuTrigger>Inicial</NavigationMenuTrigger></Link>

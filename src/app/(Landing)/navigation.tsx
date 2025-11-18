@@ -52,101 +52,95 @@ const components: { title: string; href: string; description: string }[] = [
 ]
 
 export function NavigationMenuDemo() {
-    const isMobile = useIsMobile()
-  
-    return (
-      <NavigationMenu viewport={isMobile}>
-        <NavigationMenuList className="flex-wrap">
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href="/">UGEL</Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>    
-  
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Nosotros</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] ">
-                  <ListItem href="/Nosotros/Quienes-Somos" title="Quiénes somos">
-                  Conoce quiénes somos y nuestro compromiso con la educación.
-                </ListItem>
-                <ListItem href="/Nosotros/Mision-Vision" title="Misión y visión">
-                  Nuestra razón de ser y el propósito que guía nuestro trabajo.
-                </ListItem>
-                <ListItem href="/Nosotros/Nuestra-Historia" title="Nuestra historia">
-                  Recorrido institucional y logros alcanzados a lo largo del tiempo.
-                </ListItem>
-                <ListItem href="/Nosotros/Valores-Institucional" title="Valores Institucionales">
-                  Principios que guían nuestras acciones y decisiones.
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-  
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Documentos</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                {components.map((component) => (
-                  <ListItem
-                    key={component.title}
-                    title={component.title}
-                    href={component.href}
-                  >
-                    {component.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-  
-          <NavigationMenuItem className="hidden md:block">
-            <NavigationMenuTrigger>Áreas</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[300px] gap-4">
-                <li>
-                  <NavigationMenuLink asChild>
-                    <Link href="/Areas/Direccion">
-                      <div className="font-medium">Dirección</div>
-                    </Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="/Gestion-Pedagogica">
-                      <div className="font-medium">Gestión Pedagógica</div>
-                    </Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="/Areas/Gestion-Administrativa">
-                      <div className="font-medium">Gestión Administrativa</div>
-                    </Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="/Areas/RRHH">
-                      <div className="font-medium">Unidad de Gestión de Recursos Humanos</div>
-                    </Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="/Areas/Planeamiento-y-Desarrollo-Institucional">
-                      <div className="font-medium">Planeamiento y Desarrollo Institucional</div>
-                    </Link>
-                  </NavigationMenuLink>
-                </li>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-  
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href="http://ugelambo.regionhuanuco.gob.pe/convocatorias">Convocatoria</Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-  
+  const isMobile = useIsMobile()
 
-        </NavigationMenuList>
-      </NavigationMenu>
-    )
-  }
-  
+  return (
+    <NavigationMenu viewport={isMobile}>
+      <NavigationMenuList className="flex-wrap">
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link href="/">UGEL</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Nosotros</NavigationMenuTrigger>
+          <NavigationMenuContent >
+            <ul className="grid gap-2 md:w-[400px] lg:w-[500px] grid-cols-1">
+              <ListItem href="/Nosotros/Quienes-Somos" title="Quiénes somos" className="hover:text-white" >
+                Conoce quiénes somos y nuestro compromiso con la educación.
+              </ListItem>
+              <ListItem href="/Nosotros/Mision-Vision" title="Misión y visión" className="hover:text-white">
+                Nuestra razón de ser y el propósito que guía nuestro trabajo.
+              </ListItem>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Documentos</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              {components.map((component) => (
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
+                >
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem className="hidden md:block">
+          <NavigationMenuTrigger>Áreas</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[300px] gap-4">
+              <li>
+                <NavigationMenuLink asChild>
+                  <Link href="/Areas/Direccion">
+                    <div className="font-medium">Dirección</div>
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="/Gestion-Pedagogica">
+                    <div className="font-medium">Gestión Pedagógica</div>
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="/Areas/Gestion-Administrativa">
+                    <div className="font-medium">Gestión Administrativa</div>
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="/Areas/RRHH">
+                    <div className="font-medium">Unidad de Gestión de Recursos Humanos</div>
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="/Areas/Planeamiento-y-Desarrollo-Institucional">
+                    <div className="font-medium">Planeamiento y Desarrollo Institucional</div>
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link href="http://ugelambo.regionhuanuco.gob.pe/convocatorias">Convocatorias</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+
+
+      </NavigationMenuList>
+    </NavigationMenu>
+  )
+}
+
 
 function ListItem({
   title,

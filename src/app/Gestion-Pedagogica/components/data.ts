@@ -17,7 +17,7 @@ export const gestionPedagogicaData: AreaContent = {
       id: "1",
       name: "Jaly H. Mallqui Durand",
       position: "JEFE DEL AREA DE GESTION PEDAGOGICA",
-      image: "/Directorio/agp/perfil.png",
+      image: "/Directorio/agp/Jaly-H.png",
     },
     {
       id: "2",
@@ -41,7 +41,7 @@ export const gestionPedagogicaData: AreaContent = {
       id: "5",
       name: "Maria Elena Meza Fernandez",
       position: "Especialista ED. INICIAL",
-      image: "/Directorio/agp/perfil.png",
+      image: "/Directorio/agp/Maria-Elena.png",
     },
     {
       id: "6",
@@ -113,7 +113,7 @@ export const gestionPedagogicaData: AreaContent = {
       id: "17",
       name: "Paolo Roberto Zevallos Leon",
       position: "ESPECIALISTA EN CONVIVENCIA ESCOLAR" ,
-      image: "/Directorio/agp/Beatriz-Jaramillo.png",
+      image: "/Directorio/agp/Paolo-Roberto.png",
     },
     {
       id: "18",

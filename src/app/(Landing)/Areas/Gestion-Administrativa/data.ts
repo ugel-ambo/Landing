@@ -25,21 +25,18 @@ export const gestionAdministrativaData: AreaContent = {
       id: "1",
       name: "Wilder Yonel Rojas Bardales",
       position: "Jefe de la Unidad de Gestión Administrativa",
-
-      image: "/Directorio/aga/perfil.png",
+      image: "/Directorio/aga/Wilder-Yonel.png",
     },
     {
       id: "2",
       name: "María Eugenia Maynicta León",
       position: "Secretaria de Dirección",
-
-      image: "/Directorio/aga/perfil.png",
+      image: "/Directorio/aga/Maria-Eugenia.png",
     },
     {
       id: "3",
       name: "Alfredo Ostos Miraval",
       position: "Analista de Abastecimientos",
-
       image: "/Directorio/aga/Alfredo-Ostos.png",
     },
     {
@@ -76,7 +73,7 @@ export const gestionAdministrativaData: AreaContent = {
       id: "9",
       name: "William Martin Machaca Bravo",
       position: "PERSONAL DE SERVICIO 2",
-      image: "/Directorio/aga/William-Martin.png",
+      image: "/Directorio/aga/Williams-Martin.png",
     },
     {
       id: "10",
@@ -104,9 +101,9 @@ export const gestionAdministrativaData: AreaContent = {
     },
     {
       id: "14",
-      name: "Vanessa Castro Ff",
-      position: "Apoyo  en Abastecimiento" ,
-      image: "/Directorio/aga/Maria-Luisa.png",
+      name: "Vanessa Castro Figueroa",
+      position: "Apoyo  en Patrimonio" ,
+      image: "/Directorio/aga/Vanessa-Castro.png",
     },
   ],
 }

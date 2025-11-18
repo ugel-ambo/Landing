@@ -109,7 +109,7 @@ export const rrhhData: AreaContent = {
       id: "15",
       name: "Lesly Flor Cardenas Chamarro",
       position: "ASISTENTE ADMINISTRATIVO ",
-      image: "/Directorio/rrhh/Lesly-Flor.png",
+      image: "/Directorio/rrhh/Lesly-Flor.jpg",
     },
   ],
 }
