@@ -44,6 +44,7 @@ export const direccionData: AreaContent = {
       id: "4",
       name: "Emperatriz Savia Cristobal Ortiz",
       position: "Imagen Institucional",
+      image: "/Directorio/direccion/Emperatriz-Savia.png",
     },
     {
       id: "5",

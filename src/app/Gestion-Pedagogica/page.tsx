@@ -4,6 +4,8 @@ import Hero from "./hero"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { PersonalSection } from "./personal"
+import { gestionPedagogicaData } from "./components/data"
 
 export default function GP() {
   return (
@@ -28,42 +30,42 @@ export default function GP() {
                 description: "Acompañamiento pedagógico especializado para el desarrollo integral de niños y niñas desde los primeros años.",
                 href: "/Gestion-Pedagogica/inicial",
                 icon: "🎨",
-                stats: "30+ instituciones"
+                stats: "90 + instituciones"
               },
               {
                 title: "Educación Primaria",
                 description: "Fortalecimiento de competencias y habilidades para estudiantes de primaria a través de metodologías innovadoras.",
                 href: "/Gestion-Pedagogica/primaria",
                 icon: "📚",
-                stats: "50+ instituciones"
+                stats: "150 + instituciones"
               },
               {
                 title: "Educación Secundaria",
                 description: "Preparación integral de adolescentes para la educación superior y el mundo laboral con especialización por áreas.",
                 href: "/Gestion-Pedagogica/secundaria",
                 icon: "🎓",
-                stats: "40+ instituciones"
+                stats: "49 + instituciones"
               },
               {
-                title: "PRONOI",
+                title: "PRONOI (Programa de Educación No Escolarizada) ",
                 description: "Programa No Escolarizado de Educación Inicial que atiende a niños y niñas menores de 6 años en zonas rurales y de difícil acceso.",
                 href: "/Gestion-Pedagogica/pronoi",
                 icon: "🏫",
-                stats: "40+ instituciones"
+                stats: "40 + instituciones"
               },
               {
                 title: "CEBA (Centro de Educación Básica Alternativa)",
                 description: "Modalidad educativa flexible que ofrece oportunidades de formación a jóvenes y adultos que no pudieron acceder a la educación regular.",
                 href: "/Gestion-Pedagogica/ceba",
                 icon: "📖",
-                stats: "40+ instituciones"
+                stats: "5 + instituciones"
               },
               {
                 title: "PRITE (Programa de Intervención Temprana)",
                 description: "Atención especializada para niños menores de 3 años con discapacidad o en riesgo de adquirirla, promoviendo su desarrollo integral.",
                 href: "/Gestion-Pedagogica/prite",
                 icon: "🧸",
-                stats: "40+ instituciones"
+                stats: "1 institución"
               },
             ].map((nivel, i) => (
               <Card key={i} className="hover:shadow-xl transition-shadow border-2 border-blue-100 hover:border-[#049DD9]">
@@ -148,32 +150,8 @@ export default function GP() {
         </div>
       </section>
 
-      {/* Estadísticas Section */}
-      <section className="py-20 px-6 sm:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">
-              Nuestro Impacto
-            </h2>
-            <p className="text-lg text-gray-600">
-              Cifras que demuestran nuestro compromiso con la educación en Ambo
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: "200+", label: "Instituciones Educativas" },
-              { number: "1000+", label: "Docentes Capacitados" },
-              { number: "11000+", label: "Estudiantes Atendidos" },
-              { number: "13", label: "Especialistas Dedicados" },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-5xl md:text-6xl font-bold text-[#049DD9] mb-3">{stat.number}</div>
-                <div className="text-sm md:text-base text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Personal Section */}
+      <PersonalSection employees={gestionPedagogicaData.employees} />
 
       {/* Servicios Section */}
       <section className="py-20 px-6 sm:px-8 bg-linear-to-b from-white to-blue-50">
@@ -230,6 +208,33 @@ export default function GP() {
                   </CardDescription>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Estadísticas Section */}
+      <section className="py-20 px-6 sm:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">
+              Nuestro Impacto
+            </h2>
+            <p className="text-lg text-gray-600">
+              Cifras que demuestran nuestro compromiso con la educación en Ambo
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { number: "220+", label: "Instituciones Educativas" },
+              { number: "100%", label: "Docentes Capacitados" },
+              { number: "13870+", label: "Estudiantes Atendidos" },
+              { number: "13+", label: "Especialistas Dedicados" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="text-5xl md:text-6xl font-bold text-[#049DD9] mb-3">{stat.number}</div>
+                <div className="text-sm md:text-base text-gray-600">{stat.label}</div>
+              </div>
             ))}
           </div>
         </div>

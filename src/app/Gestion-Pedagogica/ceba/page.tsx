@@ -102,7 +102,7 @@ export default function Home() {
               { icon: "🎓", title: "Capacitaciones", desc: "Formación continua y actualización docente" },
               { icon: "📊", title: "Evaluación", desc: "Instrumentos y estrategias de evaluación" },
             ].map((item, i) => (
-              <div key={i} className="p-6 rounded-lg bg-[#f2f2f2] border-2 border-[#e5e7eb] hover:shadow-lg hover:border-[#049dd9] transition">
+              <div key={i} className="p-6 rounded-lg bg-blue-50 border-2 border-blue-200 hover:shadow-lg transition">
                 <div className="text-4xl mb-3">{item.icon}</div>
                 <h3 className="text-xl font-bold text-[#223f59] mb-2">{item.title}</h3>
                 <p className="text-[#666666]">{item.desc}</p>
@@ -113,7 +113,7 @@ export default function Home() {
       </section>
 
       {/* Modalidades CEBA */}
-      <section className="py-20 px-6 sm:px-8 bg-linear-to-br from-[#f2f2f2] to-[#b8d4e8]/30">
+      <section className="py-20 px-6 sm:px-8 bg-linear-to-br from-blue-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#223f59] mb-4">Modalidades de Atención</h2>
@@ -175,19 +175,19 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="group p-6 rounded-xl bg-linear-to-br from-[#7cb9e8]/20 to-[#b8d4e8]/30 hover:shadow-xl transition-all border border-[#e5e7eb]">
+            <div className="group p-6 rounded-xl bg-blue-50 border-2 border-blue-200 hover:shadow-lg transition">
               <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">👥</div>
               <h3 className="text-xl font-bold text-[#223f59] mb-3">PEBANA</h3>
               <p className="text-[#666666]">Programa de Educación Básica Alternativa de Niños y Adolescentes</p>
             </div>
 
-            <div className="group p-6 rounded-xl bg-linear-to-br from-[#049dd9]/10 to-[#3873a6]/10 hover:shadow-xl transition-all border border-[#e5e7eb]">
+            <div className="group p-6 rounded-xl bg-blue-50 border-2 border-blue-200 hover:shadow-lg transition">
               <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🏥</div>
               <h3 className="text-xl font-bold text-[#223f59] mb-3">PEBAJA</h3>
               <p className="text-[#666666]">Programa de Educación Básica Alternativa de Jóvenes y Adultos</p>
             </div>
 
-            <div className="group p-6 rounded-xl bg-linear-to-br from-[#3873a6]/10 to-[#7cb9e8]/20 hover:shadow-xl transition-all border border-[#e5e7eb]">
+            <div className="group p-6 rounded-xl bg-blue-50 border-2 border-blue-200 hover:shadow-lg transition">
               <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🌾</div>
               <h3 className="text-xl font-bold text-[#223f59] mb-3">Alfabetización</h3>
               <p className="text-[#666666]">Programa de alfabetización para jóvenes y adultos sin escolaridad</p>
@@ -197,7 +197,7 @@ export default function Home() {
       </section>
 
       {/* Estadísticas */}
-      <section className="py-20 px-6 sm:px-8 bg-linear-to-r from-[#223f59] to-[#3873a6] text-white">
+      <section className="py-20 px-6 sm:px-8 bg-linear-to-r from-[#049DD9] to-[#028ec7] text-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Impacto Educativo</h2>
@@ -206,9 +206,9 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "1,200+", label: "Estudiantes" },
-              { number: "85", label: "Docentes" },
-              { number: "12", label: "CEBA Activos" },
+              { number: "500+", label: "Estudiantes" },
+              { number: "20+", label: "Docentes" },
+              { number: "15", label: "CEBA Activos" },
               { number: "95%", label: "Tasa de Culminación" },
             ].map((stat, i) => (
               <div key={i} className="text-center">

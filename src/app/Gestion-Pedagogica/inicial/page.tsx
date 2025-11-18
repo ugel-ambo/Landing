@@ -137,10 +137,10 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-6">
               {[
-                { number: "30+", label: "Instituciones Educativas" },
-                { number: "100+", label: "Docentes Capacitados" },
-                { number: "2000+", label: "Estudiantes Atendidos" },
-                { number: "15+", label: "Especialistas Comprometidos" },
+                { number: "95", label: "Instituciones Educativas" },
+                { number: "100%", label: "Docentes Capacitados" },
+                { number: "2470+", label: "Estudiantes Atendidos" },
+                { number: "4+", label: "Especialistas Comprometidos" },
               ].map((stat, i) => (
                 <div key={i} className="bg-white p-6 rounded-lg shadow-md text-center border-2 border-blue-100">
                   <div className="text-4xl font-bold text-[#049DD9] mb-2">{stat.number}</div>
@@ -182,30 +182,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-6 sm:px-8 bg-linear-to-r from-[#049DD9] to-[#028ec7] text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-            ¿Necesitas Apoyo Pedagógico?
-          </h2>
-          <p className="text-lg mb-8 opacity-90">
-            Nuestro equipo de especialistas está listo para acompañarte en tu labor educativa. 
-            Contacta con nosotros para recibir asesoramiento y recursos personalizados.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-[#049DD9] hover:bg-blue-50 font-semibold shadow-lg">
-              Solicitar Asesoramiento
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-transparent text-white border-2 border-white hover:bg-white/10 font-semibold"
-            >
-              Ver Especialistas
-            </Button>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

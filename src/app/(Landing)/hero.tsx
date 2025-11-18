@@ -26,7 +26,7 @@ const heroImages = [
 ]
 
 const stats = [
-    { icon: Users, label: "Estudiantes", value: "15 K +" },
+    { icon: Users, label: "Estudiantes", value: "13 K +" },
     { icon: University, label: "Instituciones", value: "200+" },
     { icon: Award, label: "Años de excelencia", value: "12+" },
 ]
