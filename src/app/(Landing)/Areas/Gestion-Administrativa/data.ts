@@ -13,12 +13,13 @@ export const gestionAdministrativaData: AreaContent = {
     "Aseguramos procesos administrativos transparentes y oportunos para sostener la labor pedagógica en toda la provincia.",
   teamIntro: "Equipo especializado en abastecimiento, patrimonio y atención administrativa.",
   functions: [
-    "Planificar, dirigir y evaluar las actividades asignadas al área.",
-    "Coordinar con Gestión Institucional la formulación del presupuesto de bienes y servicios.",
-    "Revisar y firmar informes de ejecución presupuestaria, modificaciones y calendarios de pagos.",
-    "Refrendar el cuadro de adquisiciones y los inventarios de bienes muebles e inmuebles.",
-    "Visar proyectos de resolución sobre aspectos financieros, contables y movimientos de personal.",
-    "Verificar conciliaciones bancarias y la correcta aplicación de los recursos.",
+    "Administrar y evaluar el potencial humano, los recursos materiales, financieros y patrimoniales de la Unidad de Gestión Educativa Local 308, cumplir los procesos técnicos de los sistemas de abastecimiento, contabilidad y tesorería; y asesorar la aplicación de los mismos en las Instituciones Educativas.",
+    "Administrar los servicios de publicación, transporte, mantenimiento, seguridad y atención a los usuarios.",
+    "Asesorar y supervisar a las Instituciones Educativas en los procesos técnicos de personal y formalizar las acciones de personal efectuadas por los Directores",
+    "Elaborar y mantener actualizado el registro escalafonario, el inventario de bienes patrimoniales y el acervo documental.",
+    "Administrar y evaluar al personal, los recursos materiales, financieros y patrimoniales de la sede.",
+    "Cumplir con los procesos técnicos de los sistemas de abastecimiento, contabilidad y tesorería y asesorar la aplicación de los mismos en las Instituciones Educativas",
+    "Ejecutar el presupuesto de la UGEL y proporcionar los recursos (bienes y servicios) que demanda la prestación del servicio educativo en las Instituciones y Programas Educativos."
   ],
   employees: [
     {

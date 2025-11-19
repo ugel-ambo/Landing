@@ -1,8 +1,6 @@
-
 import Menu from "./menu"
 
-
-export default function LandingLayout({
+export default function GestionPedagogicaLayout({
   children,
 }: {
   children: React.ReactNode

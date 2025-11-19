@@ -8,18 +8,23 @@ export const direccionData: AreaContent = {
     description:
       "Lideramos la planificación, supervisión y acompañamiento de todas las áreas de la UGEL para asegurar una gestión eficiente, transparente y cercana a la comunidad educativa.",
     image: "/Directorio/direccion/image.png",
-    
+
   },
   functionsIntro:
     "Aseguramos la conducción administrativa, presupuestal y operativa de la UGEL en coordinación permanente con cada unidad orgánica.",
   teamIntro: "Nuestro equipo directivo coordina estrategias y brinda soporte a toda la provincia de Ambo.",
   functions: [
-    "Planificar, dirigir, evaluar y hacer cumplir las actividades asignadas al área.",
-    "Coordinar con Gestión Institucional la formulación del presupuesto de bienes y servicios de las instituciones educativas y la sede.",
-    "Revisar y firmar informes de ejecución presupuestaria, modificaciones, calendarios de pagos y solicitudes de giro.",
-    "Refrendar el cuadro de adquisiciones, el suministro de bienes muebles y los inventarios de los bienes institucionales.",
-    "Visar y firmar proyectos de resolución sobre aspectos financieros, contables y movimientos de personal tramitados en el área.",
-    "Verificar las conciliaciones bancarias y asegurar la transparencia de los procesos financieros.",
+    "Formular y contribuir en los lineamientos de la politica educativa y asistir a la formulación de la politica educativa local",
+    "Aplicar y concertar la aplicación de la normatividad educativa local. nacional y emitir normas complementarias",
+    "Conducir la formulación, ejecución y evaluación del Proyecto Educativo Local y los Planes Operativos Anuales, en concordancia con el Consejo Participativo Local (COPALE).",
+    "Impulsar el proceso de descentralización de la gestión en las instituciones educativas, fortaleciendo su autonomía y participación.",
+    "Delinear estrategias para disminuir el analfabetismo y promover la ejecucion de los programas estratégicos multisectoriales.",
+    "Identificar necesidades de capacitación de personal de la Sede y las instituciones educativas y desarrollar programas de formación continua.",
+    "Suscribir convenios, contratos y acuerdos con entidades públicas y privadas, nacionales e internacionales, encaminadas a mejorar la calidad de la educación, la cultura el deporte, la recreación, la ciencia y la tecnología.",
+    "Impulsar el funcionamiento del Consejo Participativo Local de Educación en coordinación con el gobierno local, a fin de generar acuerdos concertados y promover la vigilancia y el control ciudadano.",
+    "Orientar la formulación, ejecución y evaluación del presupuesto participativo de la sede institucional y las instituciones educativas de su jurisdicción.",
+    "Evaluar la gestión educativa de su ámbito adoptando las acciones preventivas y correctivas pertinentes.",
+    "Asesorar y asegurar que las Instituciones Educativas cuenten al inicio del año escolar con su Proyecto Educativo Institucional (PEI), Plan Anual de Trabajo (PAT), Reglamento Interno (RI) y el Informe Ejecutivo de Gestión Anual, Proyecto Curricular Institucional (PCI) y documentos de gestión respectivos."
   ],
   employees: [
     {
