@@ -6,16 +6,13 @@ export default function HeroUGP() {
     <section className="relative w-full bg-white overflow-hidden min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[65vh]">
 
       <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Onda desde inferior izquierda a inferior derecha */}
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1440 250" preserveAspectRatio="none">
-          {/* Onda para pantallas pequeñas */}
           <path
             className="lg:hidden"
             fill="#049DD9"
             fillOpacity="0.5"
             d="M0,200 Q360,250 720,200 Q1080,150 1440,150 L1440,250 L0,250 Z"
           />
-          {/* Onda para pantallas grandes (lg y mayores) */}
           <path
             className="hidden lg:block"
             fill="#049DD9"
@@ -26,7 +23,6 @@ export default function HeroUGP() {
       </div>
 
       <div className="relative w-full mx-auto flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 md:px-8  pt-10 lg:pt-0 ">
-        {/* Texto - mejor espaciado y responsive */}
         <div className="w-full lg:w-1/2 text-center lg:text-left z-10   lg:pr-8 lg:pl-10 2xl:pl-52">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#1e293b]">
             <span className="block text-[#049DD9]">UNIDAD DE</span>
