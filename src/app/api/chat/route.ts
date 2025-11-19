@@ -1,6 +1,6 @@
 import { streamText, convertToModelMessages } from "ai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
-import { initialMessage } from "@/lib/data";
+import { initialMessage } from "@/lib/data-chatbot";
 
 const google = createGoogleGenerativeAI({
   apiKey: process.env.GOOGLE_API_KEY || "",

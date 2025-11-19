@@ -53,7 +53,7 @@ export const gestionPedagogicaData: AreaContent = {
       id: "7",
       name: "Esther Delia Diaz Acuña",
       position: "Especialista ED. Primaria",
-      image: "/Directorio/agp/Esther-Delia.png",
+      image: "/Directorio/agp/Esther-Delia.jpg",
     },
     {
       id: "8",

@@ -14,7 +14,6 @@ import remarkGfm from 'remark-gfm';
 
 export default function ChatPage() {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [showChatIcon, setShowChatIcon] = useState(false);
   const [input, setInput] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -30,15 +29,6 @@ export default function ChatPage() {
   });
 
   const isLoading = status === 'submitted';
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowChatIcon(window.scrollY > 50);
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -74,31 +64,54 @@ export default function ChatPage() {
 
   return (
     <div>
-      <AnimatePresence>
-        {showChatIcon && (
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 100 }}
-            transition={{ duration: 0.3, type: "spring" }}
-            className="fixed bottom-6 right-6 z-50"
+      {/* Botón flotante siempre visible con animación */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, type: "spring" }}
+        className="fixed bottom-6 right-6 z-50"
+      >
+        <motion.div
+          animate={{
+            y: [0, -10, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <Button
+            onClick={toggleChat}
+            size="icon"
+            className="rounded-full w-14 h-14 p-8 lg:p-10 shadow-2xl bg-linear-to-r from-[#049DD9] to-[#0284c7] hover:from-[#037bbd] hover:to-[#0369a1] text-white transition-all duration-300 hover:scale-110 relative"
+            aria-label={isChatOpen ? "Cerrar chat" : "Abrir chat"}
           >
-            <Button
-              onClick={toggleChat}
-              size="icon"
-              className="rounded-full w-14 h-14 p-8 lg:p-10 shadow-2xl bg-linear-to-r from-[#049DD9] to-[#0284c7] hover:from-[#037bbd] hover:to-[#0369a1] text-white transition-all duration-300 hover:scale-110"
-              aria-label={isChatOpen ? "Cerrar chat" : "Abrir chat"}
-            >
-              {!isChatOpen ? (
+            {!isChatOpen ? (
+              <>
                 <BotMessageSquare className="w-7 h-7 lg:w-10 lg:h-10 size-14" aria-hidden="true" />
-              ) : (
-                <ArrowDownCircle className="w-7 h-7 lg:w-10 lg:h-10 size-14" aria-hidden="true" />
-              )}
-            </Button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                {/* Pulso animado */}
+                <motion.span
+                  className="absolute inset-0 rounded-full bg-[#049DD9]/30"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 0, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </>
+            ) : (
+              <ArrowDownCircle className="w-7 h-7 lg:w-10 lg:h-10 size-14" aria-hidden="true" />
+            )}
+          </Button>
+        </motion.div>
+      </motion.div>
 
+      {/* Chat modal */}
       <AnimatePresence>
         {isChatOpen && (
           <motion.div
@@ -109,10 +122,10 @@ export default function ChatPage() {
             className="fixed bottom-28 right-6 z-50 w-80 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             <Card className="border-0 h-full px-0 py-0">
-              <CardHeader className="bg-linear-to-r from-[#049DD9] to-[#0284c7] text-white flex flex-row items-center justify-between space-y-0 pb-4 pt-4 px-5">
+              <CardHeader className="bg-[#049DD9] text-white flex flex-row items-center justify-between space-y-0 pb-4 pt-4 px-5">
                 <div className="flex items-center gap-2">
                   <BotMessageSquare className="w-5 h-5" />
-                  <CardTitle className="text-sm font-semibold">Asistente Virtual </CardTitle>
+                  <CardTitle className="text-sm font-semibold">Asistente Virtual</CardTitle>
                 </div>
                 <Button
                   onClick={toggleChat}
