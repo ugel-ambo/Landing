@@ -62,11 +62,7 @@ export default function Footer() {
                   Becas
                 </Link>
               </li>
-              <li>
-                <Link href="#" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
-                  Videos
-                </Link>
-              </li>
+
               <li>
                 <Link href="#" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
                   Documentos

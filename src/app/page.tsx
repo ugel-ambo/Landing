@@ -21,7 +21,6 @@ export default function Home() {
       <NewsSection />
       <TramitesSection />
       <MapsPage />
-      <Footer />
       <VisitorCounter />
     </>
   );
