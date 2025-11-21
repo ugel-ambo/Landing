@@ -75,22 +75,42 @@ function obtenerUltimosDias(numDias: number = 5): Date[] {
 }
 
 /**
- * Obtener o crear instancia del navegador
+ * Obtener instancia del navegador
+ * En Browserless, NO reutilizamos la instancia para evitar errores 403
  */
 async function getBrowser(): Promise<Browser> {
-    if (!browserInstance || !browserInstance.connected) {
-        console.log('Iniciando nueva instancia de Puppeteer...');
-        browserInstance = await puppeteer.launch({
-            headless: true,
-            args: [
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-gpu'
-            ]
-        });
+    const browserlessToken = process.env.BROWSERLESS_TOKEN;
+
+    if (browserlessToken) {
+        // Usar Browserless en producción - siempre crear nueva conexión
+        console.log('Conectando a Browserless...');
+        try {
+            // Endpoint correcto según documentación de Browserless
+            const browserWSEndpoint = `wss://production-sfo.browserless.io?token=${browserlessToken}`;
+            const browser = await puppeteer.connect({
+                browserWSEndpoint,
+            });
+            return browser;
+        } catch (error) {
+            console.error('Error conectando a Browserless:', error);
+            throw new Error(`Browserless connection failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+        }
+    } else {
+        // Usar Puppeteer local en desarrollo - reutilizar instancia
+        if (!browserInstance || !browserInstance.connected) {
+            console.log('Iniciando nueva instancia de Puppeteer local...');
+            browserInstance = await puppeteer.launch({
+                headless: true,
+                args: [
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-gpu'
+                ]
+            });
+        }
+        return browserInstance;
     }
-    return browserInstance;
 }
 
 
@@ -102,8 +122,11 @@ async function scrapearFecha(fecha: Date): Promise<NormaLegal[]> {
     const fechaFormateada = formatearFechaPeruana(fecha);
 
     let page;
+    let browser;
+    const usingBrowserless = !!process.env.BROWSERLESS_TOKEN;
+
     try {
-        const browser = await getBrowser();
+        browser = await getBrowser();
         page = await browser.newPage();
 
         // Configurar timeout y user agent
@@ -213,9 +236,15 @@ async function scrapearFecha(fecha: Date): Promise<NormaLegal[]> {
     } catch (error) {
         console.error(`Error scrapeando fecha ${fechaFormateada}:`, error);
     } finally {
-        // Cerrar solo la página, no el navegador (para reutilizarlo)
+        // Cerrar la página
         if (page) {
             await page.close();
+        }
+
+        // Si estamos usando Browserless, cerrar el navegador después de cada scraping
+        // Si es local, mantenerlo abierto para reutilizarlo
+        if (usingBrowserless && browser) {
+            await browser.close();
         }
     }
 
