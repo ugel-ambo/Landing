@@ -133,10 +133,15 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="http://ugelambo.regionhuanuco.gob.pe/convocatorias">Convocatorias</Link>
+            <Link href="/Normativa">Normativas</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link href="http://ugelambo.regionhuanuco.gob.pe/convocatorias">Convocatorias</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
 
       </NavigationMenuList>
     </NavigationMenu>

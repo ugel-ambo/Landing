@@ -78,7 +78,7 @@ export default function Menu() {
               <nav className="flex flex-col space-y-2 mt-6">
 
                 <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="nosotros" className="border-none">
+                  <AccordionItem value="inicial" className="border-none">
                     <Link href="/Gestion-Pedagogica/inicial"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
                       Inicial
                     </AccordionTrigger>
@@ -110,7 +110,7 @@ export default function Menu() {
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="nosotros" className="border-none">
+                  <AccordionItem value="primaria" className="border-none">
                     <Link href="/Gestion-Pedagogica/primaria"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
                       Primaria
                     </AccordionTrigger>
@@ -142,7 +142,7 @@ export default function Menu() {
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="nosotros" className="border-none">
+                  <AccordionItem value="secundaria" className="border-none">
                     <Link href="/Gestion-Pedagogica/secundaria"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
                       Secundaria
                     </AccordionTrigger>
@@ -174,7 +174,7 @@ export default function Menu() {
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="nosotros" className="border-none">
+                  <AccordionItem value="pronoi" className="border-none">
                     <Link href="/Gestion-Pedagogica/pronoi"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
                       PRONOI
                     </AccordionTrigger>
@@ -205,7 +205,7 @@ export default function Menu() {
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-                  <AccordionItem value="nosotros" className="border-none">
+                  <AccordionItem value="ceba" className="border-none">
                     <Link href="/Gestion-Pedagogica/ceba"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
                       CEBA
                     </AccordionTrigger>
