@@ -78,6 +78,19 @@ export default function Menu() {
               </SheetHeader>
               <nav className="flex flex-col space-y-2 mt-6">
                 <Accordion type="single" collapsible className="w-full">
+
+                  <AccordionItem value="Inicio" className="border-none">
+                    <AccordionTrigger
+                      className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white [&>svg]:hidden"
+                      onClick={() => {
+                        window.location.href = "/"
+                        setOpen(false)
+                      }}
+                    >
+                      Inicio
+                    </AccordionTrigger>
+                  </AccordionItem>
+
                   <AccordionItem value="nosotros" className="border-none">
                     <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
                       Nosotros
@@ -198,16 +211,32 @@ export default function Menu() {
                       </div>
                     </AccordionContent>
                   </AccordionItem>
+
+                  <AccordionItem value="Normativas" className="border-none">
+                    <AccordionTrigger
+                      className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white [&>svg]:hidden"
+                      onClick={() => {
+                        window.location.href = "/Normativa"
+                        setOpen(false)
+                      }}
+                    >
+                      Normativas
+                    </AccordionTrigger>
+                  </AccordionItem>
+
+                  <AccordionItem value="Convocatorias" className="border-none">
+                    <AccordionTrigger
+                      className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white [&>svg]:hidden"
+                      onClick={() => {
+                        window.location.href = "http://ugelambo.regionhuanuco.gob.pe/convocatorias"
+                        setOpen(false)
+                      }}
+                    >
+                      Convocatorias
+                    </AccordionTrigger>
+                  </AccordionItem>
+
                 </Accordion>
-
-                <Link
-                  href="/docs"
-                  className="px-4 py-3 hover:bg-accent rounded-md transition-colors font-medium hover:text-white"
-                  onClick={() => setOpen(false)}
-                >
-                  Convocatorias
-                </Link>
-
               </nav>
             </SheetContent>
           </Sheet>
