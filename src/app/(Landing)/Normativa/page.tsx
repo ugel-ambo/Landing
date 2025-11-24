@@ -1,27 +1,34 @@
+import { Types } from "mongoose";
 import { Suspense } from "react"
 import { FileText, RefreshCw, Calendar } from "lucide-react"
 import NormCard from "./components/NormCard"
-import { ScrapingResponse } from "@/types/scrape.types";
+import { ScrapingResponse, NormaLegal } from "@/types/scrape.types";
 import connectMongoDB from "@/lib/mongodbConnection";
 import Norma from "@/models/Norma";
 
 // Forzar rendering dinámico para evitar errores en build
 export const dynamic = 'force-dynamic';
 
+interface NormaLean extends NormaLegal {
+    _id: Types.ObjectId;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
 async function getNormas(): Promise<ScrapingResponse> {
     try {
         await connectMongoDB();
         // Consultar directamente a la BD (Server Component pattern)
         // .lean() convierte el documento de Mongoose a objeto JS simple
-        const normas = await Norma.find({}).sort({ createdAt: -1 }).limit(50).lean();
+        const normas = await Norma.find({}).sort({ createdAt: -1 }).limit(50).lean() as unknown as NormaLean[];
 
         // Serializar los objetos para pasarlos al componente (eliminar _id si causa problemas o convertirlo)
-        const data = normas.map((doc: any) => ({
+        const data = normas.map((doc) => ({
             ...doc,
             _id: doc._id.toString(),
             createdAt: doc.createdAt?.toString(),
             updatedAt: doc.updatedAt?.toString()
-        })) as any[];
+        }));
 
         return {
             success: true,

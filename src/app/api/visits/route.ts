@@ -104,13 +104,13 @@ export async function GET() {
 }
 
 // POST: Incrementar el contador de visitas
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     const currentCount = await readVisits()
     const newCount = currentCount + 1
     await writeVisits(newCount)
-    
-    return NextResponse.json({ 
+
+    return NextResponse.json({
       totalVisits: newCount,
       message: "Visita registrada exitosamente"
     })

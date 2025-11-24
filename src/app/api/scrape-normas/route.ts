@@ -94,7 +94,7 @@ async function scrapearFecha(page: Page, fecha: Date): Promise<NormaLegal[]> {
 
         try {
             await page.waitForSelector('.edicionesoficiales_articulos', { timeout: 10000 });
-        } catch (_) {
+        } catch {
             console.log(`No se encontraron normas para la fecha ${fechaFormateada}`);
             return normas;
         }
