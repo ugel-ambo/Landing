@@ -1,3 +1,4 @@
+
 name: Cron Scrape Normas
 
 on:
@@ -17,4 +18,6 @@ jobs:
             echo "Error: APP_URL secret is not set."
             exit 1
           fi
-          curl -X POST "${{ secrets.APP_URL }}/api/scrape-normas"
+          # Usar -L para seguir redirecciones (importante si hay http->https o trailing slashes)
+          # Usar --fail para que falle si el servidor retorna error (4xx/5xx)
+          curl -v -L --fail -X POST "${{ secrets.APP_URL }}/api/scrape-normas"
