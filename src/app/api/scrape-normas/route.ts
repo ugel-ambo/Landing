@@ -1,54 +1,12 @@
 import { NextResponse } from 'next/server';
-import puppeteer, { Browser } from 'puppeteer';
+import puppeteer, { Browser, Page } from 'puppeteer';
 import * as cheerio from 'cheerio';
-import { NormaLegal, ScrapingCache, ScrapingResponse } from '@/types/scrape.types';
-
-
-let cache: ScrapingCache | null = null;
-
-
-let browserInstance: Browser | null = null;
+import { NormaLegal } from '@/types/scrape.types';
+import connectMongoDB from '@/lib/mongodbConnection';
+import Norma from '@/models/Norma';
 
 // Categorías permitidas
 const CATEGORIAS_PERMITIDAS = ['EDUCACION', 'INSTITUCIONES EDUCATIVAS'];
-
-const HORARIOS_ACTUALIZACION = [
-    { hora: 6, minutos: 30 },
-    { hora: 13, minutos: 30 }
-];
-
-
-function calcularProximaActualizacion(): Date {
-    const ahora = new Date();
-    const hoy = new Date(ahora);
-
-    for (const horario of HORARIOS_ACTUALIZACION) {
-        const proximaActualizacion = new Date(hoy);
-        proximaActualizacion.setHours(horario.hora, horario.minutos, 0, 0);
-
-        if (proximaActualizacion > ahora) {
-            return proximaActualizacion;
-        }
-    }
-
-    const manana = new Date(hoy);
-    manana.setDate(manana.getDate() + 1);
-    manana.setHours(HORARIOS_ACTUALIZACION[0].hora, HORARIOS_ACTUALIZACION[0].minutos, 0, 0);
-
-    return manana;
-}
-
-/**
- * Verifica si el cache es válido
- */
-function esCacheValido(): boolean {
-    if (!cache) return false;
-
-    const ahora = new Date();
-    const proximaActualizacion = new Date(cache.nextUpdate);
-
-    return ahora < proximaActualizacion;
-}
 
 /**
  * Formatea fecha en formato DD/MM/YYYY (formato peruano)
@@ -60,8 +18,7 @@ function formatearFechaPeruana(fecha: Date): string {
     return `${dia}/${mes}/${anio}`;
 }
 
-
-function obtenerUltimosDias(numDias: number = 5): Date[] {
+function obtenerUltimosDias(numDias: number = 2): Date[] {
     const fechas: Date[] = [];
     const hoy = new Date();
 
@@ -76,16 +33,13 @@ function obtenerUltimosDias(numDias: number = 5): Date[] {
 
 /**
  * Obtener instancia del navegador
- * En Browserless, NO reutilizamos la instancia para evitar errores 403
  */
 async function getBrowser(): Promise<Browser> {
     const browserlessToken = process.env.BROWSERLESS_TOKEN;
 
     if (browserlessToken) {
-        // Usar Browserless en producción - siempre crear nueva conexión
         console.log('Conectando a Browserless...');
         try {
-            // Endpoint correcto según documentación de Browserless
             const browserWSEndpoint = `wss://production-sfo.browserless.io?token=${browserlessToken}`;
             const browser = await puppeteer.connect({
                 browserWSEndpoint,
@@ -96,79 +50,58 @@ async function getBrowser(): Promise<Browser> {
             throw new Error(`Browserless connection failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
         }
     } else {
-        // Usar Puppeteer local en desarrollo - reutilizar instancia
-        if (!browserInstance || !browserInstance.connected) {
-            console.log('Iniciando nueva instancia de Puppeteer local...');
-            browserInstance = await puppeteer.launch({
-                headless: true,
-                args: [
-                    '--no-sandbox',
-                    '--disable-setuid-sandbox',
-                    '--disable-dev-shm-usage',
-                    '--disable-gpu'
-                ]
-            });
-        }
-        return browserInstance;
+        console.log('Iniciando nueva instancia de Puppeteer local...');
+        return await puppeteer.launch({
+            headless: true,
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
+                '--disable-gpu'
+            ]
+        });
     }
 }
 
-
 /**
- * Scrapea las normas legales de una fecha específica usando Puppeteer
+ * Scrapea las normas legales de una fecha específica
  */
-async function scrapearFecha(fecha: Date): Promise<NormaLegal[]> {
+async function scrapearFecha(page: Page, fecha: Date): Promise<NormaLegal[]> {
     const normas: NormaLegal[] = [];
     const fechaFormateada = formatearFechaPeruana(fecha);
 
-    let page;
-    let browser;
-    const usingBrowserless = !!process.env.BROWSERLESS_TOKEN;
-
     try {
-        browser = await getBrowser();
-        page = await browser.newPage();
-
-        // Configurar timeout y user agent
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-        page.setDefaultNavigationTimeout(30000);
-        page.setDefaultTimeout(30000);
-
         console.log(`Scrapeando fecha: ${fechaFormateada}`);
 
-        // 1. Navegar a la página base
-        await page.goto('https://diariooficial.elperuano.pe/Normas', {
-            waitUntil: 'networkidle2',
-            timeout: 30000
-        });
+        if (page.url() !== 'https://diariooficial.elperuano.pe/Normas') {
+            await page.goto('https://diariooficial.elperuano.pe/Normas', {
+                waitUntil: 'networkidle2',
+                timeout: 30000
+            });
+        }
 
-        // 2. Esperar a que los campos de fecha estén disponibles
         await page.waitForSelector('#cddesde', { timeout: 10000 });
 
-        // 3. Limpiar y llenar el campo "Desde"
-        await page.click('#cddesde', { clickCount: 3 }); // Seleccionar todo
-        await page.type('#cddesde', fechaFormateada);
+        await page.evaluate(() => {
+            (document.querySelector('#cddesde') as HTMLInputElement).value = '';
+            (document.querySelector('#cdhasta') as HTMLInputElement).value = '';
+        });
 
-        // 4. Limpiar y llenar el campo "Hasta"
-        await page.click('#cdhasta', { clickCount: 3 }); // Seleccionar todo
+        await page.type('#cddesde', fechaFormateada);
         await page.type('#cdhasta', fechaFormateada);
 
-        // 5. Hacer clic en el botón Buscar
         await page.click('#btnBuscar');
 
-        // 6. Esperar a que carguen los resultados o el mensaje de "no hay resultados"
         try {
-            await page.waitForSelector('.edicionesoficiales_articulos', { timeout: 15000 });
-        } catch (error) {
+            await page.waitForSelector('.edicionesoficiales_articulos', { timeout: 10000 });
+        } catch (_) {
             console.log(`No se encontraron normas para la fecha ${fechaFormateada}`);
             return normas;
         }
 
-        // 7. Obtener el contenido HTML de la página
         const html = await page.content();
         const $ = cheerio.load(html);
 
-        // 8. Parsear normas con Cheerio (mismo código que antes)
         $('.edicionesoficiales_articulos').each((_, element) => {
             const categoria = $(element).find('.ediciones_texto h4').text().trim().toUpperCase();
 
@@ -183,36 +116,30 @@ async function scrapearFecha(fecha: Date): Promise<NormaLegal[]> {
                 const descripcion = parrafos.length > 1 ? $(parrafos[1]).text().trim() : '';
 
                 const imagenPortada = $(element).find('.ediciones_pdf img').attr('src') || '';
-                // Convertir path relativo a absoluto
                 const imagenPortadaCompleta = imagenPortada.startsWith('http')
                     ? imagenPortada
                     : imagenPortada.startsWith('../')
-                        ? `https://diariooficial.elperuano.pe${imagenPortada.substring(2)}` // Remover ../ y agregar dominio
+                        ? `https://diariooficial.elperuano.pe${imagenPortada.substring(2)}`
                         : imagenPortada.startsWith('/')
                             ? `https://diariooficial.elperuano.pe${imagenPortada}`
                             : `https://diariooficial.elperuano.pe/${imagenPortada}`;
 
-                // Extraer enlaces de descarga - soportar tanto <input> como <a>
                 let descargaIndividual = '';
                 let descargaCuadernillo = '';
 
-                // Primero intentar con inputs (versión actual del sitio)
                 const inputs = $(element).find('.ediciones_botones input[data-url]');
                 inputs.each((_, input) => {
                     const texto = $(input).attr('value')?.toLowerCase() || '';
                     const url = $(input).attr('data-url') || '';
-
                     if (texto.includes('individual')) descargaIndividual = url;
                     if (texto.includes('cuadernillo')) descargaCuadernillo = url;
                 });
 
-                // Si no encontró con inputs, intentar con enlaces <a>
                 if (!descargaIndividual && !descargaCuadernillo) {
                     const enlaces = $(element).find('.ediciones_botones a');
                     enlaces.each((_, a) => {
                         const texto = $(a).text().trim().toLowerCase();
                         const href = $(a).attr('href') || '';
-
                         if (texto.includes('individual')) descargaIndividual = href;
                         if (texto.includes('cuadernillo')) descargaCuadernillo = href;
                     });
@@ -235,42 +162,39 @@ async function scrapearFecha(fecha: Date): Promise<NormaLegal[]> {
 
     } catch (error) {
         console.error(`Error scrapeando fecha ${fechaFormateada}:`, error);
-    } finally {
-        // Cerrar la página
-        if (page) {
-            await page.close();
-        }
-
-        // Si estamos usando Browserless, cerrar el navegador después de cada scraping
-        // Si es local, mantenerlo abierto para reutilizarlo
-        if (usingBrowserless && browser) {
-            await browser.close();
-        }
     }
 
     return normas;
 }
 
 /**
- * Realiza el scraping de los últimos 5 días
+ * Realiza el scraping de los últimos días
  */
 async function scrapearNormas(): Promise<NormaLegal[]> {
-    const fechas = obtenerUltimosDias(5);
+    const fechas = obtenerUltimosDias(2);
     const todasLasNormas: NormaLegal[] = [];
+    let browser = null;
 
     try {
-        for (const fecha of fechas) {
-            const normas = await scrapearFecha(fecha);
-            todasLasNormas.push(...normas);
+        browser = await getBrowser();
+        const page = await browser.newPage();
 
-            // Pequeña pausa entre fechas para no sobrecargar el servidor
-            await new Promise(resolve => setTimeout(resolve, 1000));
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+        page.setDefaultNavigationTimeout(30000);
+        page.setDefaultTimeout(30000);
+
+        for (const fecha of fechas) {
+            const normas = await scrapearFecha(page, fecha);
+            todasLasNormas.push(...normas);
         }
+
+        await page.close();
+
+    } catch (error) {
+        console.error('Error general en scraping:', error);
     } finally {
-        // Cerrar el navegador al finalizar todo el scraping
-        if (browserInstance) {
-            await browserInstance.close();
-            browserInstance = null;
+        if (browser) {
+            await browser.close();
         }
     }
 
@@ -278,63 +202,61 @@ async function scrapearNormas(): Promise<NormaLegal[]> {
 }
 
 /**
- * GET handler para obtener las normas legales
+ * GET: Obtiene las normas almacenadas en MongoDB
  */
 export async function GET() {
     try {
-        if (esCacheValido() && cache) {
-            const response: ScrapingResponse = {
-                success: true,
-                data: cache.data,
-                cached: true,
-                lastUpdated: cache.lastUpdated,
-                nextUpdate: cache.nextUpdate,
-            };
+        await connectMongoDB();
+        const normas = await Norma.find({}).sort({ createdAt: -1 }).limit(50); // Obtener las últimas 50 normas
 
-            return NextResponse.json(response);
-        }
-
-        console.log('Iniciando scraping de normas legales con Puppeteer...');
-        const normas = await scrapearNormas();
-
-        const ahora = new Date();
-        const proximaActualizacion = calcularProximaActualizacion();
-
-        cache = {
-            data: normas,
-            lastUpdated: ahora.toISOString(),
-            nextUpdate: proximaActualizacion.toISOString(),
-        };
-
-        const response: ScrapingResponse = {
+        return NextResponse.json({
             success: true,
             data: normas,
-            cached: false,
-            lastUpdated: cache.lastUpdated,
-            nextUpdate: cache.nextUpdate,
-        };
-
-        console.log(`Scraping completado. Encontradas ${normas.length} normas. Próxima actualización: ${proximaActualizacion.toLocaleString('es-PE')}`);
-
-        return NextResponse.json(response);
+        });
 
     } catch (error) {
-        console.error('Error en scraping:', error);
+        console.error('Error obteniendo normas de MongoDB:', error);
+        return NextResponse.json({
+            success: false,
+            error: 'Error al obtener las normas',
+        }, { status: 500 });
+    }
+}
 
-        if (browserInstance) {
-            await browserInstance.close();
-            browserInstance = null;
+/**
+ * POST: Ejecuta el scraping y guarda en MongoDB
+ */
+export async function POST() {
+    try {
+        console.log('Iniciando scraping manual...');
+        await connectMongoDB();
+
+        const normas = await scrapearNormas();
+        let guardadas = 0;
+
+        for (const norma of normas) {
+            // Usar upsert para evitar duplicados basados en tituloUrl
+            const resultado = await Norma.updateOne(
+                { tituloUrl: norma.tituloUrl },
+                { $set: norma },
+                { upsert: true }
+            );
+            if (resultado.upsertedCount > 0 || resultado.modifiedCount > 0) {
+                guardadas++;
+            }
         }
 
-        const response: ScrapingResponse = {
-            success: false,
-            data: [],
-            cached: false,
-            lastUpdated: new Date().toISOString(),
-            nextUpdate: calcularProximaActualizacion().toISOString(),
-            error: error instanceof Error ? error.message : 'Error desconocido',
-        };
+        return NextResponse.json({
+            success: true,
+            message: `Scraping completado. ${guardadas} normas nuevas o actualizadas.`,
+            totalScraped: normas.length,
+        });
 
-        return NextResponse.json(response, { status: 500 });
+    } catch (error) {
+        console.error('Error en scraping POST:', error);
+        return NextResponse.json({
+            success: false,
+            error: error instanceof Error ? error.message : 'Error desconocido',
+        }, { status: 500 });
     }
 }

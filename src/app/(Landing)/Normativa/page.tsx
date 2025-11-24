@@ -93,7 +93,7 @@ export default async function NormativaPage() {
                     <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4" />
-                            <span>Últimos 5 días</span>
+                            <span>Últimos 2 días</span>
                         </div>
 
                         {result.success && (

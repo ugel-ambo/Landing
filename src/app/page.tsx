@@ -7,7 +7,6 @@ import NewsSection from './(Landing)/news-section';
 import ServicesCards from './(Landing)/services-card';
 import TramitesSection from './(Landing)/tramites-section';
 import Menu from './(Landing)/menu';
-import Footer from './(Landing)/footer';
 import VisitorCounter from '@/components/visitor-counter';
 import NoticiaModal from '@/components/noticia-modal';
 
