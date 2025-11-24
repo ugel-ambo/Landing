@@ -1,26 +1,44 @@
+import { Types } from "mongoose";
 import { Suspense } from "react"
 import { FileText, RefreshCw, Calendar } from "lucide-react"
 import NormCard from "./components/NormCard"
-import { ScrapingResponse } from "@/types/scrape.types";
+import { ScrapingResponse, NormaLegal } from "@/types/scrape.types";
+import connectMongoDB from "@/lib/mongodbConnection";
+import Norma from "@/models/Norma";
 
 // Forzar rendering dinámico para evitar errores en build
 export const dynamic = 'force-dynamic';
 
+interface NormaLean extends NormaLegal {
+    _id: Types.ObjectId;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
 async function getNormas(): Promise<ScrapingResponse> {
     try {
-        // En desarrollo, usar localhost; en producción, usar la URL absoluta
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-        const response = await fetch(`${baseUrl}/api/scrape-normas`, {
-            cache: 'no-store', // Siempre verificar el cache del servidor
-        });
+        await connectMongoDB();
+        // Consultar directamente a la BD (Server Component pattern)
+        // .lean() convierte el documento de Mongoose a objeto JS simple
+        const normas = await Norma.find({}).sort({ createdAt: -1 }).limit(50).lean() as unknown as NormaLean[];
 
-        if (!response.ok) {
-            throw new Error('Error al obtener las normas');
-        }
+        // Serializar los objetos para pasarlos al componente (eliminar _id si causa problemas o convertirlo)
+        const data = normas.map((doc) => ({
+            ...doc,
+            _id: doc._id.toString(),
+            createdAt: doc.createdAt?.toString(),
+            updatedAt: doc.updatedAt?.toString()
+        }));
 
-        return await response.json();
+        return {
+            success: true,
+            data: data,
+            cached: true,
+            lastUpdated: new Date().toISOString(),
+            nextUpdate: new Date().toISOString(),
+        };
     } catch (error) {
-        console.error('Error fetching normas:', error);
+        console.error('Error fetching normas from DB:', error);
         return {
             success: false,
             data: [],

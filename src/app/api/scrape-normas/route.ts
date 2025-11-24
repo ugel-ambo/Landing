@@ -5,7 +5,6 @@ import { NormaLegal } from '@/types/scrape.types';
 import connectMongoDB from '@/lib/mongodbConnection';
 import Norma from '@/models/Norma';
 
-// Categorías permitidas
 const CATEGORIAS_PERMITIDAS = ['EDUCACION', 'INSTITUCIONES EDUCATIVAS'];
 
 /**
@@ -94,7 +93,7 @@ async function scrapearFecha(page: Page, fecha: Date): Promise<NormaLegal[]> {
 
         try {
             await page.waitForSelector('.edicionesoficiales_articulos', { timeout: 10000 });
-        } catch (_) {
+        } catch {
             console.log(`No se encontraron normas para la fecha ${fechaFormateada}`);
             return normas;
         }
@@ -171,7 +170,7 @@ async function scrapearFecha(page: Page, fecha: Date): Promise<NormaLegal[]> {
  * Realiza el scraping de los últimos días
  */
 async function scrapearNormas(): Promise<NormaLegal[]> {
-    const fechas = obtenerUltimosDias(2);
+    const fechas = obtenerUltimosDias(5);
     const todasLasNormas: NormaLegal[] = [];
     let browser = null;
 
