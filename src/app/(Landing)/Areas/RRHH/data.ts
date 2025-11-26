@@ -61,7 +61,7 @@ export const rrhhData: AreaContent = {
       id: "7",
       name: "Luz Monica Hilario Ases",
       position: "Especialista en Escalafón",
-      image: "/Directorio/rrhh/Luz-Monica.png",
+      image: "/Directorio/rrhh/Luz-Monica.jpg",
     },
     {
       id: "8",
@@ -79,7 +79,7 @@ export const rrhhData: AreaContent = {
       id: "10",
       name: "Shyrle Celestino Paredes",
       position: "Apoyo en Escalafón y Nexus",
-      image: "/Directorio/rrhh/Shyrle-Celestino.png",
+      image: "/Directorio/rrhh/Shyrle-Celestino.jpg",
     },
     {
       id: "11",

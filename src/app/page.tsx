@@ -9,6 +9,7 @@ import TramitesSection from './(Landing)/tramites-section';
 import Menu from './(Landing)/menu';
 import VisitorCounter from '@/components/visitor-counter';
 import NoticiaModal from '@/components/noticia-modal';
+import ConvocatoriasSection from './(Landing)/convocatorias-section';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <ServicesCards />
       <NewsSection />
+      <ConvocatoriasSection />
       <TramitesSection />
       <MapsPage />
       <VisitorCounter />

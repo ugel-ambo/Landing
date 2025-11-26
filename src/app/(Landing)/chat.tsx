@@ -12,9 +12,21 @@ import { DefaultChatTransport } from 'ai';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
+type ChatPart = {
+  type: 'text' | string;
+  text?: string;
+};
+
+type ChatMessage = {
+  id?: string;
+  role?: 'user' | 'assistant' | 'system' | string;
+  parts?: ChatPart[];
+};
+
 export default function ChatPage() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [input, setInput] = useState('');
+  const [showNotification, setShowNotification] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -35,6 +47,34 @@ export default function ChatPage() {
       scrollRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages]);
+
+  // Notification timer logic
+  useEffect(() => {
+    if (isChatOpen) {
+      setShowNotification(false);
+      return;
+    }
+
+    // Initial delay before showing notification
+    const initialTimer = setTimeout(() => {
+      setShowNotification(true);
+      // Auto hide after 5 seconds
+      setTimeout(() => setShowNotification(false), 5000);
+    }, 5000); // Show 5 seconds after mount if closed
+
+    const interval = setInterval(() => {
+      if (!isChatOpen) {
+        setShowNotification(true);
+        // Auto hide after 5 seconds
+        setTimeout(() => setShowNotification(false), 5000);
+      }
+    }, 30000); // Repeat every 30 seconds
+
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(interval);
+    };
+  }, [isChatOpen]);
 
   const toggleChat = () => setIsChatOpen(prev => !prev);
 
@@ -65,73 +105,127 @@ export default function ChatPage() {
   return (
     <div>
       {/* Botón flotante siempre visible con animación */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, type: "spring" }}
-        className="fixed bottom-6 right-6 z-50"
-      >
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+
+        {/* Notificación flotante */}
+        <AnimatePresence>
+          {showNotification && !isChatOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 10, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.8 }}
+              className="bg-white/80 backdrop-blur-md px-4 py-3 rounded-xl shadow-xl border border-white/20 mb-2 relative mr-2 max-w-[200px]"
+            >
+              <div className="absolute bottom-0 right-6 translate-y-1/2 rotate-45 w-4 h-4 bg-white/80 border-r border-b border-white/20 backdrop-blur-md"></div>
+              <div className="flex items-start gap-3">
+                <div className="bg-blue-50/80 p-1.5 rounded-full shrink-0 backdrop-blur-sm">
+                  <BotMessageSquare className="w-4 h-4 text-[#049DD9]" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-gray-800">¿Necesitas ayuda?</p>
+                  <p className="text-xs text-gray-600 mt-0.5">Estoy aquí para responder tus dudas.</p>
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowNotification(false);
+                  }}
+                  className="text-gray-400 hover:text-gray-600 -mt-1 -mr-1"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <motion.div
-          animate={{
-            y: [0, -10, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, type: "spring" }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
-          <Button
-            onClick={toggleChat}
-            size="icon"
-            className="rounded-full w-14 h-14 p-8 lg:p-10 shadow-2xl bg-linear-to-r from-[#049DD9] to-[#0284c7] hover:from-[#037bbd] hover:to-[#0369a1] text-white transition-all duration-300 hover:scale-110 relative"
-            aria-label={isChatOpen ? "Cerrar chat" : "Abrir chat"}
+          <motion.div
+            animate={{
+              y: [0, -10, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
           >
-            {!isChatOpen ? (
-              <>
-                <BotMessageSquare className="w-7 h-7 lg:w-10 lg:h-10 size-14" aria-hidden="true" />
-                {/* Pulso animado */}
-                <motion.span
-                  className="absolute inset-0 rounded-full bg-[#049DD9]/30"
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 0, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-              </>
-            ) : (
-              <ArrowDownCircle className="w-7 h-7 lg:w-10 lg:h-10 size-14" aria-hidden="true" />
-            )}
-          </Button>
+            <Button
+              onClick={toggleChat}
+              size="icon"
+              className="rounded-full w-14 h-14 p-8 lg:p-10 shadow-2xl bg-[#049DD9]/90 hover:bg-[#037bbd]/90 backdrop-blur-md text-white transition-all duration-300 relative border border-white/20"
+              aria-label={isChatOpen ? "Cerrar chat" : "Abrir chat"}
+            >
+              {!isChatOpen ? (
+                <>
+                  <BotMessageSquare className="w-7 h-7 lg:w-10 lg:h-10 size-14 relative z-10" aria-hidden="true" />
+                  {/* Pulso animado */}
+                  <motion.span
+                    className="absolute inset-0 rounded-full bg-[#049DD9]/30"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.5, 0, 0.5],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  <motion.span
+                    className="absolute inset-0 rounded-full bg-white/20"
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0.3, 0, 0.3],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.5
+                    }}
+                  />
+                </>
+              ) : (
+                <ArrowDownCircle className="w-7 h-7 lg:w-10 lg:h-10 size-14 relative z-10" aria-hidden="true" />
+              )}
+            </Button>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Chat modal */}
       <AnimatePresence>
         {isChatOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            transition={{ duration: 0.3, type: "spring" }}
-            className="fixed bottom-28 right-6 z-50 w-80 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            initial={{ opacity: 0, scale: 0.8, y: 20, rotateX: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20, rotateX: 10 }}
+            transition={{ duration: 0.4, type: "spring", damping: 25, stiffness: 300 }}
+            className="fixed bottom-28 right-6 z-50 w-80 sm:w-96 h-[500px] flex flex-col overflow-hidden rounded-3xl shadow-2xl border border-white/20 backdrop-blur-xl bg-white/80 supports-[backdrop-filter]:bg-white/60"
           >
-            <Card className="border-0 h-full px-0 py-0">
-              <CardHeader className="bg-[#049DD9] text-white flex flex-row items-center justify-between space-y-0 pb-4 pt-4 px-5">
-                <div className="flex items-center gap-2">
-                  <BotMessageSquare className="w-5 h-5" />
-                  <CardTitle className="text-sm font-semibold">Asistente Virtual</CardTitle>
+            <Card className="border-0 h-full px-0 py-0 bg-transparent shadow-none flex flex-col">
+              <CardHeader className="bg-[#049DD9]/90 backdrop-blur-md text-white flex flex-row items-center justify-between space-y-0 pb-4 pt-4 px-5 border-b border-white/10 shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="bg-white/20 p-1.5 rounded-lg backdrop-blur-sm">
+                    <BotMessageSquare className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-sm font-bold">Asistente Virtual</CardTitle>
+                    <p className="text-xs text-blue-100/80 font-medium">En línea</p>
+                  </div>
                 </div>
                 <Button
                   onClick={toggleChat}
                   size="sm"
                   variant="ghost"
-                  className="px-2 py-1 hover:bg-white/20 text-white rounded-full"
+                  className="px-2 py-1 hover:bg-white/20 text-white rounded-full transition-colors"
                   aria-label="Cerrar chat"
                 >
                   <X className="w-4 h-4" />
@@ -139,32 +233,42 @@ export default function ChatPage() {
                 </Button>
               </CardHeader>
 
-              <CardContent className="p-0 bg-gray-50">
-                <ScrollArea className="h-[250px] px-4 py-3">
+              <CardContent className="p-0 flex-1 overflow-hidden relative bg-gradient-to-b from-transparent to-white/40">
+                <ScrollArea className="h-full px-4 py-3">
                   {messages?.length === 0 && (
-                    <div className="flex flex-col items-center justify-center h-full text-center p-6">
-                      <div className="bg-linear-to-br from-[#049DD9]/10 to-[#0284c7]/10 rounded-full p-4 mb-4">
+                    <div className="flex flex-col items-center justify-center h-full text-center p-6 mt-10">
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", delay: 0.2 }}
+                        className="bg-linear-to-br from-[#049DD9]/20 to-[#0284c7]/20 rounded-2xl p-6 mb-4 backdrop-blur-sm shadow-inner border border-white/40"
+                      >
                         <BotMessageSquare className="w-12 h-12 text-[#049DD9]" />
-                      </div>
-                      <p className="text-gray-600 font-medium mb-1">¡Hola! 👋</p>
-                      <p className="text-gray-500 text-sm">Somos la UGEL Ambo, ¿en qué te podemos ayudar?</p>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                      >
+                        <p className="text-gray-800 font-bold text-lg mb-1">¡Hola! 👋</p>
+                        <p className="text-gray-600 text-sm">Somos la UGEL Ambo.<br />¿En qué te podemos ayudar hoy?</p>
+                      </motion.div>
                     </div>
                   )}
 
                   {messages?.map((message: ChatMessage, index: number) => (
                     <motion.div
                       key={message.id ?? index}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
                       transition={{ duration: 0.2 }}
                       className={`flex mb-4 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                       <div
-                        className={`max-w-[80%] rounded-2xl px-4 py-2.5 ${
-                          message.role === 'user'
-                            ? 'bg-[#049DD9] text-white rounded-br-sm'
-                            : 'bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-sm'
-                        }`}
+                        className={`max-w-[85%] rounded-2xl px-4 py-3 shadow-sm backdrop-blur-sm ${message.role === 'user'
+                          ? 'bg-[#049DD9]/90 text-white rounded-br-sm border border-blue-400/30'
+                          : 'bg-white/80 text-gray-800 border border-white/60 rounded-bl-sm'
+                          }`}
                       >
                         <div className="text-sm leading-relaxed markdown-content">
                           <ReactMarkdown
@@ -179,11 +283,11 @@ export default function ChatPage() {
                               code: ({ children, className }) => {
                                 const isInline = !className;
                                 return isInline ? (
-                                  <code className="bg-gray-200 text-gray-800 px-1.5 py-0.5 rounded text-xs font-mono">
+                                  <code className={`px-1.5 py-0.5 rounded text-xs font-mono ${message.role === 'user' ? 'bg-blue-600/30 text-white' : 'bg-gray-200/70 text-gray-800'}`}>
                                     {children}
                                   </code>
                                 ) : (
-                                  <code className="block bg-gray-900 text-gray-100 p-2 rounded text-xs font-mono overflow-x-auto mt-1 mb-2">
+                                  <code className="block bg-gray-900/90 text-gray-100 p-2 rounded-lg text-xs font-mono overflow-x-auto mt-1 mb-2 border border-white/10">
                                     {children}
                                   </code>
                                 );
@@ -193,13 +297,13 @@ export default function ChatPage() {
                                   href={href}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-[#049DD9] hover:underline"
+                                  className={`${message.role === 'user' ? 'text-blue-100 hover:text-white' : 'text-[#049DD9] hover:text-[#037bbd]'} underline decoration-1 underline-offset-2`}
                                 >
                                   {children}
                                 </a>
                               ),
                               blockquote: ({ children }) => (
-                                <blockquote className="border-l-4 border-gray-300 pl-3 italic my-2">
+                                <blockquote className={`border-l-4 pl-3 italic my-2 ${message.role === 'user' ? 'border-white/40' : 'border-gray-300'}`}>
                                   {children}
                                 </blockquote>
                               ),
@@ -218,11 +322,11 @@ export default function ChatPage() {
                       animate={{ opacity: 1 }}
                       className="flex justify-start mb-4"
                     >
-                      <div className="bg-white text-gray-800 shadow-sm border border-gray-100 rounded-2xl rounded-bl-sm px-4 py-3">
-                        <div className="flex gap-1">
-                          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
-                          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
-                          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
+                      <div className="bg-white/80 text-gray-800 shadow-sm border border-white/60 rounded-2xl rounded-bl-sm px-4 py-3 backdrop-blur-sm">
+                        <div className="flex gap-1.5">
+                          <span className="w-2 h-2 bg-[#049DD9]/60 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                          <span className="w-2 h-2 bg-[#049DD9]/60 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                          <span className="w-2 h-2 bg-[#049DD9]/60 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
                         </div>
                       </div>
                     </motion.div>
@@ -232,7 +336,7 @@ export default function ChatPage() {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="bg-red-50 border border-red-200 rounded-xl p-4 mb-4"
+                      className="bg-red-50/90 border border-red-200/60 rounded-xl p-4 mb-4 backdrop-blur-sm"
                     >
                       <p className="text-red-800 text-sm font-medium mb-2">⚠️ Ocurrió un error</p>
                       <p className="text-red-600 text-xs">{error.message || 'Error desconocido'}</p>
@@ -243,7 +347,7 @@ export default function ChatPage() {
                 </ScrollArea>
               </CardContent>
 
-              <CardFooter className="bg-white border-t border-gray-200 p-4">
+              <CardFooter className="bg-white/60 border-t border-white/20 p-4 backdrop-blur-md shrink-0">
                 <div className="w-full flex gap-2">
                   <Input
                     type="text"
@@ -252,15 +356,15 @@ export default function ChatPage() {
                     onKeyDown={handleKeyDown}
                     placeholder="Escribe tu mensaje..."
                     disabled={isLoading}
-                    className="flex-1 border-gray-300 focus:border-[#049DD9] focus:ring-[#049DD9] rounded-xl"
+                    className="flex-1 border-gray-200/60 focus:border-[#049DD9] focus:ring-[#049DD9] rounded-xl bg-white/70 backdrop-blur-sm shadow-inner"
                   />
                   <Button
                     onClick={onSubmit}
                     disabled={isLoading || !input || !input.trim()}
-                    className="w-10 h-10 rounded-xl bg-linear-to-r from-[#049DD9] to-[#0284c7] hover:from-[#037bbd] hover:to-[#0369a1] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                    className="w-10 h-10 rounded-xl bg-[#049DD9] hover:bg-[#037bbd] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
                     size="icon"
                   >
-                    <Send className="w-4 h-4" />
+                    <Send className="w-4 h-4 text-white" />
                   </Button>
                 </div>
               </CardFooter>
@@ -271,14 +375,3 @@ export default function ChatPage() {
     </div>
   );
 }
-
-type ChatPart = {
-  type: 'text' | string;
-  text?: string;
-};
-
-type ChatMessage = {
-  id?: string;
-  role?: 'user' | 'assistant' | 'system' | string;
-  parts?: ChatPart[];
-};

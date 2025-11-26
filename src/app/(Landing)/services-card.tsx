@@ -21,7 +21,7 @@ const services = [
     title: "Convocatorias",
     description: "Últimas convocatorias y oportunidades laborales",
     icon: Megaphone,
-    href: "http://ugelambo.regionhuanuco.gob.pe/convocatorias",
+    href: "/convocatoria",
     external: false,
     color: "from-cyan-50 to-cyan-100/50",
     iconColor: "text-secondary",

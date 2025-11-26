@@ -6,7 +6,6 @@ import { ScrapingResponse, NormaLegal } from "@/types/scrape.types";
 import connectMongoDB from "@/lib/mongodbConnection";
 import Norma from "@/models/Norma";
 
-// Forzar rendering dinámico para evitar errores en build
 export const dynamic = 'force-dynamic';
 
 interface NormaLean extends NormaLegal {
@@ -15,14 +14,39 @@ interface NormaLean extends NormaLegal {
     updatedAt: Date;
 }
 
+function calculateUpdateTimes() {
+    const now = new Date();
+    const today6am = new Date(now); today6am.setHours(6, 0, 0, 0);
+    const today1pm = new Date(now); today1pm.setHours(13, 0, 0, 0);
+
+    let lastUpdated: Date;
+    let nextUpdate: Date;
+
+    if (now < today6am) {
+        lastUpdated = new Date(today1pm);
+        lastUpdated.setDate(lastUpdated.getDate() - 1);
+        nextUpdate = new Date(today6am);
+    } else if (now < today1pm) {
+        lastUpdated = new Date(today6am);
+        nextUpdate = new Date(today1pm);
+    } else {
+        lastUpdated = new Date(today1pm);
+        nextUpdate = new Date(today6am);
+        nextUpdate.setDate(nextUpdate.getDate() + 1);
+    }
+
+    return {
+        lastUpdated: lastUpdated.toISOString(),
+        nextUpdate: nextUpdate.toISOString()
+    };
+}
+
 async function getNormas(): Promise<ScrapingResponse> {
     try {
         await connectMongoDB();
-        // Consultar directamente a la BD (Server Component pattern)
-        // .lean() convierte el documento de Mongoose a objeto JS simple
+
         const normas = await Norma.find({}).sort({ createdAt: -1 }).limit(50).lean() as unknown as NormaLean[];
 
-        // Serializar los objetos para pasarlos al componente (eliminar _id si causa problemas o convertirlo)
         const data = normas.map((doc) => ({
             ...doc,
             _id: doc._id.toString(),
@@ -30,21 +54,24 @@ async function getNormas(): Promise<ScrapingResponse> {
             updatedAt: doc.updatedAt?.toString()
         }));
 
+        const times = calculateUpdateTimes();
+
         return {
             success: true,
             data: data,
             cached: true,
-            lastUpdated: new Date().toISOString(),
-            nextUpdate: new Date().toISOString(),
+            lastUpdated: times.lastUpdated,
+            nextUpdate: times.nextUpdate,
         };
     } catch (error) {
         console.error('Error fetching normas from DB:', error);
+        const times = calculateUpdateTimes();
         return {
             success: false,
             data: [],
             cached: false,
-            lastUpdated: new Date().toISOString(),
-            nextUpdate: new Date().toISOString(),
+            lastUpdated: times.lastUpdated,
+            nextUpdate: times.nextUpdate,
             error: error instanceof Error ? error.message : 'Error desconocido',
         };
     }
@@ -111,7 +138,7 @@ export default async function NormativaPage() {
                     <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4" />
-                            <span>Últimos 2 días</span>
+                            <span>Últimos 3 días</span>
                         </div>
 
                         {result.success && (

@@ -61,7 +61,7 @@ export const direccionData: AreaContent = {
       id: "6",
       name: "Carbajal Tafur Maria Mercedes",
       position: "Secretaria de Dirección",
-      image: "/Directorio/direccion/Carbajal-Tafur.png",
+      image: "/Directorio/direccion/Carbajal-Tafur.jpg",
     },
     {
       id: "7",

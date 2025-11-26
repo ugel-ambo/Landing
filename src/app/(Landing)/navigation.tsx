@@ -64,7 +64,7 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Nosotros</NavigationMenuTrigger>
+          <NavigationMenuTrigger onClick={(e) => !isMobile && e.preventDefault()}>Nosotros</NavigationMenuTrigger>
           <NavigationMenuContent >
             <ul className="grid gap-2 md:w-[400px] lg:w-[500px] grid-cols-1">
               <ListItem href="/Nosotros/Quienes-Somos" title="Quiénes somos" className="hover:text-white" >
@@ -80,7 +80,7 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Documentos</NavigationMenuTrigger>
+          <NavigationMenuTrigger onClick={(e) => !isMobile && e.preventDefault()}>Documentos</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
@@ -97,7 +97,7 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger>Áreas</NavigationMenuTrigger>
+          <NavigationMenuTrigger onClick={(e) => !isMobile && e.preventDefault()}>Áreas</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[300px] gap-4">
               <li>
@@ -139,7 +139,7 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="http://ugelambo.regionhuanuco.gob.pe/convocatorias">Convocatorias</Link>
+            <Link href="/convocatoria">Convocatorias</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 

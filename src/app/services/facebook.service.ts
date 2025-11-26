@@ -10,7 +10,7 @@ class FacebookService {
     this.baseUrl = process.env.NEXT_PUBLIC_FACEBOOK_GRAPH_API_URL || 'https://graph.facebook.com/v24.0';
     this.pageId = process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID || '';
     this.accessToken = process.env.NEXT_PUBLIC_FACEBOOK_ACCESS_TOKEN || '';
-    
+
     // Log para debug
     console.log('FacebookService config:', {
       baseUrl: this.baseUrl,
@@ -42,18 +42,18 @@ class FacebookService {
         headers: {
           'Content-Type': 'application/json',
         },
-        next: { revalidate: 300 } //  5 mn
+        next: { revalidate: 300 } // 5 minutos 
       });
 
       if (!response.ok) {
         const errorText = await response.text();
         console.error('Facebook API Error:', response.status, errorText);
-        
+
         // Verificar si es un error de token expirado
         if (response.status === 400 && errorText.includes('Session has expired')) {
           throw new Error(`Token de Facebook expirado. Error: ${errorText}. Por favor, renueva el token en Facebook Graph API Explorer.`);
         }
-        
+
         throw new Error(`Error al obtener posts: ${response.status} - ${errorText}`);
       }
 
@@ -70,19 +70,19 @@ class FacebookService {
    * Transforma los posts de Facebook a NewsItems usando datos formateados por AI
    */
   transformPostsToNews(
-    posts: FacebookPostsResponse, 
+    posts: FacebookPostsResponse,
     formattedData: GeminiFormattedPost[]
   ): NewsItem[] {
     return posts.data.map((post, index) => {
       // Usar datos formateados por Gemini si están disponibles
       const formatted = formattedData[index];
-      
+
       const { date, time } = this.formatDateTime(post.created_time);
-      
-      const image = post.full_picture || 
-                    post.attachments?.data[0]?.media?.image?.src || 
-                    '/placeholder.svg';
-      
+
+      const image = post.full_picture ||
+        post.attachments?.data[0]?.media?.image?.src ||
+        '/placeholder.svg';
+
       const url = post.attachments?.data[0]?.url;
 
       return {
@@ -113,10 +113,10 @@ class FacebookService {
     if (titleMatch) {
       return titleMatch[1].trim();
     }
-    
+
     const firstLine = message.split('\n')[0];
-    return firstLine.length > 80 
-      ? firstLine.substring(0, 80) + '...' 
+    return firstLine.length > 80
+      ? firstLine.substring(0, 80) + '...'
       : firstLine;
   }
 
@@ -127,9 +127,9 @@ class FacebookService {
     const cleaned = message.replace(/^[🔰🔉📑🗓⏱🏢🗂🔗📩🔎🏅📑]+/gm, '').trim();
     const lines = cleaned.split('\n').filter(line => line.trim().length > 10);
     const description = lines.slice(0, 3).join(' ').trim();
-    
-    return description.length > 150 
-      ? description.substring(0, 150) + '...' 
+
+    return description.length > 150
+      ? description.substring(0, 150) + '...'
       : description;
   }
 
@@ -138,21 +138,21 @@ class FacebookService {
    */
   private formatDateTime(dateString: string): { date: string; time: string } {
     const dateObj = new Date(dateString);
-    
-    const dateOptions: Intl.DateTimeFormatOptions = { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+
+    const dateOptions: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     };
     const date = dateObj.toLocaleDateString('es-PE', dateOptions);
-    
+
     const timeOptions: Intl.DateTimeFormatOptions = {
       hour: '2-digit',
       minute: '2-digit',
       hour12: true
     };
     const time = dateObj.toLocaleTimeString('es-PE', timeOptions);
-    
+
     return { date, time };
   }
 
@@ -161,7 +161,7 @@ class FacebookService {
    */
   private categorizePost(message: string): string {
     const lowerMessage = message.toLowerCase();
-    
+
     if (lowerMessage.includes('concurso') || lowerMessage.includes('campeonato')) {
       return 'Eventos';
     }
@@ -177,7 +177,7 @@ class FacebookService {
     if (lowerMessage.includes('materiales') || lowerMessage.includes('dotación')) {
       return 'Materiales';
     }
-    
+
     return 'Educación';
   }
 }
