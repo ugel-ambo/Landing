@@ -170,7 +170,7 @@ async function scrapearFecha(page: Page, fecha: Date): Promise<NormaLegal[]> {
  * Realiza el scraping de los últimos días
  */
 async function scrapearNormas(): Promise<NormaLegal[]> {
-    const fechas = obtenerUltimosDias(5);
+    const fechas = obtenerUltimosDias(3);
     const todasLasNormas: NormaLegal[] = [];
     let browser = null;
 
@@ -231,6 +231,13 @@ export async function POST() {
         await connectMongoDB();
 
         const normas = await scrapearNormas();
+
+
+        if (normas.length > 0) {
+            await Norma.deleteMany({});
+            console.log('Base de datos limpiada. Guardando nuevas normas...');
+        }
+
         let guardadas = 0;
 
         for (const norma of normas) {

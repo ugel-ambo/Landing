@@ -228,7 +228,7 @@ export default function Menu() {
                     <AccordionTrigger
                       className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white [&>svg]:hidden"
                       onClick={() => {
-                        window.location.href = "http://ugelambo.regionhuanuco.gob.pe/convocatorias"
+                        window.location.href = "/convocatoria"
                         setOpen(false)
                       }}
                     >

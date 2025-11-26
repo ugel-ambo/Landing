@@ -22,7 +22,7 @@ export default function Home() {
         >
           {/* Content Container */}
           <div className="relative z-20 h-full flex flex-col items-center justify-start pt-10 sm:pt-32 md:pt-24 px-4 lg:pt-10 xl:pt-24 sm:px-6 md:px-8">
- 
+
             {/* ✅ Badge centrado */}
             <div className="mb-6 inline-flex items-center gap-2 rounded-full uppercase bg-white/90 backdrop-blur-sm px-4 py-2 text-sm font-bold text-[#0b1f27] shadow-lg mx-auto">
               <span className="text-xl ">📚</span>
@@ -35,7 +35,7 @@ export default function Home() {
 
               {/* Title */}
               <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl  lg:text-6xl xl:text-6xl 2xl:text-[65px] text-center font-bold text-white drop-shadow-2xl lg:text-left leading-snug ">
-              Centro de Educación
+                Centro de Educación
                 <br />
                 <HighlightText
                   text="Básica Alternativa"
@@ -51,7 +51,7 @@ export default function Home() {
                 del nivel inicial. Acompañamiento permanente
                 para la mejora de los aprendizajes.
               </p>
-              
+
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-linear-to-r from-[#049dd9] to-[#3873a6] text-white hover:from-[#038bc2] hover:to-[#2f6490] font-semibold text-base shadow-xl">
@@ -87,20 +87,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Additional Content Section */}
+      {/* Servicios Section */}
       <section className="py-20 px-6 sm:px-8 bg-white">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-[#223f59] mb-4">Servicios para Docentes de CEBA</h2>
           <p className="text-lg text-[#666666] mb-12">
-            Herramientas y recursos para fortalecer tu práctica pedagógica
+            Herramientas y recursos para fortalecer tu práctica pedagógica en educación alternativa
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
-
             {[
-              { icon: "📋", title: "Programación Curricular", desc: "Modelos y formatos actualizados" },
-              { icon: "🎓", title: "Capacitaciones", desc: "Formación continua y actualización docente" },
-              { icon: "📊", title: "Evaluación", desc: "Instrumentos y estrategias de evaluación" },
+              { icon: "📋", title: "Programación Curricular", desc: "Modelos y formatos adaptados a la educación de jóvenes y adultos" },
+              { icon: "🎓", title: "Capacitaciones", desc: "Formación continua especializada en educación alternativa" },
+              { icon: "📊", title: "Evaluación", desc: "Instrumentos de evaluación por competencias y ciclos" },
             ].map((item, i) => (
               <div key={i} className="p-6 rounded-lg bg-blue-50 border-2 border-blue-200 hover:shadow-lg transition">
                 <div className="text-4xl mb-3">{item.icon}</div>
@@ -108,6 +107,41 @@ export default function Home() {
                 <p className="text-[#666666]">{item.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 px-6 sm:px-8 bg-gradient-to-b from-blue-50 to-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#223f59] mb-6">
+                Sobre la Educación Básica Alternativa
+              </h2>
+              <p className="text-lg text-gray-700 mb-4">
+                Los Centros de Educación Básica Alternativa (CEBA) brindan servicios educativos a jóvenes y adultos que no tuvieron acceso a la educación regular o que necesitan compatibilizar el estudio con el trabajo.
+              </p>
+              <p className="text-lg text-gray-700 mb-4">
+                Ofrecemos una educación flexible y pertinente que reconoce las experiencias previas de los estudiantes y se adapta a sus necesidades, promoviendo el desarrollo de competencias para la vida y el trabajo.
+              </p>
+              <p className="text-lg text-gray-700">
+                Trabajamos con metodologías activas y participativas que valoran la diversidad y promueven la inclusión educativa de todos los estudiantes.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+              {[
+                { number: "15+", label: "CEBA Activos" },
+                { number: "100%", label: "Docentes Capacitados" },
+                { number: "800+", label: "Estudiantes Atendidos" },
+                { number: "3+", label: "Especialistas Dedicados" },
+              ].map((stat, i) => (
+                <div key={i} className="bg-white p-6 rounded-lg shadow-md text-center border-2 border-blue-100">
+                  <div className="text-4xl font-bold text-[#049DD9] mb-2">{stat.number}</div>
+                  <div className="text-sm text-gray-600">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -166,59 +200,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Programas Especializados */}
+      {/* Recursos Section */}
       <section className="py-20 px-6 sm:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#223f59] mb-4">Programas Especializados</h2>
-            <p className="text-lg text-[#666666]">Educación inclusiva y diversificada</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="group p-6 rounded-xl bg-blue-50 border-2 border-blue-200 hover:shadow-lg transition">
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">👥</div>
-              <h3 className="text-xl font-bold text-[#223f59] mb-3">PEBANA</h3>
-              <p className="text-[#666666]">Programa de Educación Básica Alternativa de Niños y Adolescentes</p>
-            </div>
-
-            <div className="group p-6 rounded-xl bg-blue-50 border-2 border-blue-200 hover:shadow-lg transition">
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🏥</div>
-              <h3 className="text-xl font-bold text-[#223f59] mb-3">PEBAJA</h3>
-              <p className="text-[#666666]">Programa de Educación Básica Alternativa de Jóvenes y Adultos</p>
-            </div>
-
-            <div className="group p-6 rounded-xl bg-blue-50 border-2 border-blue-200 hover:shadow-lg transition">
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🌾</div>
-              <h3 className="text-xl font-bold text-[#223f59] mb-3">Alfabetización</h3>
-              <p className="text-[#666666]">Programa de alfabetización para jóvenes y adultos sin escolaridad</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Estadísticas */}
-      <section className="py-20 px-6 sm:px-8 bg-linear-to-r from-[#049DD9] to-[#028ec7] text-white">
-        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Impacto Educativo</h2>
-            <p className="text-lg text-[#b8d4e8]">Transformando vidas a través de la educación</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#223f59] mb-4">Recursos y Materiales</h2>
+            <p className="text-lg text-[#666666]">
+              Herramientas especializadas para la educación de jóvenes y adultos
+            </p>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { number: "500+", label: "Estudiantes" },
-              { number: "20+", label: "Docentes" },
-              { number: "15", label: "CEBA Activos" },
-              { number: "95%", label: "Tasa de Culminación" },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white ] mb-2">{stat.number}</div>
-                <div className="text-white text-sm md:text-base">{stat.label}</div>
+              { icon: "📚", title: "Módulos de Aprendizaje", desc: "Materiales autoinstructivos por ciclos y áreas" },
+              { icon: "📝", title: "Evaluación por Competencias", desc: "Instrumentos de evaluación contextualizada" },
+              { icon: "💼", title: "Educación para el Trabajo", desc: "Recursos para el desarrollo de competencias laborales" },
+              { icon: "🎓", title: "Nivelación Académica", desc: "Programas de reforzamiento y nivelación" },
+              { icon: "💻", title: "Alfabetización Digital", desc: "Recursos para el desarrollo de competencias digitales" },
+              { icon: "🌐", title: "Educación a Distancia", desc: "Plataformas y recursos para educación virtual" },
+              { icon: "👥", title: "Metodologías Activas", desc: "Estrategias participativas y colaborativas" },
+              { icon: "🔍", title: "Acompañamiento Pedagógico", desc: "Herramientas de monitoreo y asesoría" },
+            ].map((item, i) => (
+              <div key={i} className="p-5 rounded-lg bg-gradient-to-br from-blue-50 to-white border border-blue-200 hover:shadow-lg transition hover:border-[#049DD9]">
+                <div className="text-3xl mb-3">{item.icon}</div>
+                <h3 className="text-lg font-semibold text-[#223f59] mb-2">{item.title}</h3>
+                <p className="text-sm text-[#666666]">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
     </main>
   );
 }

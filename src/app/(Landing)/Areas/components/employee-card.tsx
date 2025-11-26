@@ -28,7 +28,7 @@ export function EmployeeCard({ name, position, image }: EmployeeCardProps) {
             <img
               src={image}
               alt={name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
               onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
                 const target = e.target as HTMLImageElement;
                 const parent = target.parentElement;

@@ -6,6 +6,7 @@ import 'leaflet/dist/leaflet.css';
 import Superhero from "./(Landing)/superhero";
 import ChatPage from "./(Landing)/chat";
 import Footer from "./(Landing)/footer";
+import Mascota from "./(Landing)/mascota";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Superhero />
         <ChatPage />
+        <Mascota />
         {children}
         <Analytics />
         <Footer />
