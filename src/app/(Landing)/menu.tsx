@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Menu as MenuIcon, Sparkles } from "lucide-react";
+import { Menu as MenuIcon, Sparkles, Facebook, Globe } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 import { NavigationMenuDemo } from "./navigation";
-import { INSTITUCIONES_EDUCATIVAS } from "@/data/iiee";
+import { INSTITUCIONES_EDUCATIVAS, MAX_PLANCK_ENLACES } from "@/data/iiee";
 
 export default function Menu() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -122,6 +122,15 @@ export default function Menu() {
                             {ie.nombre}
                           </a>
                         ))}
+                        <details className="text-[#223F59]">
+                          <summary className="cursor-pointer rounded-md px-4 py-2 text-sm font-medium hover:bg-[#eaf7fc] focus-visible:outline-2 focus-visible:outline-[#049DD9]">I.E. Max Planck</summary>
+                          <div className="ml-4 border-l border-[#cde7f1] pl-2">
+                            {MAX_PLANCK_ENLACES.map((enlace) => {
+                              const Icon = enlace.tipo === "facebook" ? Facebook : Globe;
+                              return <a key={enlace.tipo} href={enlace.enlace} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-[#087da9] hover:bg-[#eaf7fc] focus-visible:outline-2 focus-visible:outline-[#049DD9]"><Icon className="h-4 w-4" aria-hidden="true" />{enlace.nombre}</a>;
+                            })}
+                          </div>
+                        </details>
                       </div>
                     </AccordionContent>
                   </AccordionItem>

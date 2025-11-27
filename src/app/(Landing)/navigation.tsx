@@ -3,7 +3,8 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { INSTITUCIONES_EDUCATIVAS } from "@/data/iiee";
+import { INSTITUCIONES_EDUCATIVAS, MAX_PLANCK_ENLACES } from "@/data/iiee";
+import { Facebook, Globe } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -101,6 +102,17 @@ export function NavigationMenuDemo() {
                   </NavigationMenuLink>
                 </li>
               ))}
+              <li>
+                <details className="rounded-md text-[#223F59]">
+                  <summary className="cursor-pointer rounded-md px-3 py-2 text-sm font-medium hover:bg-[#eaf7fc] focus-visible:outline-2 focus-visible:outline-[#049DD9]">I.E. Max Planck</summary>
+                  <div className="ml-3 border-l border-[#cde7f1] pl-2">
+                    {MAX_PLANCK_ENLACES.map((enlace) => {
+                      const Icon = enlace.tipo === "facebook" ? Facebook : Globe;
+                      return <a key={enlace.tipo} href={enlace.enlace} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-[#087da9] hover:bg-[#eaf7fc] focus-visible:outline-2 focus-visible:outline-[#049DD9]"><Icon className="h-4 w-4" aria-hidden="true" />{enlace.nombre}</a>;
+                    })}
+                  </div>
+                </details>
+              </li>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
