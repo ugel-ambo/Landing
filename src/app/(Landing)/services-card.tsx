@@ -3,15 +3,15 @@
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { FileText, Megaphone, Gift, ExternalLink } from "lucide-react"
+import { Megaphone, Gift, ExternalLink, Scale } from "lucide-react"
 
 const services = [
   {
     id: 1,
-    title: "Consulta tu Expediente",
-    description: "Accede a tu expediente académico y documentación",
-    icon: FileText,
-    href: "https://digital.regionhuanuco.gob.pe/registro/mpv/obs/3",
+    title: "Becas y Créditos PRONABEC",
+    description: "Información sobre becas y créditos educativos",
+    icon: Gift,
+    href: "https://www.pronabec.gob.pe/concursos-becas-creditos/",
     external: false,
     color: "from-blue-50 to-blue-100/50",
     iconColor: "text-primary",
@@ -28,10 +28,10 @@ const services = [
   },
   {
     id: 3,
-    title: "Becas y Créditos PRONABEC",
-    description: "Información sobre becas y créditos educativos",
-    icon: Gift,
-    href: "https://www.pronabec.gob.pe/concursos-becas-creditos/",
+    title: "Denuncias de Acto de Corrupción",
+    description: "Plataforma Digital Única de Denuncias del Ciudadano",
+    icon: Scale,
+    href: "https://denuncias.servicios.gob.pe/?gobpe_id=4412",
     external: false,
     color: "from-blue-50 to-blue-100/50",
     iconColor: "text-primary",

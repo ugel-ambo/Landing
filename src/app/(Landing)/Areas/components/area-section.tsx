@@ -62,21 +62,23 @@ export function AreaSection({ hero, functions, employees, functionsIntro, teamIn
       </div>
 
       {/* Functions */}
-      <div className="space-y-8">
+      <div className="space-y-4 md:space-y-6">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#049DD9]">Funciones</p>
-          <h2 className="mt-3 text-3xl font-bold text-slate-900">Funciones del área</h2>
-          <p className="mt-3 text-base text-slate-600">
+          <h2 className="mt-2 text-2xl md:text-3xl font-bold text-slate-900">Funciones del área</h2>
+          <p className="mt-2 text-sm md:text-base text-slate-600">
             {functionsIntro ?? "Responsabilidades principales que guían nuestro trabajo diario."}
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-3 md:gap-4 md:grid-cols-2">
           {functions.map((func, index) => (
-            <Card key={index} className="flex gap-4 border border-blue-100 bg-white/80 p-6 shadow-sm">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#049DD9]/10 text-xl font-bold text-[#049DD9]">
-                {index + 1}
-              </div>
-              <p className="text-base leading-relaxed text-slate-700">{func}</p>
+            <Card key={index} className="border border-blue-100 bg-white/80 p-4 md:p-5 shadow-sm">
+              <p className="text-sm md:text-base leading-relaxed text-slate-700">
+                <span className="mr-2 font-semibold text-[#049DD9]">
+                  {(index + 1).toString().padStart(2, '0')}.
+                </span>
+                {func}
+              </p>
             </Card>
           ))}
         </div>

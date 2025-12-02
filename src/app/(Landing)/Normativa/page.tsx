@@ -45,7 +45,7 @@ async function getNormas(): Promise<ScrapingResponse> {
     try {
         await connectMongoDB();
 
-        const normas = await Norma.find({}).sort({ createdAt: -1 }).limit(50).lean() as unknown as NormaLean[];
+        const normas = await Norma.find({}).sort({ createdAt: 1 }).limit(50).lean() as unknown as NormaLean[];
 
         const data = normas.map((doc) => ({
             ...doc,

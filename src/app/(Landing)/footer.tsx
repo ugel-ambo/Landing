@@ -4,8 +4,10 @@ import type React from "react"
 import Link from "next/link"
 import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react"
 
+import { Button } from "@/components/ui/button"
+
 export default function Footer() {
-  
+
   return (
     <footer className="bg-primary text-primary-foreground">
 
@@ -115,7 +117,32 @@ export default function Footer() {
         {/* Bottom Footer */}
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm opacity-75">
-            <p>&copy; 2025 UGEL Ambo. Todos los derechos reservados.</p>
+            <div className="flex flex-col items-center md:items-start gap-1">
+              <p>&copy; 2025 UGEL Ambo. Todos los derechos reservados.</p>
+              <p className="text-xs flex gap-1 items-center">
+                Desarrollado por
+                <Button variant="link" asChild className="text-[#223F59] p-0 h-auto font-medium ">
+                  <Link
+                    href="https://www.linkedin.com/in/jhonatan-julca-garcia-7270b2212"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Sigismund
+                  </Link>
+                </Button>
+                y
+                <Button variant="link" asChild className="text-[#223F59] p-0 h-auto font-medium">
+                  <Link
+                    href="https://www.facebook.com/share/1Bzs94JfaW/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Anderson
+                  </Link>
+                </Button>
+              </p>
+            </div>
+
             <div className="flex gap-6 mt-4 md:mt-0">
               <Link href="#" className="hover:opacity-100 transition-opacity">
                 Política de Privacidad
@@ -130,6 +157,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   )
 }

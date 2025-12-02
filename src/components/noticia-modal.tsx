@@ -22,33 +22,33 @@ export default function NoticiaModal() {
 
   useEffect(() => {
     const seenNoticias = JSON.parse(sessionStorage.getItem("seen-noticias") || "[]")
-    
+
     // Buscar la primera noticia no vista
     const nextUnseenIndex = NOTICIAS.findIndex((_, index) => !seenNoticias.includes(index))
-    
+
     if (nextUnseenIndex !== -1) {
       setCurrentIndex(nextUnseenIndex)
       const timer = setTimeout(() => {
         setIsOpen(true)
       }, 500)
-      
+
       return () => clearTimeout(timer)
     }
   }, [])
 
   const handleClose = () => {
     setIsOpen(false)
-    
+
     // Marcar la noticia actual como vista
     const seenNoticias = JSON.parse(sessionStorage.getItem("seen-noticias") || "[]")
     if (!seenNoticias.includes(currentIndex)) {
       seenNoticias.push(currentIndex)
       sessionStorage.setItem("seen-noticias", JSON.stringify(seenNoticias))
     }
-    
+
     // Buscar la siguiente noticia no vista
     const nextUnseenIndex = NOTICIAS.findIndex((_, index) => !seenNoticias.includes(index))
-    
+
     if (nextUnseenIndex !== -1) {
       setTimeout(() => {
         setCurrentIndex(nextUnseenIndex)
@@ -67,8 +67,8 @@ export default function NoticiaModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent 
-        className="max-w-2xl w-auto max-h-[90vh] p-0 gap-0 bg-transparent border-none shadow-none"
+      <DialogContent
+        className="w-[95vw] md:w-auto md:max-w-2xl max-h-[90vh] p-0 gap-0 bg-transparent border-none shadow-none"
         showCloseButton={false}
       >
         <DialogTitle className="sr-only">Noticia importante</DialogTitle>
@@ -86,14 +86,14 @@ export default function NoticiaModal() {
             <>
               <button
                 onClick={handlePrevious}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-40 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
+                className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 z-40 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
                 aria-label="Noticia anterior"
               >
                 <ChevronLeft className="w-6 h-6 text-gray-800" />
               </button>
               <button
                 onClick={handleNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-40 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
+                className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 z-40 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
                 aria-label="Noticia siguiente"
               >
                 <ChevronRight className="w-6 h-6 text-gray-800" />
@@ -108,11 +108,10 @@ export default function NoticiaModal() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                    index === currentIndex 
-                      ? "bg-white w-6" 
+                  className={`w-2 h-2 rounded-full transition-all duration-200 ${index === currentIndex
+                      ? "bg-white w-6"
                       : "bg-white/50 hover:bg-white/75"
-                  }`}
+                    }`}
                   aria-label={`Ir a noticia ${index + 1}`}
                 />
               ))}

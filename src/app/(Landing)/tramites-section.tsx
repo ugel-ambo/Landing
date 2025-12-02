@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { FileCheck, Users, Database, LogIn } from "lucide-react"
+import { FileCheck, Database, LogIn, FileInput } from "lucide-react"
 
 const tramites = [
   {
@@ -17,10 +17,12 @@ const tramites = [
   },
   {
     id: 2,
-    title: "AYNI",
-    description: "Sistema de gestión de recursos humanos",
-    icon: Users,
-    href: "https://servicios-ayni.minedu.gob.pe/ayni/inicio",
+    title: "PAPELETA DE SALIDA",
+    description: "Formato de papeleta de salida",
+    icon: FileInput,
+    href: "/docs/PAPELETA.doc",
+    download: true,
+    filename: "PAPELETA.doc",
   },
   {
     id: 3,
@@ -34,7 +36,7 @@ const tramites = [
     title: "Registro de Visitas",
     description: "Control y registro de visitas a la institución",
     icon: LogIn,
-    href: "http://ugelambo.regionhuanuco.gob.pe/visitas",
+    href: "https://visitas.servicios.gob.pe/consultas/",
   },
 ]
 
