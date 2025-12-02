@@ -10,10 +10,12 @@ import Menu from './(Landing)/menu';
 import VisitorCounter from '@/components/visitor-counter';
 import NoticiaModal from '@/components/noticia-modal';
 import ConvocatoriasSection from './(Landing)/convocatorias-section';
+import AnniversaryConfetti from '@/components/anniversary-confetti';
 
 export default function Home() {
   return (
     <>
+      <AnniversaryConfetti />
       <NoticiaModal />
       <Menu />
       <Hero />
@@ -22,7 +24,7 @@ export default function Home() {
       <ConvocatoriasSection />
       <TramitesSection />
       <MapsPage />
-      <VisitorCounter />
+      {/* <VisitorCounter /> */}
     </>
   );
 }
