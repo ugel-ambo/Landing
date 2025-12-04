@@ -22,6 +22,7 @@
     "@sparticuz/chromium": "^141.0.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/canvas-confetti": "^1.9.0",
+    "@types/web-push": "^3.6.4",
     "@vercel/analytics": "^1.5.0",
     "@vercel/kv": "^3.0.0",
     "ai": "^5.0.92",
@@ -47,7 +48,8 @@
     "react-markdown": "^10.1.0",
     "react-pdf": "^10.2.0",
     "remark-gfm": "^4.0.1",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "web-push": "^3.6.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
