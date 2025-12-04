@@ -38,8 +38,6 @@ export default function Menu() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between lg:justify-evenly h-16 md:h-20">
           {/* Logo y Nombre */}
-
-
           <Link href="/" className="flex items-center gap-2 md:gap-3 group">
             <div className="relative w-8 h-8 md:w-10 md:h-10  lg:w-12 lg:h-12 rounded-lg flex items-center justify-center font-bold text-white text-lg md:text-xl">
               <Image
@@ -110,6 +108,13 @@ export default function Menu() {
                           onClick={() => setOpen(false)}
                         >
                           Misión y visión
+                        </Link>
+                        <Link
+                          href="/Nosotros/Organigrama"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          Organigrama
                         </Link>
                       </div>
                     </AccordionContent>

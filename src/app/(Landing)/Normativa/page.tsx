@@ -41,18 +41,63 @@ function calculateUpdateTimes() {
     };
 }
 
+const PRIORITY_DOCUMENTS: NormaLegal[] = [
+    {
+        categoria: "Ley",
+        titulo: "Ley del Código de Ética de la Función Pública - Ley Nº 27815",
+        tituloUrl: "/docs/etica-28175.pdf",
+        fecha: "Vigente",
+        descripcion: "Ley del Código de Ética de la Función Pública",
+        imagenPortada: "/Logo1.jpg",
+        descargaIndividual: "/docs/etica-28175.pdf",
+        descargaCuadernillo: ""
+    },
+    {
+        categoria: "Reglamento",
+        titulo: "Reglamento de la Ley Nº 29944, Ley de Reforma Magisterial - DS Nº 004-2013-ED",
+        tituloUrl: "/docs/ley-004-2013-reforma.pdf",
+        fecha: "Vigente",
+        descripcion: "Reglamento de la Ley Nº 29944, Ley de Reforma Magisterial DECRETO SUPREMO Nº 004-2013-ED",
+        imagenPortada: "/Logo1.jpg",
+        descargaIndividual: "/docs/ley-004-2013-reforma.pdf",
+        descargaCuadernillo: ""
+    },
+    {
+        categoria: "Disposiciones",
+        titulo: "Disposiciones que regulan la investigación y el proceso administrativo disciplinario - PAD Docentes",
+        tituloUrl: "/docs/PAD-docentes.pdf",
+        fecha: "Vigente",
+        descripcion: "Disposiciones que regulan la investigación y el proceso administrativo disciplinario de los profesores de la carrera pública magisterial y profesores contratados, en el marco de la Ley N°29944, Ley de Reforma Magisterial",
+        imagenPortada: "/Logo1.jpg",
+        descargaIndividual: "/docs/PAD-docentes.pdf",
+        descargaCuadernillo: ""
+    },
+    {
+        categoria: "Ley",
+        titulo: "Ley de Reforma Magisterial - Ley Nº 29944",
+        tituloUrl: "/docs/reforma-29944.pdf",
+        fecha: "Vigente",
+        descripcion: "Ley de Reforma Magisterial LEY Nº 29944",
+        imagenPortada: "/Logo1.jpg",
+        descargaIndividual: "/docs/reforma-29944.pdf",
+        descargaCuadernillo: ""
+    }
+];
+
 async function getNormas(): Promise<ScrapingResponse> {
     try {
         await connectMongoDB();
 
         const normas = await Norma.find({}).sort({ createdAt: 1 }).limit(50).lean() as unknown as NormaLean[];
 
-        const data = normas.map((doc) => ({
+        const dbData = normas.map((doc) => ({
             ...doc,
             _id: doc._id.toString(),
             createdAt: doc.createdAt?.toString(),
             updatedAt: doc.updatedAt?.toString()
         }));
+
+        const data = [...PRIORITY_DOCUMENTS, ...dbData];
 
         const times = calculateUpdateTimes();
 
