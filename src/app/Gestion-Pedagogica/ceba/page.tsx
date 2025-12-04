@@ -3,6 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { HighlightText } from "@/components/ui/shadcn-io/highlight-text";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -54,16 +55,16 @@ export default function Home() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-linear-to-r from-[#049dd9] to-[#3873a6] text-white hover:from-[#038bc2] hover:to-[#2f6490] font-semibold text-base shadow-xl">
+                <Link href="/Gestion-Pedagogica/ceba/fortalecimiento"><Button size="lg" className="bg-linear-to-r from-[#049dd9] to-[#3873a6] text-white hover:from-[#038bc2] hover:to-[#2f6490] font-semibold text-base shadow-xl">
                   Fortalecimiento Pedagógico
-                </Button>
-                <Button
+                </Button></Link>
+                {/*<Button
                   size="lg"
                   variant="outline"
                   className="bg-white/90 text-[#223f59] border-2 border-[#049dd9] hover:bg-white hover:border-[#3873a6] font-semibold text-base backdrop-blur-sm shadow-lg"
                 >
                   Monitoreo Pedagógico
-                </Button>
+                </Button> */}
               </div>
             </div>
 

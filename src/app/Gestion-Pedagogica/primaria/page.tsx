@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -74,16 +75,18 @@ export default function Home() {
               </p>
 
               <div className="flex max-w-xl flex-col sm:flex-row gap-4 md:justify-start">
-                <Button size="lg" className="bg-white text-[#049DD9] hover:bg-blue-50 font-semibold text-base shadow-lg">
-                  Fortalecimiento pedagógico
-                </Button>
-                <Button
+                <Link href="/Gestion-Pedagogica/primaria/fortalecimiento">
+                  <Button size="lg" className="bg-white text-[#049DD9] hover:bg-blue-50 font-semibold text-base shadow-lg">
+                    Fortalecimiento pedagógico
+                  </Button>
+                </Link>
+                {/* <Button
                   size="lg"
                   variant="outline"
                   className="bg-white/20 text-white border-2 border-white hover:bg-white/30 font-semibold text-base backdrop-blur-sm"
                 >
                   Monitoreo pedagógico
-                </Button>
+                </Button>*/}
               </div>
 
             </div>
@@ -205,20 +208,20 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                icon: "🎯", 
-                title: "Mejora del Aprendizaje", 
-                desc: "Elevar los niveles de logro en comprensión lectora y matemática mediante estrategias innovadoras y efectivas." 
+              {
+                icon: "🎯",
+                title: "Mejora del Aprendizaje",
+                desc: "Elevar los niveles de logro en comprensión lectora y matemática mediante estrategias innovadoras y efectivas."
               },
-              { 
-                icon: "👨‍🏫", 
-                title: "Desarrollo Docente", 
-                desc: "Fortalecer las competencias pedagógicas de los docentes a través de capacitación continua y acompañamiento especializado." 
+              {
+                icon: "👨‍🏫",
+                title: "Desarrollo Docente",
+                desc: "Fortalecer las competencias pedagógicas de los docentes a través de capacitación continua y acompañamiento especializado."
               },
-              { 
-                icon: "🤝", 
-                title: "Participación Comunitaria", 
-                desc: "Involucrar a padres, madres y comunidad en el proceso educativo para crear alianzas estratégicas." 
+              {
+                icon: "🤝",
+                title: "Participación Comunitaria",
+                desc: "Involucrar a padres, madres y comunidad en el proceso educativo para crear alianzas estratégicas."
               },
             ].map((item, i) => (
               <div key={i} className="p-8 rounded-lg bg-white border-2 border-blue-200 hover:shadow-xl transition">
@@ -231,7 +234,7 @@ export default function Home() {
         </div>
       </section>
 
-      
+
     </main>
   );
 }
