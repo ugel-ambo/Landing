@@ -3,6 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { HighlightText } from "@/components/ui/shadcn-io/highlight-text";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -24,7 +25,7 @@ export default function Home() {
 
           <div className="relative z-20 h-full flex flex-col items-center 2xl:items-end 2xl:pr-40 justify-start pt-10 sm:pt-10 md:pt-10 px-4 sm:px-6 md:px-8 lg:pt-0 xl:pt-24">
 
-          {/* ✅ Badge centrado */}
+            {/* ✅ Badge centrado */}
             <div className="mb-6 inline-flex items-center gap-2 rounded-full uppercase bg-white/90 backdrop-blur-sm px-4 py-2 text-sm font-bold text-[#0b1f27] shadow-lg 2xl:self-center">
               <span className="text-xl ">📚</span>
               Educación Secundaria
@@ -53,16 +54,16 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-white text-[#049DD9] hover:bg-[#049DD9]/5 font-semibold text-base shadow-lg">
+                <Link href="/Gestion-Pedagogica/secundaria/fortalecimiento"><Button size="lg" className="bg-white text-[#049DD9] hover:bg-[#049DD9]/5 font-semibold text-base shadow-lg">
                   Fortalecimiento Pedagógico
-                </Button>
-                <Button
+                </Button></Link>
+                {/*<Button
                   size="lg"
                   variant="outline"
                   className="bg-[#049DD9] text-white border-2 border-white hover:bg-[#049DD9]/80 font-semibold text-base "
                 >
                   Monitoreo Pedagógico
-                </Button>
+                </Button> */}
               </div>
             </div>
 
@@ -110,15 +111,15 @@ export default function Home() {
                 Educación Secundaria Integral
               </h2>
               <p className="text-lg text-gray-700 mb-4">
-                La Educación Secundaria es una etapa crucial en la formación de adolescentes y jóvenes. En la UGEL Ambo, 
+                La Educación Secundaria es una etapa crucial en la formación de adolescentes y jóvenes. En la UGEL Ambo,
                 nos enfocamos en brindar una educación integral que prepare a los estudiantes para la educación superior y la vida adulta.
               </p>
               <p className="text-lg text-gray-700 mb-4">
-                Nuestro trabajo se centra en el desarrollo de competencias, habilidades investigativas, pensamiento crítico 
+                Nuestro trabajo se centra en el desarrollo de competencias, habilidades investigativas, pensamiento crítico
                 y valores que permitan a los estudiantes enfrentar los desafíos del mundo actual con éxito.
               </p>
               <p className="text-lg text-gray-700">
-                Contamos con especialistas en diferentes áreas curriculares que brindan acompañamiento y asesoramiento 
+                Contamos con especialistas en diferentes áreas curriculares que brindan acompañamiento y asesoramiento
                 especializado a los docentes para mejorar la calidad educativa.
               </p>
             </div>
@@ -177,20 +178,20 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                icon: "🎯", 
-                title: "Excelencia Académica", 
-                desc: "Mejorar los niveles de logro en todas las áreas curriculares mediante metodologías innovadoras y efectivas." 
+              {
+                icon: "🎯",
+                title: "Excelencia Académica",
+                desc: "Mejorar los niveles de logro en todas las áreas curriculares mediante metodologías innovadoras y efectivas."
               },
-              { 
-                icon: "🚀", 
-                title: "Preparación para el Futuro", 
-                desc: "Desarrollar competencias que preparen a los estudiantes para la educación superior y el mundo laboral." 
+              {
+                icon: "🚀",
+                title: "Preparación para el Futuro",
+                desc: "Desarrollar competencias que preparen a los estudiantes para la educación superior y el mundo laboral."
               },
-              { 
-                icon: "💡", 
-                title: "Innovación Pedagógica", 
-                desc: "Promover el uso de tecnologías educativas y metodologías activas que enriquezcan el aprendizaje." 
+              {
+                icon: "💡",
+                title: "Innovación Pedagógica",
+                desc: "Promover el uso de tecnologías educativas y metodologías activas que enriquezcan el aprendizaje."
               },
             ].map((item, i) => (
               <div key={i} className="p-8 rounded-lg bg-white border-2 border-blue-200 hover:shadow-xl transition">

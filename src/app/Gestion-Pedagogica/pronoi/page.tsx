@@ -3,6 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ColourfulText } from "@/components/ui/shadcn-io/colourful-text";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -61,16 +62,16 @@ export default function Home() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-white text-[#049DD9] hover:bg-blue-50 font-semibold text-base shadow-lg">
+                <Link href="/Gestion-Pedagogica/pronoi/fortalecimiento"><Button size="lg" className="bg-white text-[#049DD9] hover:bg-blue-50 font-semibold text-base shadow-lg">
                   Fortalecimiento Pedagógico
-                </Button>
-                <Button
+                </Button></Link>
+                {/*<Button
                   size="lg"
                   variant="outline"
                   className="bg-white/20 text-white border-2 border-white hover:bg-white/30 font-semibold text-base backdrop-blur-sm"
                 >
                   Monitoreo Pedagógico
-                </Button>
+                </Button> */}
               </div>
             </div>
 
