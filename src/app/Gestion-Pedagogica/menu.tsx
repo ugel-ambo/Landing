@@ -93,13 +93,6 @@ export default function Menu() {
                           Especialistas
                         </Link>
                         <Link
-                          href="/Gestion-Pedagogica/inicial/monitoreo"
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          Monitoreo
-                        </Link>
-                        <Link
                           href="/Gestion-Pedagogica/inicial/fortalecimiento"
                           className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
@@ -123,13 +116,6 @@ export default function Menu() {
                           onClick={() => setOpen(false)}
                         >
                           Especialistas
-                        </Link>
-                        <Link
-                          href="/Gestion-Pedagogica/primaria/monitoreo"
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          Monitoreo
                         </Link>
                         <Link
                           href="/Gestion-Pedagogica/primaria/fortalecimiento"
@@ -157,13 +143,6 @@ export default function Menu() {
                           Especialistas
                         </Link>
                         <Link
-                          href="/Gestion-Pedagogica/secundaria/monitoreo"
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          Monitoreo
-                        </Link>
-                        <Link
                           href="/Gestion-Pedagogica/secundaria/fortalecimiento"
                           className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
@@ -188,13 +167,7 @@ export default function Menu() {
                         >
                           Especialistas
                         </Link>
-                        <Link
-                          href="/Gestion-Pedagogica/pronoi/monitoreo"
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          Monitoreo
-                        </Link>
+
                         <Link
                           href="/Gestion-Pedagogica/pronoi/fortalecimiento"
                           className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
@@ -218,13 +191,6 @@ export default function Menu() {
                           onClick={() => setOpen(false)}
                         >
                           Especialistas
-                        </Link>
-                        <Link
-                          href="/Gestion-Pedagogica/ceba/monitoreo"
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          Monitoreo
                         </Link>
                         <Link
                           href="/Gestion-Pedagogica/ceba/fortalecimiento"

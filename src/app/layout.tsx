@@ -7,6 +7,7 @@ import Superhero from "./(Landing)/superhero";
 import ChatPage from "./(Landing)/chat";
 import Footer from "./(Landing)/footer";
 import Mascota from "./(Landing)/mascota";
+import { PWAInstallToast } from "@/components/pwa-install-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
         {children}
         <Analytics />
         <Footer />
+        <PWAInstallToast />
       </body>
     </html>
   );
