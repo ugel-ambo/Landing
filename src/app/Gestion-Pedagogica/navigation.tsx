@@ -35,21 +35,13 @@ export function NavigationMenuDemo() {
         <NavigationMenuItem className="hidden md:block">
           <Link href="/Gestion-Pedagogica/inicial"><NavigationMenuTrigger>Inicial</NavigationMenuTrigger></Link>
           <NavigationMenuContent>
-          <ul className="grid w-[150px] gap-4">
+            <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/inicial/especialistas">
                     <div className="flex hover:text-white items-center">
                       <Users className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Especialistas</div>
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="/Gestion-Pedagogica/inicial/monitoreo">
-                    <div className="flex hover:text-white items-center">
-                      <ListChecks className="mr-2 hover:text-white " strokeWidth={2} />
-                      <div className="font-medium">Monitoreo</div>
                     </div>
                   </Link>
                 </NavigationMenuLink>
@@ -66,7 +58,7 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:block">
-        <Link href="/Gestion-Pedagogica/primaria"><NavigationMenuTrigger>Primaria</NavigationMenuTrigger></Link>
+          <Link href="/Gestion-Pedagogica/primaria"><NavigationMenuTrigger>Primaria</NavigationMenuTrigger></Link>
           <NavigationMenuContent>
             <ul className="grid w-[150px] gap-4">
               <li>
@@ -75,14 +67,6 @@ export function NavigationMenuDemo() {
                     <div className="flex hover:text-white items-center">
                       <Users className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Especialistas</div>
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="/Gestion-Pedagogica/primaria/monitoreo">
-                    <div className="flex hover:text-white items-center">
-                      <ListChecks className="mr-2 hover:text-white " strokeWidth={2} />
-                      <div className="font-medium">Monitoreo</div>
                     </div>
                   </Link>
                 </NavigationMenuLink>
@@ -112,14 +96,6 @@ export function NavigationMenuDemo() {
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
-                  <Link href="/Gestion-Pedagogica/secundaria/monitoreo">
-                    <div className="flex hover:text-white items-center">
-                      <ListChecks className="mr-2 hover:text-white " strokeWidth={2} />
-                      <div className="font-medium">Monitoreo</div>
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/secundaria/fortalecimiento">
                     <div className="flex hover:text-white items-center">
                       <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
@@ -131,25 +107,17 @@ export function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        
+
         <NavigationMenuItem className="hidden md:block">
-        <Link href="/Gestion-Pedagogica/pronoi"><NavigationMenuTrigger>PRONOI</NavigationMenuTrigger></Link>
+          <Link href="/Gestion-Pedagogica/pronoi"><NavigationMenuTrigger>PRONOI</NavigationMenuTrigger></Link>
           <NavigationMenuContent>
-          <ul className="grid w-[150px] gap-4">
+            <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/pronoi/especialistas">
                     <div className="flex hover:text-white items-center">
                       <Users className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Especialistas</div>
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="/Gestion-Pedagogica/pronoi/monitoreo">
-                    <div className="flex hover:text-white items-center">
-                      <ListChecks className="mr-2 hover:text-white " strokeWidth={2} />
-                      <div className="font-medium">Monitoreo</div>
                     </div>
                   </Link>
                 </NavigationMenuLink>
@@ -167,23 +135,15 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem className="hidden md:block">
-        <Link href="/Gestion-Pedagogica/ceba"><NavigationMenuTrigger>CEBA</NavigationMenuTrigger></Link>
+          <Link href="/Gestion-Pedagogica/ceba"><NavigationMenuTrigger>CEBA</NavigationMenuTrigger></Link>
           <NavigationMenuContent>
-          <ul className="grid w-[150px] gap-4">
+            <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/ceba/especialistas">
                     <div className="flex hover:text-white items-center">
                       <Users className="mr-2 hover:text-white " strokeWidth={2} />
                       <div className="font-medium">Especialistas</div>
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="/Gestion-Pedagogica/ceba/monitoreo">
-                    <div className="flex hover:text-white items-center">
-                      <ListChecks className="mr-2 hover:text-white " strokeWidth={2} />
-                      <div className="font-medium">Monitoreo</div>
                     </div>
                   </Link>
                 </NavigationMenuLink>
