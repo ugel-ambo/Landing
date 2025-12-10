@@ -1,6 +1,9 @@
 import { getFortalecimientos } from "@/app/Gestion-Pedagogica/actions";
 import FortalecimientoView from "@/components/FortalecimientoView";
 
+// Forzar que la página siempre obtenga datos frescos de la BD
+export const dynamic = 'force-dynamic';
+
 export default async function FortalecimientoInicialPage() {
     const data = await getFortalecimientos("inicial");
 
