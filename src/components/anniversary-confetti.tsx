@@ -75,7 +75,7 @@ export default function AnniversaryConfetti() {
             <div className="absolute inset-0 bg-black/80 -z-10" />
 
             <h2 className="text-xl md:text-3xl font-medium text-white drop-shadow-md tracking-[0.2em] uppercase">
-                Semana de Aniversario
+                Mes de Aniversario
             </h2>
             <h1 className="text-4xl md:text-7xl font-extrabold text-primary drop-shadow-2xl tracking-tight uppercase">
                 Cumplimos 12 Años
