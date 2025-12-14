@@ -8,6 +8,10 @@ import Menu from "../(Landing)/menu";
 import connectMongoDB from "@/lib/mongodbConnection";
 import NoticiaIntegridad, { INoticiaIntegridad } from "@/models/NoticiaIntegridad";
 
+// Deshabilitar cache para que siempre obtenga datos frescos
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 async function getNoticias(): Promise<INoticiaIntegridad[]> {
     try {
         await connectMongoDB();
