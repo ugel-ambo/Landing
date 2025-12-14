@@ -1,4 +1,4 @@
-import { Shield, Scale, BookOpen, Users, Target, Heart, CheckCircle2, FileText, Phone } from "lucide-react";
+import { Shield, Scale, BookOpen, Users, Target, Heart, CheckCircle2, FileText, Phone, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -8,22 +8,26 @@ const valores = [
     {
         icon: Scale,
         title: "Justicia",
-        description: "Actuamos con equidad e imparcialidad en todas nuestras decisiones y procesos"
+        description: "Actuamos con equidad e imparcialidad en todas nuestras decisiones y procesos",
+        gradient: "from-blue-500 to-cyan-400"
     },
     {
         icon: Heart,
         title: "Honestidad",
-        description: "Garantizamos la veracidad y transparencia en toda nuestra gestión"
+        description: "Garantizamos la veracidad y transparencia en toda nuestra gestión",
+        gradient: "from-rose-500 to-pink-400"
     },
     {
         icon: Target,
         title: "Responsabilidad",
-        description: "Cumplimos con nuestros compromisos y rendimos cuentas de nuestras acciones"
+        description: "Cumplimos con nuestros compromisos y rendimos cuentas de nuestras acciones",
+        gradient: "from-amber-500 to-orange-400"
     },
     {
         icon: Users,
         title: "Respeto",
-        description: "Valoramos la dignidad de todas las personas y promovemos la inclusión"
+        description: "Valoramos la dignidad de todas las personas y promovemos la inclusión",
+        gradient: "from-emerald-500 to-teal-400"
     }
 ];
 
@@ -57,138 +61,135 @@ const normativas = [
 
 export default function QuienesSomosIntegridad() {
     return (
-        <main className="min-h-screen bg-background">
+        <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white overflow-hidden">
             <Menu />
 
-            {/* Header */}
-            <section className="bg-gradient-to-br from-[#049DD9] to-[#223F59] py-16 md:py-24">
-                <div className="container mx-auto px-4 text-center text-white">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-6">
-                        <Shield className="w-5 h-5" />
-                        <span className="text-sm font-medium">Área de Integridad</span>
+            {/* Header con formas orgánicas */}
+            <section className="relative bg-gradient-to-br from-[#049DD9] via-[#0380B3] to-[#223F59] py-20 md:py-28 overflow-hidden">
+                {/* Círculos decorativos */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-400/10 rounded-full translate-y-1/2 -translate-x-1/3 blur-2xl" />
+                <div className="absolute top-1/2 left-1/4 w-4 h-4 bg-white/30 rounded-full animate-pulse" />
+                <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-cyan-300/40 rounded-full animate-pulse delay-300" />
+                
+                <div className="container mx-auto px-4 text-center text-white relative z-10">
+                    <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 mb-8 shadow-lg shadow-black/10">
+                        <Shield className="w-5 h-5 text-cyan-200" />
+                        <span className="text-sm font-medium tracking-wide">Área de Integridad</span>
+                        <Sparkles className="w-4 h-4 text-yellow-300" />
                     </div>
-                    <h1 className="text-3xl md:text-5xl font-bold mb-4">
-                        ¿Quiénes Somos?
+                    <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+                        ¿Quiénes <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-white">Somos</span>?
                     </h1>
-                    <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+                    <p className="text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed">
                         Conoce más sobre nuestra misión, valores y el trabajo que realizamos
                         para promover la integridad en la gestión educativa
                     </p>
                 </div>
+                
+                {/* Ola decorativa */}
+                <div className="absolute bottom-0 left-0 right-0">
+                    <svg viewBox="0 0 1440 120" className="w-full h-auto">
+                        <path fill="rgb(248 250 252)" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z" />
+                    </svg>
+                </div>
             </section>
 
-            {/* Misión y Visión */}
-            <section className="py-16 bg-white">
+            {/* Descripción del Área */}
+            <section className="py-16 relative">
                 <div className="container mx-auto px-4">
-                    <div className="grid lg:grid-cols-2 gap-8">
-                        <Card className="border-2 border-l-4 border-l-[#049DD9] hover:shadow-lg transition-shadow">
-                            <CardContent className="p-6 md:p-8">
-                                <div className="flex items-start gap-4 mb-4">
-                                    <div className="p-3 bg-[#049DD9]/10 rounded-lg">
-                                        <Target className="w-6 h-6 text-[#049DD9]" />
-                                    </div>
-                                    <div>
-                                        <h2 className="text-2xl font-bold text-[#223F59] mb-2">
-                                            Nuestra Misión
-                                        </h2>
-                                        <div className="h-1 w-16 bg-[#049DD9] rounded-full" />
-                                    </div>
-                                </div>
-                                <p className="text-muted-foreground leading-relaxed">
-                                    Promover y fortalecer la cultura de integridad, transparencia y lucha contra
-                                    la corrupción en la UGEL Ambo, garantizando una gestión educativa ética y
-                                    eficiente al servicio de la comunidad educativa de la provincia.
-                                </p>
-                            </CardContent>
-                        </Card>
-
-                        <Card className="border-2 border-l-4 border-l-[#049DD9] hover:shadow-lg transition-shadow">
-                            <CardContent className="p-6 md:p-8">
-                                <div className="flex items-start gap-4 mb-4">
-                                    <div className="p-3 bg-[#049DD9]/10 rounded-lg">
-                                        <BookOpen className="w-6 h-6 text-[#049DD9]" />
-                                    </div>
-                                    <div>
-                                        <h2 className="text-2xl font-bold text-[#223F59] mb-2">
-                                            Nuestra Visión
-                                        </h2>
-                                        <div className="h-1 w-16 bg-[#049DD9] rounded-full" />
-                                    </div>
-                                </div>
-                                <p className="text-muted-foreground leading-relaxed">
-                                    Ser reconocidos como una institución modelo en integridad pública, donde
-                                    la ética, la transparencia y el compromiso con la ciudadanía sean los
-                                    pilares fundamentales de nuestra gestión educativa.
-                                </p>
-                            </CardContent>
-                        </Card>
+                    <div className="max-w-4xl mx-auto text-center">
+                        <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
+                            El <span className="font-semibold text-[#049DD9]">Área de Integridad</span> de la UGEL Ambo 
+                            es la unidad responsable de promover y fortalecer la cultura de integridad, 
+                            transparencia y lucha contra la corrupción en nuestra institución. Trabajamos 
+                            para garantizar una gestión educativa ética y eficiente, implementando políticas 
+                            de prevención, gestionando canales de denuncia y capacitando al personal en 
+                            temas de ética pública, todo ello al servicio de la comunidad educativa de la provincia.
+                        </p>
                     </div>
                 </div>
             </section>
 
-            {/* Valores */}
-            <section className="py-16 bg-gradient-to-b from-muted/30 to-white">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#223F59] mb-4">
+            {/* Valores - Diseño con cards de igual tamaño */}
+            <section className="py-20 relative">
+                {/* Fondo decorativo */}
+                <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-cyan-50/30 to-slate-50" />
+                <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-200/20 rounded-full blur-3xl" />
+                <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl" />
+                
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="text-center mb-16">
+                        <span className="inline-block px-4 py-1.5 bg-[#049DD9]/10 text-[#049DD9] text-sm font-semibold rounded-full mb-4">
+                            Lo que nos define
+                        </span>
+                        <h2 className="text-3xl md:text-5xl font-bold text-[#223F59] mb-4">
                             Nuestros Valores
                         </h2>
-                        <div className="h-1 w-24 bg-[#049DD9] mx-auto rounded-full" />
+                        <div className="h-1.5 w-24 bg-gradient-to-r from-[#049DD9] to-cyan-400 mx-auto rounded-full" />
                     </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                         {valores.map((valor, index) => {
                             const Icon = valor.icon;
                             return (
-                                <Card
+                                <div
                                     key={index}
-                                    className="border-2 hover:border-[#049DD9]/50 hover:shadow-lg transition-all duration-300 group"
+                                    className="group relative h-full"
+                                    style={{ animationDelay: `${index * 100}ms` }}
                                 >
-                                    <CardContent className="p-6 text-center">
-                                        <div className="inline-flex p-4 bg-gradient-to-br from-[#049DD9]/10 to-[#049DD9]/5 rounded-2xl mb-4 group-hover:scale-110 transition-transform">
-                                            <Icon className="w-8 h-8 text-[#049DD9]" />
+                                    <div className={`absolute inset-0 bg-gradient-to-br ${valor.gradient} rounded-3xl opacity-0 group-hover:opacity-10 blur-xl transition-all duration-500`} />
+                                    <div className="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                                        <div className={`inline-flex p-4 bg-gradient-to-br ${valor.gradient} rounded-2xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 self-start`}>
+                                            <Icon className="w-8 h-8 text-white" />
                                         </div>
-                                        <h3 className="text-lg font-semibold text-[#223F59] mb-2">
+                                        <h3 className="text-xl font-bold text-[#223F59] mb-3">
                                             {valor.title}
                                         </h3>
-                                        <p className="text-sm text-muted-foreground">
+                                        <p className="text-slate-500 leading-relaxed flex-grow">
                                             {valor.description}
                                         </p>
-                                    </CardContent>
-                                </Card>
+                                    </div>
+                                </div>
                             );
                         })}
                     </div>
                 </div>
             </section>
 
-            {/* Funciones */}
-            <section className="py-16 bg-white">
+            {/* Funciones - Diseño tipo bento grid */}
+            <section className="py-20 relative overflow-hidden">
                 <div className="container mx-auto px-4">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#223F59] mb-4">
+                    <div className="text-center mb-16">
+                        <span className="inline-block px-4 py-1.5 bg-emerald-500/10 text-emerald-600 text-sm font-semibold rounded-full mb-4">
+                            Nuestro rol
+                        </span>
+                        <h2 className="text-3xl md:text-5xl font-bold text-[#223F59] mb-4">
                             Nuestras Funciones
                         </h2>
-                        <div className="h-1 w-24 bg-[#049DD9] mx-auto rounded-full" />
+                        <div className="h-1.5 w-24 bg-gradient-to-r from-emerald-500 to-teal-400 mx-auto rounded-full" />
                     </div>
 
-                    <Card className="max-w-4xl mx-auto border-2 bg-gradient-to-br from-[#049DD9]/5 to-transparent">
-                        <CardContent className="p-6 md:p-8">
-                            <div className="grid md:grid-cols-2 gap-4">
-                                {funciones.map((funcion, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-start gap-3 p-3 bg-white rounded-lg hover:shadow-md transition-shadow"
-                                    >
-                                        <CheckCircle2 className="w-5 h-5 text-[#049DD9] mt-0.5 shrink-0" />
-                                        <span className="text-sm text-[#223F59] font-medium">
+                    <div className="max-w-5xl mx-auto">
+                        <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
+                            {funciones.map((funcion, index) => (
+                                <div
+                                    key={index}
+                                    className="group relative bg-white p-6 rounded-2xl border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                                >
+                                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#049DD9] to-cyan-400 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    <div className="flex items-start gap-4">
+                                        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#049DD9]/10 to-cyan-400/10 rounded-xl flex items-center justify-center group-hover:from-[#049DD9] group-hover:to-cyan-400 transition-all duration-300">
+                                            <CheckCircle2 className="w-5 h-5 text-[#049DD9] group-hover:text-white transition-colors" />
+                                        </div>
+                                        <span className="text-slate-700 font-medium leading-relaxed pt-1.5">
                                             {funcion}
                                         </span>
                                     </div>
-                                ))}
-                            </div>
-                        </CardContent>
-                    </Card>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -240,17 +241,20 @@ export default function QuienesSomosIntegridad() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button
+                            asChild
                             size="lg"
                             className="bg-white text-[#049DD9] hover:bg-white/90 font-bold rounded-full"
                         >
-                            <Phone className="mr-2 w-5 h-5" />
-                            Canal de Denuncias
+                            <Link href="https://denuncias.servicios.gob.pe/?gobpe_id=4412" target="_blank">
+                                <Phone className="mr-2 w-5 h-5" />
+                                Canal de Denuncias
+                            </Link>
                         </Button>
                         <Button
                             asChild
                             size="lg"
                             variant="outline"
-                            className="border-2 border-white text-white hover:bg-white/20 font-semibold rounded-full"
+                            className="border-2 border-white text-[#049DD9] hover:bg-white/20 font-semibold rounded-full"
                         >
                             <Link href="/integridad">
                                 Volver a Integridad
