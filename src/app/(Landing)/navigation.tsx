@@ -142,6 +142,11 @@ export function NavigationMenuDemo() {
             <Link href="/convocatoria">Convocatorias</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link href="/integridad">Integridad</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
 
       </NavigationMenuList>
     </NavigationMenu>
