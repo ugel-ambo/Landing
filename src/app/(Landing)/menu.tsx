@@ -240,6 +240,17 @@ export default function Menu() {
                       Convocatorias
                     </AccordionTrigger>
                   </AccordionItem>
+                  <AccordionItem value="Integridad" className="border-none">
+                    <AccordionTrigger
+                      className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white [&>svg]:hidden"
+                      onClick={() => {
+                        window.location.href = "/integridad"
+                        setOpen(false)
+                      }}
+                    >
+                      Integridad
+                    </AccordionTrigger>
+                  </AccordionItem>
 
                 </Accordion>
               </nav>

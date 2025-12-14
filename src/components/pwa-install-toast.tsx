@@ -41,7 +41,7 @@ export function PWAInstallToast() {
                     {isIOS ? (
                         <div className="text-xs bg-muted p-2 rounded space-y-1">
                             <p className="flex items-center gap-1">1. Toca el botón compartir <Share className="h-3 w-3" /></p>
-                            <p>2. Selecciona *Agregar a inicio* ➕</p>
+                            <p>2. Selecciona *Agregar a inicio* <span>➕</span></p>
                         </div>
                     ) : (
                         <Button size="sm" onClick={promptInstall} className="w-full">
