@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Menu from "@/app/(Landing)/menu";
 import connectMongoDB from "@/lib/mongodbConnection";
-import NoticiaIntegridad from "@/models/NoticiaIntegridad";
+import NoticiaIntegridad, { getImageUrl } from "@/models/NoticiaIntegridad";
+import mongoose from "mongoose";
 
 interface PageProps {
     params: Promise<{ id: string }>;
@@ -15,11 +16,37 @@ interface PageProps {
 async function getNoticia(id: string) {
     try {
         await connectMongoDB();
-        const noticia = await NoticiaIntegridad.findById(id).lean();
+        
+        // Usar aggregate para hacer lookup del campo imagen desde la colección media
+        const noticias = await NoticiaIntegridad.aggregate([
+            {
+                $match: {
+                    _id: new mongoose.Types.ObjectId(id)
+                }
+            },
+            {
+                $lookup: {
+                    from: 'media',
+                    localField: 'imagen',
+                    foreignField: '_id',
+                    as: 'imagenData'
+                }
+            },
+            {
+                $addFields: {
+                    imagen: { $arrayElemAt: ['$imagenData', 0] }
+                }
+            },
+            {
+                $project: {
+                    imagenData: 0
+                }
+            }
+        ]);
 
-        if (!noticia) return null;
+        if (!noticias || noticias.length === 0) return null;
 
-        return JSON.parse(JSON.stringify(noticia));
+        return JSON.parse(JSON.stringify(noticias[0]));
     } catch (error) {
         console.error("Error fetching noticia:", error);
         return null;
@@ -91,7 +118,7 @@ export default async function NoticiaDetailPage({ params }: PageProps) {
                         {noticia.imagen && (
                             <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-xl overflow-hidden shadow-lg">
                                 <Image
-                                    src={noticia.imagen}
+                                    src={getImageUrl(noticia.imagen)}
                                     alt={noticia.titulo}
                                     fill
                                     className="object-cover"
