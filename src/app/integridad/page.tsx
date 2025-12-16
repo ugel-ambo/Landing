@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Shield, ArrowRight, Users, BookOpen, Scale, Calendar } from "lucide-react";
 import Menu from "../(Landing)/menu";
 import connectMongoDB from "@/lib/mongodbConnection";
-import NoticiaIntegridad, { INoticiaIntegridad } from "@/models/NoticiaIntegridad";
+import NoticiaIntegridad, { INoticiaIntegridad, getImageUrl } from "@/models/NoticiaIntegridad";
 
 // Deshabilitar cache para que siempre obtenga datos frescos
 export const dynamic = 'force-dynamic';
@@ -15,13 +15,36 @@ export const revalidate = 0;
 async function getNoticias(): Promise<INoticiaIntegridad[]> {
     try {
         await connectMongoDB();
-        const noticias = await NoticiaIntegridad.find({
-            area: 'integridad',
-            activo: true
-        })
-            .sort({ fecha: -1 })
-            .limit(6)
-            .lean();
+        
+        // Usar aggregate para hacer lookup del campo imagen desde la colección media
+        const noticias = await NoticiaIntegridad.aggregate([
+            {
+                $match: {
+                    area: 'integridad',
+                    activo: true
+                }
+            },
+            {
+                $lookup: {
+                    from: 'media', // Nombre de la colección en MongoDB
+                    localField: 'imagen',
+                    foreignField: '_id',
+                    as: 'imagenData'
+                }
+            },
+            {
+                $addFields: {
+                    imagen: { $arrayElemAt: ['$imagenData', 0] }
+                }
+            },
+            {
+                $project: {
+                    imagenData: 0 
+                }
+            },
+            { $sort: { fecha: -1 } },
+            { $limit: 6 }
+        ]);
 
         return JSON.parse(JSON.stringify(noticias));
     } catch (error) {
@@ -170,7 +193,7 @@ export default async function IntegridadPage() {
                                     <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group cursor-pointer">
                                         <div className="relative h-48 w-full overflow-hidden">
                                             <Image
-                                                src={noticia.imagen || '/Logo1.jpg'}
+                                                src={getImageUrl(noticia.imagen)}
                                                 alt={noticia.titulo}
                                                 fill
                                                 className="object-cover group-hover:scale-105 transition-transform duration-300"

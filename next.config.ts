@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: 'diariooficial.elperuano.pe',
         pathname: '/NormasElperuano/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
     ],
   },
   async headers() {

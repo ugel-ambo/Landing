@@ -1,13 +1,49 @@
-"use client"
-
 import Hero from "./hero"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { PersonalSection } from "./personal"
-import { gestionPedagogicaData } from "./components/data"
+import connectMongoDB from "@/lib/mongodbConnection"
+import { PersonalModel } from "@/models/Personal"
 
-export default function GP() {
+// Datos de fallback para personal de AGP
+const fallbackEmployees = [
+  { id: "1", name: "Jaly H. Mallqui Durand", position: "Jefe del Área de Gestión Pedagógica", image: "/Directorio/agp/Jaly-H.png" },
+  { id: "2", name: "Nelida del Pilar Albornoz Julca", position: "Secretaria I - AGP", image: "/Directorio/agp/Nelida-del-Pilar.jpg" },
+  { id: "3", name: "Maglorio Ortiz Rojas", position: "Especialista Ed. Inicial", image: "/Directorio/agp/Maglorio-Ortiz.jpeg" },
+  { id: "4", name: "Lyz Sara Matos Cristobal", position: "Especialista Ed. Inicial", image: "/Directorio/agp/Lyz-Sara.png" },
+  { id: "5", name: "Maria Elena Meza Fernandez", position: "Especialista Ed. Inicial", image: "/Directorio/agp/Maria-Elena.png" },
+  { id: "6", name: "Amilda Lopez Espiritu", position: "Especialista Ed. Inicial", image: "/Directorio/agp/Almida-Lopez.png" },
+  { id: "7", name: "Esther Delia Diaz Acuña", position: "Especialista Ed. Primaria", image: "/Directorio/agp/Esther-Delia.jpg" },
+  { id: "8", name: "Marcos Antonio Arqueño Garay", position: "Especialista Ed. Primaria", image: "/Directorio/agp/Marcos-Antonio-Arqueño.png" },
+  { id: "9", name: "Noel Grover Alvarez Aldava", position: "Especialista Ed. Primaria", image: "/Directorio/agp/Noel-Grover.png" },
+  { id: "10", name: "Marco Antonio Paredes Munguia", position: "Especialista Ed. Primaria", image: "/Directorio/agp/Marco-Antonio-Paredes.png" },
+  { id: "11", name: "Carmen Paulina Gomez Godoy", position: "Especialista Ed. Primaria", image: "/Directorio/agp/Carmen-Paulina.png" },
+  { id: "12", name: "Walter Máximo Rivera Tadeo", position: "Especialista Ed. Primaria EIB", image: "/Directorio/agp/Walter-Maximo.png" },
+  { id: "13", name: "Julio Cesar Vicencio Romero", position: "Especialista Ed. Secundaria CTA", image: "/Directorio/agp/Julio-Cesar.png" },
+  { id: "14", name: "Ramon Giovanni Figueredo Oneeglio", position: "Especialista Ed. Secundaria Matemática", image: "/Directorio/agp/Ramon-Giovanni.png" },
+  { id: "15", name: "Victor Raul Albornoz Flores", position: "Especialista Ed. Secundaria Comunicación", image: "/Directorio/agp/Victor-Raul.png" },
+  { id: "16", name: "Beatriz Jaramillo Coz", position: "Coordinadora de Religión", image: "/Directorio/agp/Beatriz-Jaramillo.png" },
+  { id: "17", name: "Paolo Roberto Zevallos Leon", position: "Especialista en Convivencia Escolar", image: "/Directorio/agp/Paolo-Roberto.png" },
+  { id: "18", name: "Yasmin Beatriz Salvador Saldivar", position: "Profesional II Convivencia Escolar", image: "/Directorio/agp/Yasmin-Beatriz.png" },
+  { id: "19", name: "Meliza Mercedes Verde Zevallos", position: "Profesional III Convivencia Escolar", image: "/Directorio/agp/Meliza-Mercedes.png" },
+]
+
+async function getEmployeesFromDB() {
+  try {
+    await connectMongoDB()
+    const personal = await PersonalModel.find({ area: 'agp' }).populate('foto').sort({ orden: 1 }).lean()
+    if (!personal || personal.length === 0) return null
+    return personal.map((p: any) => ({ id: p._id.toString(), name: p.nombre, position: p.cargo, image: p.foto?.url }))
+  } catch (error) {
+    console.error('Error fetching employees:', error)
+    return null
+  }
+}
+
+export default async function GP() {
+  const employees = await getEmployeesFromDB() || fallbackEmployees
+
   return (
     <main className="min-h-screen">
       <Hero />
@@ -151,7 +187,7 @@ export default function GP() {
       </section>
 
       {/* Personal Section */}
-      <PersonalSection employees={gestionPedagogicaData.employees} />
+      <PersonalSection employees={employees} />
 
       {/* Servicios Section */}
       <section className="py-20 px-6 sm:px-8 bg-linear-to-b from-white to-blue-50">
