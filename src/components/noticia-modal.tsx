@@ -5,35 +5,37 @@ import Image from "next/image"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
-const NOTICIAS = [
-  {
-    src: "/modal/noticia.jpg",
-    alt: "Noticia importante 1"
-  },
-  {
-    src: "/modal/noticia2.jpg",
-    alt: "Noticia importante 2"
-  }
-]
+import { getNoticiasModal } from "@/app/actions/noticia-actions"
+
+// Deshabilitar cache para obtener datos frescos
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default function NoticiaModal() {
   const [isOpen, setIsOpen] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [noticias, setNoticias] = useState<any[]>([])
 
   useEffect(() => {
-    const seenNoticias = JSON.parse(sessionStorage.getItem("seen-noticias") || "[]")
+    async function loadNoticias() {
+      const data = await getNoticiasModal()
+      if (data && data.length > 0) {
+        setNoticias(data)
+        
+        const seenNoticias = JSON.parse(sessionStorage.getItem("seen-noticias") || "[]")
+        // Buscar la primera noticia no vista (usando el src como ID único para mayor fiabilidad si el index cambia)
+        const nextUnseenIndex = data.findIndex((noticia: any) => !seenNoticias.includes(noticia.src))
 
-    // Buscar la primera noticia no vista
-    const nextUnseenIndex = NOTICIAS.findIndex((_, index) => !seenNoticias.includes(index))
-
-    if (nextUnseenIndex !== -1) {
-      setCurrentIndex(nextUnseenIndex)
-      const timer = setTimeout(() => {
-        setIsOpen(true)
-      }, 500)
-
-      return () => clearTimeout(timer)
+        if (nextUnseenIndex !== -1) {
+          setCurrentIndex(nextUnseenIndex)
+          const timer = setTimeout(() => {
+            setIsOpen(true)
+          }, 500)
+          return () => clearTimeout(timer)
+        }
+      }
     }
+    loadNoticias()
   }, [])
 
   const handleClose = () => {
@@ -41,13 +43,15 @@ export default function NoticiaModal() {
 
     // Marcar la noticia actual como vista
     const seenNoticias = JSON.parse(sessionStorage.getItem("seen-noticias") || "[]")
-    if (!seenNoticias.includes(currentIndex)) {
-      seenNoticias.push(currentIndex)
+    const currentNoticia = noticias[currentIndex]
+    
+    if (currentNoticia && !seenNoticias.includes(currentNoticia.src)) {
+      seenNoticias.push(currentNoticia.src)
       sessionStorage.setItem("seen-noticias", JSON.stringify(seenNoticias))
     }
 
     // Buscar la siguiente noticia no vista
-    const nextUnseenIndex = NOTICIAS.findIndex((_, index) => !seenNoticias.includes(index))
+    const nextUnseenIndex = noticias.findIndex((noticia: any) => !seenNoticias.includes(noticia.src))
 
     if (nextUnseenIndex !== -1) {
       setTimeout(() => {
@@ -58,11 +62,11 @@ export default function NoticiaModal() {
   }
 
   const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? NOTICIAS.length - 1 : prev - 1))
+    setCurrentIndex((prev) => (prev === 0 ? noticias.length - 1 : prev - 1))
   }
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === NOTICIAS.length - 1 ? 0 : prev + 1))
+    setCurrentIndex((prev) => (prev === noticias.length - 1 ? 0 : prev + 1))
   }
 
   return (
@@ -82,7 +86,7 @@ export default function NoticiaModal() {
           </button>
 
           {/* Botones de navegación */}
-          {NOTICIAS.length > 1 && (
+          {noticias.length > 1 && (
             <>
               <button
                 onClick={handlePrevious}
@@ -102,9 +106,9 @@ export default function NoticiaModal() {
           )}
 
           {/* Indicadores de página */}
-          {NOTICIAS.length > 1 && (
+          {noticias.length > 1 && (
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 flex gap-2">
-              {NOTICIAS.map((_, index) => (
+              {noticias.map((_: any, index: number) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
@@ -119,15 +123,17 @@ export default function NoticiaModal() {
           )}
 
           <div className="relative w-full h-full">
-            <Image
-              src={NOTICIAS[currentIndex].src}
-              alt={NOTICIAS[currentIndex].alt}
-              width={800}
-              height={1200}
-              className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
-              priority
-              quality={95}
-            />
+            {noticias[currentIndex] && (
+              <Image
+                src={noticias[currentIndex].src}
+                alt={noticias[currentIndex].alt}
+                width={800}
+                height={1200}
+                className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
+                priority
+                quality={95}
+              />
+            )}
           </div>
         </div>
       </DialogContent>
