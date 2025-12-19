@@ -24,26 +24,12 @@ export async function getEspecialistas(nivel: string) {
             .populate('foto')
             .lean();
 
-        const ADMIN_URL = process.env.ADMIN_URL || 'http://localhost:3001';
-
-        return especialistas.map((esp: any) => {
-            let imageUrl = `/Directorio/agp/placeholder.png`;
-            
-            if (esp.foto) {
-                if (esp.foto.url) {
-                    imageUrl = esp.foto.url;
-                } else if (esp.foto._id) {
-                    imageUrl = `${ADMIN_URL}/api/media/file/${esp.foto.filename}`;
-                }
-            }
-            
-            return {
-                especialista_responsable: esp.nombre,
-                image: imageUrl,
-                presentacion: esp.presentacion || "Especialista comprometido con el desarrollo educativo.",
-                colegios: esp.colegios || [],
-            };
-        });
+        return especialistas.map((esp: any) => ({
+            especialista_responsable: esp.nombre,
+            image: esp.foto?.url || `/Directorio/agp/placeholder.png`,
+            presentacion: esp.presentacion || "Especialista comprometido con el desarrollo educativo.",
+            colegios: esp.colegios || [],
+        }));
     } catch (error) {
         console.error("Error fetching especialistas:", error);
         return [];
