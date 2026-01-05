@@ -10,23 +10,28 @@ import TypingText from "@/components/ui/shadcn-io/typing-text"
 const heroImages = [
     {
         id: 1,
-        src: "/hero1.jpg",
+        src: "/hero1.jpeg",
         alt: "UGEL Ambo - Institución Educativa",
     },
     {
         id: 2,
-        src: "/hero2.jpg",
+        src: "/hero2.jpeg",
         alt: "Estudiantes aprendiendo",
     },
     {
         id: 3,
-        src: "/hero3.jpg",
+        src: "/hero3.jpeg",
+        alt: "Educación moderna",
+    },
+    {
+        id: 4,
+        src: "/hero4.JPG",
         alt: "Educación moderna",
     },
 ]
 
 const stats = [
-    { icon: Users, label: "Estudiantes", value: "13 K +" },
+    { icon: Users, label: "Estudiantes", value: "15 K +" },
     { icon: University, label: "Instituciones", value: "200+" },
     { icon: Award, label: "Años de excelencia", value: "12+" },
 ]

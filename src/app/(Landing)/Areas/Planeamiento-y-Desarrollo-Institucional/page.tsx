@@ -12,7 +12,7 @@ const areaStaticData = {
     title: "Área de Planeamiento y Desarrollo Institucional",
     subtitle: "Planificación educativa y gestión de calidad",
     description: "Conducimos la formulación del Proyecto Educativo Local y acompañamos los procesos de innovación.",
-    image: "/Directorio/agi/general.png",
+    image: "/Directorio/agi/general.JPG",
   },
   functionsIntro: "Diseñamos estrategias e instrumentos para el crecimiento educativo de la provincia.",
   teamIntro: "Equipo multidisciplinario que impulsa proyectos y evalúa la gestión institucional.",

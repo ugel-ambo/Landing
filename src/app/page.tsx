@@ -8,13 +8,11 @@ import ServicesCards from './(Landing)/services-card';
 import TramitesSection from './(Landing)/tramites-section';
 import Menu from './(Landing)/menu';
 import ConvocatoriasSection from './(Landing)/convocatorias-section';
-import AnniversaryConfetti from '@/components/anniversary-confetti';
 import { PushNotificationManager, InstallPrompt } from '@/components/pwa-components';
 
 export default function Home() {
   return (
     <>
-      <AnniversaryConfetti />
       <Menu />
       <Hero />
       <ServicesCards />
@@ -24,7 +22,7 @@ export default function Home() {
       <MapsPage />
 
       {/* Sección PWA */}
-      <section className="py-12 px-4 bg-gradient-to-b from-background to-muted/20">
+      <section className="py-12 px-4 bg-linear-to-b from-background to-muted/20">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold mb-2">Descarga Nuestra App</h2>

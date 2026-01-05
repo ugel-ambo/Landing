@@ -12,7 +12,7 @@ const areaStaticData = {
     title: "Área de Gestión Administrativa",
     subtitle: "Recursos, logística y soporte institucional",
     description: "Gestionamos los recursos humanos, materiales y financieros para el funcionamiento de la UGEL.",
-    image: "/Directorio/aga/yonel.png",
+    image: "/Directorio/aga/jefe.JPG",
   },
   functionsIntro: "Aseguramos procesos administrativos transparentes para la labor pedagógica.",
   teamIntro: "Equipo especializado en abastecimiento, patrimonio y atención administrativa.",
