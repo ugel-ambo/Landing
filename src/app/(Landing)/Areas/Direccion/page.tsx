@@ -14,7 +14,7 @@ const areaStaticData = {
     subtitle: "Conducción institucional y articulación territorial",
     description:
       "Lideramos la planificación, supervisión y acompañamiento de todas las áreas de la UGEL para asegurar una gestión eficiente, transparente y cercana a la comunidad educativa.",
-    image: "/Directorio/direccion/portada_direccion.JPG",
+    image: "/Directorio/direccion/herodireccion.jpeg",
   },
   functionsIntro:
     "Aseguramos la conducción administrativa, presupuestal y operativa de la UGEL en coordinación permanente con cada unidad orgánica.",
