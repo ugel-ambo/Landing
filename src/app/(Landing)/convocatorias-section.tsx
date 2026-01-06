@@ -21,10 +21,6 @@ export default function ConvocatoriasSection() {
                 const res = await fetch('/api/convocatorias')
                 if (!res.ok) throw new Error('Error al cargar convocatorias')
                 const data: ConvocatoriasResponse = await res.json()
-                // Sort by idproceso descending (assuming higher ID is newer) or by date if needed.
-                // The API seems to return them in some order, but let's take the first 3.
-                // If we need to sort by date, we can parse 'ini_insc'.
-                // For now, let's assume the API returns them in a reasonable order or we take the top 3.
                 setConvocatorias(data.convocatorias.slice(0, 3))
             } catch (err) {
                 setError(err instanceof Error ? err.message : 'Error desconocido')
@@ -75,7 +71,7 @@ export default function ConvocatoriasSection() {
         )
     }
 
-    if (error) return null // Hide section on error or show a message? Better to hide or show empty state.
+    if (error) return null
 
     return (
         <section id="convocatorias" className="py-16 md:py-24 bg-linear-to-b from-white to-gray-50">

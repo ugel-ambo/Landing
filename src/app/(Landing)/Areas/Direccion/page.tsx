@@ -34,29 +34,22 @@ const areaStaticData = {
 
 // Datos de fallback (cuando no hay datos en BD)
 const fallbackEmployees = [
-  { id: "1", name: "Dr. Imelda Rios Castillo", position: "Directora de la UGEL Ambo", image: "/Directorio/direccion/Imelda-Rios.png" },
+  { id: "1", name: "Dr. Hugo Eduardo Palomino Estaban", position: "Directora de la UGEL Ambo", image: "/Directorio/direccion/Hugo" },
  
 ]
 
 async function getEmployeesFromDB() {
   try {
-    console.log('🔄 Conectando a MongoDB...')
     await connectMongoDB()
-    console.log('✅ Conectado. Buscando personal de direccion...')
     
     const personal = await PersonalModel.find({ area: 'direccion' })
       .populate('foto')
       .sort({ orden: 1 })
       .lean()
-
-    console.log(`📊 Encontrados ${personal?.length || 0} registros de personal`)
     
     if (!personal || personal.length === 0) {
-      console.log('⚠️ No hay datos en BD, usando fallback')
       return null
     }
-
-    console.log('✅ Datos encontrados:', personal.map((p: any) => p.nombre))
     
     return personal.map((p: any) => ({
       id: p._id.toString(),
@@ -65,7 +58,7 @@ async function getEmployeesFromDB() {
       image: p.foto?.url || undefined,
     }))
   } catch (error) {
-    console.error('❌ Error fetching employees:', error)
+    console.error('Error fetching employees:', error)
     return null
   }
 }
