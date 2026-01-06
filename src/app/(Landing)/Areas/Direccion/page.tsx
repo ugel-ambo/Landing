@@ -34,7 +34,7 @@ const areaStaticData = {
 
 // Datos de fallback (cuando no hay datos en BD)
 const fallbackEmployees = [
-  { id: "1", name: "Dr. Hugo Eduardo Palomino Estaban", position: "Directora de la UGEL Ambo", image: "/Directorio/direccion/Imelda-Rios.png" },
+  { id: "1", name: "Dr. Hugo Eduardo Palomino Estaban", position: "Directora de la UGEL Ambo", image: "/Directorio/direccion/Hugo" },
  
 ]
 

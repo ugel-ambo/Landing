@@ -1,5 +1,3 @@
-// Types para Gemini AI Service
-
 export interface GeminiFormattedPost {
   title: string;
   description: string;
