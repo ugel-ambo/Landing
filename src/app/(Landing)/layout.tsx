@@ -1,5 +1,4 @@
 import Menu from "./menu"
-import Footer from "./footer"
 
 export default function LandingLayout({
   children,
@@ -10,7 +9,6 @@ export default function LandingLayout({
     <>
       <Menu />
       {children}
-      <Footer />
     </>
   )
 }

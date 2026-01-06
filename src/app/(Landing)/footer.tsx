@@ -2,10 +2,12 @@
 
 import type React from "react"
 import Link from "next/link"
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, } from "lucide-react"
+import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
 
 export default function Footer() {
-  
+
   return (
     <footer className="bg-primary text-primary-foreground">
 
@@ -62,11 +64,7 @@ export default function Footer() {
                   Becas
                 </Link>
               </li>
-              <li>
-                <Link href="#" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
-                  Videos
-                </Link>
-              </li>
+
               <li>
                 <Link href="#" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
                   Documentos
@@ -81,7 +79,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 shrink-0" />
-                <span>(064) 123-4567</span>
+                <span>(+51) 123-456-789</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 shrink-0" />
@@ -113,20 +111,38 @@ export default function Footer() {
             >
               <Instagram className="w-5 h-5" />
             </Link>
-            <Link
-              href="#"
-              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-5 h-5" />
-            </Link>
           </div>
         </div>
 
         {/* Bottom Footer */}
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm opacity-75">
-            <p>&copy; 2025 UGEL Ambo. Todos los derechos reservados.</p>
+            <div className="flex flex-col items-center md:items-start gap-1">
+              <p>&copy; 2025 UGEL Ambo. Todos los derechos reservados.</p>
+              <p className="text-xs flex gap-1 items-center">
+                Desarrollado por
+                <Button variant="link" asChild className="text-[#223F59] p-0 h-auto font-medium ">
+                  <Link
+                    href="https://www.linkedin.com/in/jhonatan-julca-garcia-7270b2212"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Sigismund
+                  </Link>
+                </Button>
+                y
+                <Button variant="link" asChild className="text-[#223F59] p-0 h-auto font-medium">
+                  <Link
+                    href="https://www.facebook.com/share/1Bzs94JfaW/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Anderson
+                  </Link>
+                </Button>
+              </p>
+            </div>
+
             <div className="flex gap-6 mt-4 md:mt-0">
               <Link href="#" className="hover:opacity-100 transition-opacity">
                 Política de Privacidad
@@ -141,6 +157,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   )
 }

@@ -7,7 +7,8 @@ import NewsSection from './(Landing)/news-section';
 import ServicesCards from './(Landing)/services-card';
 import TramitesSection from './(Landing)/tramites-section';
 import Menu from './(Landing)/menu';
-import Footer from './(Landing)/footer';
+import ConvocatoriasSection from './(Landing)/convocatorias-section';
+import { PushNotificationManager, InstallPrompt } from '@/components/pwa-components';
 
 export default function Home() {
   return (
@@ -16,9 +17,25 @@ export default function Home() {
       <Hero />
       <ServicesCards />
       <NewsSection />
+      <ConvocatoriasSection />
       <TramitesSection />
       <MapsPage />
-      <Footer />
+
+      {/* Sección PWA */}
+      <section className="py-12 px-4 bg-linear-to-b from-background to-muted/20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold mb-2">Descarga Nuestra App</h2>
+            <p className="text-muted-foreground">
+              Instala UGEL Ambo en tu dispositivo para acceso rápido y notificaciones
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <InstallPrompt />
+            <PushNotificationManager />
+          </div>
+        </div>
+      </section>
     </>
   );
 }

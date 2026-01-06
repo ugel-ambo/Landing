@@ -1,66 +1,67 @@
 import { AreaSection } from "../components/area-section"
+import connectMongoDB from "@/lib/mongodbConnection"
+import { PersonalModel } from "@/models/Personal"
 
+// Deshabilitar cache para obtener datos frescos
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
-const areaData = {
-  areaName: "  Área de Gestión Administrativa",
-  areaImage: "/Directorio/aga/yonel.png",
+const areaStaticData = {
+  hero: {
+    badge: "Gestión administrativa",
+    title: "Área de Gestión Administrativa",
+    subtitle: "Recursos, logística y soporte institucional",
+    description: "Gestionamos los recursos humanos, materiales y financieros para el funcionamiento de la UGEL.",
+    image: "/Directorio/aga/jefe.JPG",
+  },
+  functionsIntro: "Aseguramos procesos administrativos transparentes para la labor pedagógica.",
+  teamIntro: "Equipo especializado en abastecimiento, patrimonio y atención administrativa.",
   functions: [
-    "Planificar, dirigir, evaluar y hacer cumplir las actividades asignadas al ÁREA a su cargo.",
-    "Coordinar con el Área de Gestión Institucional sobre la formulación del presupuesto de Bienes y Servicios de las Instituciones Educativas y de la Sede Institucional.",
-    "Revisar y firmar los informes de ejecución presupuestaria y las propuestas de modificación, los calendarios de pagos, las solicitudes de giro, la relación de retenciones, la relación de cheques acumulados, los compromisos de pagos y constancias de pago de remuneraciones.",
-    "Revisar y refrendar el Cuadro de adquisiciones y de Suministro de Bienes muebles y los inventarios de los bienes inmuebles de la UGEL 308.",
-    "Disponer la formulación y visar y/o firmar proyectos de Resolución sobre aspectos de carácter financieros, contables y movimientos de personal que se procesan en el Área.",
-    "Verificar las conciliaciones bancarias.",
-  ],
-  employees: [
-    {
-      id: "1",
-      name: "Wilder Yonel Rojas Bardales",
-      position: "Jefe de la Unidad de Gestión Administrativa",
-      email: "irenmar0504@gmail.com",
-      linkedinUrl: "https://linkedin.com/in/carmendelpilar",
-      image: "/Directorio/aga/perfil.png",
-    },
-    {
-      id: "2",
-      name: "María Eugenia Maynicta León",
-      position: "Secretaria de Dirección",
-      email: "juan.rodriguez@ugel308.edu.pe",
-      linkedinUrl: "https://linkedin.com/in/juanrodriguez",
-      image: "/Directorio/aga/perfil.png",
-    },
-    {
-      id: "3",
-      name: "Alfredo Ostos Miraval",
-      position: "Analista de Abastecimientos",
-      email: "maria.garcia@ugel308.edu.pe",
-      linkedinUrl: "https://linkedin.com/in/mariagarcia",
-      image: "/Directorio/aga/Alfredo-Ostos.png",
-    },
-    {
-      id: "4",
-      name: "Angelica Janeth Fuster Quispe",
-      position: "Técnico Administrativo I - Patrimonio y Almacén",
-      email: "pedro.lopez@ugel308.edu.pe",
-      linkedinUrl: "https://linkedin.com/in/pedrolopez",
-      image: "/Directorio/aga/Angelica-Janeth.png",
-    },
-    {
-      id: "5",
-      name: "José German Sanchez Bravo",
-      position: "Asistente Administrativo",
-      email: "maria.garcia@ugel308.edu.pe",
-      linkedinUrl: "https://linkedin.com/in/mariagarcia",
-      image: "/Directorio/aga/Jose-German.png",
-    },
+    "Administrar y evaluar el potencial humano y recursos de la UGEL.",
+    "Administrar los servicios de transporte, mantenimiento y seguridad.",
+    "Asesorar a las Instituciones Educativas en procesos técnicos de personal.",
+    "Elaborar y mantener actualizado el registro escalafonario e inventario.",
+    "Cumplir con los procesos técnicos de abastecimiento, contabilidad y tesorería.",
+    "Ejecutar el presupuesto de la UGEL y proporcionar recursos.",
+    "Proporcionar los bienes y servicios para el servicio educativo.",
   ],
 }
 
-export default function GAdministrativa() {
+const fallbackEmployees = [
+  { id: "1", name: "Wilder Yonel Rojas Bardales", position: "Jefe de la Unidad de Gestión Administrativa", image: "/Directorio/aga/Wilder-Yonel.png" },
+  { id: "2", name: "María Eugenia Maynicta León", position: "Secretaria de Dirección", image: "/Directorio/aga/Maria-Eugenia.png" },
+  { id: "3", name: "Alfredo Ostos Miraval", position: "Analista de Abastecimientos", image: "/Directorio/aga/Alfredo-Ostos.png" },
+  { id: "4", name: "Angelica Janeth Fuster Quispe", position: "Técnico - Patrimonio y Almacén", image: "/Directorio/aga/Angelica-Janeth.png" },
+  { id: "5", name: "Mery Maritza Palomino Chavez", position: "Tesorero I", image: "/Directorio/aga/Mery-Maritza.png" },
+  { id: "6", name: "Edgardo Omar Minaya Davila", position: "Especialista en Contabilidad", image: "/Directorio/aga/Edgardo-Omar.png" },
+  { id: "7", name: "Anderson Henry Ponce Runco", position: "Soporte Informático", image: "/Directorio/aga/Anderson-Henry.png" },
+  { id: "8", name: "Erik Diaz Chaucas", position: "Chofer", image: "/Directorio/aga/Erik-Diaz.png" },
+  { id: "9", name: "William Martin Machaca Bravo", position: "Personal de Servicio 2", image: "/Directorio/aga/Williams-Martin.png" },
+  { id: "10", name: "Gabriela Cyntya Ambrocio Celis", position: "Especialista en Adquisiciones", image: "/Directorio/aga/Gabriela-Cyntya.png" },
+  { id: "11", name: "Jhonatan Anibal Julca Garcia", position: "Soporte Informático II", image: "/Directorio/aga/Jhonatan-Anibal.png" },
+  { id: "12", name: "Anggie Haily Retis Falcon", position: "Apoyo en Patrimonio", image: "/Directorio/aga/Anggie-Haily.png" },
+  { id: "13", name: "Maria Luisa Huerta Leandro", position: "Apoyo en Abastecimiento", image: "/Directorio/aga/Maria-Luisa.png" },
+  { id: "14", name: "Vanessa Castro Figueroa", position: "Apoyo en Patrimonio", image: "/Directorio/aga/Vanessa-Castro.png" },
+]
+
+async function getEmployeesFromDB() {
+  try {
+    await connectMongoDB()
+    const personal = await PersonalModel.find({ area: 'aga' }).populate('foto').sort({ orden: 1 }).lean()
+    if (!personal || personal.length === 0) return null
+    return personal.map((p: any) => ({ id: p._id.toString(), name: p.nombre, position: p.cargo, image: p.foto?.url }))
+  } catch (error) {
+    console.error('Error fetching employees:', error)
+    return null
+  }
+}
+
+export default async function GestionAdministrativa() {
+  const employees = await getEmployeesFromDB() || fallbackEmployees
   return (
     <main className="min-h-screen bg-white">
       <div className="container mx-auto px-4 py-12 md:py-16">
-        <AreaSection {...areaData} />
+        <AreaSection {...areaStaticData} employees={employees} />
       </div>
     </main>
   )

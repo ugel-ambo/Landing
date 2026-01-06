@@ -1,65 +1,66 @@
 "use client"
 
-import { useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Copy, Check, Linkedin } from "lucide-react"
-import Image from "next/image"
+import { Card, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 interface EmployeeCardProps {
   id: string
   name: string
   position: string
-  email: string
-  linkedinUrl?: string
   image?: string
 }
-
-export function EmployeeCard({ name, position, email, linkedinUrl, image }: EmployeeCardProps) {
-  const [copied, setCopied] = useState(false)
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(email)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+export function EmployeeCard({ name, position, image }: EmployeeCardProps) {
+  // Función para obtener las iniciales
+  const getInitials = (fullName: string) => {
+    const names = fullName.trim().split(' ')
+    if (names.length >= 2) {
+      return `${names[0].charAt(0)}${names[names.length - 1].charAt(0)}`.toUpperCase()
+    }
+    return fullName.charAt(0).toUpperCase()
   }
 
   return (
-    <Card className="overflow-hidden border border-gray-200 hover:shadow-md gap-1 transition-shadow p-4 md:p-5 flex flex-col items-center text-center">
-      <div className="mb-3 md:mb-4">
-        <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden bg-gray-100 mx-auto">
+    <div className="relative pt-16">
+      {/* Foto sobresaliendo del card */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-background shadow-xl bg-white">
           {image ? (
-            <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
+            <img
+              src={image}
+              alt={name}
+              className="w-full h-full object-cover object-top"
+              onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                const target = e.target as HTMLImageElement;
+                const parent = target.parentElement;
+                if (parent) {
+                  parent.innerHTML = `
+                    <div class="w-full h-full flex items-center justify-center bg-[#049DD9]">
+                      <span class="text-3xl font-bold text-white">${getInitials(name)}</span>
+                    </div>
+                  `;
+                }
+              }}
+            />
           ) : (
-            <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-primary/20 to-primary/10">
-              <span className="text-lg font-semibold text-primary">{name.charAt(0).toUpperCase()}</span>
+            <div className="w-full h-full flex items-center justify-center bg-[#049DD9] ">
+              <span className="text-3xl font-bold text-white">
+                {getInitials(name)}
+              </span>
             </div>
           )}
         </div>
       </div>
 
-      <h3 className="font-semibold text-[#049DD9] text-base md:text-lg">{name}</h3>
-      <p className="text-sm text-muted-foreground ">{position}</p>
-
-      <div className="flex gap-2.5 md:gap-3 justify-center">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleCopyEmail}
-          className="h-9 w-9 md:h-10 md:w-10 p-0 hover:bg-primary/10"
-          title={copied ? "Correo copiado" : "Copiar correo"}
-        >
-          {copied ? <Check className="h-5 w-5 text-primary" /> : <Copy className="h-5 w-5 text-muted-foreground" />}
-        </Button>
-
-        {linkedinUrl && (
-          <Button variant="ghost" size="sm" asChild className="h-9 w-9 md:h-10 md:w-10 p-0 hover:bg-primary/10">
-            <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" title="Visitar LinkedIn">
-              <Linkedin className="h-5 w-5 text-muted-foreground" />
-            </a>
-          </Button>
-        )}
-      </div>
-    </Card>
+      <Card className="hover:shadow-lg transition-shadow pt-16 flex flex-col h-full">
+        <CardHeader className="text-center pb-3">
+          <CardTitle className="text-lg font-semibold text-[#049DD9] mt-6">
+            {name}
+          </CardTitle>
+          <Badge variant="secondary" className="mx-auto mt-2">
+            {position}
+          </Badge>
+        </CardHeader>
+      </Card>
+    </div>
   )
 }

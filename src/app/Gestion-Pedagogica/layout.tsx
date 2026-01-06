@@ -1,8 +1,6 @@
-import Footer from "./footer"
 import Menu from "./menu"
 
-
-export default function LandingLayout({
+export default function GestionPedagogicaLayout({
   children,
 }: {
   children: React.ReactNode
@@ -11,7 +9,6 @@ export default function LandingLayout({
     <>
       <Menu />
       {children}
-      <Footer />
     </>
   )
 }

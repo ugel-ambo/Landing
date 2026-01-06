@@ -10,17 +10,22 @@ import TypingText from "@/components/ui/shadcn-io/typing-text"
 const heroImages = [
     {
         id: 1,
-        src: "/hero1.jpg",
+        src: "/hero1.jpeg",
         alt: "UGEL Ambo - Institución Educativa",
     },
     {
         id: 2,
-        src: "/hero2.jpg",
+        src: "/hero2.jpeg",
         alt: "Estudiantes aprendiendo",
     },
     {
         id: 3,
-        src: "/hero3.jpg",
+        src: "/hero3.jpeg",
+        alt: "Educación moderna",
+    },
+    {
+        id: 4,
+        src: "/hero4.JPG",
         alt: "Educación moderna",
     },
 ]
@@ -34,6 +39,23 @@ const stats = [
 export default function Hero() {
     const [currentSlide, setCurrentSlide] = useState(0)
     const [, setIsTransitioning] = useState(false)
+    const [particles, setParticles] = useState<Array<{
+        left: string
+        top: string
+        animationDelay: string
+        animationDuration: string
+    }>>([])
+
+    // Generar partículas solo en el cliente para evitar errores de hidratación
+    useEffect(() => {
+        const generatedParticles = [...Array(15)].map(() => ({
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 5}s`,
+            animationDuration: `${5 + Math.random() * 10}s`,
+        }))
+        setParticles(generatedParticles)
+    }, [])
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -56,21 +78,21 @@ export default function Hero() {
 
 
     return (
-        <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+        <section className="relative w-full h-[500px] md:h-[600px] xl:h-[750px] overflow-hidden">
             {/* Animated Background Gradient */}
             <div className="absolute inset-0 bg-linear-to-br from-[#049DD9] via-[#3873A6] to-[#223F59] animate-gradient-xy" />
 
             {/* Floating Particles */}
             <div className="absolute inset-0 overflow-hidden">
-                {[...Array(15)].map((_, i) => (
+                {particles.map((particle, i) => (
                     <div
                         key={i}
                         className="absolute w-2 h-2 bg-white/20 rounded-full animate-float"
                         style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 5}s`,
-                            animationDuration: `${5 + Math.random() * 10}s`,
+                            left: particle.left,
+                            top: particle.top,
+                            animationDelay: particle.animationDelay,
+                            animationDuration: particle.animationDuration,
                         }}
                     />
                 ))}
@@ -110,7 +132,7 @@ export default function Hero() {
                         </div>
 
                         {/* Main Title */}
-                        <h1 className="text-4xl md:text-6xl lg:text-6xl font-black mb-4 text-balance drop-shadow-2xl leading-tight">
+                        <h1 className="text-4xl md:text-6xl lg:text-6xl 2xl:text-7xl font-black mb-1 text-balance drop-shadow-2xl leading-tight">
                             <span className="bg-clip-text text-transparent bg-linear-to-t from-white via-[#F2F2F2] to-white animate-shimmer">
                                 Bienvenido a
                             </span>
@@ -125,7 +147,7 @@ export default function Hero() {
                             pauseDuration={1500}
                             showCursor={true}
                             cursorCharacter="|"
-                            className="text-lg md:text-xl mb-6 max-w-2xl text-balance drop-shadow-lg font-bold leading-relaxed"
+                            className="text-lg md:text-xl 2xl:text-2xl mb-6 max-w-2xl text-balance drop-shadow-lg font-bold leading-relaxed"
                             textColors={['#F2F2F2', '#F2F2F2']}
                             variableSpeed={{ min: 50, max: 120 }}
                         />

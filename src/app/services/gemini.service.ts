@@ -47,20 +47,30 @@ class GeminiService {
   }
 
   /**
-   * Formatea múltiples posts en paralelo (con límite de concurrencia)
+   * Formatea múltiples posts en UNA sola llamada a la API (optimizado para reducir consumo de cuota)
    */
   async formatMultiplePosts(messages: string[]): Promise<GeminiFormattedPost[]> {
-    const batchSize = 3; // Procesar 3 a la vez para no sobrecargar la API
-    const results: GeminiFormattedPost[] = [];
+    if (messages.length === 0) return [];
 
-    for (let i = 0; i < messages.length; i += batchSize) {
-      const batch = messages.slice(i, i + batchSize);
-      const batchPromises = batch.map(msg => this.formatPost({ rawMessage: msg }));
-      const batchResults = await Promise.all(batchPromises);
-      results.push(...batchResults);
+    try {
+      console.log('GeminiService.formatMultiplePosts - Procesando', messages.length, 'posts en una sola llamada');
+
+      const prompt = this.buildBatchPrompt(messages);
+      const result = await this.model.generateContent(prompt);
+      const response = await result.response;
+      const text = response.text();
+
+      // Parse la respuesta JSON (array de posts)
+      const formatted = this.parseBatchGeminiResponse(text, messages.length);
+
+      console.log('GeminiService.formatMultiplePosts - Posts formateados exitosamente:', formatted.length);
+      return formatted;
+    } catch (error) {
+      console.error('Error en GeminiService.formatMultiplePosts:', error);
+      console.log('GeminiService.formatMultiplePosts - Usando fallback para todos los posts');
+      // Fallback: formatear todos sin AI
+      return messages.map(msg => this.fallbackFormat(msg));
     }
-
-    return results;
   }
 
   /**
@@ -100,6 +110,55 @@ IMPORTANTE:
   }
 
   /**
+   * Construye el prompt para procesar múltiples posts en una sola llamada (optimización de cuota)
+   */
+  private buildBatchPrompt(messages: string[]): string {
+    const formattedMessages = messages.map((msg, index) =>
+      `POST ${index + 1}:\n${msg}`
+    ).join('\n\n---\n\n');
+
+    return `Eres un asistente especializado en formatear anuncios educativos de la UGEL (Unidad de Gestión Educativa Local) Ambo en Perú.
+
+Tu tarea es analizar los siguientes ${messages.length} mensajes de publicaciones de Facebook y extraer información estructurada para CADA UNO.
+
+MENSAJES ORIGINALES:
+${formattedMessages}
+
+INSTRUCCIONES PARA CADA POST:
+1. Extrae un título claro y conciso (máximo 80 caracteres) que capture la idea principal
+2. Crea una descripción profesional y clara (máximo 150 caracteres) eliminando emojis y símbolos innecesarios
+3. Categoriza el mensaje en UNA de estas categorías:
+   - "Convocatoria" (para llamados a concursos, inscripciones, encargos)
+   - "Resultados" (para publicación de resultados, expedientes, evaluaciones)
+   - "Eventos" (para campeonatos, concursos, actividades)
+   - "Comunicados" (para atenciones, anuncios generales)
+   - "Materiales" (para dotación, entrega de materiales)
+   - "Educación" (categoría por defecto)
+
+FORMATO DE RESPUESTA (responde SOLO con este JSON array, sin texto adicional):
+[
+  {
+    "title": "Título del post 1",
+    "description": "Descripción del post 1",
+    "category": "Categoría del post 1"
+  },
+  {
+    "title": "Título del post 2",
+    "description": "Descripción del post 2",
+    "category": "Categoría del post 2"
+  }
+  ... (un objeto por cada post, en el mismo orden que fueron dados)
+]
+
+IMPORTANTE:
+- Devuelve EXACTAMENTE ${messages.length} objetos en el array, uno por cada post
+- Mantén el MISMO ORDEN de los posts originales
+- NO incluyas emojis en el título ni descripción
+- Mantén el tono formal y profesional
+- Sé conciso y directo`;
+  }
+
+  /**
    * Parsea la respuesta de Gemini
    */
   private parseGeminiResponse(text: string): GeminiFormattedPost {
@@ -115,6 +174,32 @@ IMPORTANTE:
       };
     } catch (error) {
       console.error('Error parseando respuesta de Gemini:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Parsea la respuesta batch de Gemini (array de posts)
+   */
+  private parseBatchGeminiResponse(text: string, expectedCount: number): GeminiFormattedPost[] {
+    try {
+      // Limpiar la respuesta (a veces Gemini incluye markdown)
+      const cleaned = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+      const parsed = JSON.parse(cleaned);
+
+      if (!Array.isArray(parsed)) {
+        console.error('La respuesta de Gemini no es un array');
+        throw new Error('Expected array response');
+      }
+
+      // Mapear y validar cada post
+      return parsed.map((item, index) => ({
+        title: item.title || `Publicación UGEL Ambo #${index + 1}`,
+        description: item.description || 'Información importante',
+        category: item.category || 'Educación'
+      }));
+    } catch (error) {
+      console.error('Error parseando respuesta batch de Gemini:', error);
       throw error;
     }
   }
