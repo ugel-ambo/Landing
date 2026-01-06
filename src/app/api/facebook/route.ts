@@ -1,4 +1,3 @@
-// app/api/facebook/route.ts
 import { facebookService } from "@/app/services/facebook.service";
 import { NextResponse } from "next/server";
 
@@ -8,14 +7,12 @@ export async function GET() {
     const posts = await facebookService.getPosts(6);
     console.log('API Route: Posts obtenidos exitosamente:', posts.data.length);
     
-    // Crear respuesta con headers CORS e incluir paging
     const response = NextResponse.json({ 
       success: true, 
       data: posts.data,
       paging: posts.paging
     });
     
-    // Agregar headers CORS
     response.headers.set('Access-Control-Allow-Origin', '*');
     response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
     response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
@@ -32,7 +29,6 @@ export async function GET() {
       { status: 500 }
     );
     
-    // Agregar headers CORS también en errores
     errorResponse.headers.set('Access-Control-Allow-Origin', '*');
     errorResponse.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
     errorResponse.headers.set('Access-Control-Allow-Headers', 'Content-Type');
@@ -41,7 +37,6 @@ export async function GET() {
   }
 }
 
-// Manejar preflight request (OPTIONS)
 export async function OPTIONS() {
   const response = new NextResponse(null, { status: 200 });
   

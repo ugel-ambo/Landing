@@ -18,7 +18,7 @@ export default function NormCard({ norma }: NormCardProps) {
             <CardHeader className="">
                 <div className="flex items-start gap-3 mb-3">
                     {/* Imagen de portada */}
-                    <div className="relative w-20 h-28 flex-shrink-0 rounded overflow-hidden border">
+                    <div className="relative w-20 h-28 shrink-0 rounded overflow-hidden border">
                         <Image
                             src={norma.imagenPortada}
                             alt={`Portada ${norma.titulo}`}

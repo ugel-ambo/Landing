@@ -11,12 +11,10 @@ export function useInstallPrompt() {
     const [isStandalone, setIsStandalone] = useState(false);
 
     useEffect(() => {
-        // Check if running on iOS
         setIsIOS(
             /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as Window & { MSStream?: unknown }).MSStream
         );
 
-        // Check if already in standalone mode (installed)
         setIsStandalone(window.matchMedia('(display-mode: standalone)').matches);
 
         const handler = (e: Event) => {

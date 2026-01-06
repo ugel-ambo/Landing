@@ -33,17 +33,8 @@ const areaStaticData = {
 }
 
 const fallbackEmployees = [
-  { id: "1", name: "Rider Ortega Tucto", position: "Jefe de Planeamiento y Desarrollo Institucional", image: "/Directorio/agi/Rider-Ortega.png" },
-  { id: "2", name: "José Luis Chávez Valerio", position: "Secretario Técnico", image: "/Directorio/agi/Jose-Luis.png" },
-  { id: "3", name: "Yonatan Gustavo Tafur Rodriguez", position: "Planificador Institucional", image: "/Directorio/agi/Yonatan-Gustavo.jpeg" },
-  { id: "4", name: "Maryori Mishel Leon Colqui", position: "Especialista en PREVAED", image: "/Directorio/agi/Maryori-Mishel.jpeg" },
-  { id: "5", name: "Antonio Percy Chavez Alcantara", position: "Vigilante de la UGEL", image: "/Directorio/agi/Antonio-Percy.png" },
-  { id: "6", name: "Delmer Jmes Villareal Morales", position: "Vigilante de la UGEL", image: "/Directorio/agi/Delmer-Jmes.png" },
-  { id: "7", name: "Irene Martel Condezo", position: "Especialista de Finanzas", image: "/Directorio/agi/Irene-Martel.png" },
-  { id: "8", name: "Katherine Haydeé Osorio Celis", position: "Técnico en SIAGIE y Estadistica", image: "/Directorio/agi/Katherine-Haydee.png" },
-  { id: "9", name: "Mayck Christian Bardon Dionicio", position: "Especialista en Infraestructura", image: "/Directorio/agi/Mayck-Christian.png" },
-  { id: "10", name: "Indira Venecia Davila del Valle", position: "Apoyo en Infraestructura", image: "/Directorio/agi/Indira-Venecia.png" },
-  { id: "11", name: "Ruth Gieze Zuñiga Quinto", position: "Apoyo en Infraestructura", image: "/Directorio/agi/Ruth-Gieze.png" },
+  { id: "1", name: "Kennedy Robinson Eulogio Valenzuela", position: "Jefe de Planeamiento y Desarrollo Institucional", image: "/Directorio/agi/Rider-Ortega.png" },
+  
 ]
 
 async function getEmployeesFromDB() {
