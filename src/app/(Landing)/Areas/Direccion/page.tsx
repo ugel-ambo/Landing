@@ -2,11 +2,9 @@ import { AreaSection } from "../components/area-section"
 import connectMongoDB from "@/lib/mongodbConnection"
 import { PersonalModel } from "@/models/Personal"
 
-// Deshabilitar cache para obtener datos frescos
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-// Datos estáticos del área (hero, funciones)
 const areaStaticData = {
   hero: {
     badge: "Gestión estratégica",
