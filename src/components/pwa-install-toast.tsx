@@ -11,11 +11,7 @@ export function PWAInstallToast() {
     const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
-        // Show toast if installable (deferredPrompt set) or iOS (manual instructions needed)
-        // AND not already installed
         if (!isStandalone && (deferredPrompt || isIOS)) {
-            // Check if user previously dismissed it in this session? 
-            // For now, let's just show it after a small delay to be less annoying
             const timer = setTimeout(() => setIsVisible(true), 3000)
             return () => clearTimeout(timer)
         }

@@ -98,7 +98,7 @@ export default function Home() {
       {/* Servicios Section */}
       <section className="py-20 px-6 sm:px-8 bg-white">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">Servicios para Promotoras y Docentes PRONOI</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">Servicios para Promotoras y Docentes PRONOEI</h2>
           <p className="text-lg text-gray-600 mb-12">
             Herramientas y recursos para fortalecer tu práctica pedagógica en educación inicial no escolarizada
           </p>

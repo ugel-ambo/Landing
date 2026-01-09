@@ -155,7 +155,7 @@ export default function Menu() {
 
                   <AccordionItem value="pronoi" className="border-none">
                     <Link href="/Gestion-Pedagogica/pronoi"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      PRONOI
+                      PRONOEI
                     </AccordionTrigger>
                     </Link>
                     <AccordionContent className="pl-4 pb-0">

@@ -6,7 +6,7 @@ export async function GET() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            cache: 'no-store' // Ensure fresh data
+            cache: 'no-store'
         });
 
         if (!response.ok) {

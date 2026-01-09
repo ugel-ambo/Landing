@@ -15,7 +15,7 @@ export async function getNoticiasModal() {
             .lean();
 
         return noticias.map((n: any) => ({
-            src: n.imagen?.url || "/modal/noticia.jpg", // Fallback a la imagen que ya tenían
+            src: n.imagen?.url || "/modal/noticia.jpg",
             alt: n.titulo || "Noticia importante"
         }));
     } catch (error) {

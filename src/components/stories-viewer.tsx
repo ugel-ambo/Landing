@@ -133,7 +133,7 @@ export default function StoriesViewer({ stories, initialIndex = 0, onClose }: St
                             unoptimized
                         />
                         {/* Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90" />
+                        <div className="absolute inset-0 bg-linear-to-b from-black/60 via-transparent to-black/90" />
                     </div>
 
                     {/* Navigation Tap Zones */}

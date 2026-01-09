@@ -48,27 +48,23 @@ export default function ChatPage() {
     }
   }, [messages]);
 
-  // Notification timer logic
   useEffect(() => {
     if (isChatOpen) {
       setShowNotification(false);
       return;
     }
 
-    // Initial delay before showing notification
     const initialTimer = setTimeout(() => {
       setShowNotification(true);
-      // Auto hide after 5 seconds
       setTimeout(() => setShowNotification(false), 5000);
-    }, 5000); // Show 5 seconds after mount if closed
+    }, 5000); 
 
     const interval = setInterval(() => {
       if (!isChatOpen) {
         setShowNotification(true);
-        // Auto hide after 5 seconds
         setTimeout(() => setShowNotification(false), 5000);
       }
-    }, 30000); // Repeat every 30 seconds
+    }, 30000); 
 
     return () => {
       clearTimeout(initialTimer);
@@ -208,7 +204,7 @@ export default function ChatPage() {
             animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20, rotateX: 10 }}
             transition={{ duration: 0.4, type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-28 right-6 z-50 w-80 sm:w-96 h-[500px] flex flex-col overflow-hidden rounded-3xl shadow-2xl border border-white/20 backdrop-blur-xl bg-white/80 supports-[backdrop-filter]:bg-white/60"
+            className="fixed bottom-28 right-6 z-50 w-80 sm:w-96 h-[500px] flex flex-col overflow-hidden rounded-3xl shadow-2xl border border-white/20 backdrop-blur-xl bg-white/80 supports-backdrop-filter:bg-white/60"
           >
             <Card className="border-0 h-full px-0 py-0 bg-transparent shadow-none flex flex-col">
               <CardHeader className="bg-[#049DD9]/90 backdrop-blur-md text-white flex flex-row items-center justify-between space-y-0 pb-4 pt-4 px-5 border-b border-white/10 shrink-0">
@@ -233,7 +229,7 @@ export default function ChatPage() {
                 </Button>
               </CardHeader>
 
-              <CardContent className="p-0 flex-1 overflow-hidden relative bg-gradient-to-b from-transparent to-white/40">
+              <CardContent className="p-0 flex-1 overflow-hidden relative bg-linear-to-b from-transparent to-white/40">
                 <ScrollArea className="h-full px-4 py-3">
                   {messages?.length === 0 && (
                     <div className="flex flex-col items-center justify-center h-full text-center p-6 mt-10">

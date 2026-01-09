@@ -1,6 +1,5 @@
 import { Schema, model, models, Types } from "mongoose";
 
-// Interface para el objeto Media de Cloudinary
 export interface IMediaImage {
     _id?: string;
     alt: string;
@@ -18,7 +17,7 @@ export interface INoticiaIntegridad {
     titulo: string;
     descripcion: string;
     fecha: Date;
-    imagen?: string | Types.ObjectId | IMediaImage; // Puede ser string (legacy), ObjectId o objeto poblado
+    imagen?: string | Types.ObjectId | IMediaImage; 
     area: 'integridad' | 'general';
     activo: boolean;
     createdAt?: Date;
@@ -31,7 +30,7 @@ const NoticiaIntegridadSchema = new Schema<INoticiaIntegridad>(
         descripcion: { type: String, required: true },
         fecha: { type: Date, required: true },
         imagen: { 
-            type: Schema.Types.Mixed, // Acepta tanto string como ObjectId para compatibilidad
+            type: Schema.Types.Mixed, 
         },
         area: {
             type: String,
@@ -50,20 +49,16 @@ const NoticiaIntegridad = models.NoticiaIntegridad || model<INoticiaIntegridad>(
 
 export default NoticiaIntegridad;
 
-// Helper para obtener la URL de imagen de forma segura
 export function getImageUrl(imagen: string | Types.ObjectId | IMediaImage | null | undefined): string {
     if (!imagen) return '/Logo1.jpg';
     
-    // Si es un string (URL legacy o directa)
     if (typeof imagen === 'string') {
         return imagen;
     }
     
-    // Si es un objeto con URL (imagen poblada desde Media)
     if (typeof imagen === 'object' && 'url' in imagen && imagen.url) {
         return imagen.url;
     }
     
-    // Valor por defecto
     return '/Logo.jpg';
 }

@@ -27,21 +27,8 @@ const areaStaticData = {
 }
 
 const fallbackEmployees = [
-  { id: "1", name: "Yudith Venturo Bravo", position: "Jefe de la Unidad de Gestión", image: "/Directorio/rrhh/Yudith-Venturo.png" },
+  
   { id: "2", name: "Ethel German Camacho Robles", position: "Técnico Administrativo I - Escalafón y Nexus", image: "/Directorio/rrhh/Ethel-German.png" },
-  { id: "3", name: "Diógenes Alberto Tello Montes", position: "Técnico - Constancia de Pagos y Licencias", image: "/Directorio/rrhh/Diogenes-Alberto.png" },
-  { id: "4", name: "Susan Sherly Barrantes Villanueva", position: "Asistente Administrativo - Planillas", image: "/Directorio/rrhh/Susan-Sherly.png" },
-  { id: "5", name: "Paul Anthony Figueroa Bravo", position: "Abogado II - Recursos Humanos", image: "/Directorio/rrhh/Paul-Anthony.png" },
-  { id: "6", name: "Carmen del Pilar Bustamante Panduro", position: "Abogado - Procesos Administrativos", image: "/Directorio/rrhh/Carmen-del-Pilar.png" },
-  { id: "7", name: "Luz Monica Hilario Ases", position: "Especialista en Escalafón", image: "/Directorio/rrhh/Luz-Monica.jpg" },
-  { id: "8", name: "Victor Hugo Valderrama Bustamante", position: "Especialista - Planillas", image: "/Directorio/rrhh/Victor-Hugo.png" },
-  { id: "9", name: "Nicasio Richard Julca Rojas", position: "Apoyo en PAD", image: "/Directorio/rrhh/Nicasio-Richard.png" },
-  { id: "10", name: "Shyrle Celestino Paredes", position: "Apoyo en Escalafón y Nexus", image: "/Directorio/rrhh/Shyrle-Celestino.jpg" },
-  { id: "11", name: "Hermes Gabriel Abanto Maldonado", position: "Apoyo en Recursos Humanos", image: "/Directorio/rrhh/Hermes-Gabriel.png" },
-  { id: "12", name: "Maura Oriuela Tadeo", position: "Apoyo en Recursos Humanos", image: "/Directorio/rrhh/Maura-Oriuela.png" },
-  { id: "13", name: "José German Sanchez Bravo", position: "Asistente Administrativo", image: "/Directorio/rrhh/Jose-German.png" },
-  { id: "14", name: "Cynthia Katherine Espinoza Simeon", position: "Asistente Administrativo", image: "/Directorio/rrhh/Cynthia-Katherine.png" },
-  { id: "15", name: "Lesly Flor Cardenas Chamarro", position: "Asistente Administrativo", image: "/Directorio/rrhh/Lesly-Flor.jpg" },
 ]
 
 async function getEmployeesFromDB() {

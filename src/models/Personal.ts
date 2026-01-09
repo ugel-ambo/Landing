@@ -1,8 +1,5 @@
 import mongoose from 'mongoose'
 
-// Esquemas y modelos de Payload CMS para uso en el landing
-// Payload CMS usa nombres de colección en plural por defecto
-
 const personalSchema = new mongoose.Schema({
   nombre: String,
   cargo: String,
@@ -10,7 +7,7 @@ const personalSchema = new mongoose.Schema({
   orden: Number,
   foto: { type: mongoose.Schema.Types.ObjectId, ref: 'media' },
 }, { 
-  collection: 'personals',  // Payload usa el plural
+  collection: 'personals', 
   strict: false, 
 })
 
@@ -28,6 +25,5 @@ const mediaSchema = new mongoose.Schema({
   strict: false,
 })
 
-// Evitar errores de modelo ya definido en desarrollo con HMR
 export const PersonalModel = mongoose.models.personal || mongoose.model('personal', personalSchema)
 export const MediaModel = mongoose.models.media || mongoose.model('media', mediaSchema)

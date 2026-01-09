@@ -1,4 +1,3 @@
-// Types para la respuesta de Facebook API
 export interface FacebookMediaImage {
   height: number;
   src: string;

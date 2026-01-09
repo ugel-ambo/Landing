@@ -8,10 +8,8 @@ export default function VisitorCounter() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Registrar visita
     const registerVisit = async () => {
       try {
-        // Verificar si ya se registró la visita en esta sesión
         const hasRegistered = sessionStorage.getItem("visit-registered")
         
         if (!hasRegistered) {

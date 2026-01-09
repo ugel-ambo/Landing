@@ -109,7 +109,7 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem className="hidden md:block">
-          <Link href="/Gestion-Pedagogica/pronoi"><NavigationMenuTrigger>PRONOI</NavigationMenuTrigger></Link>
+          <Link href="/Gestion-Pedagogica/pronoi"><NavigationMenuTrigger>PRONOEI</NavigationMenuTrigger></Link>
           <NavigationMenuContent>
             <ul className="grid w-[150px] gap-4">
               <li>

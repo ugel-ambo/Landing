@@ -15,7 +15,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Formatear posts usando Gemini
     const formattedPosts = await geminiService.formatMultiplePosts(messages);
 
     return NextResponse.json({

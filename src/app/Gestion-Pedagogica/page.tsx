@@ -5,6 +5,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { PersonalSection } from "./personal"
 import connectMongoDB from "@/lib/mongodbConnection"
 import { PersonalModel } from "@/models/Personal"
+interface PersonalDoc {
+  _id: { toString(): string }
+  nombre: string
+  cargo: string
+  area: string
+  orden: number
+  foto?: { url?: string }
+}
 
 // Datos de fallback para personal de AGP
 const fallbackEmployees = [
@@ -32,9 +40,9 @@ const fallbackEmployees = [
 async function getEmployeesFromDB() {
   try {
     await connectMongoDB()
-    const personal = await PersonalModel.find({ area: 'agp' }).populate('foto').sort({ orden: 1 }).lean()
+    const personal = await PersonalModel.find({ area: 'agp' }).populate('foto').sort({ orden: 1 }).lean() as unknown as PersonalDoc[]
     if (!personal || personal.length === 0) return null
-    return personal.map((p: any) => ({ id: p._id.toString(), name: p.nombre, position: p.cargo, image: p.foto?.url }))
+    return personal.map((p) => ({ id: p._id.toString(), name: p.nombre, position: p.cargo, image: p.foto?.url }))
   } catch (error) {
     console.error('Error fetching employees:', error)
     return null
@@ -83,7 +91,7 @@ export default async function GP() {
                 stats: "49 + instituciones"
               },
               {
-                title: "PRONOI (Programa de Educación No Escolarizada) ",
+                title: "PRONOEI (Programa de Educación No Escolarizada) ",
                 description: "Programa No Escolarizado de Educación Inicial que atiende a niños y niñas menores de 6 años en zonas rurales y de difícil acceso.",
                 href: "/Gestion-Pedagogica/pronoi",
                 icon: "🏫",
