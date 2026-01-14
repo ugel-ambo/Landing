@@ -12,7 +12,6 @@ export interface IConvocatoriaArchivo {
 }
 
 export interface IConvocatoria extends Document {
-  _id: string;
   nombre: string;
   estado: "vigente" | "en_proceso" | "concluido" | "cancelado";
   fechaInicioInscripcion: Date;
