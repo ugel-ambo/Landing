@@ -13,7 +13,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
-import { HardDrive, ListChecks, Users } from "lucide-react"
+import { HardDrive, Users } from "lucide-react"
 
 export function NavigationMenuDemo() {
   const isMobile = useIsMobile()

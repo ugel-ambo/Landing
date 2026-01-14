@@ -1,12 +1,15 @@
-"use client"
-import Image from "next/image"
+"use client";
+import Image from "next/image";
 
 export default function HeroUGP() {
   return (
     <section className="relative w-full bg-white overflow-hidden min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[65vh]">
-
       <div className="absolute inset-0 pointer-events-none z-0">
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1440 250" preserveAspectRatio="none">
+        <svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 1440 250"
+          preserveAspectRatio="none"
+        >
           <path
             className="lg:hidden"
             fill="#049DD9"
@@ -30,8 +33,9 @@ export default function HeroUGP() {
           </h1>
 
           <p className="text-sm sm:text-base md:text-lg text-gray-600 mt-4 md:mt-6 leading-relaxed max-w-lg mx-auto lg:mx-0">
-            Nos encargamos de planificar, organizar, dirigir y evaluar las acciones pedagógicas en la provincia de Ambo,
-            promoviendo la mejora continua del aprendizaje.
+            Nos encargamos de planificar, organizar, dirigir y evaluar las
+            acciones pedagógicas en la provincia de Ambo, promoviendo la mejora
+            continua del aprendizaje.
           </p>
 
           <button className="mt-6 sm:px-8 py-2 items-center justify-center  w-60 h-10 bg-[#049DD9] hover:bg-[#028ec7] text-white font-semibold rounded-full shadow-md hover:shadow-lg transition-all">
@@ -54,5 +58,5 @@ export default function HeroUGP() {
         </div>
       </div>
     </section>
-  )
+  );
 }

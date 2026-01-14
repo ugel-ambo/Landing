@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 
 import Image from "next/image";
 import { Menu as MenuIcon } from "lucide-react";
@@ -50,10 +49,14 @@ export default function Menu() {
             </div>
             <div className="flex flex-col">
               <span
-                className={`text-lg md:text-xl font-bold tracking-tight leading-none ${isScrolled ? "text-[#049DD9]" : "text-[#049DD9]"
-                  }`}
+                className={`text-lg md:text-2xl font-bold tracking-tight leading-none ${
+                  isScrolled ? "text-[#049DD9]" : "text-[#049DD9]"
+                }`}
               >
                 UGEL AMBO
+              </span>
+              <span className="text-[8px]  font-bold italic">
+                Con visión de futuro y resultados!
               </span>
             </div>
           </Link>
@@ -70,19 +73,21 @@ export default function Menu() {
                 <MenuIcon className="h-52 w-52" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[300px] sm:w-[400px] overflow-y-auto">
+            <SheetContent
+              side="left"
+              className="w-[300px] sm:w-[400px] overflow-y-auto"
+            >
               <SheetHeader>
                 <SheetTitle className="text-left">Menú</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col space-y-2 mt-6">
                 <Accordion type="single" collapsible className="w-full">
-
                   <AccordionItem value="Inicio" className="border-none">
                     <AccordionTrigger
                       className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white [&>svg]:hidden"
                       onClick={() => {
-                        window.location.href = "/"
-                        setOpen(false)
+                        window.location.href = "/";
+                        setOpen(false);
                       }}
                     >
                       Inicio
@@ -131,42 +136,54 @@ export default function Menu() {
                           className="px-4 py-2 hover:bg-accent rounded-md"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm hover:text-white">MOP</div>
+                          <div className="font-medium text-sm hover:text-white">
+                            MOP
+                          </div>
                         </Link>
                         <Link
                           href="/Docs/mof"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm hover:text-white">MOF</div>
+                          <div className="font-medium text-sm hover:text-white">
+                            MOF
+                          </div>
                         </Link>
                         <Link
                           href="/Docs/risc"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm hover:text-white">RISC</div>
+                          <div className="font-medium text-sm hover:text-white">
+                            RISC
+                          </div>
                         </Link>
                         <Link
                           href="/Docs/tupa"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm hover:text-white">TUPA</div>
+                          <div className="font-medium text-sm hover:text-white">
+                            TUPA
+                          </div>
                         </Link>
                         <Link
                           href="/Docs/pei"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm hover:text-white">PEI</div>
+                          <div className="font-medium text-sm hover:text-white">
+                            PEI
+                          </div>
                         </Link>
                         <Link
                           href="/Docs/poi"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm hover:text-white">POI</div>
+                          <div className="font-medium text-sm hover:text-white">
+                            POI
+                          </div>
                         </Link>
                       </div>
                     </AccordionContent>
@@ -190,28 +207,36 @@ export default function Menu() {
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">Gestión Pedagógica</div>
+                          <div className="font-medium text-sm">
+                            Gestión Pedagógica
+                          </div>
                         </Link>
                         <Link
                           href="/Areas/Gestion-Administrativa"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">Gestión Administrativa</div>
+                          <div className="font-medium text-sm">
+                            Gestión Administrativa
+                          </div>
                         </Link>
                         <Link
                           href="/Areas/RRHH"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">Unidad de Gestión de Recursos Humanos</div>
+                          <div className="font-medium text-sm">
+                            Unidad de Gestión de Recursos Humanos
+                          </div>
                         </Link>
                         <Link
                           href="/Areas/Planeamiento-y-Desarrollo-Institucional"
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">Planeamiento y Desarrollo Institucional</div>
+                          <div className="font-medium text-sm">
+                            Planeamiento y Desarrollo Institucional
+                          </div>
                         </Link>
                       </div>
                     </AccordionContent>
@@ -221,8 +246,8 @@ export default function Menu() {
                     <AccordionTrigger
                       className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white [&>svg]:hidden"
                       onClick={() => {
-                        window.location.href = "/Normativa"
-                        setOpen(false)
+                        window.location.href = "/Normativa";
+                        setOpen(false);
                       }}
                     >
                       Normativas
@@ -233,8 +258,8 @@ export default function Menu() {
                     <AccordionTrigger
                       className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white [&>svg]:hidden"
                       onClick={() => {
-                        window.location.href = "/convocatoria"
-                        setOpen(false)
+                        window.location.href = "/convocatoria";
+                        setOpen(false);
                       }}
                     >
                       Convocatorias
@@ -244,14 +269,13 @@ export default function Menu() {
                     <AccordionTrigger
                       className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white [&>svg]:hidden"
                       onClick={() => {
-                        window.location.href = "/integridad"
-                        setOpen(false)
+                        window.location.href = "/integridad";
+                        setOpen(false);
                       }}
                     >
                       Integridad
                     </AccordionTrigger>
                   </AccordionItem>
-
                 </Accordion>
               </nav>
             </SheetContent>
