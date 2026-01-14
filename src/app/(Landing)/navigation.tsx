@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { useIsMobile } from "@/hooks/use-mobile"
+import * as React from "react";
+import Link from "next/link";
+import { useIsMobile } from "@/hooks/use-mobile";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,26 +11,23 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "MOP ",
     href: "/Docs/mop",
-    description:
-      "Manual de Organización y Funciones del Personal",
+    description: "Manual de Organización y Funciones del Personal",
   },
   {
     title: "MOF ",
     href: "/Docs/mof",
-    description:
-      "Manual de Organización y Funciones",
+    description: "Manual de Organización y Funciones",
   },
   {
     title: "RISC ",
     href: "/Docs/risc",
-    description:
-      "Reglamento Interno de Servidores Civiles",
+    description: "Reglamento Interno de Servidores Civiles",
   },
   {
     title: "TUPA",
@@ -40,39 +37,56 @@ const components: { title: string; href: string; description: string }[] = [
   {
     title: "PEI",
     href: "/Docs/pei",
-    description:
-      "Proyecto Educativo Institucional",
+    description: "Proyecto Educativo Institucional",
   },
   {
     title: "POI",
     href: "/Docs/poi",
-    description:
-      "Plan Operativo Institucional",
+    description: "Plan Operativo Institucional",
   },
-]
+];
 
 export function NavigationMenuDemo() {
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
 
   return (
     <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="flex-wrap">
+      <NavigationMenuList className="flex-wrap font-bold">
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/">UGEL</Link>
+            <Link className="font-bold" href="/">
+              UGEL
+            </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger onClick={(e) => !isMobile && e.preventDefault()}>Nosotros</NavigationMenuTrigger>
-          <NavigationMenuContent >
+          <NavigationMenuTrigger
+            onClick={(e) => !isMobile && e.preventDefault()}
+          >
+            Nosotros
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
             <ul className="grid gap-2 md:w-[400px] lg:w-[500px] grid-cols-1">
-              <ListItem href="/Nosotros/Quienes-Somos" title="Quiénes somos" className="hover:text-white" >
+              <ListItem
+                href="/Nosotros/Quienes-Somos"
+                title="Quiénes somos"
+                className="hover:text-white"
+              >
                 Conoce quiénes somos y nuestro compromiso con la educación.
               </ListItem>
-              <ListItem href="/Nosotros/Mision-Vision" title="Misión y visión" className="hover:text-white">
+              <ListItem
+                href="/Nosotros/Mision-Vision"
+                title="Misión y visión"
+                className="hover:text-white"
+              >
                 Nuestra razón de ser y el propósito que guía nuestro trabajo.
-              </ListItem><ListItem href="/Nosotros/Organigrama" title="Organigrama" className="hover:text-white">
+              </ListItem>
+              <ListItem
+                href="/Nosotros/Organigrama"
+                title="Organigrama"
+                className="hover:text-white"
+              >
                 Nuestra razón de ser y el propósito que guía nuestro trabajo.
               </ListItem>
             </ul>
@@ -80,7 +94,11 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger onClick={(e) => !isMobile && e.preventDefault()}>Documentos</NavigationMenuTrigger>
+          <NavigationMenuTrigger
+            onClick={(e) => !isMobile && e.preventDefault()}
+          >
+            Documentos
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
@@ -97,7 +115,11 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger onClick={(e) => !isMobile && e.preventDefault()}>Áreas</NavigationMenuTrigger>
+          <NavigationMenuTrigger
+            onClick={(e) => !isMobile && e.preventDefault()}
+          >
+            Áreas
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[300px] gap-4">
               <li>
@@ -118,12 +140,16 @@ export function NavigationMenuDemo() {
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
                   <Link href="/Areas/RRHH">
-                    <div className="font-medium">Unidad de Gestión de Recursos Humanos</div>
+                    <div className="font-medium">
+                      Unidad de Gestión de Recursos Humanos
+                    </div>
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
                   <Link href="/Areas/Planeamiento-y-Desarrollo-Institucional">
-                    <div className="font-medium">Planeamiento y Desarrollo Institucional</div>
+                    <div className="font-medium">
+                      Planeamiento y Desarrollo Institucional
+                    </div>
                   </Link>
                 </NavigationMenuLink>
               </li>
@@ -147,12 +173,10 @@ export function NavigationMenuDemo() {
             <Link href="/integridad">Integridad</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
-
       </NavigationMenuList>
     </NavigationMenu>
-  )
+  );
 }
-
 
 function ListItem({
   title,
@@ -171,5 +195,5 @@ function ListItem({
         </Link>
       </NavigationMenuLink>
     </li>
-  )
+  );
 }
