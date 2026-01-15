@@ -51,12 +51,10 @@ export function NavigationMenuDemo() {
 
   return (
     <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="flex-wrap font-bold">
+      <NavigationMenuList className="flex-wrap">
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link className="font-bold" href="/">
-              UGEL
-            </Link>
+            <Link href="/">UGEL</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
@@ -89,6 +87,13 @@ export function NavigationMenuDemo() {
               >
                 Nuestra razón de ser y el propósito que guía nuestro trabajo.
               </ListItem>
+              <ListItem
+                href="/Nosotros/Jurisdiccion"
+                title="Jurisdicción"
+                className="hover:text-white"
+              >
+                Nuestras Instituciones Educativas en la Provincia de Ambo.
+              </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -118,24 +123,28 @@ export function NavigationMenuDemo() {
           <NavigationMenuTrigger
             onClick={(e) => !isMobile && e.preventDefault()}
           >
-            Áreas
+            Unidades
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[300px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
                   <Link href="/Areas/Direccion">
-                    <div className="font-medium">Dirección</div>
+                    <div className="font-medium">Unidad de Dirección</div>
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica">
-                    <div className="font-medium">Gestión Pedagógica</div>
+                    <div className="font-medium">
+                      Unidad de Gestión Pedagógica
+                    </div>
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
                   <Link href="/Areas/Gestion-Administrativa">
-                    <div className="font-medium">Gestión Administrativa</div>
+                    <div className="font-medium">
+                      Unidad de Gestión Administrativa
+                    </div>
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
@@ -148,7 +157,7 @@ export function NavigationMenuDemo() {
                 <NavigationMenuLink asChild>
                   <Link href="/Areas/Planeamiento-y-Desarrollo-Institucional">
                     <div className="font-medium">
-                      Planeamiento y Desarrollo Institucional
+                      Unidad de Planeamiento y Desarrollo Institucional
                     </div>
                   </Link>
                 </NavigationMenuLink>
