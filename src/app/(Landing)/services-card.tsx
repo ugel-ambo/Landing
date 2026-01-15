@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Megaphone,
-  Gift,
   Scale,
   GraduationCap,
   ClipboardCheck,
@@ -76,7 +75,7 @@ const services = [
     title: "Directorio",
     description: "Directorio de instituciones educativas",
     icon: BookUser,
-    href: "/directorio",
+    href: "/Areas/Direccion",
     external: false,
   },
 ];

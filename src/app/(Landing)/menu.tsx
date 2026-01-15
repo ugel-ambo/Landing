@@ -38,26 +38,14 @@ export default function Menu() {
         <div className="flex items-center justify-between lg:justify-evenly h-16 md:h-20">
           {/* Logo y Nombre */}
           <Link href="/" className="flex items-center gap-2 md:gap-3 group">
-            <div className="relative w-8 h-8 md:w-10 md:h-10  lg:w-12 lg:h-12 rounded-lg flex items-center justify-center font-bold text-white text-lg md:text-xl">
+            <div className="relative md:w-28 md:h-28 w-22 h-22 ml-4 md:ml-0 items-center justify-center ">
               <Image
-                src="/Logo1.jpg"
+                src="/newlogo.png"
                 alt="Logo "
                 fill
-                className="object-contsain"
+                className="object-contain"
                 priority
               />
-            </div>
-            <div className="flex flex-col">
-              <span
-                className={`text-lg md:text-2xl font-bold tracking-tight leading-none ${
-                  isScrolled ? "text-[#049DD9]" : "text-[#049DD9]"
-                }`}
-              >
-                UGEL AMBO
-              </span>
-              <span className="text-[8px]  font-bold italic">
-                Con visión de futuro y resultados!
-              </span>
             </div>
           </Link>
 
@@ -191,7 +179,7 @@ export default function Menu() {
 
                   <AccordionItem value="Areas" className="border-none ">
                     <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      Áreas
+                      Unidades
                     </AccordionTrigger>
                     <AccordionContent className="pl-4 pb-0 ">
                       <div className="flex flex-col space-y-2 ">
@@ -200,7 +188,9 @@ export default function Menu() {
                           className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
                           onClick={() => setOpen(false)}
                         >
-                          <div className="font-medium text-sm">Dirección</div>
+                          <div className="font-medium text-sm">
+                            Unidad de Dirección
+                          </div>
                         </Link>
                         <Link
                           href="/Gestion-Pedagogica"
@@ -208,7 +198,7 @@ export default function Menu() {
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm">
-                            Gestión Pedagógica
+                            Unidad de Gestión Pedagógica
                           </div>
                         </Link>
                         <Link
@@ -217,7 +207,7 @@ export default function Menu() {
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm">
-                            Gestión Administrativa
+                            Unidad de Gestión Administrativa
                           </div>
                         </Link>
                         <Link
@@ -235,7 +225,7 @@ export default function Menu() {
                           onClick={() => setOpen(false)}
                         >
                           <div className="font-medium text-sm">
-                            Planeamiento y Desarrollo Institucional
+                            Unidad de Planeamiento y Desarrollo Institucional
                           </div>
                         </Link>
                       </div>
