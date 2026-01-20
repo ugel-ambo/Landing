@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { Menu as MenuIcon } from "lucide-react";
@@ -39,22 +39,14 @@ export default function Menu() {
           {/* Logo y Nombre */}
 
           <Link href="/" className="flex items-center gap-2 md:gap-3 group">
-            <div className="relative w-8 h-8 md:w-10 md:h-10  lg:w-12 lg:h-12  rounded-lg flex items-center justify-center font-bold text-white text-lg md:text-xl">
+            <div className="relative md:w-28 md:h-28 w-22 h-22 ml-4 md:ml-0 items-center justify-center ">
               <Image
-                src="/Logo1.jpg"
+                src="/newlogo.png"
                 alt="Logo "
                 fill
-                className="object-contsain"
+                className="object-contain"
                 priority
               />
-            </div>
-            <div className="flex flex-col">
-              <span
-                className={`text-lg md:text-xl font-extrabold tracking-tight leading-none ${isScrolled ? "text-[#049DD9]" : "text-[#049DD9]"
-                  }`}
-              >
-                UGEL AMBO
-              </span>
             </div>
           </Link>
 
@@ -70,18 +62,21 @@ export default function Menu() {
                 <MenuIcon className="h-52 w-52" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[300px] sm:w-[400px] overflow-y-auto">
+            <SheetContent
+              side="left"
+              className="w-[300px] sm:w-[400px] overflow-y-auto"
+            >
               <SheetHeader>
                 <SheetTitle className="text-left">Menú</SheetTitle>
               </SheetHeader>
 
               <nav className="flex flex-col space-y-2 mt-6">
-
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="inicial" className="border-none">
-                    <Link href="/Gestion-Pedagogica/inicial"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      Inicial
-                    </AccordionTrigger>
+                    <Link href="/Gestion-Pedagogica/inicial">
+                      <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                        Inicial
+                      </AccordionTrigger>
                     </Link>
                     <AccordionContent className="pl-4 pb-0">
                       <div className="flex flex-col space-y-1">
@@ -104,9 +99,10 @@ export default function Menu() {
                   </AccordionItem>
 
                   <AccordionItem value="primaria" className="border-none">
-                    <Link href="/Gestion-Pedagogica/primaria"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      Primaria
-                    </AccordionTrigger>
+                    <Link href="/Gestion-Pedagogica/primaria">
+                      <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                        Primaria
+                      </AccordionTrigger>
                     </Link>
                     <AccordionContent className="pl-4 pb-0">
                       <div className="flex flex-col space-y-1">
@@ -129,9 +125,10 @@ export default function Menu() {
                   </AccordionItem>
 
                   <AccordionItem value="secundaria" className="border-none">
-                    <Link href="/Gestion-Pedagogica/secundaria"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      Secundaria
-                    </AccordionTrigger>
+                    <Link href="/Gestion-Pedagogica/secundaria">
+                      <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                        Secundaria
+                      </AccordionTrigger>
                     </Link>
                     <AccordionContent className="pl-4 pb-0">
                       <div className="flex flex-col space-y-1">
@@ -154,9 +151,10 @@ export default function Menu() {
                   </AccordionItem>
 
                   <AccordionItem value="pronoi" className="border-none">
-                    <Link href="/Gestion-Pedagogica/pronoi"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      PRONOEI
-                    </AccordionTrigger>
+                    <Link href="/Gestion-Pedagogica/pronoi">
+                      <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                        PRONOEI
+                      </AccordionTrigger>
                     </Link>
                     <AccordionContent className="pl-4 pb-0">
                       <div className="flex flex-col space-y-1">
@@ -179,9 +177,10 @@ export default function Menu() {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="ceba" className="border-none">
-                    <Link href="/Gestion-Pedagogica/ceba"><AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      CEBA
-                    </AccordionTrigger>
+                    <Link href="/Gestion-Pedagogica/ceba">
+                      <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                        CEBA
+                      </AccordionTrigger>
                     </Link>
                     <AccordionContent className="pl-4 pb-0">
                       <div className="flex flex-col space-y-1">
@@ -202,7 +201,31 @@ export default function Menu() {
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-
+                  <AccordionItem value="convivencia" className="border-none">
+                    <Link href="/Gestion-Pedagogica/convivencia">
+                      <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                        Convivencia Escolar
+                      </AccordionTrigger>
+                    </Link>
+                    <AccordionContent className="pl-4 pb-0">
+                      <div className="flex flex-col space-y-1">
+                        <Link
+                          href="/Gestion-Pedagogica/convivencia/especialistas"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          Especialistas
+                        </Link>
+                        <Link
+                          href="/Gestion-Pedagogica/convivencia/fortalecimiento"
+                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          Fortalecimiento
+                        </Link>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
                 </Accordion>
               </nav>
             </SheetContent>

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { useIsMobile } from "@/hooks/use-mobile"
+import * as React from "react";
+import Link from "next/link";
+import { useIsMobile } from "@/hooks/use-mobile";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,12 +11,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 
-import { HardDrive, Users } from "lucide-react"
+import { HardDrive, Users } from "lucide-react";
 
 export function NavigationMenuDemo() {
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
 
   return (
     <NavigationMenu viewport={isMobile}>
@@ -33,14 +33,19 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem className="hidden md:block">
-          <Link href="/Gestion-Pedagogica/inicial"><NavigationMenuTrigger>Inicial</NavigationMenuTrigger></Link>
+          <Link href="/Gestion-Pedagogica/inicial">
+            <NavigationMenuTrigger>Inicial</NavigationMenuTrigger>
+          </Link>
           <NavigationMenuContent>
             <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/inicial/especialistas">
                     <div className="flex hover:text-white items-center">
-                      <Users className="mr-2 hover:text-white " strokeWidth={2} />
+                      <Users
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
                       <div className="font-medium">Especialistas</div>
                     </div>
                   </Link>
@@ -48,7 +53,10 @@ export function NavigationMenuDemo() {
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/inicial/fortalecimiento">
                     <div className="flex hover:text-white items-center">
-                      <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
+                      <HardDrive
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
                       <div className="font-medium">Fortalecimiento</div>
                     </div>
                   </Link>
@@ -58,14 +66,19 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:block">
-          <Link href="/Gestion-Pedagogica/primaria"><NavigationMenuTrigger>Primaria</NavigationMenuTrigger></Link>
+          <Link href="/Gestion-Pedagogica/primaria">
+            <NavigationMenuTrigger>Primaria</NavigationMenuTrigger>
+          </Link>
           <NavigationMenuContent>
             <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/primaria/especialistas">
                     <div className="flex hover:text-white items-center">
-                      <Users className="mr-2 hover:text-white " strokeWidth={2} />
+                      <Users
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
                       <div className="font-medium">Especialistas</div>
                     </div>
                   </Link>
@@ -73,7 +86,10 @@ export function NavigationMenuDemo() {
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/primaria/fortalecimiento">
                     <div className="flex hover:text-white items-center">
-                      <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
+                      <HardDrive
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
                       <div className="font-medium">Fortalecimiento</div>
                     </div>
                   </Link>
@@ -83,14 +99,19 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:block">
-          <Link href="/Gestion-Pedagogica/secundaria"><NavigationMenuTrigger>Secundaria</NavigationMenuTrigger></Link>
+          <Link href="/Gestion-Pedagogica/secundaria">
+            <NavigationMenuTrigger>Secundaria</NavigationMenuTrigger>
+          </Link>
           <NavigationMenuContent>
             <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/secundaria/especialistas">
                     <div className="flex hover:text-white items-center">
-                      <Users className="mr-2 hover:text-white " strokeWidth={2} />
+                      <Users
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
                       <div className="font-medium">Especialistas</div>
                     </div>
                   </Link>
@@ -98,7 +119,10 @@ export function NavigationMenuDemo() {
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/secundaria/fortalecimiento">
                     <div className="flex hover:text-white items-center">
-                      <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
+                      <HardDrive
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
                       <div className="font-medium">Fortalecimiento</div>
                     </div>
                   </Link>
@@ -109,14 +133,19 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem className="hidden md:block">
-          <Link href="/Gestion-Pedagogica/pronoi"><NavigationMenuTrigger>PRONOEI</NavigationMenuTrigger></Link>
+          <Link href="/Gestion-Pedagogica/pronoi">
+            <NavigationMenuTrigger>PRONOEI</NavigationMenuTrigger>
+          </Link>
           <NavigationMenuContent>
             <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/pronoi/especialistas">
                     <div className="flex hover:text-white items-center">
-                      <Users className="mr-2 hover:text-white " strokeWidth={2} />
+                      <Users
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
                       <div className="font-medium">Especialistas</div>
                     </div>
                   </Link>
@@ -124,7 +153,10 @@ export function NavigationMenuDemo() {
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/pronoi/fortalecimiento">
                     <div className="flex hover:text-white items-center">
-                      <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
+                      <HardDrive
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
                       <div className="font-medium">Fortalecimiento</div>
                     </div>
                   </Link>
@@ -135,14 +167,19 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem className="hidden md:block">
-          <Link href="/Gestion-Pedagogica/ceba"><NavigationMenuTrigger>CEBA</NavigationMenuTrigger></Link>
+          <Link href="/Gestion-Pedagogica/ceba">
+            <NavigationMenuTrigger>CEBA</NavigationMenuTrigger>
+          </Link>
           <NavigationMenuContent>
             <ul className="grid w-[150px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/ceba/especialistas">
                     <div className="flex hover:text-white items-center">
-                      <Users className="mr-2 hover:text-white " strokeWidth={2} />
+                      <Users
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
                       <div className="font-medium">Especialistas</div>
                     </div>
                   </Link>
@@ -150,7 +187,10 @@ export function NavigationMenuDemo() {
                 <NavigationMenuLink asChild>
                   <Link href="/Gestion-Pedagogica/ceba/fortalecimiento">
                     <div className="flex hover:text-white items-center">
-                      <HardDrive className="mr-2 hover:text-white " strokeWidth={2} />
+                      <HardDrive
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
                       <div className="font-medium">Fortalecimiento</div>
                     </div>
                   </Link>
@@ -159,13 +199,43 @@ export function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-
-
+        <NavigationMenuItem className="hidden md:block">
+          <Link href="/Gestion-Pedagogica/convivencia">
+            <NavigationMenuTrigger>Convivencia</NavigationMenuTrigger>
+          </Link>
+          <NavigationMenuContent>
+            <ul className="grid w-[150px] gap-4">
+              <li>
+                <NavigationMenuLink asChild>
+                  <Link href="/Gestion-Pedagogica/convivencia/especialistas">
+                    <div className="flex hover:text-white items-center">
+                      <Users
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
+                      <div className="font-medium">Especialistas</div>
+                    </div>
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="/Gestion-Pedagogica/convivencia/fortalecimiento">
+                    <div className="flex hover:text-white items-center">
+                      <HardDrive
+                        className="mr-2 hover:text-white "
+                        strokeWidth={2}
+                      />
+                      <div className="font-medium">Fortalecimiento</div>
+                    </div>
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  )
+  );
 }
-
 
 function ListItem({
   title,
@@ -184,5 +254,5 @@ function ListItem({
         </Link>
       </NavigationMenuLink>
     </li>
-  )
+  );
 }
