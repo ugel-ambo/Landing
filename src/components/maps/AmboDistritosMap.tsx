@@ -128,13 +128,13 @@ export default function AmboDistritosMap({
 
     window.addEventListener(
       "districtClick",
-      handleDistrictClick as EventListener
+      handleDistrictClick as EventListener,
     );
 
     return () => {
       window.removeEventListener(
         "districtClick",
-        handleDistrictClick as EventListener
+        handleDistrictClick as EventListener,
       );
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
@@ -151,7 +151,7 @@ export default function AmboDistritosMap({
       />
 
       {/* Leyenda */}
-      <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 rounded-lg shadow-lg z-[1000]">
+      <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 rounded-lg shadow-lg z-1000">
         <h4 className="font-semibold text-gray-800 mb-2 text-xs">
           Distritos de Ambo
         </h4>
