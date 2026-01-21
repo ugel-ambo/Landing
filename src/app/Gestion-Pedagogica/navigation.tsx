@@ -201,7 +201,7 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:block">
           <Link href="/Gestion-Pedagogica/convivencia">
-            <NavigationMenuTrigger>Convivencia</NavigationMenuTrigger>
+            <NavigationMenuTrigger>Convivencia Escolar</NavigationMenuTrigger>
           </Link>
           <NavigationMenuContent>
             <ul className="grid w-[150px] gap-4">
