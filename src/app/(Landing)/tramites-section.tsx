@@ -17,9 +17,9 @@ const tramites = [
     title: "Formato Único de Trámite",
     description: "Accede a los formatos estándar para tus trámites",
     icon: FileCheck,
-    href: "/docs/FUT_UGEL.pdf",
+    href: "/docs/FUT_LEGACY.pdf",
     download: true,
-    filename: "FUT_UGEL.pdf",
+    filename: "FUT_LEGACYL.pdf",
   },
   {
     id: 2,
