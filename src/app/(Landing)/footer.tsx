@@ -1,26 +1,23 @@
-"use client"
+"use client";
 
-import type React from "react"
-import Link from "next/link"
-import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react"
+import type React from "react";
+import Link from "next/link";
+import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function Footer() {
-
   return (
     <footer className="bg-primary text-primary-foreground">
-
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* About */}
-          <div>
-            <h3 className="font-bold text-lg mb-4">UGEL Ambo</h3>
-            <p className="text-sm opacity-90 mb-4">
-              Unidad de Gestión Educativa Local comprometida con la excelencia educativa en la región.
+          <div className="flex flex-col items-center justify-center">
+            <h3 className="font-extrabold text-xl text-center  ">UGEL AMBO</h3>
+            <p className="text-sm opacity-90 text-center">
+              Con vision de futuro y resultados!
             </p>
-            <p className="text-xs opacity-75">Transformando la educación, transformamos el futuro</p>
           </div>
 
           {/* Quick Links */}
@@ -28,22 +25,34 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Enlaces Rápidos</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link
+                  href="/"
+                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
+                >
                   Inicio
                 </Link>
               </li>
               <li>
-                <Link href="/#servicios" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link
+                  href="/#servicios"
+                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
+                >
                   Servicios
                 </Link>
               </li>
               <li>
-                <Link href="/#tramite" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link
+                  href="/#tramite"
+                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
+                >
                   Trámites
                 </Link>
               </li>
               <li>
-                <Link href="/#noticias" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link
+                  href="/#noticias"
+                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
+                >
                   Noticias
                 </Link>
               </li>
@@ -55,18 +64,27 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Consultas</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="#" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link
+                  href="#"
+                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
+                >
                   Expedientes
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link
+                  href="#"
+                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
+                >
                   Becas
                 </Link>
               </li>
 
               <li>
-                <Link href="#" className="hover:underline opacity-90 hover:opacity-100 transition-opacity">
+                <Link
+                  href="#"
+                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
+                >
                   Documentos
                 </Link>
               </li>
@@ -77,10 +95,6 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-4">Contacto</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 shrink-0" />
-                <span>(+51) 123-456-789</span>
-              </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 shrink-0" />
                 <span>ugelambo308@gmail.com</span>
@@ -121,7 +135,11 @@ export default function Footer() {
               <p>&copy; 2025 UGEL Ambo. Todos los derechos reservados.</p>
               <p className="text-xs flex gap-1 items-center">
                 Desarrollado por
-                <Button variant="link" asChild className="text-[#223F59] p-0 h-auto font-medium ">
+                <Button
+                  variant="link"
+                  asChild
+                  className="text-[#223F59] p-0 h-auto font-medium "
+                >
                   <Link
                     href="https://www.linkedin.com/in/jhonatan-julca-garcia-7270b2212"
                     target="_blank"
@@ -131,7 +149,11 @@ export default function Footer() {
                   </Link>
                 </Button>
                 y
-                <Button variant="link" asChild className="text-[#223F59] p-0 h-auto font-medium">
+                <Button
+                  variant="link"
+                  asChild
+                  className="text-[#223F59] p-0 h-auto font-medium"
+                >
                   <Link
                     href="https://www.facebook.com/share/1Bzs94JfaW/"
                     target="_blank"
@@ -157,6 +179,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer >
-  )
+    </footer>
+  );
 }
