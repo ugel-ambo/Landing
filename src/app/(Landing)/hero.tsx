@@ -77,7 +77,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-[280px] md:h-[320px] xl:h-[450px] overflow-hidden">
+    <section className="relative w-full h-[400px] md:h-[480px] xl:h-[600px] overflow-hidden">
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden">
         {particles.map((particle, i) => (
@@ -153,6 +153,7 @@ export default function Hero() {
               textColors={["#ffffff"]}
               variableSpeed={{ min: 50, max: 120 }}
             />
+
             {/* Stats */}
             <div className="grid grid-cols-3 gap-2 max-w-md mx-auto">
               {stats.map((stat, index) => (
@@ -167,6 +168,16 @@ export default function Hero() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Director */}
+            <div className="mt-3 inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+              <span className="text-xs md:text-sm font-semibold text-gray-200">
+                Director:
+              </span>
+              <span className="text-xs md:text-sm font-bold text-white">
+                Dr. Hugo Eduardo Palomino Estaban
+              </span>
             </div>
           </div>
         </div>
