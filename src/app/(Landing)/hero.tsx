@@ -29,14 +29,14 @@ const heroImages = [
   },
   {
     id: 4,
-    src: "/newhero4.png",
+    src: "/newhero3.png",
     alt: "Educación moderna",
   },
 ];
 
 const stats = [
   { icon: Users, label: "Estudiantes", value: "15 K +" },
-  { icon: University, label: "Instituciones", value: "300+" },
+  { icon: University, label: "Instituciones", value: "150+" },
   { icon: Award, label: "Años de excelencia", value: "12+" },
 ];
 
