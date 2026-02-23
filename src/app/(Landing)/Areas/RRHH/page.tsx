@@ -23,6 +23,8 @@ const areaStaticData = {
     description:
       "Brindamos atención integral en escalafón, planillas, licencias y procesos administrativos.",
     image: "/Directorio/rrhh/herorrhh.jpeg",
+    leaderName: "Ethel German Camacho Robles",
+    leaderPosition: "Jefe de Recursos Humanos",
   },
   functionsIntro:
     "Nuestras funciones aseguran el cumplimiento de las normativas laborales.",

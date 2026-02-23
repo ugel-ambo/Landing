@@ -1,9 +1,18 @@
-import { AreaSection } from "../components/area-section"
-import connectMongoDB from "@/lib/mongodbConnection"
-import { PersonalModel } from "@/models/Personal"
+import { AreaSection } from "../components/area-section";
+import connectMongoDB from "@/lib/mongodbConnection";
+import { PersonalModel } from "@/models/Personal";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
+
+interface PersonalDocument {
+  _id: { toString(): string };
+  nombre?: string;
+  cargo?: string;
+  area?: string;
+  orden?: number;
+  foto?: { url?: string };
+}
 
 const areaStaticData = {
   hero: {
@@ -13,10 +22,13 @@ const areaStaticData = {
     description:
       "Lideramos la planificación, supervisión y acompañamiento de todas las áreas de la UGEL para asegurar una gestión eficiente, transparente y cercana a la comunidad educativa.",
     image: "/Directorio/direccion/herodireccion.jpeg",
+    leaderName: "Dr. Hugo Eduardo Palomino Estaban",
+    leaderPosition: "Director de la UGEL Ambo",
   },
   functionsIntro:
     "Aseguramos la conducción administrativa, presupuestal y operativa de la UGEL en coordinación permanente con cada unidad orgánica.",
-  teamIntro: "Nuestro equipo directivo coordina estrategias y brinda soporte a toda la provincia de Ambo.",
+  teamIntro:
+    "Nuestro equipo directivo coordina estrategias y brinda soporte a toda la provincia de Ambo.",
   functions: [
     "Formular y contribuir en los lineamientos de la politica educativa y asistir a la formulación de la politica educativa local",
     "Aplicar y concertar la aplicación de la normatividad educativa local. nacional y emitir normas complementarias",
@@ -28,43 +40,47 @@ const areaStaticData = {
     "Impulsar el funcionamiento del Consejo Participativo Local de Educación en coordinación con el gobierno local.",
     "Orientar la formulación, ejecución y evaluación del presupuesto participativo de la sede institucional.",
     "Evaluar la gestión educativa de su ámbito adoptando las acciones preventivas y correctivas pertinentes.",
-    "Asesorar y asegurar que las Instituciones Educativas cuenten con su PEI, PAT, RI e Informe Ejecutivo de Gestión Anual."
+    "Asesorar y asegurar que las Instituciones Educativas cuenten con su PEI, PAT, RI e Informe Ejecutivo de Gestión Anual.",
   ],
-}
+};
 
 // Datos de fallback (cuando no hay datos en BD)
 const fallbackEmployees = [
-  { id: "1", name: "Dr. Hugo Eduardo Palomino Estaban", position: "Directora de la UGEL Ambo", image: "/Directorio/direccion/Hugo" },
- 
-]
+  {
+    id: "1",
+    name: "Dr. Hugo Eduardo Palomino Estaban",
+    position: "Directora de la UGEL Ambo",
+    image: "/Directorio/direccion/Hugo",
+  },
+];
 
 async function getEmployeesFromDB() {
   try {
-    await connectMongoDB()
-    
-    const personal = await PersonalModel.find({ area: 'direccion' })
-      .populate('foto')
+    await connectMongoDB();
+
+    const personal = (await PersonalModel.find({ area: "direccion" })
+      .populate("foto")
       .sort({ orden: 1 })
-      .lean()
-    
+      .lean()) as PersonalDocument[];
+
     if (!personal || personal.length === 0) {
-      return null
+      return null;
     }
-    
-    return personal.map((p: any) => ({
+
+    return personal.map((p) => ({
       id: p._id.toString(),
-      name: p.nombre,
-      position: p.cargo,
+      name: p.nombre ?? "",
+      position: p.cargo ?? "",
       image: p.foto?.url || undefined,
-    }))
+    }));
   } catch (error) {
-    console.error('Error fetching employees:', error)
-    return null
+    console.error("Error fetching employees:", error);
+    return null;
   }
 }
 
 export default async function Direccion() {
-  const employees = await getEmployeesFromDB() || fallbackEmployees
+  const employees = (await getEmployeesFromDB()) || fallbackEmployees;
 
   return (
     <main className="min-h-screen bg-white">
@@ -72,5 +88,5 @@ export default async function Direccion() {
         <AreaSection {...areaStaticData} employees={employees} />
       </div>
     </main>
-  )
+  );
 }

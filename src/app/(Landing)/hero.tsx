@@ -8,17 +8,17 @@ import TypingText from "@/components/ui/shadcn-io/typing-text";
 const heroImages = [
   {
     id: 1,
-    src: "/newhero2.png",
+    src: "/fondo.png",
     alt: "UGEL Ambo - Institución Educativa",
   },
   {
     id: 2,
-    src: "/newhero6.png",
+    src: "/hero4.png",
     alt: "Estudiantes aprendiendo",
   },
   {
     id: 3,
-    src: "/newhero5.png",
+    src: "/hero2.png",
     alt: "Educación moderna",
   },
   {
