@@ -176,7 +176,7 @@ export default function Hero() {
                 Director:
               </span>
               <span className="text-xs md:text-sm font-bold text-white">
-                Dr. Hugo Eduardo Palomino Estaban
+                Dr. Hugo Eduardo Palomino Esteban
               </span>
             </div>
           </div>

@@ -48,7 +48,7 @@ const areaStaticData = {
 const fallbackEmployees = [
   {
     id: "1",
-    name: "Dr. Hugo Eduardo Palomino Estaban",
+    name: "Dr. Hugo Eduardo Palomino Esteban",
     position: "Directora de la UGEL Ambo",
     image: "/Directorio/direccion/Hugo",
   },
