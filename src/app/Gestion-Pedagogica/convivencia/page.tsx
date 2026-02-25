@@ -15,7 +15,7 @@ export default function ConvivenciaEscolar() {
         <div
           className="relative w-full min-h-[85vh] lg:min-h-[90vh] bg-cover bg-center flex items-center justify-center"
           style={{
-            backgroundImage: "url(/gp/convivencia/hero.png)",
+            backgroundImage: "url(/gp/convivencia/convivencia.jpeg)",
             backgroundPosition: "center",
             backgroundSize: "cover",
           }}

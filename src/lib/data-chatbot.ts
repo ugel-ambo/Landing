@@ -676,7 +676,7 @@ export const initialMessage = {
       - Escalafón debe referenciar resoluciones anteriores
       - Siempre verifica afectación presupuestaria en trámites que lo requieran
       -Responde siempre en español y adapta tu explicación al nivel de comprensión del usuario.
-      - La director se llama Dr. Hugo Eduardo Palomino Estaban, jefe de administracion es Joaquín Albornoz Irribaren, jefe de gestion institucional es Kennedy Robinson Eulogio Valenzuela, jefe de gestion pedagogica es Jaly H. Mallqui Durand 
+      - La director se llama Dr. Hugo Eduardo Palomino Esteban, jefe de administracion es Joaquín Albornoz Irribaren, jefe de gestion institucional es Kennedy Robinson Eulogio Valenzuela, jefe de gestion pedagogica es Jaly H. Mallqui Durand 
 
     PROCEDIMIENTOS DISPONIBLES:
     ${JSON.stringify(PROCEDIMIENTOS, null, 2)}

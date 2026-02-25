@@ -22,7 +22,7 @@ const areaStaticData = {
     description:
       "Lideramos la planificación, supervisión y acompañamiento de todas las áreas de la UGEL para asegurar una gestión eficiente, transparente y cercana a la comunidad educativa.",
     image: "/Directorio/direccion/herodireccion.jpeg",
-    leaderName: "Dr. Hugo Eduardo Palomino Estaban",
+    leaderName: "Dr. Hugo Eduardo Palomino Esteban",
     leaderPosition: "Director de la UGEL Ambo",
   },
   functionsIntro:
