@@ -36,6 +36,7 @@ export function PushNotificationManager() {
     null,
   );
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if ("serviceWorker" in navigator && "PushManager" in window) {
@@ -59,19 +60,41 @@ export function PushNotificationManager() {
 
   async function subscribeToPush() {
     setLoading(true);
+    setError(null);
     try {
+      const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+      if (!vapidKey) {
+        throw new Error("VAPID public key no configurada");
+      }
+      console.log(
+        "[Push] Iniciando suscripción con VAPID key:",
+        vapidKey.slice(0, 20) + "...",
+      );
+
       const registration = await navigator.serviceWorker.ready;
+      console.log("[Push] Service worker listo");
+
       const sub = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(
-          process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
-        ),
+        applicationServerKey: urlBase64ToUint8Array(vapidKey),
       });
+      console.log("[Push] Suscripción creada:", sub.endpoint.slice(0, 50));
+
       setSubscription(sub);
       const serializedSub = JSON.parse(JSON.stringify(sub));
-      await subscribeUser(serializedSub);
+      const result = await subscribeUser(serializedSub);
+      console.log("[Push] Resultado de guardado:", result);
+
+      if (!result.success) {
+        setError("Error al guardar la suscripción en el servidor");
+      }
     } catch (error) {
       console.error("Error suscribiéndose a push:", error);
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Error desconocido al suscribirse",
+      );
     } finally {
       setLoading(false);
     }
@@ -146,6 +169,13 @@ export function PushNotificationManager() {
                 actualizaciones importantes
               </p>
             </div>
+            {error && (
+              <div className="p-3 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-lg">
+                <p className="text-sm text-red-800 dark:text-red-200">
+                  ✕ {error}
+                </p>
+              </div>
+            )}
             <Button
               onClick={subscribeToPush}
               className="w-full"

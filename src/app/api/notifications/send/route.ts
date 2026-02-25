@@ -3,14 +3,22 @@ import webpush from 'web-push'
 import connectMongoDB from '@/lib/mongodbConnection'
 import { PushSubscriptionModel } from '@/models/PushSubscription'
 
-webpush.setVapidDetails(
-    'mailto:contacto@ugelambo.gob.pe',
-    process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
-    process.env.VAPID_PRIVATE_KEY!
-)
+let vapidConfigured = false
+
+function ensureVapidConfigured() {
+    if (vapidConfigured) return
+    const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
+    const privateKey = process.env.VAPID_PRIVATE_KEY
+    if (!publicKey || !privateKey) {
+        throw new Error('VAPID keys no configuradas')
+    }
+    webpush.setVapidDetails('mailto:soporteugelamboo@gmail.com', publicKey, privateKey)
+    vapidConfigured = true
+}
 
 export async function POST(request: NextRequest) {
     try {
+        ensureVapidConfigured()
         const { title, body } = await request.json()
 
         if (!title || !body) {

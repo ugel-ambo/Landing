@@ -4,11 +4,20 @@ import webpush from 'web-push'
 import connectMongoDB from '@/lib/mongodbConnection'
 import { PushSubscriptionModel } from '@/models/PushSubscription'
 
-webpush.setVapidDetails(
-    'mailto:contacto@ugelambo.gob.pe',
-    process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
-    process.env.VAPID_PRIVATE_KEY!
-)
+let vapidConfigured = false
+
+function ensureVapidConfigured() {
+    if (vapidConfigured) return true
+    const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
+    const privateKey = process.env.VAPID_PRIVATE_KEY
+    if (!publicKey || !privateKey) {
+        console.error('[Push] VAPID keys no configuradas')
+        return false
+    }
+    webpush.setVapidDetails('mailto:soporteugelamboo@gmail.com', publicKey, privateKey)
+    vapidConfigured = true
+    return true
+}
 
 interface PushSubscriptionData {
     endpoint: string
@@ -20,6 +29,7 @@ interface PushSubscriptionData {
 
 export async function subscribeUser(sub: PushSubscriptionData) {
     try {
+        console.log('[Push] Guardando suscripción:', sub.endpoint.slice(0, 50))
         await connectMongoDB()
         // Upsert: si ya existe el endpoint, actualiza las keys
         await PushSubscriptionModel.findOneAndUpdate(
@@ -52,6 +62,9 @@ export async function unsubscribeUser(endpoint: string) {
 
 export async function sendNotification(message: string) {
     try {
+        if (!ensureVapidConfigured()) {
+            return { success: false, error: 'VAPID keys no configuradas' }
+        }
         await connectMongoDB()
         const subscriptions = await PushSubscriptionModel.find({})
 
