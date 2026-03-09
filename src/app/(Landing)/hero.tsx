@@ -32,6 +32,11 @@ const heroImages = [
     src: "/newhero3.png",
     alt: "Educación moderna",
   },
+  {
+    id: 5,
+    src: "/hero5.png",
+    alt: "Buen Inicio",
+  },
 ];
 
 const stats = [

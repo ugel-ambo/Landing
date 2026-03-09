@@ -23,7 +23,7 @@ const areaStaticData = {
     description:
       "Brindamos atención integral en escalafón, planillas, licencias y procesos administrativos.",
     image: "/Directorio/rrhh/herorrhh.jpeg",
-    leaderName: "Ethel German Camacho Robles",
+    leaderName: "Lenin Nino Hilario Leandros",
     leaderPosition: "Jefe de Recursos Humanos",
   },
   functionsIntro:

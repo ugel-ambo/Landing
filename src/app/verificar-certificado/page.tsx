@@ -11,6 +11,7 @@ interface CertificadoData {
   fechaEmision: string;
   descripcion: string | null;
   estado: "activo" | "anulado";
+  pdfUrl: string | null;
 }
 
 function VerificadorContent() {
@@ -253,6 +254,16 @@ function VerificadorContent() {
                   )}
                   <DetailRow label="Estado" value="ACTIVO" highlight />
                 </div>
+                {certificado.pdfUrl && (
+                  <a
+                    href={certificado.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={styles.downloadButton}
+                  >
+                    📄 Descargar Certificado PDF
+                  </a>
+                )}
               </div>
             )}
         </div>
@@ -351,7 +362,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   card: {
     width: "100%",
-    maxWidth: "560px",
+    maxWidth: "720px",
     backgroundColor: "#ffffff",
     borderRadius: "16px",
     boxShadow: "0 25px 50px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.1)",
@@ -508,5 +519,36 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#2563eb",
     textDecoration: "none",
     fontWeight: 500,
+  },
+  pdfSection: {
+    width: "100%",
+    marginTop: "20px",
+    display: "flex",
+    flexDirection: "column" as const,
+    alignItems: "center",
+    gap: "12px",
+  },
+  pdfTitle: {
+    fontSize: "15px",
+    fontWeight: 600,
+    color: "#374151",
+    margin: 0,
+  },
+  pdfViewer: {
+    width: "100%",
+    height: "600px",
+    border: "1px solid #e5e7eb",
+    borderRadius: "8px",
+  },
+  downloadButton: {
+    display: "inline-block",
+    padding: "10px 24px",
+    backgroundColor: "#2563eb",
+    color: "#ffffff",
+    borderRadius: "8px",
+    textDecoration: "none",
+    fontWeight: 600,
+    fontSize: "14px",
+    transition: "background-color 0.2s",
   },
 };

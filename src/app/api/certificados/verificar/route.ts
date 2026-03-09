@@ -32,6 +32,7 @@ export async function GET(request: Request) {
         fechaEmision: certificado.fechaEmision,
         descripcion: certificado.descripcion || null,
         estado: certificado.estado,
+        pdfUrl: certificado.pdfConQrUrl || certificado.pdfOriginalUrl || null,
       },
     })
   } catch (error) {
