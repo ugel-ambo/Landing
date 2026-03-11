@@ -8,14 +8,14 @@ import {
   GraduationCap,
   ClipboardCheck,
   Shield,
-  PlayCircle,
   Wallet,
   BookUser,
+  Mail,
 } from "lucide-react";
 
 const services = [
   {
-    id: 2,
+    id: 1,
     title: "Convocatorias",
     description: "Últimas convocatorias y oportunidades laborales",
     icon: Megaphone,
@@ -23,7 +23,7 @@ const services = [
     external: false,
   },
   {
-    id: 3,
+    id: 2,
     title: "Denuncias de Corrupción",
     description: "Plataforma Digital Única de Denuncias",
     icon: Scale,
@@ -31,7 +31,7 @@ const services = [
     external: true,
   },
   {
-    id: 4,
+    id: 3,
     title: "SIAGIE",
     description: "Sistema de Información de Apoyo a la Gestión",
     icon: GraduationCap,
@@ -39,15 +39,15 @@ const services = [
     external: true,
   },
   {
-    id: 5,
+    id: 4,
     title: "Asistencia Docente",
     description: "Control de asistencia del personal docente",
     icon: ClipboardCheck,
-    href: "/asistencia-docente",
-    external: false,
+    href: "https://reportedeasistencia.ugelambo.edu.pe/",
+    external: true,
   },
   {
-    id: 6,
+    id: 5,
     title: "Integridad",
     description: "Portal de integridad y transparencia institucional",
     icon: Shield,
@@ -55,15 +55,15 @@ const services = [
     external: false,
   },
   {
-    id: 7,
-    title: "Tutoriales",
-    description: "Guías y videos instructivos para docentes",
-    icon: PlayCircle,
-    href: "/tutoriales",
-    external: false,
+    id: 6,
+    title: "Correo Institucional",
+    description: "Correo institucional para docentes y personal administrativo",
+    icon: Mail,
+    href: "https://webmail.ugelambo.edu.pe/",
+    external: true,
   },
   {
-    id: 8,
+    id: 7,
     title: "Presupuesto",
     description: "Información presupuestal y ejecución de gastos",
     icon: Wallet,
@@ -71,7 +71,7 @@ const services = [
     external: true,
   },
   {
-    id: 9,
+    id: 8,
     title: "Directorio",
     description: "Directorio de instituciones educativas",
     icon: BookUser,
