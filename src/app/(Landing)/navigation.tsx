@@ -44,6 +44,11 @@ const components: { title: string; href: string; description: string }[] = [
     href: "/Docs/poi",
     description: "Plan Operativo Institucional",
   },
+  {
+    title: "Cuadro Multianual",
+    href: "/Docs/cuadro_multianual",
+    description: "Cuadro Multianual de Necesidades",
+  },
 ];
 
 export function NavigationMenuDemo() {
