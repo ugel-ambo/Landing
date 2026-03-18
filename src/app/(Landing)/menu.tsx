@@ -173,6 +173,15 @@ export default function Menu() {
                             POI
                           </div>
                         </Link>
+                        <Link
+                          href="/Docs/cuadro_multianual"
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          <div className="font-medium text-sm hover:text-white">
+                            Cuadro Multianual
+                          </div>
+                        </Link>
                       </div>
                     </AccordionContent>
                   </AccordionItem>

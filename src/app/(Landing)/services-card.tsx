@@ -10,7 +10,7 @@ import {
   Shield,
   Wallet,
   BookUser,
-  Mail,
+  Mail
 } from "lucide-react";
 
 const services = [
@@ -99,8 +99,7 @@ export default function ServicesCards() {
                   key={service.id}
                   href={service.href}
                   target={service.external ? "_blank" : undefined}
-                  className="block group"
-                >
+                  className="block group">
                   <Card className="h-full hover:shadow-lg transition-all duration-300 border border-primary/20 hover:border-primary text-center bg-white hover:scale-[1.02] flex flex-col items-center p-1.5 md:p-3 gap-0 md:gap-0.5">
                     <div className="p-3  mb-2 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-colors">
                       <Icon className="w-6 h-6 md:w-8 md:h-8 text-primary shrink-0" />

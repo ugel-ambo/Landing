@@ -10,40 +10,45 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
+  navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
 
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "MOP ",
     href: "/Docs/mop",
-    description: "Manual de Organización y Funciones del Personal",
+    description: "Manual de Organización y Funciones del Personal"
   },
   {
     title: "MOF ",
     href: "/Docs/mof",
-    description: "Manual de Organización y Funciones",
+    description: "Manual de Organización y Funciones"
   },
   {
     title: "RISC ",
     href: "/Docs/risc",
-    description: "Reglamento Interno de Servidores Civiles",
+    description: "Reglamento Interno de Servidores Civiles"
   },
   {
     title: "TUPA",
     href: "/Docs/tupa",
-    description: "Texto Único de Procedimientos Administrativos",
+    description: "Texto Único de Procedimientos Administrativos"
   },
   {
     title: "PEI",
     href: "/Docs/pei",
-    description: "Proyecto Educativo Institucional",
+    description: "Proyecto Educativo Institucional"
   },
   {
     title: "POI",
     href: "/Docs/poi",
-    description: "Plan Operativo Institucional",
+    description: "Plan Operativo Institucional"
   },
+  {
+    title: "Cuadro Multianual",
+    href: "/Docs/cuadro_multianual",
+    description: "Cuadro Multianual de Necesidades"
+  }
 ];
 
 export function NavigationMenuDemo() {
@@ -60,8 +65,7 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger
-            onClick={(e) => !isMobile && e.preventDefault()}
-          >
+            onClick={(e) => !isMobile && e.preventDefault()}>
             Nosotros
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -69,29 +73,25 @@ export function NavigationMenuDemo() {
               <ListItem
                 href="/Nosotros/Quienes-Somos"
                 title="Quiénes somos"
-                className="hover:text-white"
-              >
+                className="hover:text-white">
                 Conoce quiénes somos y nuestro compromiso con la educación.
               </ListItem>
               <ListItem
                 href="/Nosotros/Mision-Vision"
                 title="Misión y visión"
-                className="hover:text-white"
-              >
+                className="hover:text-white">
                 Nuestra razón de ser y el propósito que guía nuestro trabajo.
               </ListItem>
               <ListItem
                 href="/Nosotros/Organigrama"
                 title="Organigrama"
-                className="hover:text-white"
-              >
+                className="hover:text-white">
                 Nuestra razón de ser y el propósito que guía nuestro trabajo.
               </ListItem>
               <ListItem
                 href="/Nosotros/Jurisdiccion"
                 title="Jurisdicción"
-                className="hover:text-white"
-              >
+                className="hover:text-white">
                 Nuestras Instituciones Educativas en la Provincia de Ambo.
               </ListItem>
             </ul>
@@ -100,8 +100,7 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger
-            onClick={(e) => !isMobile && e.preventDefault()}
-          >
+            onClick={(e) => !isMobile && e.preventDefault()}>
             Documentos
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -110,8 +109,7 @@ export function NavigationMenuDemo() {
                 <ListItem
                   key={component.title}
                   title={component.title}
-                  href={component.href}
-                >
+                  href={component.href}>
                   {component.description}
                 </ListItem>
               ))}
@@ -121,8 +119,7 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem className="hidden md:block">
           <NavigationMenuTrigger
-            onClick={(e) => !isMobile && e.preventDefault()}
-          >
+            onClick={(e) => !isMobile && e.preventDefault()}>
             Unidades
           </NavigationMenuTrigger>
           <NavigationMenuContent>
