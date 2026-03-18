@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -43,11 +42,6 @@ const components: { title: string; href: string; description: string }[] = [
     title: "POI",
     href: "/Docs/poi",
     description: "Plan Operativo Institucional"
-  },
-  {
-    title: "Cuadro Multianual",
-    href: "/Docs/cuadro_multianual",
-    description: "Cuadro Multianual de Necesidades"
   }
 ];
 
