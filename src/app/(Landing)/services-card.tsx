@@ -20,7 +20,7 @@ const services = [
     description: "Últimas convocatorias y oportunidades laborales",
     icon: Megaphone,
     href: "/convocatoria",
-    external: false,
+    external: false
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const services = [
     description: "Plataforma Digital Única de Denuncias",
     icon: Scale,
     href: "https://denuncias.servicios.gob.pe/?gobpe_id=4412",
-    external: true,
+    external: true
   },
   {
     id: 3,
@@ -36,15 +36,15 @@ const services = [
     description: "Sistema de Información de Apoyo a la Gestión",
     icon: GraduationCap,
     href: "https://siagie.minedu.gob.pe/",
-    external: true,
+    external: true
   },
   {
     id: 4,
-    title: "Asistencia Docente",
-    description: "Control de asistencia del personal docente",
+    title: "Reporte de parte mensual",
+    description: "De directivos, docentes y administrativos",
     icon: ClipboardCheck,
     href: "https://reportedeasistencia.ugelambo.edu.pe/",
-    external: true,
+    external: true
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ const services = [
     description: "Portal de integridad y transparencia institucional",
     icon: Shield,
     href: "/integridad",
-    external: false,
+    external: false
   },
   {
     id: 6,
@@ -60,7 +60,7 @@ const services = [
     description: "Correo institucional para docentes y personal administrativo",
     icon: Mail,
     href: "https://webmail.ugelambo.edu.pe/",
-    external: true,
+    external: true
   },
   {
     id: 7,
@@ -68,7 +68,7 @@ const services = [
     description: "Información presupuestal y ejecución de gastos",
     icon: Wallet,
     href: "https://www.transparencia.gob.pe/reportes_directos/pte_transparencia_info_finan.aspx?id_entidad=18827&id_tema=19&ver=",
-    external: true,
+    external: true
   },
   {
     id: 8,
@@ -76,8 +76,8 @@ const services = [
     description: "Directorio de instituciones educativas",
     icon: BookUser,
     href: "/Areas/Direccion",
-    external: false,
-  },
+    external: false
+  }
 ];
 
 export default function ServicesCards() {
