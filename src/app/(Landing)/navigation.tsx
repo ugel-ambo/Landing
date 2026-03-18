@@ -42,6 +42,16 @@ const components: { title: string; href: string; description: string }[] = [
     title: "POI",
     href: "/Docs/poi",
     description: "Plan Operativo Institucional"
+  },
+  {
+    title: "Cuadro Multianual",
+    href: "/Docs/cuadro_multianual",
+    description: "Cuadro Multianual de Necesidades"
+  },
+  {
+    title: "Programa de Integridad",
+    href: "/Docs/integridad",
+    description: "Programa de Integridad 2026"
   }
 ];
 

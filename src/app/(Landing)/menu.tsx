@@ -182,6 +182,15 @@ export default function Menu() {
                             Cuadro Multianual
                           </div>
                         </Link>
+                        <Link
+                          href="/Docs/integridad"
+                          className="px-4 py-2 hover:bg-accent rounded-md hover:text-white"
+                          onClick={() => setOpen(false)}
+                        >
+                          <div className="font-medium text-sm hover:text-white">
+                            Programa de Integridad
+                          </div>
+                        </Link>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
