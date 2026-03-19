@@ -107,7 +107,7 @@ export default function Hero() {
 
       {/* Carousel */}
       <div className="relative w-full h-full flex justify-center">
-        <div className="relative w-full lg:w-[80%] max-w-6xl h-full">
+        <div className="relative w-full   h-full">
           {heroImages.map((image, index) => (
             <div
               key={image.id}

@@ -32,7 +32,7 @@ const services = [
   },
   {
     id: 3,
-    title: "SIAGIE",
+    title: "SIxAGIE",
     description: "Sistema de Información de Apoyo a la Gestión",
     icon: GraduationCap,
     href: "https://siagie.minedu.gob.pe/",
