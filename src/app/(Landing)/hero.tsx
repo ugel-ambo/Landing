@@ -33,15 +33,30 @@ const heroImages = [
     alt: "Educación moderna"
   },
   {
+    id: 5,
+    src: "/img1.jpg",
+    alt: "Buen Inicio"
+  },
+  {
     id: 6,
-    src: "/img.2.JPG",
+    src: "/img2.jpg",
     alt: "Buen Inicio"
   },
   {
     id: 7,
-    src: "/img1.JPG",
-    alt: "Buen Inicio"
-  }
+    src: "/img3.png",
+    alt: "Buen Inicio Juntos 1"
+  }, 
+  {
+    id: 8,
+    src: "/img4.png",
+    alt: "Buen Inicio Juntos 2"
+  },
+  {
+    id: 9,
+    src: "/img5.png",
+    alt: "Batalla de Arcapunco"
+  }  
 ];
 
 const stats = [
