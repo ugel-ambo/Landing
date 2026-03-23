@@ -1,6 +1,6 @@
-import EspecialistasSection from "../../components/EspecialistasSection";
-import { getEspecialistas } from "../../actions";
+import EspecialistasSection from "@/app/Gestion-Pedagogica/components/EspecialistasSection";
 import especialistasDataFallback from "../data";
+import { getEspecialistas } from "@/app/Gestion-Pedagogica/actions";
 
 // Deshabilitar cache para obtener datos frescos
 export const dynamic = "force-dynamic";
