@@ -15,48 +15,48 @@ const heroImages = [
   {
     id: 1,
     src: "/fondo.png",
-    alt: "UGEL Ambo - Institución Educativa"
+    alt: "UGEL Ambo - Institución Educativa",
   },
   {
     id: 2,
     src: "/hero4.png",
-    alt: "Estudiantes aprendiendo"
+    alt: "Estudiantes aprendiendo",
   },
   {
     id: 3,
     src: "/hero2.png",
-    alt: "Educación moderna"
+    alt: "Educación moderna",
   },
   {
     id: 4,
     src: "/newhero3.png",
-    alt: "Educación moderna"
+    alt: "Educación moderna",
   },
   {
     id: 5,
-    src: "/img1.jpg",
-    alt: "Buen Inicio"
+    src: "/img1.JPG",
+    alt: "Buen Inicio",
   },
   {
     id: 6,
     src: "/img2.jpg",
-    alt: "Buen Inicio"
+    alt: "Buen Inicio",
   },
   {
     id: 7,
     src: "/img3.png",
-    alt: "Buen Inicio Juntos 1"
-  }, 
+    alt: "Buen Inicio Juntos 1",
+  },
   {
     id: 8,
     src: "/img4.png",
-    alt: "Buen Inicio Juntos 2"
+    alt: "Buen Inicio Juntos 2",
   },
   {
     id: 9,
     src: "/img5.png",
-    alt: "Batalla de Arcapunco"
-  }  
+    alt: "Batalla de Arcapunco",
+  },
 ];
 
 const stats = [

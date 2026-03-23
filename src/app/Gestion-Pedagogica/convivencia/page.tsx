@@ -383,7 +383,7 @@ export default function ConvivenciaEscolar() {
                 ))}
               </div>
               <a
-                href="https://siseve.pe"
+                href="https://siseve.minedu.gob.pe/web/App/Index "
                 target="_blank"
                 rel="noopener noreferrer"
               >
