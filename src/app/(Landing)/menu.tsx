@@ -40,7 +40,7 @@ export default function Menu() {
           <Link href="/" className="flex items-center gap-2 md:gap-3 group">
             <div className="relative md:w-28 md:h-28 w-22 h-22 ml-4 md:ml-0 items-center justify-center ">
               <Image
-                src="/newlogo.png"
+                src="/logo2026.png"
                 alt="Logo "
                 fill
                 className="object-contain"
