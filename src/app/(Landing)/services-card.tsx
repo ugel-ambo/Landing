@@ -80,6 +80,7 @@ const services = [
     description: "Directorio de instituciones educativas",
     icon: BookUser,
     href: "/Areas/Direccion",
+    image: "",
     external: false
   }
 ];
