@@ -79,9 +79,9 @@ const services = [
     title: "Directorio",
     description: "Directorio de instituciones educativas",
     icon: BookUser,
-    href: "/Areas/Direccion",
+    href: "https://drive.google.com/file/d/1LvFQoNtjUsir0F7F8QRtuUg38X_EpIUn/view?usp=sharing",
     image: "",
-    external: false
+    external: true
   }
 ];
 
