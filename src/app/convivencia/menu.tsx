@@ -1,7 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { Menu as MenuIcon, Home, Video, FileImage, ClipboardList, ArrowLeft } from "lucide-react";
+import {
+  Menu as MenuIcon,
+  Home,
+  Video,
+  FileImage,
+  ClipboardList,
+  ArrowLeft,
+  Wrench,
+  CalendarDays,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,9 +22,37 @@ import {
 } from "@/components/ui/sheet";
 import Link from "next/link";
 import { ConvivenciaNavigation } from "./navigation";
+import type { LucideIcon } from "lucide-react";
+
+interface MobileLink {
+  href: string;
+  label: string;
+  icon: LucideIcon;
+}
+
+const mobileLinks: MobileLink[] = [
+  { href: "/convivencia", label: "Inicio", icon: Home },
+  { href: "/convivencia/videos", label: "Videos", icon: Video },
+  { href: "/convivencia/flyers", label: "Flyers", icon: FileImage },
+  {
+    href: "/convivencia/protocolos",
+    label: "Protocolos de Atención",
+    icon: ClipboardList,
+  },
+  {
+    href: "/herramientas",
+    label: "Herramientas",
+    icon: Wrench,
+  },
+  {
+    href: "/convivencia/calendario",
+    label: "Calendario",
+    icon: CalendarDays,
+  },
+];
 
 export default function Menu() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [, setIsScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -34,7 +71,7 @@ export default function Menu() {
           <Link href="/" className="flex items-center gap-2 md:gap-3 group">
             <div className="relative md:w-28 md:h-28 w-22 h-22 ml-4 md:ml-0 items-center justify-center ">
               <Image
-                src="/newlogo.png"
+                src="/logo2026.png"
                 alt="Logo "
                 fill
                 className="object-contain"
@@ -60,38 +97,26 @@ export default function Menu() {
               className="w-[300px] sm:w-[400px] overflow-y-auto"
             >
               <SheetHeader>
-                <SheetTitle className="text-left">Convivencia Escolar</SheetTitle>
+                <SheetTitle className="text-left">
+                  Convivencia Escolar
+                </SheetTitle>
               </SheetHeader>
 
               <nav className="flex flex-col space-y-2 mt-6">
-                <Link
-                  href="/convivencia"
-                  className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:text-white flex items-center gap-3"
-                  onClick={() => setOpen(false)}
-                >
-                  <Home className="w-5 h-5" /> Inicio
-                </Link>
-                <Link
-                  href="/convivencia/videos"
-                  className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:text-white flex items-center gap-3"
-                  onClick={() => setOpen(false)}
-                >
-                  <Video className="w-5 h-5" /> Videos
-                </Link>
-                <Link
-                  href="/convivencia/flyers"
-                  className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:text-white flex items-center gap-3"
-                  onClick={() => setOpen(false)}
-                >
-                  <FileImage className="w-5 h-5" /> Flyers
-                </Link>
-                <Link
-                  href="/convivencia/protocolos"
-                  className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:text-white flex items-center gap-3"
-                  onClick={() => setOpen(false)}
-                >
-                  <ClipboardList className="w-5 h-5" /> Protocolos de Atención
-                </Link>
+                {mobileLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:text-white flex items-center gap-3"
+                      onClick={() => setOpen(false)}
+                    >
+                      <Icon className="w-5 h-5" />
+                      {link.label}
+                    </Link>
+                  );
+                })}
                 <div className="border-t my-4" />
                 <Link
                   href="/"

@@ -1,40 +1,115 @@
 "use client";
 
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { FileText, Tag, Download, Send } from "lucide-react";
+import { FileText, Tag, Download, Send, FileIcon } from "lucide-react";
+import { motion } from "framer-motion";
 
-const flyers = [
+interface FlyerItem {
+  title: string;
+  desc: string;
+  categoria: string;
+  tipo: "imagen" | "pdf";
+  archivo: string;
+}
+
+const flyers: FlyerItem[] = [
   {
     title: "Campaña contra el Bullying 2026",
     desc: "Material informativo sobre prevención del acoso escolar en las instituciones educativas.",
     categoria: "Prevención",
+    tipo: "imagen",
+    archivo: "/convivencia/flyer/flyer_protocolo.jpeg",
   },
   {
     title: "Semana de la Convivencia Escolar",
     desc: "Flyer informativo sobre las actividades programadas durante la Semana de la Convivencia.",
     categoria: "Eventos",
+    tipo: "imagen",
+    archivo: "/convivencia/flyer/flyer_convivencia.jpeg",
   },
   {
     title: "Protocolos SíseVe",
     desc: "Resumen gráfico de los pasos para reportar un caso de violencia escolar en el SíseVe.",
     categoria: "Protocolos",
+    tipo: "pdf",
+    archivo: "",
   },
   {
     title: "Derechos del Estudiante",
     desc: "Infografía sobre los derechos fundamentales de los estudiantes en la institución educativa.",
     categoria: "Derechos",
+    tipo: "imagen",
+    archivo: "",
   },
   {
     title: "Números de Emergencia",
     desc: "Directorio de contactos de emergencia: DEMUNA, CEM, Comisaría, Línea 100.",
     categoria: "Contactos",
+    tipo: "imagen",
+    archivo: "",
   },
   {
-    title: "Normas de Convivencia",
+    title: "Oficio Para Actividades de Convivencia",
     desc: "Guía visual para la elaboración participativa de normas de convivencia en el aula.",
     categoria: "Gestión",
+    tipo: "imagen",
+    archivo: "/convivencia/flyer/flyer_oficio.jpeg",
   },
 ];
+
+function FlyerPreview({ flyer }: { flyer: FlyerItem }) {
+  if (!flyer.archivo) {
+    return (
+      <div className="text-center px-6">
+        <FileText className="w-16 h-16 text-muted-foreground/40 mx-auto mb-4" />
+        <p className="text-sm text-muted-foreground font-medium">
+          Flyer disponible próximamente
+        </p>
+      </div>
+    );
+  }
+
+  if (flyer.tipo === "imagen") {
+    return (
+      <Image
+        src={flyer.archivo}
+        alt={flyer.title}
+        fill
+        className="object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+    );
+  }
+
+  // PDF preview
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-center gap-3 bg-muted/50">
+      <div className="w-16 h-20 bg-destructive/10 rounded-lg flex items-center justify-center border border-destructive/20">
+        <FileIcon className="w-8 h-8 text-destructive" />
+      </div>
+      <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+        Documento PDF
+      </span>
+    </div>
+  );
+}
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0, 0, 0.2, 1] as const },
+  },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
 
 export default function FlyersPage() {
   return (
@@ -58,24 +133,37 @@ export default function FlyersPage() {
       {/* Flyers Grid */}
       <section className="py-16 px-6 sm:px-8 bg-muted">
         <div className="max-w-6xl mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             {flyers.map((flyer, i) => (
-              <div
+              <motion.div
                 key={i}
+                variants={fadeInUp}
                 className="bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg hover:border-primary transition-all duration-300 group"
               >
-                {/* Flyer Placeholder */}
-                <div className="relative aspect-3/4 bg-primary/5 flex items-center justify-center">
-                  <div className="text-center px-6">
-                    <FileText className="w-16 h-16 text-muted-foreground/40 mx-auto mb-4" />
-                    <p className="text-sm text-muted-foreground font-medium">
-                      Flyer disponible próximamente
-                    </p>
-                  </div>
-                  <span className="absolute top-3 left-3 inline-flex items-center gap-1 text-xs font-semibold bg-foreground text-white px-3 py-1 rounded-full">
+                {/* Preview */}
+                <div className="relative aspect-3/4 bg-primary/5 flex items-center justify-center overflow-hidden">
+                  <FlyerPreview flyer={flyer} />
+                  <span className="absolute top-3 left-3 inline-flex items-center gap-1 text-xs font-semibold bg-foreground text-white px-3 py-1 rounded-full z-10">
                     <Tag className="w-3 h-3" />
                     {flyer.categoria}
                   </span>
+                  {flyer.archivo && (
+                    <span
+                      className={`absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full z-10 ${
+                        flyer.tipo === "pdf"
+                          ? "bg-destructive/90 text-white"
+                          : "bg-primary/90 text-white"
+                      }`}
+                    >
+                      {flyer.tipo === "pdf" ? "PDF" : "IMG"}
+                    </span>
+                  )}
                 </div>
 
                 <div className="p-5">
@@ -85,17 +173,36 @@ export default function FlyersPage() {
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                     {flyer.desc}
                   </p>
-                  <Button
-                    variant="outline"
-                    className="w-full border-border text-foreground hover:bg-primary/5 hover:border-primary font-medium text-sm"
-                    disabled
-                  >
-                    <Download className="w-4 h-4 mr-2" /> Descargar PDF
-                  </Button>
+                  {flyer.archivo ? (
+                    <a
+                      href={flyer.archivo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download={flyer.tipo === "imagen" ? undefined : true}
+                    >
+                      <Button
+                        variant="outline"
+                        className="w-full border-border text-foreground hover:bg-primary/5 hover:border-primary font-medium text-sm"
+                      >
+                        <Download className="w-4 h-4 mr-2" />
+                        {flyer.tipo === "pdf"
+                          ? "Descargar PDF"
+                          : "Ver / Descargar Imagen"}
+                      </Button>
+                    </a>
+                  ) : (
+                    <Button
+                      variant="outline"
+                      className="w-full border-border text-foreground hover:bg-primary/5 hover:border-primary font-medium text-sm"
+                      disabled
+                    >
+                      <Download className="w-4 h-4 mr-2" /> Próximamente
+                    </Button>
+                  )}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Info */}
           <div className="mt-12 bg-card rounded-xl border border-border p-8 text-center">

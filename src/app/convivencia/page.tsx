@@ -19,47 +19,43 @@ import {
   Handshake,
   ArrowRight,
   Check,
-  Circle,
   CalendarDays,
-  HelpCircle,
   Mail,
   ExternalLink,
-  Heart,
   BookOpen,
-  Video,
-  FileImage,
+  Sparkles,
+  Phone,
+  Copy,
+  CheckCheck,
 } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const aliados = [
   {
     icon: Landmark,
     name: "DEMUNA AMBO",
-    desc: "Defensoría Municipal del Niño y del Adolescente de la Municipalidad Provincial de Ambo",
-    role: "Protección de derechos de niños, niñas y adolescentes",
+    phone: "(062) 123-456",
   },
   {
     icon: Siren,
     name: "Comisaría de Ambo",
-    desc: "Comisaría de la Policía Nacional del Perú - Ambo",
-    role: "Seguridad ciudadana y atención de denuncias",
+    phone: "(062) 456-789",
   },
   {
     icon: ShieldAlert,
     name: "Centro de Emergencia Mujer",
-    desc: "CEM - Ministerio de la Mujer y Poblaciones Vulnerables",
-    role: "Atención integral a víctimas de violencia familiar y sexual",
+    phone: "Línea 100",
   },
   {
     icon: Brain,
     name: "Centro de Salud Mental",
-    desc: "Centro de Salud Mental Comunitario de Ambo",
-    role: "Atención en salud mental y acompañamiento psicológico",
+    phone: "(062) 321-654",
   },
   {
     icon: ClipboardList,
     name: "Directorio UGEL",
-    desc: "Directorio de la Unidad de Gestión Educativa Local de Ambo",
-    role: "Gestión y supervisión educativa local",
+    phone: "(062) 562-048",
   },
 ];
 
@@ -67,34 +63,37 @@ const herramientas = [
   {
     perfil: "Directivos",
     icon: Briefcase,
-    accent: "bg-[#1e3a5f]",
+    bg: "bg-blue-600",
+    shadow: "shadow-blue-500/20",
     items: [
-      "Guía para elaborar el Reglamento Interno",
-      "Protocolos de atención ante violencia escolar",
-      "Formato de informe de casos SíseVe",
-      "Guía de conformación del Comité de Tutoría",
+      "Guía para el Reglamento Interno",
+      "Protocolos ante violencia escolar",
+      "Formato de informe SíseVe",
+      "Guía del Comité de Tutoría",
     ],
   },
   {
     perfil: "Docentes",
     icon: GraduationCap,
-    accent: "bg-primary",
+    bg: "bg-emerald-500",
+    shadow: "shadow-emerald-500/20",
     items: [
-      "Guía de tutoría y orientación educativa",
+      "Guía de tutoría y orientación",
       "Sesiones de educación socioemocional",
-      "Estrategias para la prevención del bullying",
-      "Guía de detección temprana de violencia",
+      "Estrategias contra el bullying",
+      "Detección temprana de violencia",
     ],
   },
   {
     perfil: "No Docentes",
     icon: Handshake,
-    accent: "bg-secondary",
+    bg: "bg-amber-500",
+    shadow: "shadow-orange-500/20",
     items: [
-      "Pautas para el trato respetuoso al estudiante",
-      "Protocolo de actuación ante emergencias",
+      "Pautas para un trato respetuoso",
+      "Protocolo de actuación",
       "Guía de comunicación asertiva",
-      "Manual de convivencia institucional",
+      "Manual de convivencia",
     ],
   },
 ];
@@ -129,164 +128,280 @@ const faq = [
 const calendario = [
   {
     mes: "Marzo",
+    color: "bg-primary",
     actividades: [
-      "Conformación de Comités de Tutoría en las II.EE.",
-      "Elaboración del Reglamento Interno participativo",
+      "Dia Mundial del Bienestar mental para Adolescentes",
+      "Dia Internacional de la Mujer",
+      "Dia Internacional de la Felicidad",
+      "Dia Mundial del Síndrome de Down",
+      "Asistencia Técnica sobre Protocolos de Atención violencia Escolar",
     ],
   },
   {
     mes: "Abril",
+    color: "bg-secondary",
     actividades: [
-      "Campaña contra el Bullying",
-      "Capacitación en protocolos de atención SíseVe",
+      "Dia Mundial de la Educacion",
+      "Dia Mundial de la Salud",
+      "Inicio de Actividades. murales contra el bulling",
+      "Dia Internacional de la lucha contra el Maltrato Infantil",
+      "Dia del Psicologo Peruano",
     ],
   },
   {
     mes: "Mayo",
+    color: "bg-primary",
     actividades: [
-      "Semana de la Convivencia Escolar",
-      "Taller de habilidades socioemocionales para docentes",
+      "Dia del Trabajador",
+      "Fin de PREVI Fase I",
+      "Fin de actividad: Murales contra el Bulling",
+      "INICIO PREVI FASE II",
+      "Taller Presencial: Normas de Convivencia y de Participación Estudiantil",
     ],
   },
   {
     mes: "Junio",
-    actividades: [
-      "Día contra el Trabajo Infantil",
-      "Monitoreo de casos registrados en SíseVe",
-    ],
+    color: "bg-secondary",
+    actividades: ["Día de la bandera", "Día del padre"],
   },
 ];
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0, 0, 0.2, 1] as const },
+  },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+function AliadosSection() {
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+
+  const handleCopy = (phone: string, index: number) => {
+    navigator.clipboard.writeText(phone);
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
+  return (
+    <section id="aliados" className="py-14 px-6 sm:px-8 bg-primary">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">
+            Aliados Estratégicos
+          </h2>
+          <p className="text-white/80 text-base max-w-xl mx-auto">
+            Contacta a nuestras instituciones aliadas para apoyo y orientación
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {aliados.map((aliado, i) => {
+            const Icon = aliado.icon;
+            const isCopied = copiedIndex === i;
+            return (
+              <div
+                key={i}
+                className="bg-white rounded-2xl p-5 flex items-center gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <Icon className="w-6 h-6 text-primary" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-foreground font-bold text-sm truncate">
+                    {aliado.name}
+                  </h3>
+                  <div className="flex items-center gap-1.5 text-muted-foreground text-sm mt-0.5">
+                    <Phone className="w-3.5 h-3.5 shrink-0" />
+                    <span>{aliado.phone}</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => handleCopy(aliado.phone, i)}
+                  className="w-9 h-9 rounded-lg bg-primary/5 hover:bg-primary/15 flex items-center justify-center shrink-0 transition-colors cursor-pointer"
+                  title="Copiar número"
+                >
+                  {isCopied ? (
+                    <CheckCheck className="w-4 h-4 text-emerald-500" />
+                  ) : (
+                    <Copy className="w-4 h-4 text-primary" />
+                  )}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function ConvivenciaEscolar() {
   return (
-    <main className="min-h-screen bg-background">
-      {/* ═══════ HERO COMPACTO ═══════ */}
-      <section className="relative w-full overflow-hidden">
-        <div className="absolute inset-0 bg-black/50 z-10" />
+    <main className="min-h-screen bg-background overflow-x-hidden">
+      {/* HERO */}
+      <section className="relative w-full overflow-hidden pb-0">
+        {/* Imagen de fondo principal */}
         <div
-          className="relative w-full min-h-[50vh] lg:min-h-[55vh] bg-cover bg-center flex items-center justify-center"
+          className="absolute inset-0 z-0"
           style={{
             backgroundImage: "url(convivencia/convivencia_hero.jpeg)",
             backgroundPosition: "center",
             backgroundSize: "cover",
           }}
-        >
-          <div className="relative z-20 flex flex-col items-center justify-center text-center px-6 sm:px-8 py-8 max-w-5xl mx-auto">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-white mb-6 border border-white/20">
-              <Handshake className="w-4 h-4" />
-              Convivencia Escolar
-            </div>
+        />
+        {/* Capa de color primario semitransparente */}
+        <div className="absolute inset-0 bg-foreground/60 z-1"></div>
 
-            <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold leading-tight text-white">
-              CONVIVENCIA ESCOLAR{" "}
-              <span className="text-primary">UGEL AMBO</span>
-            </h1>
+        <div className="relative z-10 w-full min-h-[40vh] flex items-center justify-center pt-10 pb-6">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="flex flex-col items-center justify-center text-center px-6 sm:px-8 max-w-5xl mx-auto"
+          >
+            <motion.div
+              variants={fadeInUp}
+              className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-5 py-2.5 text-sm font-bold text-white mb-8 border border-white/20 shadow-xl"
+            >
+              <Sparkles className="w-5 h-5 text-primary" />
+              <span>Convivencia Escolar Activa</span>
+            </motion.div>
 
-            <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-3xl mb-10 leading-relaxed">
+            <motion.h1
+              variants={fadeInUp}
+              className="mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white tracking-tight drop-shadow-xl"
+            >
+              Convivencia Escolar <br />
+              <span className="text-primary relative inline-block">
+                UGEL AMBO
+                <svg
+                  className="absolute w-full h-3 -bottom-2 left-0 text-primary opacity-80"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0 5 Q 50 15 100 5"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="transparent"
+                  />
+                </svg>
+              </span>
+            </motion.h1>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg sm:text-xl md:text-xl text-white max-w-2xl mb-12 leading-relaxed font-medium drop-shadow-md"
+            >
               Construyendo relaciones respetuosas, democráticas y pacíficas para
-              el desarrollo integral de la comunidad educativa
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════ ACCESOS RÁPIDOS ═══════ */}
-      <section className="py-8 px-6 sm:px-8 bg-background">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              {
-                icon: Video,
-                label: "Videos",
-                href: "/convivencia/videos",
-                color: "bg-primary",
-              },
-              {
-                icon: FileImage,
-                label: "Flyers",
-                href: "/convivencia/flyers",
-                color: "bg-secondary",
-              },
-              {
-                icon: ClipboardList,
-                label: "Protocolos",
-                href: "/convivencia/protocolos",
-                color: "bg-[#1e3a5f]",
-              },
-              {
-                icon: ShieldAlert,
-                label: "SíseVe",
-                href: "https://siseve.minedu.gob.pe/web/App/Index",
-                color: "bg-destructive",
-              },
-            ].map((item, i) => {
-              const Icon = item.icon;
-              const isExternal = item.href.startsWith("http");
-              const Wrapper = isExternal ? "a" : Link;
-              const wrapperProps = isExternal
-                ? {
-                    href: item.href,
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                  }
-                : { href: item.href };
-              return (
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                <Wrapper key={i} {...(wrapperProps as any)}>
-                  <div className="group flex flex-col items-center gap-3 p-5 rounded-xl bg-card border border-border hover:shadow-lg hover:border-primary transition-all duration-300 cursor-pointer">
-                    <div
-                      className={`w-12 h-12 rounded-full ${item.color} text-white flex items-center justify-center group-hover:scale-110 transition-transform`}
-                    >
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <span className="text-sm font-bold text-foreground">
-                      {item.label}
-                    </span>
-                  </div>
-                </Wrapper>
-              );
-            })}
-          </div>
+              el desarrollo integral de nuestra comunidad educativa
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
       {/* ═══════ ALIADOS ESTRATÉGICOS ═══════ */}
-      <section id="aliados" className="py-16 px-6 sm:px-8 bg-muted">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary mb-4">
-              <Heart className="w-4 h-4" /> Juntos por los estudiantes
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Aliados Estratégicos
-            </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
-              Instituciones comprometidas con la protección integral de nuestros
-              estudiantes
-            </p>
-          </div>
+      <AliadosSection />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
-            {aliados.map((aliado, i) => {
-              const Icon = aliado.icon;
+      {/* ═══════ CAJA DE HERRAMIENTAS ═══════ */}
+      <section
+        id="herramientas"
+        className="py-20 px-6 sm:px-8 bg-white relative"
+      >
+        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-400/5 rounded-full blur-3xl -z-10"></div>
+
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="text-center mb-16"
+          >
+            <motion.div
+              variants={fadeInUp}
+              className="inline-flex items-center gap-2 rounded-full bg-blue-50 dark:bg-blue-900/20 px-4 py-2 text-sm font-bold text-blue-600 dark:text-blue-400 mb-4 border border-blue-100 dark:border-blue-800"
+            >
+              <BookOpen className="w-4 h-4" /> Recursos Educativos
+            </motion.div>
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-foreground mb-6 tracking-tight"
+            >
+              Caja de Herramientas
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-slate-600 dark:text-muted-foreground max-w-3xl mx-auto font-medium"
+            >
+              Documentos, guías y recursos organizados para fortalecer la
+              gestión de la convivencia según tu rol en la institución.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {herramientas.map((h, i) => {
+              const Icon = h.icon;
               return (
-                <div
+                <motion.div
                   key={i}
-                  className="group bg-card p-5 rounded-xl border border-border hover:border-primary hover:shadow-lg transition-all duration-300 text-center"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 }}
+                  whileHover={{ y: -5 }}
+                  className="rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800 bg-white dark:bg-card shadow-2xl shadow-slate-200/40 dark:shadow-none transition-all duration-300 flex flex-col h-full"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-primary text-white flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-6 h-6" />
+                  <div
+                    className={`${h.bg} p-8 text-white relative overflow-hidden`}
+                  >
+                    <div className="absolute right-0 top-0 opacity-10 transform translate-x-1/4 -translate-y-1/4">
+                      <Icon className="w-40 h-40" />
+                    </div>
+                    <Icon className="w-12 h-12 mb-4 relative z-10" />
+                    <h3 className="text-2xl font-bold relative z-10">
+                      {h.perfil}
+                    </h3>
                   </div>
-                  <h3 className="text-sm font-bold text-foreground mb-1.5">
-                    {aliado.name}
-                  </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed mb-2">
-                    {aliado.desc}
-                  </p>
-                  <span className="inline-block text-[10px] font-semibold text-primary bg-primary/10 px-2.5 py-1 rounded-full">
-                    {aliado.role}
-                  </span>
-                </div>
+                  <div className="p-8 flex-1 flex flex-col">
+                    <ul className="space-y-4 mb-8 flex-1">
+                      {h.items.map((item, j) => (
+                        <li key={j} className="flex items-start gap-3 group">
+                          <div
+                            className={`mt-1 p-1 rounded-full bg-slate-100 dark:bg-slate-800 group-hover:bg-primary/20 transition-colors`}
+                          >
+                            <ArrowRight className="w-3 h-3 text-slate-400 group-hover:text-primary transition-colors" />
+                          </div>
+                          <span className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href="/convivencia/protocolos"
+                      className="mt-auto block"
+                    >
+                      <Button
+                        className={`w-full py-6 rounded-xl font-bold text-base bg-slate-50 hover:bg-slate-100 text-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-white border border-slate-200 dark:border-slate-700 transition-all ${h.shadow} hover:shadow-lg`}
+                      >
+                        Acceder a recursos
+                      </Button>
+                    </Link>
+                  </div>
+                </motion.div>
               );
             })}
           </div>
@@ -294,219 +409,229 @@ export default function ConvivenciaEscolar() {
       </section>
 
       {/* ═══════ ACCESO DIRECTO SÍSEVE ═══════ */}
-      <section className="py-16 px-6 sm:px-8 bg-foreground">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-10">
-            <div className="flex-1 text-center md:text-left">
-              <div className="inline-flex items-center gap-2 rounded-full bg-destructive/15 border border-destructive/25 px-4 py-2 text-sm font-semibold text-destructive mb-6">
-                <ShieldAlert className="w-4 h-4" /> Sistema de Reporte
+      <section className="py-12 px-6 sm:px-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-red-600 z-0"></div>
+        {/* Patrón superpuesto */}
+        <div
+          className="absolute inset-0 opacity-10 mix-blend-overlay z-0"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          }}
+        ></div>
+
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex-1 text-center lg:text-left"
+            >
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 px-5 py-2.5 text-sm font-bold text-white mb-8 shadow-xl">
+                <ShieldAlert className="w-5 h-5 text-yellow-300" />
+                <span className="tracking-wide">
+                  Portal Oficial de Reportes
+                </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                SíseVe: Contra la Violencia Escolar
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 drop-shadow-md leading-tight">
+                SíseVe: <span className="text-yellow-300">Cero Tolerancia</span>{" "}
+                a la Violencia
               </h2>
-              <p className="text-white/60 text-lg mb-6 leading-relaxed">
-                Reporta casos de violencia escolar de forma{" "}
-                <strong className="text-white">confidencial y segura</strong>.
-                El Sistema SíseVe garantiza el seguimiento y atención oportuna
-                por parte de las autoridades educativas.
+              <p className="text-white/90 text-lg sm:text-xl md:text-2xl mb-10 leading-relaxed font-medium">
+                Reporta incidentes de violencia escolar de manera{" "}
+                <strong className="text-white bg-white/20 px-2 py-1 rounded-md">
+                  100% confidencial
+                </strong>
+                . Garantizamos la protección e intervención inmediata.
               </p>
-              <div className="space-y-3 mb-8">
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 text-left">
                 {[
-                  "Reporte confidencial y gratuito",
-                  "Seguimiento garantizado por el MINEDU",
-                  "Protección integral del estudiante",
-                  "Respuesta oportuna de la UGEL",
+                  "Reporte confidencial y seguro",
+                  "Atención prioritaria UGEL",
+                  "Protección de identidad",
+                  "Seguimiento garantizado",
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <span className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center shrink-0">
-                      <Check className="w-3 h-3" />
-                    </span>
-                    <span className="text-white/70 text-sm">{item}</span>
+                  <div
+                    key={i}
+                    className="flex items-center gap-3 bg-black/10 backdrop-blur-sm p-3 rounded-xl border border-white/10"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-yellow-400 text-red-700 flex items-center justify-center shrink-0 shadow-md">
+                      <Check className="w-4 h-4 font-bold" />
+                    </div>
+                    <span className="text-white font-medium">{item}</span>
                   </div>
                 ))}
               </div>
+
               <a
                 href="https://siseve.minedu.gob.pe/web/App/Index"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="inline-block"
               >
                 <Button
                   size="lg"
-                  className="bg-destructive hover:bg-destructive/90 text-white font-bold shadow-lg px-8"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-red-900 font-black text-lg py-7 px-10 rounded-2xl shadow-2xl shadow-yellow-500/20 hover:scale-105 transition-all"
                 >
-                  Acceder a SíseVe <ExternalLink className="w-4 h-4 ml-2" />
+                  Generar un Reporte en SíseVe{" "}
+                  <ExternalLink className="w-5 h-5 ml-3" />
                 </Button>
               </a>
-            </div>
-            <div className="flex-1 w-full">
-              <div className="bg-white/5 backdrop-blur-sm p-8 rounded-xl border border-white/10">
-                <h3 className="text-xl font-bold text-white mb-6 text-center">
-                  ¿Cómo reportar un caso?
-                </h3>
-                <div className="space-y-5">
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex-1 w-full max-w-lg lg:max-w-none"
+            >
+              <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border-4 border-white/20 backdrop-blur-xl">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-6 mb-8">
+                  <h3 className="text-2xl font-extrabold text-slate-800">
+                    Pasos para reportar
+                  </h3>
+                  <div className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center">
+                    <ShieldAlert className="w-6 h-6" />
+                  </div>
+                </div>
+                <div className="space-y-6">
                   {[
                     {
                       step: "1",
-                      title: "Ingresa al portal SíseVe",
-                      desc: "Accede con tu cuenta o crea una nueva",
+                      title: "Ingresa al portal",
+                      desc: "Accede usando tu DNI o crea tú cuenta rápidamente.",
                     },
                     {
                       step: "2",
-                      title: "Selecciona el tipo de caso",
-                      desc: "Violencia entre estudiantes o de adulto a estudiante",
+                      title: "Detalla el caso",
+                      desc: "Completa el formulario describiendo qué sucedió.",
                     },
                     {
                       step: "3",
-                      title: "Completa el formulario",
-                      desc: "Describe los hechos con precisión",
+                      title: "Envía confidencial",
+                      desc: "Tu identidad será protegida en todo momento.",
                     },
                     {
                       step: "4",
-                      title: "Recibe seguimiento",
-                      desc: "La IE y UGEL darán atención al caso",
+                      title: "Recibe el código",
+                      desc: "Usa el código generado para el seguimiento.",
                     },
                   ].map((item, i) => (
-                    <div key={i} className="flex gap-4 items-start">
-                      <div className="w-9 h-9 rounded-lg bg-primary text-white flex items-center justify-center font-bold shrink-0 text-sm">
+                    <div key={i} className="flex gap-5 items-start group">
+                      <div className="w-12 h-12 rounded-xl bg-slate-50 border-2 border-slate-100 text-red-600 flex items-center justify-center font-black shrink-0 text-lg group-hover:bg-red-50 group-hover:border-red-200 transition-colors shadow-sm">
                         {item.step}
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-white text-sm">
+                      <div className="pt-1">
+                        <h4 className="font-bold text-slate-800 text-lg mb-1">
                           {item.title}
                         </h4>
-                        <p className="text-xs text-white/50">{item.desc}</p>
+                        <p className="text-slate-500 font-medium">
+                          {item.desc}
+                        </p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════ CAJA DE HERRAMIENTAS ═══════ */}
-      <section id="herramientas" className="py-16 px-6 sm:px-8 bg-background">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 px-4 py-2 text-sm font-semibold text-secondary mb-4">
-              <BookOpen className="w-4 h-4" /> Recursos Educativos
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Caja de Herramientas
-            </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
-              Recursos y materiales para Directivos, Docentes y personal No
-              Docente
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {herramientas.map((h, i) => {
-              const Icon = h.icon;
-              return (
-                <div
-                  key={i}
-                  className="rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all duration-300 bg-card"
-                >
-                  <div className={`${h.accent} p-6 text-white text-center`}>
-                    <Icon className="w-10 h-10 mx-auto mb-3" />
-                    <h3 className="text-xl font-bold">{h.perfil}</h3>
-                  </div>
-                  <ul className="p-6 space-y-3">
-                    {h.items.map((item, j) => (
-                      <li
-                        key={j}
-                        className="flex items-start gap-3 text-muted-foreground"
-                      >
-                        <ArrowRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                        <span className="text-sm leading-relaxed">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="px-6 pb-6">
-                    <Link href="/convivencia/protocolos">
-                      <Button
-                        variant="outline"
-                        className="w-full border-border text-foreground hover:bg-primary/5 hover:border-primary font-medium"
-                      >
-                        Ver recursos <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* ═══════ CALENDARIO DE ACTIVIDADES ═══════ */}
-      <section className="py-16 px-6 sm:px-8 bg-muted">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              <CalendarDays className="w-8 h-8 inline-block mr-2 text-primary" />
-              Calendario de Actividades
-            </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
-              Programación de actividades de la UGEL Ambo en materia de
-              convivencia escolar
-            </p>
+      <section className="py-20 px-6 sm:px-8 bg-white dark:bg-card border-y border-slate-100 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 dark:bg-purple-900/20 px-4 py-2 text-sm font-bold text-purple-700 dark:text-purple-400 mb-4 border border-purple-200 dark:border-purple-800">
+                <CalendarDays className="w-4 h-4" /> Agenda Escolar
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-foreground mb-4">
+                Calendario Anual
+              </h2>
+              <p className="text-lg text-slate-600 dark:text-muted-foreground font-medium">
+                Principales actividades de promoción, prevención y atención
+                programadas por la UGEL Ambo.
+              </p>
+            </div>
+            <Link href="/convivencia/calendario">
+              <Button
+                variant="outline"
+                className="rounded-full border-slate-300 dark:border-slate-700 font-bold hover:bg-slate-50 dark:hover:bg-slate-800"
+              >
+                Ver todos los eventos <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {calendario.map((mes, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg hover:border-primary transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl transition-shadow group flex flex-col"
               >
-                <div className="bg-secondary px-5 py-3">
-                  <h3 className="text-base font-bold text-white text-center">
-                    {mes.mes}
-                  </h3>
+                <div
+                  className={`${mes.color} px-6 py-4 flex justify-between items-center group-hover:brightness-110 transition-all`}
+                >
+                  <h3 className="text-xl font-black text-white">{mes.mes}</h3>
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white">
+                    <CalendarDays className="w-4 h-4" />
+                  </div>
                 </div>
-                <ul className="p-5 space-y-3">
-                  {mes.actividades.map((act, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-3 text-muted-foreground"
-                    >
-                      <Circle className="w-2 h-2 fill-primary text-primary mt-1.5 shrink-0" />
-                      <span className="text-sm leading-relaxed">{act}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <div className="p-6 flex-1 bg-white dark:bg-transparent">
+                  <ul className="space-y-5">
+                    {mes.actividades.map((act, j) => (
+                      <li key={j} className="flex gap-4">
+                        <div className="mt-1">
+                          <div
+                            className={`w-3 h-3 rounded-full ${mes.color} opacity-80 shadow-sm`}
+                          />
+                        </div>
+                        <span className="text-slate-700 dark:text-slate-300 font-medium leading-snug">
+                          {act}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ═══════ PREGUNTAS FRECUENTES ═══════ */}
-      <section className="py-16 px-6 sm:px-8 bg-background">
+      <section className="py-12 px-6 sm:px-8 bg-slate-50 dark:bg-background">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              <HelpCircle className="w-8 h-8 inline-block mr-2 text-primary" />
+          <div className="text-center mb-8">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-primary dark:text-foreground mb-4">
               Preguntas Frecuentes
             </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
-              Resolvemos tus dudas sobre convivencia escolar
+            <p className="text-lg text-foreground font-medium max-w-2xl mx-auto">
+              Todo lo que necesitas saber sobre convivencia escolar,
+              lineamientos y qué hacer ante situaciones vulnerables.
             </p>
           </div>
 
-          <Accordion type="single" collapsible className="w-full space-y-3">
+          <Accordion type="single" collapsible className="w-full space-y-2">
             {faq.map((item, i) => (
               <AccordionItem
                 key={i}
                 value={`faq-${i}`}
-                className="border border-border rounded-xl px-6 data-[state=open]:border-primary transition-colors"
+                className="border border-slate-200 dark:border-slate-800 rounded-2xl px-6 sm:px-8 bg-white dark:bg-card shadow-sm data-[state=open]:shadow-md data-[state=open]:border-primary/50 transition-all overflow-hidden"
               >
-                <AccordionTrigger className="text-left text-foreground font-semibold hover:no-underline py-5">
+                <AccordionTrigger className="text-left text-foreground dark:text-foreground font-bold hover:no-underline py-4 text-lg hover:text-primary transition-colors">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
+                <AccordionContent className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed pb-6 text-base">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
@@ -516,22 +641,26 @@ export default function ConvivenciaEscolar() {
       </section>
 
       {/* ═══════ CONTÁCTANOS ═══════ */}
-      <section className="py-16 px-6 sm:px-8 bg-foreground text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+      <section className="py-10 px-6 sm:px-8 bg-foreground text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[100px] -z-10"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px] -z-10"></div>
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-4xl sm:text-4xl font-black mb-6 tracking-tight">
             ¿Necesitas ayuda o asesoría?
           </h2>
-          <p className="text-white/60 mb-8 max-w-2xl mx-auto">
-            El equipo de Convivencia Escolar de la UGEL Ambo está para apoyarte.
-            Contáctanos para orientación, capacitación o atención de casos.
+          <p className="text-white/80 text-xl md:text-xl mb-12 max-w-3xl mx-auto font-medium leading-relaxed">
+            El equipo de Convivencia Escolar de la UGEL Ambo está siempre
+            dispuesto a apoyarte. Contáctanos para recibir orientación o
+            atención.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-5 justify-center">
             <a href="mailto:paoloz65@gmail.com">
               <Button
                 size="lg"
-                className="bg-primary text-white hover:bg-primary/90 font-bold shadow-md px-8"
+                className="bg-primary hover:bg-primary/80 text-white font-bold px-10 h-12 rounded-2xl text-lg w-full sm:w-auto transition-transform hover:-translate-y-1"
               >
-                <Mail className="w-4 h-4 mr-2" /> Contáctanos
+                <Mail className="w-5 h-5 mr-3" /> Escríbenos un Correo
               </Button>
             </a>
             <a
@@ -542,9 +671,9 @@ export default function ConvivenciaEscolar() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 font-bold px-8"
+                className="border-white/20 text-slate-900 hover:bg-white hover:text-slate-900 bg-white font-bold px-10 h-12 rounded-2xl shadow-xl text-lg w-full sm:w-auto transition-transform hover:-translate-y-1"
               >
-                Ir a SíseVe <ExternalLink className="w-4 h-4 ml-2" />
+                Ir al portal SíseVe <ExternalLink className="w-5 h-5 ml-3" />
               </Button>
             </a>
           </div>
