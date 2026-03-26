@@ -6,15 +6,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 const MESSAGES = [
-    "¡La educación es el arma más poderosa para cambiar el mundo!",
-    "UGEL Ambo: Trabajando por una educación de calidad.",
-    "¡Estudia con dedicación y alcanzarás tus sueños!",
-    "La lectura abre las puertas del conocimiento.",
-    "El aprendizaje es un tesoro que te seguirá siempre.",
-    "¡Participa activamente en tu comunidad educativa!",
-    "La educación no cambia el mundo, cambia a las personas que van a cambiar el mundo.",
+  "📲 Visita nuestras redes sociales y mantente informado.",
+//   "¡La educación es el arma más poderosa para cambiar el mundo!",
+//   "UGEL Ambo: Trabajando por una educación de calidad.",
+  "UGEL Ambo: Con visión de futuro y resultados.",
+  "¡Estudia con dedicación y alcanzarás tus sueños!",
+  "La lectura abre las puertas del conocimiento.",
+  "El aprendizaje es un tesoro que te seguirá siempre.",
+  "¡Participa activamente en tu comunidad educativa!",
+  "La educación no cambia el mundo, cambia a las personas que van a cambiar el mundo."
 ];
 
+ 
 export default function Mascota() {
     const [isVisible, setIsVisible] = useState(false);
     const [message, setMessage] = useState("");
