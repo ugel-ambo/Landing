@@ -474,7 +474,7 @@ export default function ConvivenciaEscolar() {
               >
                 <Button
                   size="lg"
-                  className="bg-yellow-400 hover:bg-yellow-500 text-red-900 font-black text-lg py-7 px-10 rounded-2xl shadow-2xl shadow-yellow-500/20 hover:scale-105 transition-all"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-red-900 font-bold text-lg py-7 px-10 rounded-2xl shadow-2xl shadow-yellow-500/20 hover:scale-105 transition-all"
                 >
                   Generar un Reporte en SíseVe{" "}
                   <ExternalLink className="w-5 h-5 ml-3" />
@@ -517,8 +517,8 @@ export default function ConvivenciaEscolar() {
                     },
                     {
                       step: "4",
-                      title: "Recibe el código",
-                      desc: "Usa el código generado para el seguimiento.",
+                      title: "Obten tu numero de Caso",
+                      desc: "Usa el número de caso generado para el seguimiento.",
                     },
                   ].map((item, i) => (
                     <div key={i} className="flex gap-5 items-start group">
@@ -658,7 +658,7 @@ export default function ConvivenciaEscolar() {
             <a href="mailto:paoloz65@gmail.com">
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/80 text-white font-bold px-10 h-12 rounded-2xl text-lg w-full sm:w-auto transition-transform hover:-translate-y-1"
+                className="bg-primary hover:bg-primary/80 text-white font-medium px-10 h-12 rounded-2xl text-lg w-full sm:w-auto transition-transform hover:-translate-y-1"
               >
                 <Mail className="w-5 h-5 mr-3" /> Escríbenos un Correo
               </Button>
@@ -671,7 +671,7 @@ export default function ConvivenciaEscolar() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/20 text-slate-900 hover:bg-white hover:text-slate-900 bg-white font-bold px-10 h-12 rounded-2xl shadow-xl text-lg w-full sm:w-auto transition-transform hover:-translate-y-1"
+                className="border-white/20 text-slate-900 hover:bg-white hover:text-slate-900 bg-white font-medium px-10 h-12 rounded-2xl shadow-xl text-lg w-full sm:w-auto transition-transform hover:-translate-y-1"
               >
                 Ir al portal SíseVe <ExternalLink className="w-5 h-5 ml-3" />
               </Button>
