@@ -9,50 +9,50 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "MOP ",
     href: "/Docs/mop",
-    description: "Manual de Organización y Funciones del Personal"
+    description: "Manual de Organización y Funciones del Personal",
   },
   {
     title: "MOF ",
     href: "/Docs/mof",
-    description: "Manual de Organización y Funciones"
+    description: "Manual de Organización y Funciones",
   },
   {
     title: "RISC ",
     href: "/Docs/risc",
-    description: "Reglamento Interno de Servidores Civiles"
+    description: "Reglamento Interno de Servidores Civiles",
   },
   {
     title: "TUPA",
     href: "/Docs/tupa",
-    description: "Texto Único de Procedimientos Administrativos"
+    description: "Texto Único de Procedimientos Administrativos",
   },
   {
     title: "PEI",
     href: "/Docs/pei",
-    description: "Proyecto Educativo Institucional"
+    description: "Proyecto Educativo Institucional",
   },
   {
     title: "POI",
     href: "/Docs/poi",
-    description: "Plan Operativo Institucional"
+    description: "Plan Operativo Institucional",
   },
   {
     title: "Cuadro Multianual",
     href: "/Docs/cuadro_multianual",
-    description: "Cuadro Multianual de Necesidades"
+    description: "Cuadro Multianual de Necesidades",
   },
   {
     title: "Programa de Integridad",
     href: "/Docs/integridad",
-    description: "Programa de Integridad 2026"
-  }
+    description: "Programa de Integridad 2026",
+  },
 ];
 
 export function NavigationMenuDemo() {
@@ -69,33 +69,38 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger
-            onClick={(e) => !isMobile && e.preventDefault()}>
-            Nosotros
+            onClick={(e) => !isMobile && e.preventDefault()}
+          >
+            NOSOTROS
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-2 md:w-[400px] lg:w-[500px] grid-cols-1">
               <ListItem
                 href="/Nosotros/Quienes-Somos"
                 title="Quiénes somos"
-                className="hover:text-white">
+                className="hover:text-white"
+              >
                 Conoce quiénes somos y nuestro compromiso con la educación.
               </ListItem>
               <ListItem
                 href="/Nosotros/Mision-Vision"
                 title="Misión y visión"
-                className="hover:text-white">
+                className="hover:text-white"
+              >
                 Nuestra razón de ser y el propósito que guía nuestro trabajo.
               </ListItem>
               <ListItem
                 href="/Nosotros/Organigrama"
                 title="Organigrama"
-                className="hover:text-white">
+                className="hover:text-white"
+              >
                 Nuestra razón de ser y el propósito que guía nuestro trabajo.
               </ListItem>
               <ListItem
                 href="/Nosotros/Jurisdiccion"
                 title="Jurisdicción"
-                className="hover:text-white">
+                className="hover:text-white"
+              >
                 Nuestras Instituciones Educativas en la Provincia de Ambo.
               </ListItem>
             </ul>
@@ -104,8 +109,9 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger
-            onClick={(e) => !isMobile && e.preventDefault()}>
-            Documentos
+            onClick={(e) => !isMobile && e.preventDefault()}
+          >
+            DOCUMENTOS
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -113,7 +119,8 @@ export function NavigationMenuDemo() {
                 <ListItem
                   key={component.title}
                   title={component.title}
-                  href={component.href}>
+                  href={component.href}
+                >
                   {component.description}
                 </ListItem>
               ))}
@@ -123,8 +130,9 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem className="hidden md:block">
           <NavigationMenuTrigger
-            onClick={(e) => !isMobile && e.preventDefault()}>
-            Unidades
+            onClick={(e) => !isMobile && e.preventDefault()}
+          >
+            UNIDADES
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[300px] gap-4">
@@ -169,18 +177,18 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/Normativa">Normativas</Link>
+            <Link href="/Normativa">NORMATIVAS</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/convocatoria">Convocatorias</Link>
+            <Link href="/convocatoria">CONVOCATORIAS</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/integridad">Integridad</Link>
+            <Link href="/integridad">INTEGRIDAD</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>

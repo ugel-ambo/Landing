@@ -78,13 +78,13 @@ export default function Menu() {
                         setOpen(false);
                       }}
                     >
-                      Inicio
+                      INICIO
                     </AccordionTrigger>
                   </AccordionItem>
 
                   <AccordionItem value="nosotros" className="border-none">
                     <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      Nosotros
+                      NOSOTROS
                     </AccordionTrigger>
                     <AccordionContent className="pl-4 pb-0">
                       <div className="flex flex-col space-y-1">
@@ -115,7 +115,7 @@ export default function Menu() {
 
                   <AccordionItem value="documentos" className="border-none">
                     <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      Documentos
+                      DOCUMENTOS
                     </AccordionTrigger>
                     <AccordionContent className="pl-4 pb-0">
                       <div className="flex flex-col space-y-2 ">
@@ -197,7 +197,7 @@ export default function Menu() {
 
                   <AccordionItem value="Areas" className="border-none ">
                     <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                      Unidades
+                      UNIDADES
                     </AccordionTrigger>
                     <AccordionContent className="pl-4 pb-0 ">
                       <div className="flex flex-col space-y-2 ">
@@ -258,7 +258,7 @@ export default function Menu() {
                         setOpen(false);
                       }}
                     >
-                      Normativas
+                      NORMATIVAS
                     </AccordionTrigger>
                   </AccordionItem>
 
@@ -270,7 +270,7 @@ export default function Menu() {
                         setOpen(false);
                       }}
                     >
-                      Convocatorias
+                      CONVOCATORIAS
                     </AccordionTrigger>
                   </AccordionItem>
                   <AccordionItem value="Integridad" className="border-none">
@@ -281,7 +281,7 @@ export default function Menu() {
                         setOpen(false);
                       }}
                     >
-                      Integridad
+                      INTEGRIDAD
                     </AccordionTrigger>
                   </AccordionItem>
                 </Accordion>
