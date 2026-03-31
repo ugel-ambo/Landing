@@ -66,11 +66,15 @@ export function NavigationMenuDemo() {
             <Link href="/">UGEL</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link href="/Nosotros/Jurisdiccion">JURISDICCION</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
 
         <NavigationMenuItem>
           <NavigationMenuTrigger
-            onClick={(e) => !isMobile && e.preventDefault()}
-          >
+            onClick={(e) => !isMobile && e.preventDefault()}>
             NOSOTROS
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -78,39 +82,35 @@ export function NavigationMenuDemo() {
               <ListItem
                 href="/Nosotros/Quienes-Somos"
                 title="Quiénes somos"
-                className="hover:text-white"
-              >
+                className="hover:text-white">
                 Conoce quiénes somos y nuestro compromiso con la educación.
               </ListItem>
               <ListItem
                 href="/Nosotros/Mision-Vision"
                 title="Misión y visión"
-                className="hover:text-white"
-              >
+                className="hover:text-white">
                 Nuestra razón de ser y el propósito que guía nuestro trabajo.
               </ListItem>
               <ListItem
                 href="/Nosotros/Organigrama"
                 title="Organigrama"
-                className="hover:text-white"
-              >
+                className="hover:text-white">
                 Nuestra razón de ser y el propósito que guía nuestro trabajo.
               </ListItem>
-              <ListItem
+              {/* <ListItem
                 href="/Nosotros/Jurisdiccion"
                 title="Jurisdicción"
                 className="hover:text-white"
               >
                 Nuestras Instituciones Educativas en la Provincia de Ambo.
-              </ListItem>
+              </ListItem> */}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
           <NavigationMenuTrigger
-            onClick={(e) => !isMobile && e.preventDefault()}
-          >
+            onClick={(e) => !isMobile && e.preventDefault()}>
             DOCUMENTOS
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -119,8 +119,7 @@ export function NavigationMenuDemo() {
                 <ListItem
                   key={component.title}
                   title={component.title}
-                  href={component.href}
-                >
+                  href={component.href}>
                   {component.description}
                 </ListItem>
               ))}
@@ -130,8 +129,7 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem className="hidden md:block">
           <NavigationMenuTrigger
-            onClick={(e) => !isMobile && e.preventDefault()}
-          >
+            onClick={(e) => !isMobile && e.preventDefault()}>
             UNIDADES
           </NavigationMenuTrigger>
           <NavigationMenuContent>
