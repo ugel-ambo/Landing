@@ -60,7 +60,7 @@ export function NavigationMenuDemo() {
 
   return (
     <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="flex-wrap">
+      <NavigationMenuList className="flex-nowrap">
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
             <Link href="/">UGEL</Link>
