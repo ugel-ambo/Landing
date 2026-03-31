@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FileCheck, LogIn, FileInput } from "lucide-react";
+import { FileCheck, LogIn, Globe ,FileInput } from "lucide-react";
 
 const tramites = [
   {
@@ -19,7 +19,7 @@ const tramites = [
     icon: FileCheck,
     href: "/docs/FUT_UGEL.pdf",
     download: true,
-    filename: "FUT_UGEL.pdf",
+    filename: "FUT_UGEL.pdf"
   },
   {
     id: 2,
@@ -28,15 +28,24 @@ const tramites = [
     icon: FileInput,
     href: "/docs/PAPELETA_2026.doc",
     download: true,
-    filename: "PAPELETA_2026.doc",
+    filename: "PAPELETA_2026.doc"
+  },
+  {
+    id: 3,
+    title: "Mesa de Partes Virtual",
+    description: "Enlace para enviar documentos por mesa de partes virtual",
+    icon: Globe,
+    href: "http://digital.regionhuanuco.gob.pe/registro/mesa-partes-virtual/263",
+    download: true,
+    filename: "PAPELETA_2026.doc"
   },
   {
     id: 4,
     title: "Registro de Visitas",
     description: "Control y registro de visitas a la institución",
     icon: LogIn,
-    href: "https://visitas.servicios.gob.pe/consultas/",
-  },
+    href: "https://visitas.servicios.gob.pe/consultas/"
+  }
 ];
 
 export default function TramitesSection() {
@@ -52,7 +61,7 @@ export default function TramitesSection() {
           </p>
         </div>
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {tramites.map((tramite) => {
               const Icon = tramite.icon;
               return (
