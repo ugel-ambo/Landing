@@ -33,11 +33,10 @@ const tramites = [
   {
     id: 3,
     title: "Mesa de Partes Virtual",
-    description: "Enlace para enviar documentos por mesa de partes virtual",
-    icon: Globe,
+    description: "Accede y envía tus documentos de manera digital",
+    icon: Globe, // 👈 cambiado (mejor para enlaces web)
     href: "http://digital.regionhuanuco.gob.pe/registro/mesa-partes-virtual/263",
-    download: true,
-    filename: "PAPELETA_2026.doc"
+    external: true // 👈 en vez de download
   },
   {
     id: 4,
