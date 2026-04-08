@@ -22,9 +22,9 @@ const areaStaticData = {
     subtitle: "Acompañamiento al personal y servicios al docente",
     description:
       "Brindamos atención integral en escalafón, planillas, licencias y procesos administrativos.",
-    image: "/Directorio/rrhh/herorrhh.jpeg",
-    leaderName: "Lenin Nino Hilario Leandros",
-    leaderPosition: "Jefe de Recursos Humanos",
+    image: "/Directorio/rrhh/rrhh.jpeg",
+    leaderName: "Matias Zambrano Luycho",
+    leaderPosition: "Jefe de Recursos Humanos"
   },
   functionsIntro:
     "Nuestras funciones aseguran el cumplimiento de las normativas laborales.",
@@ -35,8 +35,8 @@ const areaStaticData = {
     "Revisar informes de ejecución presupuestaria y solicitudes de licencias.",
     "Supervisar adquisiciones e inventarios vinculados a recursos humanos.",
     "Visar resoluciones relacionadas a movimientos de personal.",
-    "Verificar conciliaciones bancarias y gestión de planillas.",
-  ],
+    "Verificar conciliaciones bancarias y gestión de planillas."
+  ]
 };
 
 const fallbackEmployees = [
