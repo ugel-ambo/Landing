@@ -160,8 +160,8 @@ importers:
         specifier: ^3.6.4
         version: 3.6.4
       baseline-browser-mapping:
-        specifier: ^2.10.11
-        version: 2.10.11
+        specifier: ^2.10.17
+        version: 2.10.17
       eslint:
         specifier: ^9
         version: 9.38.0(jiti@2.6.1)
@@ -1526,8 +1526,8 @@ packages:
   bare-url@2.3.2:
     resolution: {integrity: sha512-ZMq4gd9ngV5aTMa5p9+UfY0b3skwhHELaDkhEHetMdX0LRkW9kzaym4oo/Eh+Ghm0CCDuMTsRIGM/ytUc1ZYmw==}
 
-  baseline-browser-mapping@2.10.11:
-    resolution: {integrity: sha512-DAKrHphkJyiGuau/cFieRYhcTFeK/lBuD++C7cZ6KZHbMhBrisoi+EvhQ5RZrIfV5qwsW8kgQ07JIC+MDJRAhg==}
+  baseline-browser-mapping@2.10.17:
+    resolution: {integrity: sha512-HdrkN8eVG2CXxeifv/VdJ4A4RSra1DTW8dc/hdxzhGHN8QePs6gKaWM9pHPcpCoxYZJuOZ8drHmbdpLHjCYjLA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -4851,7 +4851,7 @@ snapshots:
       bare-path: 3.0.0
     optional: true
 
-  baseline-browser-mapping@2.10.11: {}
+  baseline-browser-mapping@2.10.17: {}
 
   basic-ftp@5.0.5: {}
 

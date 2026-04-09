@@ -16,8 +16,7 @@ const pushSubscriptionSchema = new mongoose.Schema({
   },
 })
 
-// Índice para búsquedas rápidas por endpoint
-pushSubscriptionSchema.index({ endpoint: 1 })
+
 
 export const PushSubscriptionModel =
   mongoose.models.push_subscriptions ||

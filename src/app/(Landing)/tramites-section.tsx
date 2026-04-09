@@ -49,8 +49,8 @@ const tramites = [
 
 export default function TramitesSection() {
   return (
-    <section id="tramite" className="py-10  md:py-10 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="tramite" className="py-10 md:py-10 bg-background w-full">
+      <div className="w-full px-4 md:px-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Trámites y Servicios
@@ -59,8 +59,7 @@ export default function TramitesSection() {
             Realiza tus trámites de forma rápida y segura
           </p>
         </div>
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {tramites.map((tramite) => {
               const Icon = tramite.icon;
               return (
@@ -101,7 +100,6 @@ export default function TramitesSection() {
                 </Card>
               );
             })}
-          </div>
         </div>
       </div>
     </section>
