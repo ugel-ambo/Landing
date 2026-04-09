@@ -207,7 +207,7 @@ export default function Hero() {
             </div>
 
             {/* Director */}
-            <div className="mt-6 md:mt-10 inline-flex items-center gap-2 px-5 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+            {/* <div className="mt-6 md:mt-10 inline-flex items-center gap-2 px-5 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
               <span className="text-xs md:text-sm font-semibold text-gray-200">
                 Director:
               </span>
@@ -216,7 +216,7 @@ export default function Hero() {
               >
                 Dr. Hugo Eduardo Palomino Esteban
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
 
