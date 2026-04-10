@@ -201,31 +201,14 @@ export default function Menu() {
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-                  <AccordionItem value="convivencia" className="border-none">
-                    <Link href="/Gestion-Pedagogica/convivencia">
-                      <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
-                        Convivencia Escolar
-                      </AccordionTrigger>
-                    </Link>
-                    <AccordionContent className="pl-4 pb-0">
-                      <div className="flex flex-col space-y-1">
-                        <Link
-                          href="/Gestion-Pedagogica/convivencia/especialistas"
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          Especialistas
-                        </Link>
-                        <Link
-                          href="/Gestion-Pedagogica/convivencia/fortalecimiento"
-                          className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          Fortalecimiento
-                        </Link>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
+                  {/* Convivencia Escolar se accede vía /convivencia (sección propia) */}
+                  <Link
+                    href="/convivencia"
+                    className="flex items-center px-4 py-3 hover:bg-accent rounded-md font-medium hover:text-white transition-colors text-sm"
+                    onClick={() => setOpen(false)}
+                  >
+                    Convivencia Escolar
+                  </Link>
                 </Accordion>
               </nav>
             </SheetContent>

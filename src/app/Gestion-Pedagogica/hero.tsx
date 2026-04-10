@@ -1,60 +1,71 @@
 "use client";
+
 import Image from "next/image";
+import { BookOpen, School, Users } from "lucide-react";
+
+const stats = [
+  { icon: School, value: "220+", label: "Instituciones Educativas" },
+  { icon: Users, value: "13,870+", label: "Estudiantes Atendidos" },
+  { icon: BookOpen, value: "13+", label: "Especialistas Pedagógicos" },
+];
 
 export default function HeroUGP() {
   return (
-    <section className="relative w-full bg-white overflow-hidden min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[65vh]">
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 1440 250"
-          preserveAspectRatio="none"
-        >
-          <path
-            className="lg:hidden"
-            fill="#049DD9"
-            fillOpacity="0.5"
-            d="M0,200 Q360,250 720,200 Q1080,150 1440,150 L1440,250 L0,250 Z"
-          />
-          <path
-            className="hidden lg:block"
-            fill="#049DD9"
-            fillOpacity="0.5"
-            d="M0,210 Q360,250 720,200 Q1080,150 1440,50 L1440,250 L0,250 Z"
-          />
-        </svg>
-      </div>
+    <section className="relative w-full bg-white border-b border-gray-200">
+      {/* Top accent bar */}
+      <div className="h-1 w-full bg-[#049DD9]" />
 
-      <div className="relative w-full mx-auto flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 md:px-8  pt-10 lg:pt-0 ">
-        <div className="w-full lg:w-1/2 text-center lg:text-left z-10   lg:pr-8 lg:pl-10 2xl:pl-52">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#1e293b]">
-            <span className="block text-[#049DD9]">UNIDAD DE</span>
-            <span className="block">GESTIÓN PEDAGÓGICA</span>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12 lg:py-16 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+        {/* Text content */}
+        <div className="flex-1 text-center lg:text-left">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#049DD9]/10 border border-[#049DD9]/30 mb-5">
+            <span className="w-2 h-2 rounded-full bg-[#049DD9] animate-pulse" />
+            <span className="text-xs font-semibold text-[#049DD9] uppercase tracking-wider">
+              UGEL Ambo
+            </span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#223F59] leading-tight">
+            Unidad de{" "}
+            <span className="text-[#049DD9]">Gestión Pedagógica</span>
           </h1>
 
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 mt-4 md:mt-6 leading-relaxed max-w-lg mx-auto lg:mx-0">
-            Nos encargamos de planificar, organizar, dirigir y evaluar las
-            acciones pedagógicas en la provincia de Ambo, promoviendo la mejora
-            continua del aprendizaje.
+          <p className="mt-4 text-base sm:text-lg text-gray-500 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            Planificamos, organizamos y evaluamos las acciones pedagógicas en la
+            provincia de Ambo, promoviendo la mejora continua del aprendizaje en
+            todos los niveles educativos.
           </p>
 
-          <button className="mt-6 sm:px-8 py-2 items-center justify-center  w-60 h-10 bg-[#049DD9] hover:bg-[#028ec7] text-white font-semibold rounded-full shadow-md hover:shadow-lg transition-all">
-            Conócenos
-          </button>
+          {/* Stats strip */}
+          <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-6">
+            {stats.map(({ icon: Icon, value, label }) => (
+              <div key={label} className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#049DD9]/10 flex items-center justify-center shrink-0">
+                  <Icon className="w-5 h-5 text-[#049DD9]" />
+                </div>
+                <div className="text-left">
+                  <div className="text-lg font-bold text-[#223F59] leading-none">
+                    {value}
+                  </div>
+                  <div className="text-xs text-gray-500 mt-0.5">{label}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="relative w-full lg:w-2/3 flex justify-center items-center z-10 h-80 sm:h-80 md:h-[520px] lg:h-[560px] xl:h-[600px] ">
-          <div className="relative w-full h-full max-w-none flex items-center justify-center">
-            <Image
-              src="/gp/hero_1.png"
-              alt="Unidad de Gestión Pedagógica"
-              fill
-              className="object-contain drop-shadow-2xl"
-              style={{ objectPosition: "center bottom" }}
-              priority
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, (max-width: 1536px) 60vw, 50vw"
-            />
-          </div>
+        {/* Illustration */}
+        <div className="relative w-full max-w-sm lg:max-w-md xl:max-w-lg h-56 sm:h-72 lg:h-80 shrink-0">
+          <Image
+            src="/gp/hero_1.png"
+            alt="Unidad de Gestión Pedagógica"
+            fill
+            className="object-contain drop-shadow-xl"
+            style={{ objectPosition: "center bottom" }}
+            priority
+            sizes="(max-width: 1024px) 80vw, 40vw"
+          />
         </div>
       </div>
     </section>

@@ -90,7 +90,7 @@ export default function ConvocatoriasSection() {
   return (
     <section
       id="convocatorias"
-      className="py-8 md:py-10 w-full bg-gradient-to-b from-white to-gray-50"
+      className="py-8 md:py-10 w-full bg-linear-to-b from-white to-gray-50"
     >
       <div className="w-full px-4 md:px-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
@@ -127,7 +127,7 @@ export default function ConvocatoriasSection() {
                   <div className="flex justify-between items-start gap-2 mb-2">
                     <Badge
                       className={`${getEstadoColor(
-                        conv.estado
+                        conv.estado,
                       )} text-white border-none flex items-center`}
                     >
                       {getStatusIcon(conv.estado)}
