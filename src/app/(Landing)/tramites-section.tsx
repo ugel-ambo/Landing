@@ -43,7 +43,7 @@ const tramites = [
     title: "Registro de Visitas",
     description: "Control y registro de visitas a la institución",
     icon: LogIn,
-    href: "https://visitas.servicios.gob.pe/consultas/"
+    href: "https://visitas.servicios.gob.pe/consultas/index.php?ruc_enti=20573159030"
   }
 ];
 
