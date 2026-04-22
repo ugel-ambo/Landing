@@ -14,51 +14,56 @@ const dancingScript = Dancing_Script({
 const heroImages = [
   {
     id: 1,
-    src: "/SemanaSanta (3).png",
+    src: "/portada1.png",
     alt: "Semana Santa"
   },
   {
     id: 2,
+    src: "/SemanaSanta (3).png",
+    alt: "Semana Santa"
+  },
+  {
+    id: 3,
     src: "/fondo.png",
     alt: "UGEL Ambo - Institución Educativa"
   },
   {
-    id: 3,
+    id: 4,
     src: "/hero4.png",
     alt: "Estudiantes aprendiendo"
   },
   {
-    id: 4,
+    id: 5,
     src: "/hero2.png",
     alt: "Educación moderna"
   },
   {
-    id: 5,
+    id: 6,
     src: "/newhero3.png",
     alt: "Educación moderna"
   },
   {
-    id: 6,
+    id: 7,
     src: "/img1.JPG",
     alt: "Buen Inicio"
   },
   {
-    id: 7,
+    id: 8,
     src: "/img2.jpg",
     alt: "Buen Inicio"
   },
   {
-    id: 8,
+    id: 9,
     src: "/img3.png",
     alt: "Buen Inicio Juntos 1"
   },
   {
-    id: 9,
+    id: 10,
     src: "/img4.png",
     alt: "Buen Inicio Juntos 2"
   },
   {
-    id: 10,
+    id: 11,
     src: "/img5.png",
     alt: "Batalla de Arcapunco"
   }
