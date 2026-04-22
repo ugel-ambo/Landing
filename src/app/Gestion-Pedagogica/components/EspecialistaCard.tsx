@@ -34,7 +34,7 @@ export default function EspecialistaCard({ especialista, nivel, onVerDetalles }:
               {especialista.especialista_responsable}
             </CardTitle>
             <Badge variant="secondary" className="mx-auto mt-2">
-              Nivel {nivel}
+              {nivel}
             </Badge>
           </CardHeader>
   

@@ -34,7 +34,7 @@ export default function EspecialistaModal({ especialista, open, onOpenChange, ni
               <DialogTitle className="text-2xl mb-2">
                 {especialista.especialista_responsable}
               </DialogTitle>
-              <Badge variant="secondary">Nivel {nivel}</Badge>
+              <Badge variant="secondary">{nivel}</Badge>
             </div>
           </div>
           <DialogDescription className="text-base text-muted-foreground">

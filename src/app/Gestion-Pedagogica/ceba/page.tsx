@@ -18,7 +18,7 @@ export default function Home() {
           style={{
             backgroundImage: "url(/gp/ceba/hero.png)",
             backgroundPosition: "center bottom",
-            backgroundSize: "cover",
+            backgroundSize: "cover", 
           }}
         >
           {/* Content Container */}

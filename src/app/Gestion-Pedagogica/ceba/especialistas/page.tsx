@@ -12,7 +12,7 @@ export default async function EspecialistasCebaPage() {
                 data={data}
                 title="Especialistas de Educación Básica Alternativa"
                 subtitle="Conoce a nuestro equipo comprometido con la educación básica alternativa"
-                nivel="Básica Alternativa"
+                nivel="Educacion Básica Alternativa"
             />
         </div>
     );

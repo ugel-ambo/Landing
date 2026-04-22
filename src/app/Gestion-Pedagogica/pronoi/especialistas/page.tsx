@@ -14,9 +14,9 @@ export default async function EspecialistasPronoiPage() {
         <div className="min-h-screen">
             <EspecialistasSection 
                 data={data}
-                title="Especialistas de Nivel PRONOI"
+                title="Especialistas de PRONOEI"
                 subtitle="Conoce a nuestro equipo comprometido con la educación inicial"
-                nivel="PRONOI"
+                nivel="ESPECIALISTA DE PRONOEI"
             />
         </div>
     );
