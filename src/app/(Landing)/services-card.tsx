@@ -43,7 +43,7 @@ const services = [
     title: "Reporte de asistencia",
     icon: ClipboardCheck,
     image: "/asistencia.png",
-    href: "https://reportedeasistencia.ugelambo.edu.pe/",
+    href: "https://monitoreo.ugelambo.edu.pe",
     external: true,
   },
   {
