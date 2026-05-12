@@ -272,8 +272,8 @@ function VerificadorContent() {
         <div style={styles.footer}>
           <p>Unidad de Gestión Educativa Local de Ambo</p>
           <p style={styles.footerLink}>
-            <a href="https://ugelambo.com" style={styles.link}>
-              ugelambo.com
+            <a href="https://www.ugelambo.edu.pe" style={styles.link}>
+              ugelambo.edu.pe
             </a>
           </p>
         </div>
