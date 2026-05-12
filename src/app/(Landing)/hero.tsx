@@ -5,65 +5,66 @@ import Image from "next/image";
 import { Award, Users, University, Sparkles } from "lucide-react";
 import TypingText from "@/components/ui/shadcn-io/typing-text";
 import { Dancing_Script } from "next/font/google";
+import { getHeroImages, type HeroSlide } from "@/app/actions/hero-actions";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
   weight: ["600"],
 });
 
-const heroImages = [
+const fallbackHeroImages: HeroSlide[] = [
   {
-    id: 1,
+    id: "fallback-1",
     src: "/portada1.png",
     alt: "Semana Santa"
   },
   {
-    id: 2,
+    id: "fallback-2",
     src: "/SemanaSanta (3).png",
     alt: "Semana Santa"
   },
   {
-    id: 3,
+    id: "fallback-3",
     src: "/fondo.png",
     alt: "UGEL Ambo - Institución Educativa"
   },
   {
-    id: 4,
+    id: "fallback-4",
     src: "/hero4.png",
     alt: "Estudiantes aprendiendo"
   },
   {
-    id: 5,
+    id: "fallback-5",
     src: "/hero2.png",
     alt: "Educación moderna"
   },
   {
-    id: 6,
+    id: "fallback-6",
     src: "/newhero3.png",
     alt: "Educación moderna"
   },
   {
-    id: 7,
+    id: "fallback-7",
     src: "/img1.JPG",
     alt: "Buen Inicio"
   },
   {
-    id: 8,
+    id: "fallback-8",
     src: "/img2.jpg",
     alt: "Buen Inicio"
   },
   {
-    id: 9,
+    id: "fallback-9",
     src: "/img3.png",
     alt: "Buen Inicio Juntos 1"
   },
   {
-    id: 10,
+    id: "fallback-10",
     src: "/img4.png",
     alt: "Buen Inicio Juntos 2"
   },
   {
-    id: 11,
+    id: "fallback-11",
     src: "/img5.png",
     alt: "Batalla de Arcapunco"
   }
@@ -78,6 +79,7 @@ const stats = [
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [, setIsTransitioning] = useState(false);
+  const [heroImages, setHeroImages] = useState<HeroSlide[]>(fallbackHeroImages);
   const [particles, setParticles] = useState<
     Array<{
       left: string;
@@ -86,6 +88,23 @@ export default function Hero() {
       animationDuration: string;
     }>
   >([]);
+
+  useEffect(() => {
+    let mounted = true;
+    getHeroImages()
+      .then((imgs) => {
+        if (mounted && imgs.length > 0) {
+          setHeroImages(imgs);
+          setCurrentSlide(0);
+        }
+      })
+      .catch(() => {
+        /* fallback ya está cargado */
+      });
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   // Generar partículas solo en el cliente para evitar errores de hidratación
   useEffect(() => {
@@ -99,11 +118,12 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
+    if (heroImages.length === 0) return;
     const timer = setInterval(() => {
       handleTransition((prev) => (prev + 1) % heroImages.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [heroImages.length]);
 
   const handleTransition = (getNext: (prev: number) => number) => {
     setIsTransitioning(true);
