@@ -7,6 +7,11 @@ import TypingText from "@/components/ui/shadcn-io/typing-text";
 import { Dancing_Script } from "next/font/google";
 import { getHeroImages, type HeroSlide } from "@/app/actions/hero-actions";
 
+// Deshabilitar cache para obtener datos frescos
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
   weight: ["600"],
