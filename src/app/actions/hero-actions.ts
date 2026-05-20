@@ -21,11 +21,23 @@ export async function getHeroImages(): Promise<HeroSlide[]> {
       .lean();
 
     return imagenes
-      .map((h: any) => ({
-        id: String(h._id),
-        src: h.imagen?.url || "",
-        alt: h.alt || "UGEL Ambo",
-      }))
+      .map((h: any) => {
+        const url: string = h.imagen?.url || "";
+        const version =
+          h.updatedAt instanceof Date
+            ? h.updatedAt.getTime()
+            : h.updatedAt
+            ? new Date(h.updatedAt).getTime()
+            : "";
+        const src = url
+          ? `${url}${url.includes("?") ? "&" : "?"}v=${version}`
+          : "";
+        return {
+          id: String(h._id),
+          src,
+          alt: h.alt || "UGEL Ambo",
+        };
+      })
       .filter((h) => Boolean(h.src));
   } catch (error) {
     console.error("Error fetching hero images:", error);
