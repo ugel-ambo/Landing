@@ -71,7 +71,7 @@ const fallbackHeroImages: HeroSlide[] = [
 ];
 
 const stats = [
-  { icon: Users, label: "Estudiantes", value: "15 K +" },
+  { icon: Users, label: "Estudiantes", value: "16 K +" },
   { icon: University, label: "Instituciones", value: "150+" },
   { icon: Award, label: "Años de excelencia", value: "12+" },
 ];
