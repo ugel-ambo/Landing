@@ -178,7 +178,7 @@ export default function NewsSection() {
             </div>
           </div>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Mantente informado sobre las últimas noticias de UGEL Ambo
+            Mantente informado sobre las últimas noticias de UGEL Ambo 2026
           </p>
         </div>
 
