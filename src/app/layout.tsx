@@ -10,6 +10,8 @@ import Mascota from "./(Landing)/mascota";
 import { PWAInstallToast } from "@/components/pwa-install-toast";
 import NoticiaModal from "@/components/noticia-modal";
 
+// asdasda
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -165,4 +167,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+}
