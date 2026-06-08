@@ -17,7 +17,7 @@ const tramites = [
     title: "Formato Único de Trámite",
     description: "Accede a los formatos estándar para tus trámites",
     icon: FileCheck,
-    href: "/docs/FUT_UGEL.pdf",
+    href: "/docs/FUT_MESADEPARTES.pdf",
     download: true,
     filename: "FUT_UGEL.pdf"
   },
