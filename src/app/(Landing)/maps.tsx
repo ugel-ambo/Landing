@@ -1,21 +1,41 @@
 'use client';
 import dynamic from "next/dynamic";
+import { MapPin } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 const MapClient = dynamic(() => import("./MapClient"), {
   ssr: false,
-  loading: () => <div className="w-full flex justify-center p-6">Cargando mapa...</div>,
+  loading: () => (
+    <div className="mx-auto max-w-7xl px-4">
+      <div className="h-[480px] w-full animate-pulse rounded-2xl bg-muted" />
+    </div>
+  ),
 });
 
 export default function MapsPage() {
   return (
-    <section className="flex flex-col items-center gap-6 p-2 ">
-      <div className="text-center mb-2">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Encuentranos más Facil</h2>
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Nos encontramos en BL. Ayancocha Nro. 3 Ayancocha, Ambo - Huánuco
-        </p>
+    <section className="w-full py-16 px-4">
+      <div className="mx-auto max-w-7xl">
+        {/* Encabezado */}
+        <div className="mb-10 flex flex-col items-center text-center">
+          <Badge
+            variant="secondary"
+            className="mb-4 gap-1.5 rounded-full bg-primary/10 px-4 py-1.5 text-primary hover:bg-primary/10"
+          >
+            <MapPin className="size-3.5" />
+            Ubicación
+          </Badge>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            Encuéntranos más fácil
+          </h2>
+          <p className="mt-3 max-w-2xl text-base text-muted-foreground md:text-lg">
+            Estamos ubicados en Bl. Ayancocha Nro. 3 Ayancocha, Ambo - Huánuco.
+            Visítanos o escríbenos, con gusto te atenderemos.
+          </p>
+        </div>
+
+        <MapClient />
       </div>
-      <MapClient />
     </section>
   );
 }

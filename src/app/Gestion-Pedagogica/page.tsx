@@ -3,6 +3,10 @@ import Link from "next/link";
 import { PersonalSection } from "./personal";
 import connectMongoDB from "@/lib/mongodbConnection";
 import { PersonalModel } from "@/models/Personal";
+
+// Sin cache: leer datos frescos de la BD en cada request
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 import {
   Monitor,
   Award,

@@ -175,6 +175,7 @@ export default function Hero() {
                 priority={index === 0}
                 quality={95}
                 sizes="70vw"
+                unoptimized
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/50 to-black/20 " />
               <div className="absolute inset-0 bg-linear-to-br from-[#049DD9]/15 to-[#223F59]/15 " />
