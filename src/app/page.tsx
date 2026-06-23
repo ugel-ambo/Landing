@@ -14,6 +14,8 @@ import {
   InstallPrompt,
 } from "@/components/pwa-components";
 
+// Prueba
+
 export default function Home() {
   return (
     <>
