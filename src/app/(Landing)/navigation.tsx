@@ -80,6 +80,12 @@ export function NavigationMenuDemo() {
           <NavigationMenuContent>
             <ul className="grid gap-2 md:w-[400px] lg:w-[500px] grid-cols-1">
               <ListItem
+                href="/Nosotros/Directorio"
+                title="Directorio"
+                className="hover:text-white">
+                Este es nuestro Directorio de la UGEL Ambo, conoce a nuestro equipo de trabajo y sus funciones.
+              </ListItem>
+              <ListItem
                 href="/Nosotros/Quienes-Somos"
                 title="Quiénes somos"
                 className="hover:text-white">
