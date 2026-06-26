@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
-import Link from "next/link";
-import { Search, X, Mail, Phone, ArrowLeft, Users, Building2, ChevronDown, ChevronUp } from "lucide-react";
+import { Search, X, Mail, Phone, Building2, ChevronDown, ChevronUp } from "lucide-react";
 
 // ============================================
 // 📊 DATOS DEL DIRECTORIO - UGEL AMBO 2026
@@ -72,7 +71,6 @@ const directorioData: DirectorioItem[] = [
     telefono: "935462408",
     orden: 6
   },
-
   // ==================== UNIDAD DE GESTIÓN ADMINISTRATIVA (UGA) ====================
   {
     id: "7",
@@ -155,7 +153,6 @@ const directorioData: DirectorioItem[] = [
     telefono: "999786887",
     orden: 15
   },
-
   // ==================== UNIDAD DE GESTIÓN DE RECURSOS HUMANOS (UGRH) ====================
   {
     id: "16",
@@ -238,7 +235,6 @@ const directorioData: DirectorioItem[] = [
     telefono: "962307875",
     orden: 24
   },
-
   // ==================== UNIDAD DE GESTIÓN PEDAGÓGICA (UGP) ====================
   {
     id: "25",
@@ -483,7 +479,6 @@ const directorioData: DirectorioItem[] = [
     telefono: "935380915",
     orden: 51
   },
-
   // ==================== UNIDAD DE PLANEAMIENTO Y DESARROLLO INSTITUCIONAL (UPDI) ====================
   {
     id: "52",
@@ -539,7 +534,6 @@ const directorioData: DirectorioItem[] = [
     telefono: "962813340",
     orden: 57
   },
-
   // ==================== PRACTICANTES ====================
   {
     id: "58",
@@ -678,9 +672,6 @@ const directorioData: DirectorioItem[] = [
   }
 ];
 
-// ============================================
-// 🖥️ COMPONENTE PRINCIPAL
-// ============================================
 export default function DirectorioPage() {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [selectedArea, setSelectedArea] = React.useState("");
@@ -693,30 +684,25 @@ export default function DirectorioPage() {
   }, []);
 
   const filteredItems = React.useMemo(() => {
-    let filtered = directorioData
-      .filter(item => {
-        const matchesSearch = item.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                              item.cargo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                              item.email?.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesArea = !selectedArea || item.area === selectedArea;
-        return matchesSearch && matchesArea;
-      });
+    const filtered = directorioData.filter(item => {
+      const matchesSearch = item.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            item.cargo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            item.email?.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesArea = !selectedArea || item.area === selectedArea;
+      return matchesSearch && matchesArea;
+    });
 
     filtered.sort((a, b) => {
-      const aVal = a[sortField] || "";
-      const bVal = b[sortField] || "";
-      
-      if (typeof aVal === "string" && typeof bVal === "string") {
-        return sortDirection === "asc" 
-          ? aVal.localeCompare(bVal)
-          : bVal.localeCompare(aVal);
-      }
+      const aVal = a[sortField] ?? (typeof directorioData[0][sortField] === "number" ? 0 : "");
+      const bVal = b[sortField] ?? (typeof directorioData[0][sortField] === "number" ? 0 : "");
       
       if (typeof aVal === "number" && typeof bVal === "number") {
         return sortDirection === "asc" ? aVal - bVal : bVal - aVal;
       }
       
-      return 0;
+      return sortDirection === "asc" 
+        ? String(aVal).localeCompare(String(bVal))
+        : String(bVal).localeCompare(String(aVal));
     });
 
     return filtered;
@@ -762,11 +748,7 @@ export default function DirectorioPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-      {/* Header */}
       <br />
-      
-
-      {/* Contenido principal */}
       <div className="container mx-auto px-4 py-6 max-w-7xl">
         {/* Filtros */}
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-5 mb-6">
@@ -892,7 +874,12 @@ export default function DirectorioPage() {
                         <td className="px-4 py-3.5">
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-semibold shadow-sm">
-                              {item.nombre.split(',')[0].trim().split(' ').slice(0, 2).map(word => word[0]).join('').toUpperCase().slice(0, 2)}
+                              {(() => {
+                                const partes = item.nombre.replace(',', '').trim().split(/\s+/);
+                                const inicialApellido = partes[0]?.[0] || '';
+                                const inicialNombre = partes[2]?.[0] || partes[1]?.[0] || ''; 
+                                return (inicialNombre + inicialApellido).toUpperCase();
+                              })()}
                             </div>
                             <span className="font-medium text-gray-800">{item.nombre}</span>
                           </div>
