@@ -75,8 +75,8 @@ const services = [
     title: "Directorio",
     icon: BookUser,
     image: "/directorio.png",
-    href: "https://drive.google.com/file/d/1Ax06_qv2BbasgBsPAhfv6M4PfunODfl2/view?usp=sharing",
-    external: true,
+    href: "/Nosotros/Directorio",
+    external: false,
   },
 ];
 
