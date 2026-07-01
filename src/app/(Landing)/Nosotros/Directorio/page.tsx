@@ -22,7 +22,7 @@ const directorioData: DirectorioItem[] = [
     nombre: "Palomino Esteban, Hugo Eduardo",
     cargo: "Director de Ugel",
     area: "UD",
-    email: "ud@ugelambo.edu.pe",
+    email: "hugodrehco1@gmail.com",
     telefono: "962600002",
     orden: 1
   },
@@ -226,182 +226,182 @@ const directorioData: DirectorioItem[] = [
     telefono: "959288055",
     orden: 23
   },
-  {
-    id: "24",
-    nombre: "Mendoza Salazar, Wilden Elmer",
-    cargo: "Personal de Servicio",
-    area: "UGRH",
-    email: "wildenelmer2020@gmail.com",
-    telefono: "962307875",
-    orden: 24
-  },
   // ==================== UNIDAD DE GESTIÓN PEDAGÓGICA (UGP) ====================
   {
-    id: "25",
+    id: "24",
     nombre: "Mallqui Durand, Jaly H.",
     cargo: "Jefe del Área de Gestión Pedagógica",
     area: "UGP",
     email: "ugp@ugelambo.edu.pe",
     telefono: "971296226",
-    orden: 25
+    orden: 24
   },
   {
-    id: "26",
+    id: "25",
     nombre: "Sanchez Paniagua, Ana Gabriel",
     cargo: "Secretaria I - UGP",
     area: "UGP",
     email: "anitasanchez18.asp@gmail.com",
     telefono: "931079893",
-    orden: 26
+    orden: 25
   },
   {
-    id: "27",
+    id: "26",
     nombre: "Matos Cristobal, Lyz Sara",
     cargo: "Especialista en Inicial",
     area: "UGP",
     email: "lyzmatoscristobal@gmail.com",
     telefono: "96912880",
-    orden: 27
+    orden: 26
   },
   {
-    id: "28",
+    id: "27",
     nombre: "Meza Fernandez, Maria Elena",
     cargo: "Especialista en Inicial",
     area: "UGP",
     email: "elena_amada@hotmail.com",
     telefono: "965605966",
-    orden: 28
+    orden: 27
   },
   {
-    id: "29",
+    id: "28",
     nombre: "Mejia Huaranga, Leydi Edith",
     cargo: "Especialista en Inicial",
     area: "UGP",
     email: "leydimejiahuaranga176@gmail.com",
     telefono: "993717726",
-    orden: 29
+    orden: 28
   },
   {
-    id: "30",
+    id: "29",
     nombre: "Diaz Acuña, Esther Delia",
     cargo: "Especialista en Primaria",
     area: "UGP",
     email: "estherdelia.diaz1234@gmail.com",
     telefono: "990000117",
-    orden: 30
+    orden: 29
   },
   {
-    id: "31",
+    id: "30",
     nombre: "Olaza Albornoz, Meneses Javier",
     cargo: "Especialista en Primaria",
     area: "UGP",
     email: "javierolazaalvornoz@gmail.com",
     telefono: "956042529",
-    orden: 31
+    orden: 30
   },
   {
-    id: "32",
+    id: "31",
     nombre: "Alvarez Aldava, Noel Grover",
     cargo: "Especialista en Primaria",
     area: "UGP",
     email: "noelito_53@hotmail.com",
     telefono: "982181934",
-    orden: 32
+    orden: 31
   },
   {
-    id: "33",
+    id: "32",
     nombre: "Paredes Munguia, Marco Antonio",
     cargo: "Especialista en Primaria",
     area: "UGP",
     email: "mapamun125@gmail.com",
     telefono: "917776307",
-    orden: 33
+    orden: 32
   },
   {
-    id: "34",
+    id: "33",
     nombre: "Munguia Fuentes, Francisca",
     cargo: "Especialista en Primaria",
     area: "UGP",
     email: "panchi_40@hotmail.com",
     telefono: "987556648",
-    orden: 34
+    orden: 33
   },
   {
-    id: "35",
+    id: "34",
     nombre: "Rivera Tadeo, Walter Máximo",
     cargo: "Especialista en Primaria - CyT",
     area: "UGP",
     email: "ugp_esp_walter@ugelambo.edu.pe",
     telefono: "943765016",
-    orden: 35
+    orden: 34
   },
   {
-    id: "36",
+    id: "35",
     nombre: "Vicencio Romero, Julio Cesar",
     cargo: "Especialista en Secundaria - CTA",
     area: "UGP",
     email: "jcvicencior@hotmail.com",
     telefono: "990269911",
-    orden: 36
+    orden: 35
   },
   {
-    id: "37",
+    id: "36",
     nombre: "Figueredo Oneeglio, Ramon Giovanni",
     cargo: "Especialista en Secundaria - Matemática",
     area: "UGP",
     email: "rafo_671102@hotmail.com",
     telefono: "975163287",
-    orden: 37
+    orden: 36
   },
   {
-    id: "38",
+    id: "37",
     nombre: "Aliaga Cotrina, Leli Saiquina",
     cargo: "Especialista en Comunicación",
     area: "UGP",
     email: "lelialiaga16@gmail.com",
     telefono: "954224611",
-    orden: 38
+    orden: 37
   },
   {
-    id: "39",
+    id: "38",
     nombre: "Zevallos Leon, Paolo Roberto",
     cargo: "Especialista en Convivencia Escolar",
     area: "UGP",
     email: "paoloz65@gmail.com",
     telefono: "931240226",
-    orden: 39
+    orden: 38
   },
   {
-    id: "40",
+    id: "39",
     nombre: "Jaramillo Coz, Beatriz",
     cargo: "Coordinadora de Educación Religiosa",
     area: "UGP",
     email: "d22489114j@perueduca.edu.pe",
     telefono: "988800474",
-    orden: 40
+    orden: 39
   },
   {
-    id: "41",
+    id: "40",
     nombre: "Leon Colqui, Maryori Mishel",
     cargo: "Profesional III - Equipo Itinerante de Convivencia Escolar",
     area: "UGP",
     email: "Colquimishel9@gmail.com",
     telefono: "956229167",
-    orden: 41
+    orden: 40
   },
   {
-    id: "42",
+    id: "41",
     nombre: "Salvador Saldivar, Yasmine Beatriz",
     cargo: "Profesional III - Equipo Itinerante de Convivencia Escolar",
     area: "UGP",
     email: "Jasmin.betriz@gmail.com",
     telefono: "924990819",
+    orden: 41
+  },
+  {
+    id: "42",
+    nombre: "Tolentino Cristobal, Sonia G.",
+    cargo: "Coordinadora de PRONOEI",
+    area: "UGP",
+    email: "gladicitasony19@gmail.com",
+    telefono: "921633261",
     orden: 42
   },
   {
     id: "43",
     nombre: "Tolentino Cristobal, Sonia G.",
-    cargo: "Coordinadora de Pronoei",
+    cargo: "Coordinadora de PRONOEI",
     area: "UGP",
     email: "gladicitasony19@gmail.com",
     telefono: "921633261",
@@ -410,7 +410,7 @@ const directorioData: DirectorioItem[] = [
   {
     id: "44",
     nombre: "Patricio Diaz, Madeleyne",
-    cargo: "Coordinadora de Pronoei",
+    cargo: "Coordinadora de PRONOEI",
     area: "UGP",
     email: "madeleynepd@gmail.com",
     telefono: "999575464",
@@ -419,7 +419,7 @@ const directorioData: DirectorioItem[] = [
   {
     id: "45",
     nombre: "Martinez Bravo, Maria Rosa",
-    cargo: "Coordinadora de Pronoei",
+    cargo: "Coordinadora de PRONOEI",
     area: "UGP",
     email: "mariarosamartinezbravo@gmail.com",
     telefono: "962536431",
@@ -428,7 +428,7 @@ const directorioData: DirectorioItem[] = [
   {
     id: "46",
     nombre: "Ramirez Liberato, Elizabeth",
-    cargo: "Coordinadora de Pronoei",
+    cargo: "Coordinadora de PRONOEI",
     area: "UGP",
     email: "elibeth.rl.18@mail.com",
     telefono: "974424189",
@@ -437,7 +437,7 @@ const directorioData: DirectorioItem[] = [
   {
     id: "47",
     nombre: "Ramos Amancio, Jenny Elizabeth",
-    cargo: "Coordinadora de Pronoei",
+    cargo: "Coordinadora de PRONOEI",
     area: "UGP",
     email: "Jennyramosamancio76@gmail.com",
     telefono: "901289877",
@@ -446,7 +446,7 @@ const directorioData: DirectorioItem[] = [
   {
     id: "48",
     nombre: "Barrantes, Jessika Rubina",
-    cargo: "Coordinadora de Pronoei",
+    cargo: "Coordinadora de PRONOEI",
     area: "UGP",
     email: "rubinabarrantes1509@gmail.com",
     telefono: "941166257",
@@ -455,7 +455,7 @@ const directorioData: DirectorioItem[] = [
   {
     id: "49",
     nombre: "Espinoza Pre, Liliana Thalia",
-    cargo: "Coordinadora de Pronoei",
+    cargo: "Coordinadora de PRONOEI",
     area: "UGP",
     email: "Lilithalia30@gmail.com",
     telefono: "917054741",
@@ -464,7 +464,7 @@ const directorioData: DirectorioItem[] = [
   {
     id: "50",
     nombre: "Zuñiga Rojas, Ana Maria",
-    cargo: "Coordinadora de Pronoei",
+    cargo: "Coordinadora de PRONOEI",
     area: "UGP",
     email: "hopeandlove_17@hotmail.com",
     telefono: "962637586",
@@ -473,7 +473,7 @@ const directorioData: DirectorioItem[] = [
   {
     id: "51",
     nombre: "Saldaña Pardave, Ofelia Patricia",
-    cargo: "Coordinadora de Pronoei",
+    cargo: "Coordinadora de PRONOEI",
     area: "UGP",
     email: "Osaldanapardave@gmail.com",
     telefono: "935380915",
@@ -525,150 +525,141 @@ const directorioData: DirectorioItem[] = [
     telefono: "962348522",
     orden: 56
   },
-  {
-    id: "57",
-    nombre: "Ortiz Rojas, Maglorio",
-    cargo: "Especialista en Inicial",
-    area: "UPDI",
-    email: "yonifarfan@hotmail.com",
-    telefono: "962813340",
-    orden: 57
-  },
   // ==================== PRACTICANTES ====================
   {
-    id: "58",
+    id: "57",
     nombre: "Aguirre Alcedo, Kevin Jhino",
     cargo: "Asistente en Patrimonio - UPDI",
     area: "UPDI",
     email: "jhino_97@hotmail.com",
     telefono: "973031878",
-    orden: 58
+    orden: 57
   },
   {
-    id: "59",
+    id: "58",
     nombre: "Ayala Romero, Jordan Brandon",
     cargo: "Apoyo en Informática - UPDI",
     area: "UPDI",
     email: "ayalaromerojordanbrandon@gmail.com",
     telefono: "925523419",
-    orden: 59
+    orden: 58
   },
   {
-    id: "60",
+    id: "59",
     nombre: "Eduardo Santamaria, Yanet",
     cargo: "Asistente en Secretaría - UPDI",
     area: "UPDI",
     email: "jhanetheduardosantamaria@gmail.com",
     telefono: "955858720",
-    orden: 60
+    orden: 59 
   },
   {
-    id: "61",
+    id: "60",
     nombre: "Solis Jimenez, Paolo Domingo",
     cargo: "Asistente en Dirección - UD",
     area: "UD",
     email: "jimenezzlawyer@gmail.com",
     telefono: "955079456",
-    orden: 61
+    orden: 60
   },
   {
-    id: "62",
+    id: "61",
     nombre: "Poma Chavez, Mirla",
     cargo: "Asistente en Planillas - UGRH",
     area: "UGRH",
     email: "mirlapomach@gmail.com",
     telefono: "979219015",
-    orden: 62
+    orden: 61
   },
   {
-    id: "63",
+    id: "62",
     nombre: "Tafur Villanueva, Andre Aurelio",
     cargo: "Asistente en Escalafón - UGRH",
     area: "UGRH",
     email: "aureliotafur169@gmail.com",
     telefono: "979713453",
-    orden: 63
+    orden: 62
   },
   {
-    id: "64",
+    id: "63",
     nombre: "Ortega Gomez, Nelson",
     cargo: "Asistente de Nexus - UGRH",
     area: "UGRH",
     email: "nilorjhi.04@outlook.com",
     telefono: "922106034",
-    orden: 64
+    orden: 63
   },
   {
-    id: "65",
+    id: "64",
     nombre: "Cardenas Chamorro, Lesly Flor",
     cargo: "Asistente de SCI - UGA",
     area: "UGA",
     email: "cardenaslesly18@gmail.com",
     telefono: "977134116",
-    orden: 65
+    orden: 64
   },
   {
-    id: "66",
+    id: "65",
     nombre: "Julca Garcia, Jhonatan Anibal",
     cargo: "Asistente de Operador Informático - UGP",
     area: "UGP",
     email: "an.jhonatan15@gmail.com",
     telefono: "962538149",
-    orden: 66
+    orden: 65
   },
   {
-    id: "67",
+    id: "66",
     nombre: "Lazaro Barrera, Hayle Josep",
     cargo: "Asistente en Apoyo en Abastecimiento",
     area: "UGA",
     email: "hayle1910@gmail.com",
     telefono: "926680237",
-    orden: 67
+    orden: 66
   },
   {
-    id: "68",
+    id: "67",
     nombre: "Palacin Tello, Carlos David",
     cargo: "Asistente de Almacén",
     area: "UGA",
     email: "tellocd09@gmail.com",
     telefono: "965701075",
-    orden: 68
+    orden: 67
   },
   {
-    id: "69",
+    id: "68",
     nombre: "Retis Falcon, Anggie Hayli",
     cargo: "Asistente en Contabilidad",
     area: "UGA",
     email: "anggieretisfalcon@gmail.com",
     telefono: "913270027",
-    orden: 69
+    orden: 68
   },
   {
-    id: "70",
+    id: "69",
     nombre: "Gago Villodas, Gerly",
     cargo: "Asistente en UGP",
     area: "UGP",
     email: "2014110785@udh.edu.pe",
     telefono: "940937561",
-    orden: 70
+    orden: 69
   },
   {
-    id: "71",
+    id: "70",
     nombre: "Avila Carhuamaca, Caren Yerali",
     cargo: "Asistente en UGA",
     area: "UGA",
     email: "yo355991@gmail.com",
     telefono: "907344044",
-    orden: 71
+    orden: 70
   },
   {
-    id: "72",
+    id: "71",
     nombre: "Jara Herrera, Arvic Kenedi",
     cargo: "Apoyo en Operador Informática",
     area: "UGP",
     email: "arvic2514@gmail.com",
     telefono: "918363299",
-    orden: 72
+    orden: 71
   }
 ];
 
