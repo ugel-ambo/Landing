@@ -48,10 +48,10 @@ const services = [
   },
   {
     id: 5,
-    title: "Integridad",
-    icon: Shield,
-    image: "/integridad2.png",
-    href: "/integridad",
+    title: "Conformidad de Internet",
+    icon: BookUser,
+    image: "/CONFORMIDAD.png",
+    href: "/Nosotros/Directorio",
     external: false,
   },
   {
@@ -76,6 +76,14 @@ const services = [
     icon: BookUser,
     image: "/directorio.png",
     href: "/Nosotros/Directorio",
+    external: false,
+  },
+  {
+    id: 9,
+    title: "Integridad",
+    icon: Shield,
+    image: "/integridad2.png",
+    href: "/integridad",
     external: false,
   },
 ];
