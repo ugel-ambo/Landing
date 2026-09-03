@@ -51,7 +51,7 @@ const services = [
     title: "Conformidad del servicio de internet",
     icon: BookUser,
     image: "/Servicio.png",
-    href: "https://reporteinternet.ugelambo.edu.pe/",
+    href: "https://reporteinternet.ugelambo.edu.pe/login",
     external: true,
   },
   {
