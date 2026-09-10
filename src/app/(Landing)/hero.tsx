@@ -76,10 +76,19 @@ const stats = [
   { icon: Award, label: "Años de excelencia", value: "12+" },
 ];
 
-export default function Hero() {
+interface HeroProps {
+  initialImages?: HeroSlide[];
+}
+
+export default function Hero({ initialImages }: HeroProps = {}) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [, setIsTransitioning] = useState(false);
-  const [heroImages, setHeroImages] = useState<HeroSlide[]>(fallbackHeroImages);
+  const [heroImages, setHeroImages] = useState<HeroSlide[]>(() => {
+    if (initialImages && initialImages.length > 0) {
+      return initialImages;
+    }
+    return fallbackHeroImages;
+  });
   const [particles, setParticles] = useState<
     Array<{
       left: string;
@@ -90,6 +99,12 @@ export default function Hero() {
   >([]);
 
   useEffect(() => {
+    // Si ya recibimos imágenes desde el servidor (SSR), las usamos directamente
+    if (initialImages && initialImages.length > 0) {
+      setHeroImages(initialImages);
+      return;
+    }
+
     let mounted = true;
     getHeroImages()
       .then((imgs) => {
@@ -104,7 +119,7 @@ export default function Hero() {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [initialImages]);
 
   // Generar partículas solo en el cliente para evitar errores de hidratación
   useEffect(() => {
@@ -118,7 +133,7 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    if (heroImages.length === 0) return;
+    if (heroImages.length <= 1) return;
     const timer = setInterval(() => {
       handleTransition((prev) => (prev + 1) % heroImages.length);
     }, 6000);
@@ -161,11 +176,10 @@ export default function Hero() {
           {heroImages.map((image, index) => (
             <div
               key={image.id}
-              className={`absolute inset-0 transition-all duration-1000 transform ${
-                index === currentSlide
+              className={`absolute inset-0 transition-all duration-1000 transform ${index === currentSlide
                   ? "opacity-100 scale-100"
                   : "opacity-0 scale-105"
-              }`}
+                }`}
             >
               <Image
                 src={image.src || "/placeholder.svg"}
@@ -251,11 +265,10 @@ export default function Hero() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 backdrop-blur-md border border-white/30 ${
-                index === currentSlide
+              className={`h-2.5 rounded-full transition-all duration-300 backdrop-blur-md border border-white/30 ${index === currentSlide
                   ? "bg-[#049DD9] w-10 shadow-lg shadow-[#049DD9]/50"
                   : "bg-white/50 hover:bg-white/75 w-2.5 hover:w-6"
-              }`}
+                }`}
               aria-label={`Ir a slide ${index + 1}`}
             />
           ))}

@@ -132,37 +132,7 @@ export default function Footer() {
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm opacity-75">
             <div className="flex flex-col items-center md:items-start gap-1">
-              <p>&copy; 2025 UGEL Ambo. Todos los derechos reservados.</p>
-              <p className="text-xs flex gap-1 items-center">
-                Desarrollado por
-                <Button
-                  variant="link"
-                  asChild
-                  className="text-[#223F59] p-0 h-auto font-medium "
-                >
-                  <Link
-                    href="https://www.linkedin.com/in/jhonatan-julca-garcia-7270b2212"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Sigismund
-                  </Link>
-                </Button>
-                y
-                <Button
-                  variant="link"
-                  asChild
-                  className="text-[#223F59] p-0 h-auto font-medium"
-                >
-                  <Link
-                    href="https://www.facebook.com/share/1Bzs94JfaW/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Anderson
-                  </Link>
-                </Button>
-              </p>
+              <p>&copy; 2026 UGEL Ambo. Todos los derechos reservados.</p>
             </div>
 
             <div className="flex gap-6 mt-4 md:mt-0">
