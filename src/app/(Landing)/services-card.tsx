@@ -16,7 +16,7 @@ import {
 const services = [
   {
     id: 1,
-    title: "Convocatorias",
+    title: "Convocatoria",
     icon: Megaphone,
     href: "/convocatoria",
     image: "/Convocatoria.png",
@@ -40,7 +40,7 @@ const services = [
   },
   {
     id: 4,
-    title: "Reporte de asistencia",
+    title: "Parte Mensual de  asistencia",
     icon: ClipboardCheck,
     image: "/asistencia.png",
     href: "https://monitoreo.ugelambo.edu.pe",
@@ -92,7 +92,7 @@ const services = [
     icon: Shield,
     image: "/CARDS/SIFODS/SIFODS.png",
     href: "https://sifods.minedu.gob.pe/docente/preview",
-    external: false,
+    external: true,
   },
   {
     id: 11,
