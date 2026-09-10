@@ -86,6 +86,30 @@ const services = [
     href: "/integridad",
     external: false,
   },
+  {
+    id: 10,
+    title: "SIFODS",
+    icon: Shield,
+    image: "/CARDS/SIFODS/SIFODS.png",
+    href: "https://sifods.minedu.gob.pe/docente/preview",
+    external: false,
+  },
+  {
+    id: 11,
+    title: "PERÚEDUCA",
+    icon: Shield,
+    image: "/CARDS/PERUEDUCA/PERUEDUCA2.png",
+    href: "https://www.perueduca.pe/#/home",
+    external: true,
+  },
+  {
+    id: 12,
+    title: "SIMON",
+    icon: Shield,
+    image: "/CARDS/SIMON/SIMON.png",
+    href: "https://simon.minedu.gob.pe/login",
+    external: true,
+  },
 ];
 
 export default function ServicesCards() {
