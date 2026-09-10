@@ -1,6 +1,7 @@
 import { AreaSection } from "../components/area-section";
 import connectMongoDB from "@/lib/mongodbConnection";
 import { PersonalModel } from "@/models/Personal";
+import { getMediaUrl } from "@/lib/media";
 
 // Deshabilitar cache para obtener datos frescos
 export const dynamic = "force-dynamic";
@@ -41,7 +42,7 @@ const areaStaticData = {
 
 const fallbackEmployees = [
   {
-    id: "2",
+    id: "1",
     name: "Ethel German Camacho Robles",
     position: "Técnico Administrativo I - Escalafón y Nexus",
     image: "/Directorio/rrhh/Ethel-German.png",
@@ -60,7 +61,7 @@ async function getEmployeesFromDB() {
       id: p._id.toString(),
       name: p.nombre ?? "",
       position: p.cargo ?? "",
-      image: p.foto?.url,
+      image: p.foto?.url ? getMediaUrl(p.foto.url) : undefined,
     }));
   } catch (error) {
     console.error("Error fetching employees:", error);

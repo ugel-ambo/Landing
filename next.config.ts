@@ -1,20 +1,51 @@
 import type { NextConfig } from "next";
 
+const remotePatterns: Array<{
+  protocol?: 'http' | 'https';
+  hostname: string;
+  port?: string;
+  pathname?: string;
+}> = [
+    {
+      protocol: 'https',
+      hostname: 'diariooficial.elperuano.pe',
+      pathname: '/NormasElperuano/**',
+    },
+    {
+      protocol: 'https',
+      hostname: 'res.cloudinary.com',
+      pathname: '/**',
+    },
+    {
+      protocol: 'http',
+      hostname: 'localhost',
+      pathname: '/**',
+    },
+    {
+      protocol: 'http',
+      hostname: '127.0.0.1',
+      pathname: '/**',
+    },
+  ];
+
+if (process.env.NEXT_PUBLIC_ADMIN_URL) {
+  try {
+    const adminUrl = new URL(process.env.NEXT_PUBLIC_ADMIN_URL);
+    remotePatterns.push({
+      protocol: adminUrl.protocol.replace(':', '') as 'http' | 'https',
+      hostname: adminUrl.hostname,
+      port: adminUrl.port || undefined,
+      pathname: '/**',
+    });
+  } catch (e) {
+    console.warn("Invalid NEXT_PUBLIC_ADMIN_URL:", e);
+  }
+}
+
 const nextConfig: NextConfig = {
   images: {
     qualities: [75, 95],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'diariooficial.elperuano.pe',
-        pathname: '/NormasElperuano/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
-        pathname: '/**',
-      },
-    ],
+    remotePatterns,
   },
   async headers() {
     return [

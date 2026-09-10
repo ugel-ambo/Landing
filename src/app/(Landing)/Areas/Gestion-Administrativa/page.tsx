@@ -1,6 +1,7 @@
 import { AreaSection } from "../components/area-section";
 import connectMongoDB from "@/lib/mongodbConnection";
 import { PersonalModel } from "@/models/Personal";
+import { getMediaUrl } from "@/lib/media";
 
 // Deshabilitar cache para obtener datos frescos
 export const dynamic = "force-dynamic";
@@ -62,7 +63,7 @@ async function getEmployeesFromDB() {
       id: p._id.toString(),
       name: p.nombre ?? "",
       position: p.cargo ?? "",
-      image: p.foto?.url,
+      image: p.foto?.url ? getMediaUrl(p.foto.url) : undefined,
     }));
   } catch (error) {
     console.error("Error fetching employees:", error);

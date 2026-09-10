@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PersonalSection } from "./personal";
 import connectMongoDB from "@/lib/mongodbConnection";
 import { PersonalModel } from "@/models/Personal";
+import { getMediaUrl } from "@/lib/media";
 
 // Sin cache: leer datos frescos de la BD en cada request
 export const dynamic = "force-dynamic";
@@ -56,7 +57,7 @@ async function getEmployeesFromDB() {
       id: p._id.toString(),
       name: p.nombre,
       position: p.cargo,
-      image: p.foto?.url,
+      image: p.foto?.url ? getMediaUrl(p.foto.url) : undefined,
     }));
   } catch (error) {
     console.error("Error fetching employees:", error);

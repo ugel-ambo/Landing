@@ -3,6 +3,7 @@
 import connectMongoDB from "@/lib/mongodbConnection";
 import Fortalecimiento from "@/models/Fortalecimiento";
 import { EspecialistaModel, MediaModel } from "@/models/Especialista";
+import { getMediaUrl } from "@/lib/media";
 void MediaModel;
 
 export async function getFortalecimientos(area: string) {
@@ -26,7 +27,7 @@ export async function getEspecialistas(nivel: string) {
 
         return especialistas.map((esp: any) => ({
             especialista_responsable: esp.nombre,
-            image: esp.foto?.url || `/Directorio/agp/placeholder.png`,
+            image: getMediaUrl(esp.foto?.url, `/Directorio/agp/placeholder.png`),
             presentacion: esp.presentacion || "Especialista comprometido con el desarrollo educativo.",
             colegios: esp.colegios || [],
         }));
