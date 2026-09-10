@@ -3,6 +3,7 @@
 import connectMongoDB from "@/lib/mongodbConnection";
 import HeroImage from "@/models/HeroImage";
 import Media from "@/models/Media";
+import { getMediaUrl } from "@/lib/media";
 void Media;
 
 export type HeroSlide = {
@@ -22,13 +23,14 @@ export async function getHeroImages(): Promise<HeroSlide[]> {
 
     return imagenes
       .map((h: any) => {
-        const url: string = h.imagen?.url || "";
+        const rawUrl: string = h.imagen?.url || "";
+        const url = getMediaUrl(rawUrl, "");
         const version =
           h.updatedAt instanceof Date
             ? h.updatedAt.getTime()
             : h.updatedAt
-            ? new Date(h.updatedAt).getTime()
-            : "";
+              ? new Date(h.updatedAt).getTime()
+              : "";
         const src = url
           ? `${url}${url.includes("?") ? "&" : "?"}v=${version}`
           : "";

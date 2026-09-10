@@ -17,7 +17,7 @@ export interface INoticiaIntegridad {
     titulo: string;
     descripcion: string;
     fecha: Date;
-    imagen?: string | Types.ObjectId | IMediaImage; 
+    imagen?: string | Types.ObjectId | IMediaImage;
     area: 'integridad' | 'general';
     activo: boolean;
     createdAt?: Date;
@@ -29,8 +29,8 @@ const NoticiaIntegridadSchema = new Schema<INoticiaIntegridad>(
         titulo: { type: String, required: true },
         descripcion: { type: String, required: true },
         fecha: { type: Date, required: true },
-        imagen: { 
-            type: Schema.Types.Mixed, 
+        imagen: {
+            type: Schema.Types.Mixed,
         },
         area: {
             type: String,
@@ -47,18 +47,20 @@ const NoticiaIntegridadSchema = new Schema<INoticiaIntegridad>(
 
 const NoticiaIntegridad = models.NoticiaIntegridad || model<INoticiaIntegridad>("NoticiaIntegridad", NoticiaIntegridadSchema);
 
+import { getMediaUrl } from "@/lib/media";
+
 export default NoticiaIntegridad;
 
 export function getImageUrl(imagen: string | Types.ObjectId | IMediaImage | null | undefined): string {
     if (!imagen) return '/Logo1.jpg';
-    
+
     if (typeof imagen === 'string') {
-        return imagen;
+        return getMediaUrl(imagen, '/Logo1.jpg');
     }
-    
+
     if (typeof imagen === 'object' && 'url' in imagen && imagen.url) {
-        return imagen.url;
+        return getMediaUrl(imagen.url, '/Logo1.jpg');
     }
-    
+
     return '/Logo.jpg';
 }

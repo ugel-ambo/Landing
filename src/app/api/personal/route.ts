@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import connectMongoDB from '@/lib/mongodbConnection'
 import { PersonalModel } from '@/models/Personal'
+import { getMediaUrl } from '@/lib/media'
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -25,7 +26,7 @@ export async function GET(request: Request) {
       id: p._id.toString(),
       name: p.nombre,
       position: p.cargo,
-      image: p.foto?.url || undefined,
+      image: p.foto?.url ? getMediaUrl(p.foto.url) : undefined,
     }))
 
     return NextResponse.json({
@@ -35,7 +36,7 @@ export async function GET(request: Request) {
   } catch (error) {
     console.error('Error fetching personal:', error)
     return NextResponse.json(
-      { 
+      {
         success: false,
         error: error instanceof Error ? error.message : 'Error desconocido',
         employees: [],
