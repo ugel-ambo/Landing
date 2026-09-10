@@ -16,7 +16,7 @@ export async function getNoticiasModal() {
             .lean();
 
         return noticias.map((n: any) => ({
-            src: getMediaUrl(n.imagen?.url, "/modal/noticia.jpg"),
+            src: getMediaUrl(n.imagen, "/modal/noticia.jpg"),
             alt: n.titulo || "Noticia importante"
         }));
     } catch (error) {

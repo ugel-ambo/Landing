@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Hero from "./(Landing)/hero";
 import MapsPage from "./(Landing)/maps";
@@ -13,14 +11,17 @@ import {
   PushNotificationManager,
   InstallPrompt,
 } from "@/components/pwa-components";
+import { getHeroImages } from "./actions/hero-actions";
 
-// Prueba
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+export default async function Home() {
+  const heroImages = await getHeroImages();
+
   return (
     <>
       <Menu />
-      <Hero />
+      <Hero initialImages={heroImages} />
       <ServicesCards />
       <NewsSection />
       <ConvocatoriasSection />

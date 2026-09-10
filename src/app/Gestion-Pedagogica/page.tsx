@@ -57,7 +57,7 @@ async function getEmployeesFromDB() {
       id: p._id.toString(),
       name: p.nombre,
       position: p.cargo,
-      image: p.foto?.url ? getMediaUrl(p.foto.url) : undefined,
+      image: getMediaUrl(p.foto) || undefined,
     }));
   } catch (error) {
     console.error("Error fetching employees:", error);

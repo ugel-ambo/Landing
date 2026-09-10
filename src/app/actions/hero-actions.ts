@@ -23,8 +23,7 @@ export async function getHeroImages(): Promise<HeroSlide[]> {
 
     return imagenes
       .map((h: any) => {
-        const rawUrl: string = h.imagen?.url || "";
-        const url = getMediaUrl(rawUrl, "");
+        const url = getMediaUrl(h.imagen, "");
         const version =
           h.updatedAt instanceof Date
             ? h.updatedAt.getTime()
