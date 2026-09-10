@@ -14,7 +14,7 @@ import { FileCheck, LogIn, Globe, FileInput } from "lucide-react";
 const tramites = [
   {
     id: 1,
-    title: "Formato Único de Trámite .",
+    title: "Formato Único de Trámite",
     description: "Accede a los formatos estándar para tus trámites",
     icon: FileCheck,
     href: "/docs/FUT_MESADEPARTES.pdf",
