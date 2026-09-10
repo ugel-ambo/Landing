@@ -1,6 +1,7 @@
 import { AreaSection } from "../components/area-section";
 import connectMongoDB from "@/lib/mongodbConnection";
 import { PersonalModel } from "@/models/Personal";
+import { getMediaUrl } from "@/lib/media";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -71,7 +72,7 @@ async function getEmployeesFromDB() {
       id: p._id.toString(),
       name: p.nombre ?? "",
       position: p.cargo ?? "",
-      image: p.foto?.url || undefined,
+      image: p.foto?.url ? getMediaUrl(p.foto.url) : undefined,
     }));
   } catch (error) {
     console.error("Error fetching employees:", error);
