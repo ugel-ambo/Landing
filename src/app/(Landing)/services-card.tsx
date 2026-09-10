@@ -92,7 +92,7 @@ const services = [
     icon: Shield,
     image: "/CARDS/SIFODS/SIFODS.png",
     href: "https://sifods.minedu.gob.pe/docente/preview",
-    external: false,
+    external: true,
   },
   {
     id: 11,
