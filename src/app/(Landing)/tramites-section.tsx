@@ -9,12 +9,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FileCheck, LogIn, Globe ,FileInput } from "lucide-react";
+import { FileCheck, LogIn, Globe, FileInput } from "lucide-react";
 
 const tramites = [
   {
     id: 1,
-    title: "Formato Único de Trámite",
+    title: "Formato Único de Trámite .",
     description: "Accede a los formatos estándar para tus trámites",
     icon: FileCheck,
     href: "/docs/FUT_MESADEPARTES.pdf",
@@ -60,46 +60,46 @@ export default function TramitesSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {tramites.map((tramite) => {
-              const Icon = tramite.icon;
-              return (
-                <Card
-                  key={tramite.id}
-                  className="hover:shadow-lg transition-shadow flex flex-col"
-                >
-                  <CardHeader>
-                    <Icon className="w-8 h-8 text-primary mb-2" />
-                    <CardTitle className="text-lg">{tramite.title}</CardTitle>
-                    <CardDescription>{tramite.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="mt-auto">
-                    {tramite.download ? (
-                      <a
-                        href={tramite.href}
-                        download={tramite.filename ?? true}
-                        className="w-full"
+          {tramites.map((tramite) => {
+            const Icon = tramite.icon;
+            return (
+              <Card
+                key={tramite.id}
+                className="hover:shadow-lg transition-shadow flex flex-col"
+              >
+                <CardHeader>
+                  <Icon className="w-8 h-8 text-primary mb-2" />
+                  <CardTitle className="text-lg">{tramite.title}</CardTitle>
+                  <CardDescription>{tramite.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="mt-auto">
+                  {tramite.download ? (
+                    <a
+                      href={tramite.href}
+                      download={tramite.filename ?? true}
+                      className="w-full"
+                    >
+                      <Button
+                        variant="outline"
+                        className="w-full bg-transparent"
                       >
-                        <Button
-                          variant="outline"
-                          className="w-full bg-transparent"
-                        >
-                          Descargar
-                        </Button>
-                      </a>
-                    ) : (
-                      <Link href={tramite.href} className="w-full">
-                        <Button
-                          variant="outline"
-                          className="w-full bg-transparent"
-                        >
-                          Acceder
-                        </Button>
-                      </Link>
-                    )}
-                  </CardContent>
-                </Card>
-              );
-            })}
+                        Descargar
+                      </Button>
+                    </a>
+                  ) : (
+                    <Link href={tramite.href} className="w-full">
+                      <Button
+                        variant="outline"
+                        className="w-full bg-transparent"
+                      >
+                        Acceder
+                      </Button>
+                    </Link>
+                  )}
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
