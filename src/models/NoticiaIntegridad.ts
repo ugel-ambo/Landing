@@ -51,16 +51,6 @@ import { getMediaUrl } from "@/lib/media";
 
 export default NoticiaIntegridad;
 
-export function getImageUrl(imagen: string | Types.ObjectId | IMediaImage | null | undefined): string {
-    if (!imagen) return '/Logo1.jpg';
-
-    if (typeof imagen === 'string') {
-        return getMediaUrl(imagen, '/Logo1.jpg');
-    }
-
-    if (typeof imagen === 'object' && 'url' in imagen && imagen.url) {
-        return getMediaUrl(imagen.url, '/Logo1.jpg');
-    }
-
-    return '/Logo.jpg';
+export function getImageUrl(imagen: string | Types.ObjectId | IMediaImage | any): string {
+    return getMediaUrl(imagen, '/Logo1.jpg');
 }
