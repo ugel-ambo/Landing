@@ -153,9 +153,9 @@ export default function Hero({ initialImages }: HeroProps = {}) {
   };
 
   return (
-    <section className="relative w-full h-[400px] md:h-[480px] xl:h-[600px] overflow-hidden">
+    <section className="relative w-full min-h-[360px] sm:min-h-[420px] md:min-h-[480px] lg:min-h-[540px] xl:min-h-[600px] 2xl:min-h-[660px] h-[55vw] sm:h-[45vw] md:h-[38vw] lg:h-[32vw] max-h-[720px] overflow-hidden bg-slate-900">
       {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {particles.map((particle, i) => (
           <div
             key={i}
@@ -172,27 +172,27 @@ export default function Hero({ initialImages }: HeroProps = {}) {
 
       {/* Carousel */}
       <div className="relative w-full h-full flex justify-center">
-        <div className="relative w-full   h-full">
+        <div className="relative w-full h-full">
           {heroImages.map((image, index) => (
             <div
               key={image.id}
               className={`absolute inset-0 transition-all duration-1000 transform ${index === currentSlide
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-105"
+                  ? "opacity-100 scale-100 z-0"
+                  : "opacity-0 scale-105 -z-10"
                 }`}
             >
               <Image
                 src={image.src || "/placeholder.svg"}
                 alt={image.alt}
                 fill
-                className="object-cover object-center "
+                className="object-cover object-center select-none pointer-events-none"
                 priority={index === 0}
                 quality={95}
-                sizes="70vw"
+                sizes="100vw"
                 unoptimized
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/50 to-black/20 " />
-              <div className="absolute inset-0 bg-linear-to-br from-[#049DD9]/15 to-[#223F59]/15 " />
+              <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/50 to-black/20" />
+              <div className="absolute inset-0 bg-linear-to-br from-[#049DD9]/15 to-[#223F59]/15" />
             </div>
           ))}
         </div>
