@@ -82,21 +82,13 @@ interface HeroProps {
 
 export default function Hero({ initialImages }: HeroProps = {}) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [, setIsTransitioning] = useState(false);
+  const [prevSlide, setPrevSlide] = useState(0);
   const [heroImages, setHeroImages] = useState<HeroSlide[]>(() => {
     if (initialImages && initialImages.length > 0) {
       return initialImages;
     }
     return fallbackHeroImages;
   });
-  const [particles, setParticles] = useState<
-    Array<{
-      left: string;
-      top: string;
-      animationDelay: string;
-      animationDuration: string;
-    }>
-  >([]);
 
   useEffect(() => {
     // Si ya recibimos imágenes desde el servidor (SSR), las usamos directamente
@@ -111,6 +103,7 @@ export default function Hero({ initialImages }: HeroProps = {}) {
         if (mounted && imgs.length > 0) {
           setHeroImages(imgs);
           setCurrentSlide(0);
+          setPrevSlide(0);
         }
       })
       .catch(() => {
@@ -121,80 +114,57 @@ export default function Hero({ initialImages }: HeroProps = {}) {
     };
   }, [initialImages]);
 
-  // Generar partículas solo en el cliente para evitar errores de hidratación
-  useEffect(() => {
-    const generatedParticles = [...Array(15)].map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      animationDelay: `${Math.random() * 5}s`,
-      animationDuration: `${5 + Math.random() * 10}s`,
-    }));
-    setParticles(generatedParticles);
-  }, []);
+  const goToSlide = (nextIndex: number) => {
+    setCurrentSlide((prev) => {
+      if (prev === nextIndex) return prev;
+      setPrevSlide(prev);
+      return nextIndex;
+    });
+  };
 
   useEffect(() => {
     if (heroImages.length <= 1) return;
     const timer = setInterval(() => {
-      handleTransition((prev) => (prev + 1) % heroImages.length);
+      goToSlide((currentSlide + 1) % heroImages.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, [heroImages.length]);
-
-  const handleTransition = (getNext: (prev: number) => number) => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentSlide(getNext);
-      setIsTransitioning(false);
-    }, 300);
-  };
-
-  const goToSlide = (index: number) => {
-    handleTransition(() => index);
-  };
+  }, [heroImages.length, currentSlide]);
 
   return (
-    <section className="relative w-full min-h-[360px] sm:min-h-[420px] md:min-h-[480px] lg:min-h-[540px] xl:min-h-[600px] 2xl:min-h-[660px] h-[55vw] sm:h-[45vw] md:h-[38vw] lg:h-[32vw] max-h-[720px] overflow-hidden bg-slate-900">
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {particles.map((particle, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-white/20 rounded-full animate-float"
-            style={{
-              left: particle.left,
-              top: particle.top,
-              animationDelay: particle.animationDelay,
-              animationDuration: particle.animationDuration,
-            }}
-          />
-        ))}
-      </div>
-
+    <section className="relative w-full min-h-[360px] sm:min-h-[420px] md:min-h-[480px] lg:min-h-[540px] xl:min-h-[600px] 2xl:min-h-[660px] h-[55vw] sm:h-[45vw] md:h-[38vw] lg:h-[32vw] max-h-[720px] overflow-hidden">
       {/* Carousel */}
       <div className="relative w-full h-full flex justify-center">
         <div className="relative w-full h-full">
-          {heroImages.map((image, index) => (
-            <div
-              key={image.id}
-              className={`absolute inset-0 transition-all duration-1000 transform ${index === currentSlide
-                  ? "opacity-100 scale-100 z-0"
-                  : "opacity-0 scale-105 -z-10"
+          {heroImages.map((image, index) => {
+            const isCurrent = index === currentSlide;
+            const isPrev = index === prevSlide;
+
+            return (
+              <div
+                key={image.id}
+                className={`absolute inset-0 transition-opacity duration-1000 ${
+                  isCurrent
+                    ? "opacity-100 z-10"
+                    : isPrev
+                    ? "opacity-100 z-0"
+                    : "opacity-0 z-0 pointer-events-none"
                 }`}
-            >
-              <Image
-                src={image.src || "/placeholder.svg"}
-                alt={image.alt}
-                fill
-                className="object-cover object-center select-none pointer-events-none"
-                priority={index === 0}
-                quality={95}
-                sizes="100vw"
-                unoptimized
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/50 to-black/20" />
-              <div className="absolute inset-0 bg-linear-to-br from-[#049DD9]/15 to-[#223F59]/15" />
-            </div>
-          ))}
+              >
+                <Image
+                  src={image.src || "/placeholder.svg"}
+                  alt={image.alt}
+                  fill
+                  className="object-cover object-center select-none pointer-events-none"
+                  priority={index === 0}
+                  quality={95}
+                  sizes="100vw"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/50 to-black/20" />
+                <div className="absolute inset-0 bg-linear-to-br from-[#049DD9]/15 to-[#223F59]/15" />
+              </div>
+            );
+          })}
         </div>
 
         {/* Main Content */}
@@ -284,16 +254,6 @@ export default function Hero({ initialImages }: HeroProps = {}) {
           50% {
             background-position: 100% 50%;
           }
-        }
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0) translateX(0);
-          }
-          50% {
-            transform: translateY(-20px) translateX(10px);
-          }
-        }
         @keyframes shimmer {
           0% {
             background-position: -200% center;
@@ -305,9 +265,6 @@ export default function Hero({ initialImages }: HeroProps = {}) {
         .animate-gradient-xy {
           background-size: 200% 200%;
           animation: gradient-xy 15s ease infinite;
-        }
-        .animate-float {
-          animation: float linear infinite;
         }
         .animate-shimmer {
           background-size: 200% auto;
