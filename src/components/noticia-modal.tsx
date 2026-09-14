@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
-import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
 
 import { getNoticiasModal } from "@/app/actions/noticia-actions"
 
@@ -69,6 +69,9 @@ export default function NoticiaModal() {
     setCurrentIndex((prev) => (prev === noticias.length - 1 ? 0 : prev + 1))
   }
 
+  const currentNoticia = noticias[currentIndex]
+  const hasUrl = Boolean(currentNoticia?.url)
+
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent
@@ -107,14 +110,14 @@ export default function NoticiaModal() {
 
           {/* Indicadores de página */}
           {noticias.length > 1 && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 flex gap-2">
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-40 flex gap-2">
               {noticias.map((_: any, index: number) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-200 ${index === currentIndex
-                      ? "bg-white w-6"
-                      : "bg-white/50 hover:bg-white/75"
+                      ? "bg-blue-600 w-6"
+                      : "bg-gray-400/60 hover:bg-gray-600"
                     }`}
                   aria-label={`Ir a noticia ${index + 1}`}
                 />
@@ -122,17 +125,52 @@ export default function NoticiaModal() {
             </div>
           )}
 
-          <div className="relative w-full h-full">
-            {noticias[currentIndex] && (
-              <Image
-                src={noticias[currentIndex].src}
-                alt={noticias[currentIndex].alt}
-                width={800}
-                height={1200}
-                className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
-                priority
-                quality={95}
-              />
+          {/* Botón de enlace cuando la noticia tiene una URL */}
+          {hasUrl && (
+            <div className={`absolute ${noticias.length > 1 ? 'bottom-8' : 'bottom-4'} left-1/2 -translate-x-1/2 z-40`}>
+              <a
+                href={currentNoticia.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm rounded-full shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 border border-white/20"
+              >
+                <span>Ver más información</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
+          )}
+
+          <div className="relative w-full h-full flex items-center justify-center">
+            {currentNoticia && (
+              hasUrl ? (
+                <a
+                  href={currentNoticia.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative cursor-pointer group"
+                  title="Haz clic para abrir el enlace"
+                >
+                  <Image
+                    src={currentNoticia.src}
+                    alt={currentNoticia.alt}
+                    width={800}
+                    height={1200}
+                    className="w-auto h-auto max-w-full max-h-[90vh] object-contain transition-opacity duration-200 group-hover:opacity-95"
+                    priority
+                    quality={95}
+                  />
+                </a>
+              ) : (
+                <Image
+                  src={currentNoticia.src}
+                  alt={currentNoticia.alt}
+                  width={800}
+                  height={1200}
+                  className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
+                  priority
+                  quality={95}
+                />
+              )
             )}
           </div>
         </div>
