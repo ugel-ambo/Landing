@@ -7,6 +7,7 @@ const noticiaModalSchema = new mongoose.Schema({
   imagen: { type: mongoose.Schema.Types.ObjectId, ref: 'media', required: true },
   activo: { type: Boolean, default: true },
   orden: { type: Number, default: 0 },
+  url: { type: String },
 }, { 
   collection: 'noticias-modals', // Standard pluralization
   timestamps: true,
