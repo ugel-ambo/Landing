@@ -142,11 +142,11 @@ export default function ServicesCards() {
                     width={400}
                     height={300}
                     style={{ width: "100%", height: "auto" }}
-                    className="rounded-2xl shadow-md group-hover:shadow-xl group-hover:scale-[1.03] transition-all duration-300"
+                    className="rounded-2xl shadow-md service-card-glow group-hover:shadow-xl group-hover:scale-[1.03] transition-all duration-300"
                   />
                 ) : (
                   /* Fallback solo si no hay imagen */
-                  <div className="w-full aspect-4/3 rounded-2xl bg-primary/10 flex flex-col items-center justify-center gap-3 shadow-md group-hover:shadow-xl group-hover:scale-[1.03] transition-all duration-300 text-primary border border-primary/20">
+                  <div className="w-full aspect-4/3 rounded-2xl bg-primary/10 flex flex-col items-center justify-center gap-3 shadow-md service-card-glow group-hover:shadow-xl group-hover:scale-[1.03] transition-all duration-300 text-primary border border-primary/20">
                     <Icon className="w-10 h-10" />
                     <span className="text-sm font-bold text-center px-2 leading-tight">
                       {service.title}
