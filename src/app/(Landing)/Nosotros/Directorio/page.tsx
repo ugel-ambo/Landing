@@ -651,7 +651,7 @@ const directorioData: DirectorioItem[] = [
   {
     id: "69",
     nombre: "Aguirre Alcedo, Kevin Jhino",
-    cargo: "Practicante – Asistente en Patrimonio (UPDI)",
+    cargo: "Practicante – Asistente en Infraestructura (UPDI)",
     area: "UPDI",
     email: "jhino_97@hotmail.com",
     telefono: "973031878",
