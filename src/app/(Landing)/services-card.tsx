@@ -50,7 +50,7 @@ const services = [
     id: 5,
     title: "Conformidad del servicio de internet",
     icon: BookUser,
-    image: "/Servicio.png",
+    image: "/CARDS/CONFORMIDAD/conformidad.png", 
     href: "https://internet.ugelambo.edu.pe/login",
     external: true,
   },
