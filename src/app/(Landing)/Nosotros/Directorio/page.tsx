@@ -340,7 +340,7 @@ const directorioData: DirectorioItem[] = [
     cargo: "Especialista de Inicial",
     area: "UGP",
     email: "lyzmatoscristobal@gmail.com",
-    telefono: "96912880",
+    telefono: "969128840",
     orden: 26,
   },
   {
