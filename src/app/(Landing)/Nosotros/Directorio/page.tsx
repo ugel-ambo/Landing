@@ -204,6 +204,16 @@ const directorioData: DirectorioItem[] = [
     telefono: "907344044",
     orden: 67,
   },
+   {
+    id: "72",
+    nombre: "Diaz Torres, Guiseupe Andreuw",
+    cargo: "Practicante – Asistente en Control Interno (UGA)",
+    area: "UGA",
+    email: "andreuwdiaz23@gmail.com",
+    telefono: "999782929",
+    orden: 72,
+  },
+
 
   // ==================== UNIDAD DE RECURSOS HUMANOS (UGRH) ====================
   {
@@ -296,13 +306,13 @@ const directorioData: DirectorioItem[] = [
     orden: 70,
   },
   {
-    id: "72",
+    id: "71",
     nombre: "Urbano Niño, Luis Arturo",
     cargo: "Practicante – Asistente en Planillas (UGRH)",
     area: "UGRH",
     email: "luisarturourbanonino@gmail.com",
     telefono: "918495679",
-    orden: 72,
+    orden: 71,
   },
 
   // ==================== UNIDAD DE GESTIÓN PEDAGÓGICA (UGP) ====================
@@ -425,10 +435,10 @@ const directorioData: DirectorioItem[] = [
   },
   {
     id: "37",
-    nombre: "Aliaga Cotrina, Leli Saiquina",
+    nombre: "Albornoz Flores, Victor Raul",
     cargo: "Especialista de Comunicación",
     area: "UGP",
-    email: "lelialiaga16@gmail.com",
+    email: "elosado.vraf@hotmail.com",
     telefono: "954224611",
     orden: 37,
   },
