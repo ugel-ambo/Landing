@@ -57,18 +57,18 @@ export default function NoticiaModal() {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
       <DialogContent
-        className="w-[95vw] md:w-auto md:min-w-[500px] md:max-w-3xl max-h-[95vh] p-0 gap-0 bg-white border-none shadow-2xl rounded-xl overflow-hidden flex flex-col"
+        className="w-[98vw] md:w-auto md:min-w-[600px] md:max-w-4xl max-h-[95vh] p-0 gap-0 bg-white border-none shadow-2xl rounded-xl overflow-hidden flex flex-col"
         showCloseButton={false}
       >
         <DialogTitle className="sr-only">Comunicados</DialogTitle>
         
-        {/* Header Azul */}
-        <div className="bg-[#003B73] text-white px-4 py-3 flex items-center justify-between shadow-md relative z-20">
+        {/* Header Azul Oscuro (Institucional UGEL) */}
+        <div className="bg-[#223f59] text-white px-4 py-3 flex items-center justify-between shadow-md relative z-20">
           <div className="flex items-center gap-3">
             <Megaphone className="w-5 h-5 text-yellow-400" />
             <h2 className="font-bold text-lg hidden sm:block">Comunicados</h2>
             <div className="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/30 flex items-center gap-1">
-               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+               <span className="w-2 h-2 rounded-full bg-[#049dd9] animate-pulse"></span>
                {noticias.length} publicado{noticias.length !== 1 ? 's' : ''}
             </div>
           </div>
@@ -82,52 +82,52 @@ export default function NoticiaModal() {
         </div>
 
         {/* Body (Imagen y Controles) */}
-        <div className="relative w-full flex-1 bg-gray-50/50 flex flex-col items-center justify-center p-4">
+        <div className="relative w-full flex-1 bg-gray-50/50 flex flex-col p-4">
           
-          {/* Navegación y Carrusel */}
-          <div className="relative w-full flex items-center justify-center">
+          {/* Navegación y Carrusel Flexbox (Flechas NO tapan la imagen) */}
+          <div className="w-full flex flex-row items-center justify-between gap-2 md:gap-4 flex-1">
             
-            {/* Flecha Izquierda */}
+            {/* Flecha Izquierda (Espacio Propio) */}
             {noticias.length > 1 && (
               <button
                 onClick={handlePrevious}
-                className="absolute left-0 md:-left-4 z-40 bg-white hover:bg-gray-100 text-gray-700 rounded-full p-2.5 shadow-lg border border-gray-200 transition-transform duration-200 hover:scale-110 active:scale-95"
+                className="shrink-0 z-40 bg-white hover:bg-gray-100 text-gray-700 rounded-full p-2 md:p-3 shadow-lg border border-gray-200 transition-transform duration-200 hover:scale-110 active:scale-95"
                 aria-label="Anterior"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
               </button>
             )}
 
-            {/* Imagen Principal */}
-            <div className="relative flex flex-col items-center justify-center">
-              {/* Badge de contador (1 / 10) superpuesto arriba */}
+            {/* Contenedor de Imagen Central */}
+            <div className="relative flex flex-col items-center justify-center flex-1 min-w-0">
+              {/* Badge de contador (1 / 10) superpuesto arriba de la imagen */}
               {noticias.length > 1 && (
                 <div className="absolute -top-3 z-30 bg-black/70 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2">
                   <span>{currentIndex + 1} / {noticias.length}</span>
                 </div>
               )}
 
-              <div className="w-full h-full flex justify-center items-center rounded-lg overflow-hidden relative min-h-[300px] max-h-[60vh] md:max-h-[65vh]">
+              <div className="w-full flex justify-center items-center rounded-lg overflow-hidden relative min-h-[250px] sm:min-h-[300px] max-h-[60vh] md:max-h-[65vh]">
                 <Image
                   src={currentNoticia.src}
                   alt={currentNoticia.alt}
-                  width={800}
+                  width={900}
                   height={1200}
-                  className="w-auto h-auto max-w-full max-h-[60vh] md:max-h-[65vh] object-contain shadow-sm"
+                  className="w-auto h-auto max-w-full max-h-[60vh] md:max-h-[65vh] object-contain shadow-sm rounded-lg"
                   priority
                   quality={95}
                 />
               </div>
             </div>
 
-            {/* Flecha Derecha */}
+            {/* Flecha Derecha (Espacio Propio) */}
             {noticias.length > 1 && (
               <button
                 onClick={handleNext}
-                className="absolute right-0 md:-right-4 z-40 bg-white hover:bg-gray-100 text-gray-700 rounded-full p-2.5 shadow-lg border border-gray-200 transition-transform duration-200 hover:scale-110 active:scale-95"
+                className="shrink-0 z-40 bg-white hover:bg-gray-100 text-gray-700 rounded-full p-2 md:p-3 shadow-lg border border-gray-200 transition-transform duration-200 hover:scale-110 active:scale-95"
                 aria-label="Siguiente"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
               </button>
             )}
           </div>
@@ -141,7 +141,7 @@ export default function NoticiaModal() {
                   onClick={() => setCurrentIndex(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     index === currentIndex
-                      ? "bg-[#003B73] w-6"
+                      ? "bg-[#049dd9] w-6"
                       : "bg-gray-300 hover:bg-gray-400 w-2"
                   }`}
                   aria-label={`Ir a noticia ${index + 1}`}
@@ -152,15 +152,16 @@ export default function NoticiaModal() {
         </div>
 
         {/* Footer Actions (Botones Ver imagen / Ver detalles) */}
-        <div className="bg-white border-t p-4 flex items-center justify-center gap-4">
+        <div className="bg-white border-t p-4 flex items-center justify-center gap-3 sm:gap-4">
           <a
             href={currentNoticia.src}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-2.5 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold text-sm rounded-lg shadow-sm transition-all"
+            className="flex items-center gap-2 px-4 sm:px-6 py-2.5 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold text-sm rounded-lg shadow-sm transition-all"
           >
             <Maximize2 className="w-4 h-4" />
-            <span>Ver imagen</span>
+            <span className="hidden sm:inline">Ver imagen</span>
+            <span className="sm:hidden">Ampliar</span>
           </a>
           
           {hasUrl && (
@@ -168,7 +169,7 @@ export default function NoticiaModal() {
               href={currentNoticia.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-2.5 bg-[#003B73] hover:bg-[#002850] text-white font-semibold text-sm rounded-lg shadow-md transition-all"
+              className="flex items-center gap-2 px-4 sm:px-6 py-2.5 bg-[#049dd9] hover:bg-[#037bb0] text-white font-semibold text-sm rounded-lg shadow-md transition-all"
             >
               <span>Ver detalles</span>
               <ExternalLink className="w-4 h-4" />
