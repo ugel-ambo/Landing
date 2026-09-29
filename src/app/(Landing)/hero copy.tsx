@@ -1,0 +1,276 @@
+// "use client";
+
+// import { useState, useEffect } from "react";
+// import Image from "next/image";
+// import { Award, Users, University, Sparkles } from "lucide-react";
+// import TypingText from "@/components/ui/shadcn-io/typing-text";
+// import { Dancing_Script } from "next/font/google";
+// import { getHeroImages, type HeroSlide } from "@/app/actions/hero-actions";
+
+// const dancingScript = Dancing_Script({
+//   subsets: ["latin"],
+//   weight: ["600"],
+// });
+
+// const fallbackHeroImages: HeroSlide[] = [
+//   {
+//     id: "fallback-1",
+//     src: "/portada1.png",
+//     alt: "Semana Santa"
+//   },
+//   {
+//     id: "fallback-2",
+//     src: "/SemanaSanta (3).png",
+//     alt: "Semana Santa"
+//   },
+//   {
+//     id: "fallback-3",
+//     src: "/fondo.png",
+//     alt: "UGEL Ambo - Institución Educativa"
+//   },
+//   {
+//     id: "fallback-4",
+//     src: "/hero4.png",
+//     alt: "Estudiantes aprendiendo"
+//   },
+//   {
+//     id: "fallback-5",
+//     src: "/hero2.png",
+//     alt: "Educación moderna"
+//   },
+//   {
+//     id: "fallback-6",
+//     src: "/newhero3.png",
+//     alt: "Educación moderna"
+//   },
+//   {
+//     id: "fallback-7",
+//     src: "/img1.JPG",
+//     alt: "Buen Inicio"
+//   },
+//   {
+//     id: "fallback-8",
+//     src: "/img2.jpg",
+//     alt: "Buen Inicio"
+//   },
+//   {
+//     id: "fallback-9",
+//     src: "/img3.png",
+//     alt: "Buen Inicio Juntos 1"
+//   },
+//   {
+//     id: "fallback-10",
+//     src: "/img4.png",
+//     alt: "Buen Inicio Juntos 2"
+//   },
+//   {
+//     id: "fallback-11",
+//     src: "/img5.png",
+//     alt: "Batalla de Arcapunco"
+//   }
+// ];
+
+// const stats = [
+//   { icon: Users, label: "Estudiantes", value: "16 K +" },
+//   { icon: University, label: "Instituciones", value: "150+" },
+//   { icon: Award, label: "Años de excelencia", value: "12+" },
+// ];
+
+// interface HeroProps {
+//   initialImages?: HeroSlide[];
+// }
+
+// export default function Hero({ initialImages }: HeroProps = {}) {
+//   const [currentSlide, setCurrentSlide] = useState(0);
+//   const [prevSlide, setPrevSlide] = useState(0);
+//   const [heroImages, setHeroImages] = useState<HeroSlide[]>(() => {
+//     if (initialImages && initialImages.length > 0) {
+//       return initialImages;
+//     }
+//     return fallbackHeroImages;
+//   });
+
+//   useEffect(() => {
+//     // Si ya recibimos imágenes desde el servidor (SSR), las usamos directamente
+//     if (initialImages && initialImages.length > 0) {
+//       setHeroImages(initialImages);
+//       return;
+//     }
+
+//     let mounted = true;
+//     getHeroImages()
+//       .then((imgs) => {
+//         if (mounted && imgs.length > 0) {
+//           setHeroImages(imgs);
+//           setCurrentSlide(0);
+//           setPrevSlide(0);
+//         }
+//       })
+//       .catch(() => {
+//         /* fallback ya está cargado */
+//       });
+//     return () => {
+//       mounted = false;
+//     };
+//   }, [initialImages]);
+
+//   const goToSlide = (nextIndex: number) => {
+//     setCurrentSlide((prev) => {
+//       if (prev === nextIndex) return prev;
+//       setPrevSlide(prev);
+//       return nextIndex;
+//     });
+//   };
+
+//   useEffect(() => {
+//     if (heroImages.length <= 1) return;
+//     const timer = setInterval(() => {
+//       goToSlide((currentSlide + 1) % heroImages.length);
+//     }, 6000);
+//     return () => clearInterval(timer);
+//   }, [heroImages.length, currentSlide]);
+
+//   return (
+//     <section className="relative w-full min-h-[360px] sm:min-h-[420px] md:min-h-[480px] lg:min-h-[540px] xl:min-h-[600px] 2xl:min-h-[660px] h-[55vw] sm:h-[45vw] md:h-[38vw] lg:h-[32vw] max-h-[720px] overflow-hidden">
+//       {/* Carousel */}
+//       <div className="relative w-full h-full flex justify-center">
+//         <div className="relative w-full h-full">
+//           {heroImages.map((image, index) => {
+//             const isCurrent = index === currentSlide;
+//             const isPrev = index === prevSlide;
+
+//             return (
+//               <div
+//                 key={image.id}
+//                 className={`absolute inset-0 transition-opacity duration-1000 ${
+//                   isCurrent
+//                     ? "opacity-100 z-10"
+//                     : isPrev
+//                     ? "opacity-100 z-0"
+//                     : "opacity-0 z-0 pointer-events-none"
+//                 }`}
+//               >
+//                 <Image
+//                   src={image.src || "/placeholder.svg"}
+//                   alt={image.alt}
+//                   fill
+//                   className="object-cover object-center select-none pointer-events-none"
+//                   priority={index === 0}
+//                   quality={95}
+//                   sizes="100vw"
+//                   unoptimized
+//                 />
+//                 <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/50 to-black/20" />
+//                 <div className="absolute inset-0 bg-linear-to-br from-[#049DD9]/15 to-[#223F59]/15" />
+//               </div>
+//             );
+//           })}
+//         </div>
+
+//         {/* Main Content */}
+//         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 z-10">
+//           <div>
+//             {/* Icon Badge */}
+//             <div className="mb-2 inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+//               <Sparkles className="w-3 h-3 text-[#049DD9]" />
+//               <span className="text-xs font-medium">Educación de Calidad</span>
+//             </div>
+
+//             {/* Main Title */}
+//             <h1 className="text-2xl md:text-3xl lg:text-5xl 2xl:text-6xl font-black  text-balance drop-shadow-2xl leading-none">
+//               <span className="bg-clip-text text-transparent bg-linear-to-t from-white via-[#F2F2F2] to-white animate-shimmer">
+//                 Bienvenido a
+//               </span>
+//               <br />
+//               <span className="text-[#049DD9]">UGEL AMBO</span>
+//             </h1>
+
+//             {/* Subtitle */}
+//             <TypingText
+//               text={[
+//                 "Con vision de futuro y resultados !",
+//                 "Con vision de futuro y resultados !",
+//               ]}
+//               typingSpeed={75}
+//               pauseDuration={1500}
+//               showCursor={true}
+//               cursorCharacter="|"
+//               className="text-sm md:text-base lg:text-lg mb-3 max-w-xl text-balance drop-shadow-lg font-bold leading-relaxed italic"
+//               textColors={["#ffffff"]}
+//               variableSpeed={{ min: 50, max: 120 }}
+//             />
+
+//             {/* Stats */}
+//             <div className="grid grid-cols-3 gap-2 max-w-md mx-auto">
+//               {stats.map((stat, index) => (
+//                 <div
+//                   key={index}
+//                   className="bg-white/10 backdrop-blur-md rounded-lg p-2 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
+//                 >
+//                   <stat.icon className="w-4 h-4 mx-auto mb-1 text-[#049DD9]" />
+//                   <div className="text-base font-bold">{stat.value}</div>
+//                   <div className="text-[10px] text-gray-200 font-medium">
+//                     {stat.label}
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+
+//             {/* Director */}
+//             {/* <div className="mt-6 md:mt-10 inline-flex items-center gap-2 px-5 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+//               <span className="text-xs md:text-sm font-semibold text-gray-200">
+//                 Director:
+//               </span>
+//               <span
+//                 className={`text-sm md:text-lg text-white ${dancingScript.className}`}
+//               >
+//                 Dr. Hugo Eduardo Palomino Esteban
+//               </span>
+//             </div> */}
+//           </div>
+//         </div>
+
+//         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex gap-2 z-20">
+//           {heroImages.map((_, index) => (
+//             <button
+//               key={index}
+//               onClick={() => goToSlide(index)}
+//               className={`h-2.5 rounded-full transition-all duration-300 backdrop-blur-md border border-white/30 ${index === currentSlide
+//                   ? "bg-[#049DD9] w-10 shadow-lg shadow-[#049DD9]/50"
+//                   : "bg-white/50 hover:bg-white/75 w-2.5 hover:w-6"
+//                 }`}
+//               aria-label={`Ir a slide ${index + 1}`}
+//             />
+//           ))}
+//         </div>
+//       </div>
+
+//       <style jsx>{`
+//         @keyframes gradient-xy {
+//           0%,
+//           100% {
+//             background-position: 0% 50%;
+//           }
+//           50% {
+//             background-position: 100% 50%;
+//           }
+//         @keyframes shimmer {
+//           0% {
+//             background-position: -200% center;
+//           }
+//           100% {
+//             background-position: 200% center;
+//           }
+//         }
+//         .animate-gradient-xy {
+//           background-size: 200% 200%;
+//           animation: gradient-xy 15s ease infinite;
+//         }
+//         .animate-shimmer {
+//           background-size: 200% auto;
+//           animation: shimmer 3s linear infinite;
+//         }
+//       `}</style>
+//     </section>
+//   );
+// }
