@@ -2,15 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Award, Users, University, Sparkles } from "lucide-react";
 import TypingText from "@/components/ui/shadcn-io/typing-text";
-import { Dancing_Script } from "next/font/google";
 import { getHeroImages, type HeroSlide } from "@/app/actions/hero-actions";
-
-const dancingScript = Dancing_Script({
-  subsets: ["latin"],
-  weight: ["600"],
-});
 
 const fallbackHeroImages: HeroSlide[] = [
   {
@@ -70,11 +63,6 @@ const fallbackHeroImages: HeroSlide[] = [
   }
 ];
 
-const stats = [
-  { icon: Users, label: "Estudiantes", value: "16 K +" },
-  { icon: University, label: "Instituciones", value: "150+" },
-  { icon: Award, label: "Años de excelencia", value: "12+" },
-];
 
 interface HeroProps {
   initialImages?: HeroSlide[];
@@ -160,32 +148,16 @@ export default function Hero({ initialImages }: HeroProps = {}) {
                   sizes="100vw"
                   unoptimized
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/50 to-black/20" />
-                <div className="absolute inset-0 bg-linear-to-br from-[#049DD9]/15 to-[#223F59]/15" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
               </div>
             );
           })}
         </div>
 
-        {/* Main Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 z-10">
-          <div>
-            {/* Icon Badge */}
-            <div className="mb-2 inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-              <Sparkles className="w-3 h-3 text-[#049DD9]" />
-              <span className="text-xs font-medium">Educación de Calidad</span>
-            </div>
-
-            {/* Main Title */}
-            <h1 className="text-2xl md:text-3xl lg:text-5xl 2xl:text-6xl font-black  text-balance drop-shadow-2xl leading-none">
-              <span className="bg-clip-text text-transparent bg-linear-to-t from-white via-[#F2F2F2] to-white animate-shimmer">
-                Bienvenido a
-              </span>
-              <br />
-              <span className="text-[#049DD9]">UGEL AMBO</span>
-            </h1>
-
-            {/* Subtitle */}
+        {/* Main Content - Solo el lema animado */}
+        <div className="absolute inset-x-0 bottom-6 sm:bottom-7 md:bottom-8 flex flex-col items-center justify-end text-center px-4 z-10 select-none">
+          {/* Lema animado */}
+          <div className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
             <TypingText
               text={[
                 "Con vision de futuro y resultados !",
@@ -195,50 +167,24 @@ export default function Hero({ initialImages }: HeroProps = {}) {
               pauseDuration={1500}
               showCursor={true}
               cursorCharacter="|"
-              className="text-sm md:text-base lg:text-lg mb-3 max-w-xl text-balance drop-shadow-lg font-bold leading-relaxed italic"
+              className="text-xs sm:text-sm md:text-base lg:text-lg text-white font-bold italic tracking-wide"
               textColors={["#ffffff"]}
               variableSpeed={{ min: 50, max: 120 }}
             />
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-2 max-w-md mx-auto">
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="bg-white/10 backdrop-blur-md rounded-lg p-2 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
-                >
-                  <stat.icon className="w-4 h-4 mx-auto mb-1 text-[#049DD9]" />
-                  <div className="text-base font-bold">{stat.value}</div>
-                  <div className="text-[10px] text-gray-200 font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Director */}
-            {/* <div className="mt-6 md:mt-10 inline-flex items-center gap-2 px-5 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-              <span className="text-xs md:text-sm font-semibold text-gray-200">
-                Director:
-              </span>
-              <span
-                className={`text-sm md:text-lg text-white ${dancingScript.className}`}
-              >
-                Dr. Hugo Eduardo Palomino Esteban
-              </span>
-            </div> */}
           </div>
         </div>
 
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex gap-2 z-20">
+        {/* Indicadores de carrusel */}
+        <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2 z-20">
           {heroImages.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 backdrop-blur-md border border-white/30 ${index === currentSlide
-                  ? "bg-[#049DD9] w-10 shadow-lg shadow-[#049DD9]/50"
-                  : "bg-white/50 hover:bg-white/75 w-2.5 hover:w-6"
-                }`}
+              className={`h-2 sm:h-2.5 rounded-full transition-all duration-300 ${
+                index === currentSlide
+                  ? "bg-[#049DD9] w-7 sm:w-9 shadow-lg shadow-[#049DD9]/50"
+                  : "bg-white/60 hover:bg-white/90 w-2 sm:w-2.5 hover:w-5"
+              }`}
               aria-label={`Ir a slide ${index + 1}`}
             />
           ))}
