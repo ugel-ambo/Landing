@@ -62,19 +62,19 @@ export default function NoticiaModal() {
       >
         <DialogTitle className="sr-only">Comunicados</DialogTitle>
         
-        {/* Header Azul Oscuro (Institucional UGEL) */}
-        <div className="bg-[#223f59] text-white px-4 py-3 flex items-center justify-between shadow-md relative z-20">
+        {/* Header Color Institucional UGEL AMBO */}
+        <div className="bg-[#049dd9] text-white px-4 py-3 flex items-center justify-between shadow-md relative z-20">
           <div className="flex items-center gap-3">
-            <Megaphone className="w-5 h-5 text-yellow-400" />
+            <Megaphone className="w-5 h-5 text-white" />
             <h2 className="font-bold text-lg hidden sm:block">Comunicados</h2>
-            <div className="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/30 flex items-center gap-1">
-               <span className="w-2 h-2 rounded-full bg-[#049dd9] animate-pulse"></span>
-               {noticias.length} publicado{noticias.length !== 1 ? 's' : ''}
+            <div className="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/30 flex items-center gap-2">
+               <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+               <span>{noticias.length} publicado{noticias.length !== 1 ? 's' : ''}</span>
             </div>
           </div>
           <button
             onClick={handleClose}
-            className="flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-full text-sm font-semibold transition-colors shadow-sm"
+            className="flex items-center gap-1 bg-white hover:bg-gray-100 text-[#049dd9] px-4 py-1.5 rounded-full text-sm font-bold transition-colors shadow-sm"
           >
             <X className="w-4 h-4" />
             <span className="hidden sm:inline">Cerrar</span>
