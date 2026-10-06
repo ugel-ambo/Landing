@@ -1,7 +1,9 @@
 "use client";
 import * as React from "react";
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { INSTITUCIONES_EDUCATIVAS } from "@/data/iiee";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -75,6 +77,33 @@ export function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger
             onClick={(e) => !isMobile && e.preventDefault()}>
+            II.EE.
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[240px] sm:w-[260px] gap-0.5 p-1 max-h-[360px] overflow-y-auto">
+              {INSTITUCIONES_EDUCATIVAS.map((ie) => (
+                <li key={ie.id}>
+                  <NavigationMenuLink asChild>
+                    <a
+                      href={ie.enlace}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-3 py-2 rounded-md transition-colors hover:bg-accent focus:bg-accent outline-none cursor-pointer group/item"
+                    >
+                      <span className="text-sm font-medium text-foreground group-hover/item:text-white transition-colors leading-snug">
+                        {ie.nombre}
+                      </span>
+                    </a>
+                  </NavigationMenuLink>
+                </li>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <NavigationMenuTrigger
+            onClick={(e) => !isMobile && e.preventDefault()}>
             NOSOTROS
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -101,7 +130,7 @@ export function NavigationMenuDemo() {
                 href="/Nosotros/Organigrama"
                 title="Organigrama"
                 className="hover:text-white">
-                Nuestra razón de ser y el propósito que guía nuestro trabajo.
+                Estructura orgánica y jerárquica de la UGEL Ambo.
               </ListItem>
               {/* <ListItem
                 href="/Nosotros/Jurisdiccion"
