@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Menu as MenuIcon } from "lucide-react";
+import { Menu as MenuIcon, ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 import { NavigationMenuDemo } from "./navigation";
+import { INSTITUCIONES_EDUCATIVAS } from "@/data/iiee";
 
 export default function Menu() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,8 +58,8 @@ export default function Menu() {
           {/* Botón Mobile */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon-lg">
-                <MenuIcon className="h-52 w-52" />
+              <Button variant="ghost" size="icon">
+                <MenuIcon className="h-7 w-7" />
               </Button>
             </SheetTrigger>
             <SheetContent
@@ -80,6 +81,40 @@ export default function Menu() {
                     >
                       INICIO
                     </AccordionTrigger>
+                  </AccordionItem>
+
+                  <AccordionItem value="Jurisdiccion" className="border-none">
+                    <AccordionTrigger
+                      className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white [&>svg]:hidden"
+                      onClick={() => {
+                        window.location.href = "/Nosotros/Jurisdiccion";
+                        setOpen(false);
+                      }}
+                    >
+                      JURISDICCIÓN
+                    </AccordionTrigger>
+                  </AccordionItem>
+
+                  <AccordionItem value="iiee" className="border-none">
+                    <AccordionTrigger className="px-4 py-3 hover:bg-accent rounded-md font-medium hover:no-underline hover:text-white">
+                      II.EE.
+                    </AccordionTrigger>
+                    <AccordionContent className="pl-4 pb-0">
+                      <div className="flex flex-col space-y-1 max-h-[300px] overflow-y-auto pr-1">
+                        {INSTITUCIONES_EDUCATIVAS.map((ie) => (
+                          <a
+                            key={ie.id}
+                            href={ie.enlace}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 text-sm hover:bg-accent rounded-md hover:text-white block font-medium transition-colors"
+                            onClick={() => setOpen(false)}
+                          >
+                            {ie.nombre}
+                          </a>
+                        ))}
+                      </div>
+                    </AccordionContent>
                   </AccordionItem>
 
                   <AccordionItem value="nosotros" className="border-none">
