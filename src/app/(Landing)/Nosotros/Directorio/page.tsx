@@ -168,6 +168,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGA",
     orden: 17,
   },
+  // --- Practicantes UGA ---
   {
     id: "64",
     nombre: "Lazaro Barrera, Hayle Josep",
@@ -277,15 +278,17 @@ const directorioData: DirectorioItem[] = [
     telefono: "910149606",
     orden: 29,
   },
+  // --- CAS UGRH ---
   {
     id: "62",
-    nombre: "Poma Chavez, Mirla",
-    cargo: "Practicante – Asistente en Planillas (UGRH)",
+    nombre: "Poma Chávez, Mirla",
+    cargo: "Analista Secretaria",
     area: "UGRH",
     email: "mirlapomach@gmail.com",
     telefono: "979219015",
     orden: 30,
   },
+  // --- Practicantes UGRH ---
   {
     id: "70",
     nombre: "Fano Mendoza, Cristina Alesandra",
@@ -558,6 +561,7 @@ const directorioData: DirectorioItem[] = [
     telefono: "935380915",
     orden: 60,
   },
+  // --- Practicante UGP ---
   {
     id: "68",
     nombre: "Jara Herrera, Arvic Kenedi",
@@ -639,6 +643,26 @@ const directorioData: DirectorioItem[] = [
     telefono: "962813340",
     orden: 69,
   },
+  // --- CAS UPDI ---
+  {
+    id: "75",
+    nombre: "Martel Espinoza, Elcira Jossety",
+    cargo: "Analista de Modernización de la Gestión Pública",
+    email: "jossety2201@gmail.com",
+    telefono: "971386109",
+    area: "UPDI",
+    orden: 70,
+  },
+  {
+    id: "76",
+    nombre: "Eduardo Santamaria, Yanet",
+    cargo: "Analista Secretaria",
+    email: "jhanetheduardosantamaria@gmail.com",
+    telefono: "955858720",
+    area: "UPDI",
+    orden: 71,
+  },
+  // --- Practicantes UPDI ---
   {
     id: "60",
     nombre: "Ayala Romero, Jordan Brandon",
@@ -646,7 +670,7 @@ const directorioData: DirectorioItem[] = [
     area: "UPDI",
     email: "ayalaromerojordanbrandon@gmail.com",
     telefono: "925523419",
-    orden: 70,
+    orden: 72,
   },
   {
     id: "69",
@@ -655,7 +679,7 @@ const directorioData: DirectorioItem[] = [
     area: "UPDI",
     email: "jhino_97@hotmail.com",
     telefono: "973031878",
-    orden: 71,
+    orden: 73,
   },
 ];
 
