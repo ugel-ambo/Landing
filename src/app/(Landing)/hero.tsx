@@ -148,21 +148,16 @@ export default function Hero({ initialImages }: HeroProps = {}) {
                   sizes="100vw"
                   unoptimized
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#102e49]/95 via-[#102e49]/20 to-transparent" />
               </div>
             );
           })}
         </div>
 
-        {/* Main Content - Solo el lema animado */}
         <div className="absolute inset-x-0 bottom-6 sm:bottom-7 md:bottom-8 flex flex-col items-center justify-end text-center px-4 z-10 select-none">
-          {/* Lema animado */}
           <div className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
             <TypingText
-              text={[
-                "Con vision de futuro y resultados !",
-                "Con vision de futuro y resultados !",
-              ]}
+              text={["Con vision de futuro y resultados !", "Con vision de futuro y resultados !"]}
               typingSpeed={75}
               pauseDuration={1500}
               showCursor={true}
@@ -185,38 +180,13 @@ export default function Hero({ initialImages }: HeroProps = {}) {
                   ? "bg-[#049DD9] w-7 sm:w-9 shadow-lg shadow-[#049DD9]/50"
                   : "bg-white/60 hover:bg-white/90 w-2 sm:w-2.5 hover:w-5"
               }`}
-              aria-label={`Ir a slide ${index + 1}`}
+              aria-label={`Ir a imagen ${index + 1}`}
+              aria-current={index === currentSlide ? "true" : undefined}
             />
           ))}
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes gradient-xy {
-          0%,
-          100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        @keyframes shimmer {
-          0% {
-            background-position: -200% center;
-          }
-          100% {
-            background-position: 200% center;
-          }
-        }
-        .animate-gradient-xy {
-          background-size: 200% 200%;
-          animation: gradient-xy 15s ease infinite;
-        }
-        .animate-shimmer {
-          background-size: 200% auto;
-          animation: shimmer 3s linear infinite;
-        }
-      `}</style>
     </section>
   );
 }

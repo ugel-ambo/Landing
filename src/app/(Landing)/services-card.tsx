@@ -116,14 +116,16 @@ const services = [
 
 export default function ServicesCards() {
   return (
-    <section id="servicios" className="py-10 w-full bg-white">
-      <div className="w-full px-4 md:px-10">
+    <section id="servicios" className="relative w-full overflow-hidden bg-gradient-to-b from-[#f0faff] via-white to-white py-14 md:py-20">
+      <div aria-hidden="true" className="pointer-events-none absolute -right-20 top-8 h-56 w-56 rounded-full bg-[#049DD9]/5 blur-3xl" />
+      <div aria-hidden="true" className="pointer-events-none absolute -left-20 bottom-0 h-48 w-48 rounded-full bg-[#f4bc32]/10 blur-3xl" />
+      <div className="relative w-full px-4 md:px-10">
         <SectionHeader
           badgeIcon={<Sparkles className="w-3.5 h-3.5 text-[#049DD9]" />}
-          badgeText="Accesos Rapidos"
+          badgeText="Accesos Rápidos"
           title="Servicios"
           titleHighlight="Principales"
-          description="Plataformas digitales y sistemas oficiales al servicio de la comunidad educativa"
+          description="Encuentra en un solo lugar las plataformas y servicios para nuestra comunidad educativa."
         />
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-5 max-w-[1400px] mx-auto">
@@ -136,7 +138,7 @@ export default function ServicesCards() {
                 href={service.href}
                 target={service.external ? "_blank" : undefined}
                 rel={service.external ? "noopener noreferrer" : undefined}
-                className="group block"
+                className="group block rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#049DD9]"
               >
                 {service.image ? (
                   /* La imagen ES el botón: se muestra completa, sin recorte */
@@ -146,7 +148,7 @@ export default function ServicesCards() {
                     width={400}
                     height={300}
                     style={{ width: "100%", height: "auto" }}
-                    className="rounded-2xl shadow-md service-card-glow group-hover:shadow-xl group-hover:scale-[1.03] transition-all duration-300"
+                    className="rounded-2xl shadow-md service-card-glow transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl motion-reduce:transform-none motion-reduce:transition-none"
                   />
                 ) : (
                   /* Fallback solo si no hay imagen */
