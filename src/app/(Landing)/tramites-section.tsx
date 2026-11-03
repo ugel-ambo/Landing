@@ -14,11 +14,10 @@ const tramites = [
     title: "Formato Único de Trámite",
     description: "Descarga el FUT para presentar tu solicitud ante la UGEL Ambo.",
     icon: FileCheck,
-    label: "PDF y Word",
-    action: "Word",
-    href: "/docs/FUT_UGEL.docx",
-    filename: "FUT_UGEL.docx",
-    pdfHref: "/docs/FUT_MESADEPARTES.pdf",
+    label: "Documento PDF",
+    action: "Descargar FUT",
+    href: "/docs/FUT_NUEVO_MODELO.pdf",
+    filename: "FUT_UGEL.pdf",
   },
   {
     title: "Papeleta de salida",
@@ -78,15 +77,8 @@ export default function TramitesSection() {
                 <h3 className="text-lg font-bold leading-snug text-[#223F59]">{tramite.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">{tramite.description}</p>
                 <div className="mt-6 flex gap-2">
-                  {"pdfHref" in tramite && (
-                    <Button asChild variant="outline" className="h-11 min-w-0 flex-1 border-slate-200 text-[#223F59] hover:border-[#049DD9] hover:bg-[#049DD9]/5 hover:text-[#007eaf]">
-                      <a href={tramite.pdfHref} download="FUT_UGEL.pdf" aria-label="Descargar FUT en PDF">
-                        PDF <ArrowDownToLine aria-hidden="true" />
-                      </a>
-                    </Button>
-                  )}
                   <Button asChild variant="outline" className="h-11 min-w-0 flex-1 justify-between border-slate-200 text-[#223F59] hover:border-[#049DD9] hover:bg-[#049DD9]/5 hover:text-[#007eaf]">
-                    <a href={tramite.href} download={tramite.filename} aria-label={"pdfHref" in tramite ? "Descargar FUT en Word" : undefined}>
+                    <a href={tramite.href} download={tramite.filename}>
                       {tramite.action}
                       {isDownload ? <ArrowDownToLine aria-hidden="true" /> : <ArrowUpRight aria-hidden="true" />}
                     </a>
