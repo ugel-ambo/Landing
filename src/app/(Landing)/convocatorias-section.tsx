@@ -63,30 +63,6 @@ export default function ConvocatoriasSection() {
     });
   };
 
-  if (loading) {
-    return (
-      <section className="py-8 md:py-10 bg-background w-full">
-        <div className="w-full px-4 md:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="overflow-hidden">
-                <CardHeader>
-                  <Skeleton className="h-6 w-3/4 mb-2" />
-                  <Skeleton className="h-4 w-1/2" />
-                </CardHeader>
-                <CardContent>
-                  <Skeleton className="h-20 w-full" />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error || convocatorias.length === 0) return null;
-
   return (
     <section
       id="convocatorias"
@@ -114,6 +90,23 @@ export default function ConvocatoriasSection() {
           </Link>
         </div>
 
+        {loading ? (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3" aria-label="Cargando convocatorias">
+            {[1, 2, 3].map((i) => (
+              <Card key={i} className="overflow-hidden">
+                <CardHeader>
+                  <Skeleton className="mb-2 h-6 w-3/4" />
+                  <Skeleton className="h-4 w-1/2" />
+                </CardHeader>
+                <CardContent><Skeleton className="h-20 w-full" /></CardContent>
+              </Card>
+            ))}
+          </div>
+        ) : error || convocatorias.length === 0 ? (
+          <p role="status" className="rounded-xl border border-slate-200 bg-white px-6 py-8 text-center text-sm text-slate-600">
+            {error ? "No se pudieron cargar las convocatorias. Inténtalo más tarde." : "Por el momento no hay convocatorias disponibles."}
+          </p>
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {convocatorias.map((conv, index) => (
             <motion.div
@@ -177,6 +170,7 @@ export default function ConvocatoriasSection() {
             </motion.div>
           ))}
         </div>
+        )}
       </div>
     </section>
   );

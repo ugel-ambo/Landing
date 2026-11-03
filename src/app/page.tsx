@@ -29,8 +29,8 @@ export default async function Home() {
       <ServicesCards />
       <NewsSection />
       <ConvocatoriasSection />
-      <TutorialesSection />
       <TramitesSection />
+      <TutorialesSection />
       <MapsPage />
 
       {/* Sección PWA */}
