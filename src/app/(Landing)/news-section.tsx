@@ -13,6 +13,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Clock } from "lucide-react";
 import Image from "next/image";
+import SectionHeader from "@/components/section-header";
+import { Newspaper } from "lucide-react";
 
 import { NewsItem, FacebookPostsResponse } from "@/types/facebook.types";
 import { facebookService } from "../services/facebook.service";
@@ -34,6 +36,17 @@ const NewsImage = ({ src, alt }: { src: string; alt: string }) => {
       onError={() => setImgSrc("/Logo1.jpg")}
     />
   );
+};
+
+const isRecentNews = (news: NewsItem) => {
+  if (news.rawDate) {
+    const postTime = new Date(news.rawDate).getTime();
+    if (!isNaN(postTime)) {
+      const diffHours = (Date.now() - postTime) / (1000 * 60 * 60);
+      return diffHours <= 48 && diffHours >= 0;
+    }
+  }
+  return false;
 };
 
 export default function NewsSection() {
@@ -169,18 +182,13 @@ export default function NewsSection() {
   return (
     <section id="noticias" className="py-8 md:py-10 bg-muted/30 w-full">
       <div className="w-full px-4 md:px-10">
-        <div className="text-center mb-8 md:mb-12">
-          <div className="flex flex-col items-center justify-center gap-4 mb-4">
-            <div className="flex items-center gap-2">
-              <h2 className="text-3xl md:text-4xl font-bold">
-                Noticias y Actualizaciones 
-              </h2>
-            </div>
-          </div>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Mantente informado sobre las últimas noticias de UGEL Ambo 2026
-          </p>
-        </div>
+        <SectionHeader
+          badgeIcon={<Newspaper className="w-3.5 h-3.5 text-[#049DD9]" />}
+          badgeText="Actualidad UGEL"
+          title="Noticias y"
+          titleHighlight="Actualizaciones"
+          description="Mantente informado sobre los ultimos comunicados oficiales, directivas y eventos de UGEL Ambo"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {newsItems.map((news, index) => (
@@ -196,9 +204,17 @@ export default function NewsSection() {
               </div>
               <CardHeader>
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <Badge variant="secondary" className="font-medium">
-                    {news.category}
-                  </Badge>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="secondary" className="font-medium">
+                      {news.category}
+                    </Badge>
+                    {isRecentNews(news) && (
+                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 shadow-xs animate-pulse">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        Nuevo
+                      </span>
+                    )}
+                  </div>
                   <div className="flex items-center gap-1 text-xs text-muted-foreground">
                     <Clock className="w-3 h-3" />
                     <span>{news.time}</span>
@@ -223,3 +239,5 @@ export default function NewsSection() {
     </section>
   );
 }
+
+

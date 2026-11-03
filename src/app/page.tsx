@@ -12,6 +12,9 @@ import {
   InstallPrompt,
 } from "@/components/pwa-components";
 import { getHeroImages } from "./actions/hero-actions";
+import AniversarioModal from "@/components/aniversario-modal";
+import SectionHeader from "@/components/section-header";
+import { Smartphone } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +23,7 @@ export default async function Home() {
 
   return (
     <>
+      <AniversarioModal />
       <Menu />
       <Hero initialImages={heroImages} />
       <ServicesCards />
@@ -32,13 +36,13 @@ export default async function Home() {
       {/* Sección PWA */}
       <section className="py-12 px-4 bg-linear-to-b from-background to-muted/20">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-2">Descarga Nuestra App</h2>
-            <p className="text-muted-foreground">
-              Instala UGEL Ambo en tu dispositivo para acceso rápido y
-              notificaciones
-            </p>
-          </div>
+          <SectionHeader
+            badgeIcon={<Smartphone className="w-3.5 h-3.5 text-[#049DD9]" />}
+            badgeText="Aplicacion Movil"
+            title="Lleva la UGEL Ambo"
+            titleHighlight="en tu Bolsillo"
+            description="Instala nuestra aplicacion web para acceder de forma instantanea a tramites, consultas y recibir notificaciones oficiales sin consumir espacio"
+          />
           <div className="grid md:grid-cols-2 gap-6">
             <InstallPrompt />
             <PushNotificationManager />
@@ -48,3 +52,7 @@ export default async function Home() {
     </>
   );
 }
+
+
+
+

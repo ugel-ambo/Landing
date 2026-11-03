@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { FileCheck, LogIn, Globe, FileInput } from "lucide-react";
+import SectionHeader from "@/components/section-header";
 
 const tramites = [
   {
@@ -51,14 +52,13 @@ export default function TramitesSection() {
   return (
     <section id="tramite" className="py-10 md:py-10 bg-background w-full">
       <div className="w-full px-4 md:px-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Trámites y Servicios
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Realiza tus trámites de forma rápida y segura
-          </p>
-        </div>
+        <SectionHeader
+          badgeIcon={<FileCheck className="w-3.5 h-3.5 text-[#049DD9]" />}
+          badgeText="Mesa de Partes"
+          title="Tramites y"
+          titleHighlight="Servicios"
+          description="Realiza tus solicitudes y gestiones documentarias de forma digital, agil y segura"
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {tramites.map((tramite) => {
             const Icon = tramite.icon;
@@ -105,3 +105,5 @@ export default function TramitesSection() {
     </section>
   );
 }
+
+
