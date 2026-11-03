@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { INSTITUCIONES_EDUCATIVAS } from "@/data/iiee";
 import {
@@ -59,23 +59,27 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationMenuDemo() {
   const isMobile = useIsMobile();
+  const pathname = usePathname();
+  const navClass = "!bg-transparent !text-[#223F59] hover:!bg-[#eaf7fc] hover:!text-[#007dab] focus:!bg-[#eaf7fc] focus:!text-[#007dab] data-[state=open]:!bg-[#eaf7fc] data-[state=open]:!text-[#007dab]";
+  const activeClass = "!bg-[#eaf7fc] !text-[#007dab]";
 
   return (
     <NavigationMenu viewport={isMobile}>
       <NavigationMenuList className="flex-nowrap">
         <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} ${navClass} ${pathname === "/" ? activeClass : ""}`}>
             <Link href="/">UGEL</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/Nosotros/Jurisdiccion">JURISDICCION</Link>
+          <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} ${navClass} ${pathname === "/Nosotros/Jurisdiccion" ? activeClass : ""}`}>
+            <Link href="/Nosotros/Jurisdiccion">JURISDICCIÓN</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
           <NavigationMenuTrigger
+            className={navClass}
             onClick={(e) => !isMobile && e.preventDefault()}>
             II.EE.
           </NavigationMenuTrigger>
@@ -103,6 +107,7 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger
+            className={navClass}
             onClick={(e) => !isMobile && e.preventDefault()}>
             NOSOTROS
           </NavigationMenuTrigger>
@@ -145,6 +150,7 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger
+            className={navClass}
             onClick={(e) => !isMobile && e.preventDefault()}>
             DOCUMENTOS
           </NavigationMenuTrigger>
@@ -164,6 +170,7 @@ export function NavigationMenuDemo() {
 
         <NavigationMenuItem className="hidden md:block">
           <NavigationMenuTrigger
+            className={navClass}
             onClick={(e) => !isMobile && e.preventDefault()}>
             UNIDADES
           </NavigationMenuTrigger>
@@ -209,18 +216,18 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} ${navClass} ${pathname === "/Normativa" ? activeClass : ""}`}>
             <Link href="/Normativa">NORMATIVAS</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} !rounded-full !bg-[#049DD9] !px-4 !text-white shadow-sm hover:!bg-[#007eaf] focus:!bg-[#007eaf] ${pathname === "/convocatoria" ? "!bg-[#006b94]" : ""}`}>
             <Link href="/convocatoria">CONVOCATORIAS</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} ${navClass} ${pathname.startsWith("/integridad") ? activeClass : ""}`}>
             <Link href="/integridad">INTEGRIDAD</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>

@@ -119,7 +119,7 @@ export default function Hero({ initialImages }: HeroProps = {}) {
   }, [heroImages.length, currentSlide]);
 
   return (
-    <section className="relative w-full min-h-[360px] sm:min-h-[420px] md:min-h-[480px] lg:min-h-[540px] xl:min-h-[600px] 2xl:min-h-[660px] h-[55vw] sm:h-[45vw] md:h-[38vw] lg:h-[32vw] max-h-[720px] overflow-hidden">
+    <section className="relative mx-auto my-4 w-[calc(100%-2rem)] max-w-[1400px] overflow-hidden rounded-2xl shadow-lg sm:my-6 md:w-[calc(100%-5rem)] min-h-[360px] sm:min-h-[420px] md:min-h-[480px] lg:min-h-[540px] xl:min-h-[600px] 2xl:min-h-[660px] h-[55vw] sm:h-[45vw] md:h-[38vw] lg:h-[32vw] max-h-[720px]">
       {/* Carousel */}
       <div className="relative w-full h-full flex justify-center">
         <div className="relative w-full h-full">
