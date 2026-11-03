@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   Card,
@@ -17,37 +14,25 @@ import {
   ArrowRight,
   AlertCircle,
   CheckCircle2,
+  BriefcaseBusiness,
 } from "lucide-react";
 import {
   Convocatoria,
-  ConvocatoriasResponse,
   getEstadoTexto,
   getEstadoColor,
 } from "@/types/convocatoria.types";
-import { Skeleton } from "@/components/ui/skeleton";
-import { motion } from "framer-motion";
+import { getConvocatorias } from "@/lib/convocatorias";
+import SectionHeader from "@/components/section-header";
 
-export default function ConvocatoriasSection() {
-  const [convocatorias, setConvocatorias] = useState<Convocatoria[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchConvocatorias = async () => {
-      try {
-        const res = await fetch("/api/convocatorias");
-        if (!res.ok) throw new Error("Error al cargar convocatorias");
-        const data: ConvocatoriasResponse = await res.json();
-        setConvocatorias(data.convocatorias.slice(0, 3));
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Error desconocido");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchConvocatorias();
-  }, []);
+export default async function ConvocatoriasSection() {
+  let convocatorias: Convocatoria[] = [];
+  let error = false;
+  try {
+    convocatorias = await getConvocatorias(3);
+  } catch (err) {
+    console.error("Error fetching recent convocatorias:", err);
+    error = true;
+  }
 
   const getStatusIcon = (estado: Convocatoria["estado"]) => {
     if (estado === "vigente" || estado === "en_proceso")
@@ -66,55 +51,25 @@ export default function ConvocatoriasSection() {
   return (
     <section
       id="convocatorias"
-      className="py-8 md:py-10 w-full bg-linear-to-b from-white to-gray-50"
+      className="w-full bg-background py-12 md:py-16"
     >
       <div className="w-full px-4 md:px-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
-          <div className="text-center md:text-left">
-            <p className="text-[#049DD9] font-bold text-sm uppercase tracking-widest mb-1">
-              Oportunidades Laborales
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-gray-900">
-              Convocatorias <span className="text-[#049DD9]">Recientes</span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl">
-              Únete a nuestro equipo. Revisa las últimas oportunidades laborales
-              vigentes.
-            </p>
-          </div>
-          <Link href="/convocatoria">
-            <Button variant="outline" className="group">
-              Ver todas las convocatorias
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
-        </div>
+        <SectionHeader
+          badgeIcon={<BriefcaseBusiness className="h-3.5 w-3.5 text-[#049DD9]" />}
+          badgeText="Oportunidades Laborales"
+          title="Convocatorias"
+          titleHighlight="Recientes"
+          description="Únete a nuestro equipo. Revisa las últimas oportunidades laborales vigentes."
+        />
 
-        {loading ? (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3" aria-label="Cargando convocatorias">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="overflow-hidden">
-                <CardHeader>
-                  <Skeleton className="mb-2 h-6 w-3/4" />
-                  <Skeleton className="h-4 w-1/2" />
-                </CardHeader>
-                <CardContent><Skeleton className="h-20 w-full" /></CardContent>
-              </Card>
-            ))}
-          </div>
-        ) : error || convocatorias.length === 0 ? (
+        {error || convocatorias.length === 0 ? (
           <p role="status" className="rounded-xl border border-slate-200 bg-white px-6 py-8 text-center text-sm text-slate-600">
             {error ? "No se pudieron cargar las convocatorias. Inténtalo más tarde." : "Por el momento no hay convocatorias disponibles."}
           </p>
         ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {convocatorias.map((conv, index) => (
-            <motion.div
-              key={conv._id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
+          {convocatorias.map((conv) => (
+            <div key={conv._id}>
               <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 border-t-4 border-t-[#049DD9]">
                 <CardHeader className="pb-3">
                   <div className="flex justify-between items-start gap-2 mb-2">
@@ -167,10 +122,18 @@ export default function ConvocatoriasSection() {
                   </Link>
                 </CardFooter>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
         )}
+        <div className="mt-8 flex justify-center">
+          <Button asChild variant="outline" className="group">
+            <Link href="/convocatoria">
+              Ver todas las convocatorias
+              <ArrowRight className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
+        </div>
       </div>
     </section>
   );
