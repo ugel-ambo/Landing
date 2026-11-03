@@ -9,7 +9,7 @@ import Footer from "./(Landing)/footer";
 import Mascota from "./(Landing)/mascota";
 import { PWAInstallToast } from "@/components/pwa-install-toast";
 import NoticiaModal from "@/components/noticia-modal";
-import { Facebook } from "lucide-react";
+import { Facebook, FileDown } from "lucide-react";
 
 // asdasda
 
@@ -161,16 +161,27 @@ export default function RootLayout({
         <ChatPage />
         <Mascota />
         <NoticiaModal />
+        <div className="fixed right-0 top-[40%] z-40 flex -translate-y-1/2 flex-col items-end gap-2">
         <a
           href="https://www.facebook.com/UGELAmbo"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Visitar el Facebook de UGEL Ambo (abre en una nueva pestaña)"
-          className="group fixed right-0 top-[40%] z-40 flex -translate-y-1/2 items-center gap-0 rounded-l-xl border border-r-0 border-white/20 bg-[#1877f2] py-3 pl-3 pr-3 text-white shadow-lg shadow-[#17364e]/20 transition-colors hover:bg-[#0c5fce] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17364e] motion-reduce:transition-none"
+          className="group flex items-center gap-0 rounded-l-xl border border-r-0 border-white/20 bg-[#1877f2] py-3 pl-3 pr-3 text-white shadow-lg shadow-[#17364e]/20 transition-colors hover:bg-[#0c5fce] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17364e] motion-reduce:transition-none"
         >
           <Facebook className="h-5 w-5 shrink-0" aria-hidden="true" />
           <span className="hidden max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold transition-all duration-200 group-hover:ml-2 group-hover:max-w-24 group-focus-visible:ml-2 group-focus-visible:max-w-24 sm:block motion-reduce:transition-none">Facebook</span>
         </a>
+        <a
+          href="/docs/FUT_NUEVO_MODELO.pdf"
+          download="FUT_UGEL.pdf"
+          aria-label="Descargar el formato FUT en PDF"
+          className="flex items-center gap-1.5 rounded-l-xl border border-r-0 border-white/20 bg-[#087da9] px-3 py-3 text-white shadow-lg shadow-[#17364e]/20 transition-colors hover:bg-[#065f82] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17364e] motion-reduce:transition-none"
+        >
+          <FileDown className="h-5 w-5 shrink-0" aria-hidden="true" />
+          <span className="text-xs font-bold">FUT</span>
+        </a>
+        </div>
         {children}
         <Analytics />
         <Footer />
