@@ -49,4 +49,5 @@ export interface NewsItem {
   category: string;
   image: string;
   url?: string;
+  rawDate?: string;
 }

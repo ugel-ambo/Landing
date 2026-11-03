@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Menu as MenuIcon, ExternalLink } from "lucide-react";
+import { Menu as MenuIcon, ExternalLink, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -47,6 +47,11 @@ export default function Menu() {
                 className="object-contain"
                 priority
               />
+              {/* Distintivo Dorado 13 Aniversario */}
+              <div className="absolute -top-1 -right-2 md:-top-1 md:-right-3 z-10 flex items-center gap-0.5 px-1.5 py-0.5 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-slate-950 font-black text-[9px] md:text-[11px] rounded-full shadow-md shadow-amber-500/40 border border-yellow-200 select-none animate-pulse">
+                <Sparkles className="w-2.5 h-2.5 text-slate-900 fill-slate-900 shrink-0" />
+                <span>13 Años</span>
+              </div>
             </div>
           </Link>
 

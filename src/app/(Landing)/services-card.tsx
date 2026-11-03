@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import SectionHeader from "@/components/section-header";
+import { Sparkles } from "lucide-react";
 import {
   Megaphone,
   Scale,
@@ -116,11 +118,13 @@ export default function ServicesCards() {
   return (
     <section id="servicios" className="py-10 w-full bg-white">
       <div className="w-full px-4 md:px-10">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
-            Servicios <span className="text-primary">Principales</span>
-          </h2>
-        </div>
+        <SectionHeader
+          badgeIcon={<Sparkles className="w-3.5 h-3.5 text-[#049DD9]" />}
+          badgeText="Accesos Rapidos"
+          title="Servicios"
+          titleHighlight="Principales"
+          description="Plataformas digitales y sistemas oficiales al servicio de la comunidad educativa"
+        />
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-5 max-w-[1400px] mx-auto">
           {services.map((service) => {
@@ -161,3 +165,4 @@ export default function ServicesCards() {
     </section>
   );
 }
+

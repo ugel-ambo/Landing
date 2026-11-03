@@ -1,154 +1,73 @@
-"use client";
-
-import type React from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+const enlaces = [
+  { label: "Inicio", href: "/" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Trámites", href: "/#tramite" },
+  { label: "Últimas noticias", href: "/#noticias" },
+];
+
+const consultas = [
+  { label: "Convocatorias", href: "/convocatoria" },
+  { label: "Normativa", href: "/Normativa" },
+  { label: "Verificar certificado", href: "/verificar-certificado" },
+  { label: "Tutoriales", href: "/tutoriales" },
+];
+
+const linkClass = "inline-block py-1 text-sm text-white/90 transition-colors hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#65c8ee]";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* About */}
-          <div className="flex flex-col items-center justify-center">
-            <h3 className="font-extrabold text-xl text-center  ">UGEL AMBO</h3>
-            <p className="text-sm opacity-90 text-center">
-              Con vision de futuro y resultados!
+    <footer className="bg-[#087da9] text-white">
+      <div className="h-1 bg-gradient-to-r from-[#049DD9] via-[#049DD9] to-[#d4af37]" />
+      <div className="mx-auto max-w-7xl px-5 pt-12 sm:px-8 lg:px-10 lg:pt-16">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr] lg:gap-12">
+          <div>
+            <div className="flex items-center gap-4">
+              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-white p-1.5">
+                <Image src="/logo-ugel-circular.png" alt="Logo de la UGEL Ambo" width={80} height={80} className="h-full w-full object-contain" />
+              </div>
+              <div>
+                <p className="text-lg font-extrabold tracking-wide">UGEL AMBO</p>
+                <p className="mt-1 text-sm text-white/90">Con visión de futuro y resultados</p>
+              </div>
+            </div>
+            <p className="mt-5 max-w-xs text-sm leading-6 text-white/90">
+              Unidad de Gestión Educativa Local de Ambo, al servicio de nuestra comunidad educativa.
             </p>
+            <div className="mt-5 flex gap-3">
+              <a href="https://www.facebook.com/UGELAmbo" aria-label="Facebook de UGEL Ambo" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-colors hover:bg-[#049DD9] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#65c8ee]">
+                <Facebook className="h-5 w-5" aria-hidden="true" />
+              </a>
+              <a href="https://www.instagram.com/ugelambo/" aria-label="Instagram de UGEL Ambo" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-colors hover:bg-[#049DD9] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#65c8ee]">
+                <Instagram className="h-5 w-5" aria-hidden="true" />
+              </a>
+            </div>
           </div>
 
-          {/* Quick Links */}
+          <nav aria-label="Enlaces rápidos">
+            <h2 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Enlaces rápidos</h2>
+            <ul className="space-y-1">{enlaces.map((enlace) => <li key={enlace.href}><Link href={enlace.href} className={linkClass}>{enlace.label}</Link></li>)}</ul>
+          </nav>
+          <nav aria-label="Consultas">
+            <h2 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Consultas</h2>
+            <ul className="space-y-1">{consultas.map((enlace) => <li key={enlace.href}><Link href={enlace.href} className={linkClass}>{enlace.label}</Link></li>)}</ul>
+          </nav>
           <div>
-            <h4 className="font-bold mb-4">Enlaces Rápidos</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/"
-                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
-                >
-                  Inicio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#servicios"
-                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
-                >
-                  Servicios
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#tramite"
-                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
-                >
-                  Trámites
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#noticias"
-                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
-                >
-                  Noticias
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Consultas */}
-          <div>
-            <h4 className="font-bold mb-4">Consultas</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="#"
-                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
-                >
-                  Expedientes
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
-                >
-                  Becas
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="#"
-                  className="hover:underline opacity-90 hover:opacity-100 transition-opacity"
-                >
-                  Documentos
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-bold mb-4">Contacto</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 shrink-0" />
-                <span>ugelambo308@gmail.com</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-1 shrink-0" />
-                <span>Ambo, Huánuco, Perú</span>
-              </li>
+            <h2 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Contacto</h2>
+            <ul className="space-y-4 text-sm text-white/90">
+              <li className="flex items-start gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-white" aria-hidden="true" /><a href="mailto:ugelambo308@gmail.com" className="break-all hover:text-white hover:underline">ugelambo308@gmail.com</a></li>
+              <li className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-white" aria-hidden="true" /><span>Ambo, Huánuco, Perú</span></li>
             </ul>
           </div>
         </div>
-
-        {/* Social Links */}
-        <div className="border-t border-primary-foreground/20 pt-8 mb-8">
-          <h4 className="font-bold mb-4">Síguenos en redes sociales</h4>
-          <div className="flex gap-4">
-            <Link
-              href="https://www.facebook.com/UGELAmbo"
-              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-              aria-label="Facebook"
-            >
-              <Facebook className="w-5 h-5" />
-            </Link>
-            <Link
-              href="https://www.instagram.com/ugelambo/"
-              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-
-        {/* Bottom Footer */}
-        <div className="border-t border-primary-foreground/20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm opacity-75">
-            <div className="flex flex-col items-center md:items-start gap-1">
-              <p>&copy; 2026 UGEL Ambo. Todos los derechos reservados.</p>
-            </div>
-
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <Link href="#" className="hover:opacity-100 transition-opacity">
-                Política de Privacidad
-              </Link>
-              <Link href="#" className="hover:opacity-100 transition-opacity">
-                Términos de Uso
-              </Link>
-              <Link href="#" className="hover:opacity-100 transition-opacity">
-                Accesibilidad
-              </Link>
-            </div>
-          </div>
+        <div className="mt-12 border-t border-white/15 py-6 pb-28 text-sm text-white/85 sm:pr-28 sm:pb-6">
+          <p>© {new Date().getFullYear()} UGEL Ambo. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
   );
 }
+

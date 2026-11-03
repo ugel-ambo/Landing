@@ -93,7 +93,8 @@ class FacebookService {
         time,
         category: formatted?.category || this.categorizePost(post.message || ''),
         image,
-        url
+        url,
+        rawDate: post.created_time
       };
     });
   }

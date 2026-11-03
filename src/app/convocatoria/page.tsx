@@ -1,29 +1,15 @@
 import React from "react";
 import Menu from "../(Landing)/menu";
 import ConvocatoriaList from "./convocatoria-list";
-import { Convocatoria } from "@/types/convocatoria.types";
-import connectMongoDB from "@/lib/mongodbConnection";
-import ConvocatoriaModel from "@/models/Convocatoria";
+import { getConvocatorias } from "@/lib/convocatorias";
 
 export const dynamic = "force-dynamic";
 
-async function getConvocatorias(): Promise<Convocatoria[]> {
-  try {
-    await connectMongoDB();
-
-    const convocatorias = await ConvocatoriaModel.find({ activo: true })
-      .sort({ createdAt: -1 })
-      .lean();
-
-    return JSON.parse(JSON.stringify(convocatorias));
-  } catch (error) {
+export default async function ConvocatoriaPage() {
+  const convocatorias = await getConvocatorias().catch((error) => {
     console.error("Error fetching convocatorias:", error);
     return [];
-  }
-}
-
-export default async function ConvocatoriaPage() {
-  const convocatorias = await getConvocatorias();
+  });
 
   return (
     <main className="min-h-screen bg-background">
