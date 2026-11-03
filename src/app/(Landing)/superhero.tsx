@@ -4,19 +4,20 @@ import Link from "next/link";
 
 function Superhero() {
   return (
-    <div className="bg-[#049DD9] h-12 flex flex-row justify-evenly items-center px-4 md:px-8 lg:px-16">
+    <div className="flex min-h-10 items-center justify-between gap-3 bg-[#087da9] px-4 sm:px-6 lg:px-10">
       <div className="flex flex-row items-center gap-2">
-        <Clock8 className="text-white text-xl hidden md:block" size={18} />
-        <h1 className="text-white text-[8px] md:text-sm">
-          HORARIO DE ATENCIÓN: Lunes - Viernes: 8:00 am - 5:00 pm
-        </h1>
+        <Clock8 className="hidden shrink-0 text-white/90 sm:block" size={16} />
+        <p className="text-[10px] font-medium text-white sm:text-xs">
+          <span className="hidden sm:inline">Horario de atención: </span>Lunes a viernes · 8:00 a. m. - 5:00 p. m.
+        </p>
       </div>
       <div className="flex flex-row items-center gap-4">
         <Link
           href="https://webmail.ugelambo.edu.pe/"
           target="_blank"
           aria-label="Correo institucional"
-          className="flex items-center gap-2 hover:opacity-90 transition-opacity"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 rounded-md transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
         >
           <div className="bg-white rounded-full w-8 h-8 md:w-8 md:h-8 flex items-center justify-center shrink-0">
             <Image

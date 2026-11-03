@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Menu as MenuIcon, ExternalLink, Sparkles } from "lucide-react";
+import { Menu as MenuIcon, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -34,21 +34,21 @@ export default function Menu() {
   }, []);
 
   return (
-    <div className="w-full border-b bg-background sticky top-0 z-50 ">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between lg:justify-evenly h-16 md:h-20">
+    <div className={`sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md transition-shadow ${isScrolled ? "shadow-md shadow-[#17364e]/10" : "shadow-sm"}`}>
+      <div className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-10">
+        <div className={`flex items-center justify-between gap-4 transition-[height] duration-300 ${isScrolled ? "h-16" : "h-20"}`}>
           {/* Logo y Nombre */}
-          <Link href="/" className="flex items-center gap-2 md:gap-3 group">
-            <div className="relative md:w-28 md:h-28 w-22 h-22 ml-4 md:ml-0 items-center justify-center ">
+          <Link href="/" aria-label="UGEL Ambo, ir al inicio" className="group flex shrink-0 items-center rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#049DD9]">
+            <div className={`relative w-24 transition-[height] duration-300 ${isScrolled ? "h-16" : "h-20"}`}>
               <Image
                 src="/logo2026.png"
-                alt="Logo "
+                alt="Logo UGEL Ambo"
                 fill
                 className="object-contain"
                 priority
               />
               {/* Distintivo Dorado 13 Aniversario */}
-              <div className="absolute -top-1 -right-2 md:-top-1 md:-right-3 z-10 flex items-center gap-0.5 px-1.5 py-0.5 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-slate-950 font-black text-[9px] md:text-[11px] rounded-full shadow-md shadow-amber-500/40 border border-yellow-200 select-none animate-pulse">
+              <div className="absolute right-0 top-1 z-10 flex items-center gap-1 rounded-full border border-amber-200 bg-gradient-to-r from-amber-400 to-yellow-300 px-2 py-0.5 text-[9px] font-bold text-[#553a00] shadow-sm select-none">
                 <Sparkles className="w-2.5 h-2.5 text-slate-900 fill-slate-900 shrink-0" />
                 <span>13 Años</span>
               </div>
@@ -56,14 +56,14 @@ export default function Menu() {
           </Link>
 
           {/* Menú Desktop  */}
-          <div className="hidden md:block">
+          <div className="hidden xl:block">
             <NavigationMenuDemo />
           </div>
 
           {/* Botón Mobile */}
           <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
+            <SheetTrigger asChild className="xl:hidden">
+              <Button variant="ghost" size="icon" aria-label="Abrir menú de navegación" className="rounded-xl border border-[#049DD9]/20 bg-[#049DD9]/5 text-[#16668b] hover:bg-[#049DD9]/10">
                 <MenuIcon className="h-7 w-7" />
               </Button>
             </SheetTrigger>
