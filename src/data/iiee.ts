@@ -35,5 +35,11 @@ export const INSTITUCIONES_EDUCATIVAS: InstitucionEducativa[] = [
     enlace: "https://web.facebook.com/iejuliobenavidessanguinetti?_rdc=1&_rdr#",
     tipo: "facebook",
   },
+  {
+    id: "antonio-brack-egg",
+    nombre: "I.E. Antonio Brack Egg",
+    enlace: "https://www.facebook.com/profile.php?id=100060474985605",
+    tipo: "facebook",
+  },
 
 ];
