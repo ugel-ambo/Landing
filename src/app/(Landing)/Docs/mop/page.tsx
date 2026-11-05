@@ -13,7 +13,7 @@ export default function MOPPage() {
                     {/* Header */}
                     <div className="text-center mb-6">
                         <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                        Manual de Organización y Funciones del Personal
+                        Manual de Operaciones
                         </h1>
                         <p className="text-gray-600 max-w-2xl mx-auto">
                             Documento oficial del MOP de la UGEL
