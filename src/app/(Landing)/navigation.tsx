@@ -18,7 +18,7 @@ const components: { title: string; href: string; description: string }[] = [
   {
     title: "MOP ",
     href: "/Docs/mop",
-    description: "Manual de Organización y Funciones del Personal",
+    description: "Manual de Operaciones",
   },
   {
     title: "MOF ",
