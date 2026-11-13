@@ -325,6 +325,15 @@ const directorioData: DirectorioItem[] = [
     telefono: "901991596",
     orden: 34,
   },
+  {
+    id: "78",
+    nombre: "Chavez Ariza, Britany Jomira",
+    cargo: "Practicante – Apoyo Administrativo (UGRH)",
+    area: "UGRH",
+    email: "jomira.chavez@gmail.com",
+    telefono: "917248254",
+    orden: 35,
+  },
 
   // ==================== UNIDAD DE GESTIÓN PEDAGÓGICA (UGP) ====================
   {
@@ -334,7 +343,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "mallqui.durand@ug.uchile.cl",
     telefono: "971296226",
-    orden: 35,
+    orden: 36,
   },
   {
     id: "25",
@@ -343,7 +352,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "anitasanchez18.asp@gmail.com",
     telefono: "931079893",
-    orden: 36,
+    orden: 37,
   },
   {
     id: "26",
@@ -352,7 +361,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "lyzmatoscristobal@gmail.com",
     telefono: "969128840",
-    orden: 37,
+    orden: 38,
   },
   {
     id: "27",
@@ -361,7 +370,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "elena_amada@hotmail.com",
     telefono: "965605966",
-    orden: 38,
+    orden: 39,
   },
   {
     id: "28",
@@ -370,7 +379,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "leydimejiahuaranga176@gmail.com",
     telefono: "993717726",
-    orden: 39,
+    orden: 40,
   },
   {
     id: "29",
@@ -379,7 +388,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "estherdelia.diaz1234@gmail.com",
     telefono: "990000117",
-    orden: 40,
+    orden: 41,
   },
   {
     id: "30",
@@ -388,7 +397,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "javierolazaalbornoz@gmail.com",
     telefono: "956042529",
-    orden: 41,
+    orden: 42,
   },
   {
     id: "31",
@@ -397,7 +406,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "noelito_53@hotmail.com",
     telefono: "982181934",
-    orden: 42,
+    orden: 43,
   },
   {
     id: "32",
@@ -406,7 +415,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "mapamun125@gmail.com",
     telefono: "917776307",
-    orden: 43,
+    orden: 44,
   },
   {
     id: "33",
@@ -415,7 +424,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "panchi_40@hotmail.com",
     telefono: "987556648",
-    orden: 44,
+    orden: 45,
   },
   {
     id: "34",
@@ -424,7 +433,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "waltermaximo2010@hotmail.com",
     telefono: "943765016",
-    orden: 45,
+    orden: 46,
   },
   {
     id: "35",
@@ -433,7 +442,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "jcvicencior@hotmail.com",
     telefono: "990269911",
-    orden: 46,
+    orden: 47,
   },
   {
     id: "36",
@@ -442,7 +451,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "rafo_671102@hotmail.com",
     telefono: "975163287",
-    orden: 47,
+    orden: 48,
   },
   {
     id: "37",
@@ -451,7 +460,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "elosado.vraf@hotmail.com",
     telefono: "954224611",
-    orden: 48,
+    orden: 49,
   },
   {
     id: "38",
@@ -460,7 +469,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "paoloz65@gmail.com",
     telefono: "931240226",
-    orden: 49,
+    orden: 50,
   },
   {
     id: "39",
@@ -469,7 +478,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "d22489114j@perueduca.edu.pe",
     telefono: "988800474",
-    orden: 50,
+    orden: 51,
   },
   {
     id: "40",
@@ -478,7 +487,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "colquimishel9@gmail.com",
     telefono: "956229167",
-    orden: 51,
+    orden: 52,
   },
   {
     id: "41",
@@ -487,7 +496,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "jasmin.betriz@gmail.com",
     telefono: "924990819",
-    orden: 52,
+    orden: 53,
   },
   {
     id: "42",
@@ -496,7 +505,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "mishel-ic@hotmail.com",
     telefono: "960087425",
-    orden: 53,
+    orden: 54,
   },
   {
     id: "43",
@@ -505,7 +514,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "madeleynepd@gmail.com",
     telefono: "999575464",
-    orden: 54,
+    orden: 55,
   },
   {
     id: "44",
@@ -514,7 +523,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "mariarosamartinezbravo@gmail.com",
     telefono: "962536431",
-    orden: 55,
+    orden: 56,
   },
   {
     id: "45",
@@ -523,7 +532,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "elibeth.rl.18@mail.com",
     telefono: "974424189",
-    orden: 56,
+    orden: 57,
   },
   {
     id: "46",
@@ -532,7 +541,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "jennyramosamancio76@gmail.com",
     telefono: "901289877",
-    orden: 57,
+    orden: 58,
   },
   {
     id: "47",
@@ -541,7 +550,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "rubinabarrantes1509@gmail.com",
     telefono: "941166257",
-    orden: 58,
+    orden: 59,
   },
   {
     id: "48",
@@ -550,7 +559,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "lilithalia30@gmail.com",
     telefono: "917054741",
-    orden: 59,
+    orden: 60,
   },
   {
     id: "49",
@@ -559,7 +568,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "hopeandlove_17@hotmail.com",
     telefono: "962637586",
-    orden: 60,
+    orden: 61,
   },
   {
     id: "50",
@@ -568,7 +577,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "osaldanapardave@gmail.com",
     telefono: "935380915",
-    orden: 61,
+    orden: 62,
   },
   // --- Practicante UGP ---
   {
@@ -578,7 +587,7 @@ const directorioData: DirectorioItem[] = [
     area: "UGP",
     email: "arvic2514@gmail.com",
     telefono: "918363299",
-    orden: 62,
+    orden: 63,
   },
 
   // ==================== UNIDAD DE GESTIÓN INSTITUCIONAL (UPDI) ====================
@@ -589,7 +598,7 @@ const directorioData: DirectorioItem[] = [
     area: "UPDI",
     email: "kennedyeulogio@gmail.com",
     telefono: "901880368",
-    orden: 63,
+    orden: 64,
   },
   {
     id: "52",
@@ -598,15 +607,6 @@ const directorioData: DirectorioItem[] = [
     area: "UPDI",
     email: "irenmar0504@gmail.com",
     telefono: "935785164",
-    orden: 64,
-  },
-  {
-    id: "53",
-    nombre: "Osorio Celis, Katherine Haydeé",
-    cargo: "Técnico Administrativo I – SIAGIE y Estadística",
-    area: "UPDI",
-    email: "katherineosoriocelis@gmail.com",
-    telefono: "948595648",
     orden: 65,
   },
   {
@@ -671,6 +671,24 @@ const directorioData: DirectorioItem[] = [
     area: "UPDI",
     orden: 72,
   },
+  {
+    id: "79",
+    nombre: "Perez Trinidad, Diego David",
+    cargo: "Especialista Informático",
+    area: "UPDI",
+    email: "Diego120896@gmail.com",
+    telefono: "935934122",
+    orden: 73,
+  },
+  {
+    id: "80",
+    nombre: "Gutierrez Mallqui, Maria Cristina",
+    cargo: "Responsable de SIAGIE",
+    area: "UPDI",
+    email: "Crismallqui26@gmail.com",
+    telefono: "934842152",
+    orden: 74,
+  },
   // --- Practicantes UPDI ---
   {
     id: "60",
@@ -679,7 +697,7 @@ const directorioData: DirectorioItem[] = [
     area: "UPDI",
     email: "ayalaromerojordanbrandon@gmail.com",
     telefono: "925523419",
-    orden: 73,
+    orden: 75,
   },
   {
     id: "69",
@@ -688,7 +706,7 @@ const directorioData: DirectorioItem[] = [
     area: "UPDI",
     email: "jhino_97@hotmail.com",
     telefono: "973031878",
-    orden: 74,
+    orden: 76,
   },
 ];
 
