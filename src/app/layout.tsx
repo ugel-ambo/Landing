@@ -173,7 +173,19 @@ export default function RootLayout({
           <span className="hidden max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold transition-all duration-200 group-hover:ml-2 group-hover:max-w-24 group-focus-visible:ml-2 group-focus-visible:max-w-24 sm:block motion-reduce:transition-none">Facebook</span>
         </a>
         <a
-          href="/docs/FUT_NUEVO_MODELO.pdf"
+          href="https://www.tiktok.com/@ugel.ambo"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visitar el TikTok de UGEL Ambo (abre en una nueva pestaña)"
+          className="group flex items-center gap-0 rounded-l-xl border border-r-0 border-white/20 bg-[#171923] py-3 pl-3 pr-3 text-white shadow-lg shadow-[#17364e]/20 transition-colors hover:bg-[#303440] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17364e] motion-reduce:transition-none"
+        >
+          <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M16.6 2h-3.2v13.7a3.2 3.2 0 1 1-2.6-3.15V9.3a6.45 6.45 0 1 0 5.8 6.4V8.6a8.3 8.3 0 0 0 4.9 1.6V7a4.93 4.93 0 0 1-4.9-5Z" />
+          </svg>
+          <span className="hidden max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold transition-all duration-200 group-hover:ml-2 group-hover:max-w-24 group-focus-visible:ml-2 group-focus-visible:max-w-24 sm:block motion-reduce:transition-none">TikTok</span>
+        </a>
+        <a
+          href="/docs/FUT_UGEL_AMBO_ACTUALIZADO.pdf"
           download="FUT_UGEL.pdf"
           aria-label="Descargar el formato FUT en PDF"
           className="flex items-center gap-1.5 rounded-l-xl border border-r-0 border-white/20 bg-[#087da9] px-3 py-3 text-white shadow-lg shadow-[#17364e]/20 transition-colors hover:bg-[#065f82] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17364e] motion-reduce:transition-none"

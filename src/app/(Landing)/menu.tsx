@@ -34,11 +34,11 @@ export default function Menu() {
   }, []);
 
   return (
-    <div className={`sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md transition-shadow ${isScrolled ? "shadow-md shadow-[#17364e]/10" : "shadow-sm"}`}>
+    <div className={`sticky top-0 z-50 w-full border-b border-[#cbe7f2]/80 bg-gradient-to-r from-white via-[#f7fcff] to-[#eaf7fc] backdrop-blur-md transition-shadow ${isScrolled ? "shadow-lg shadow-[#17364e]/10" : "shadow-sm shadow-[#17364e]/5"}`}>
       <div className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-10">
         <div className={`flex items-center justify-between gap-4 transition-[height] duration-300 ${isScrolled ? "h-16" : "h-20"}`}>
           {/* Logo y Nombre */}
-          <Link href="/" aria-label="UGEL Ambo, ir al inicio" className="group flex shrink-0 items-center rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#049DD9]">
+          <Link href="/" aria-label="UGEL Ambo, ir al inicio" className="group flex shrink-0 items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#049DD9]">
             <div className={`relative w-24 transition-[height] duration-300 ${isScrolled ? "h-16" : "h-20"}`}>
               <Image
                 src="/logo2026.png"
@@ -53,6 +53,10 @@ export default function Menu() {
                 <span>13 Años</span>
               </div>
             </div>
+            <span className="hidden border-l border-[#b9dce9] pl-3 2xl:block">
+              <span className="block text-sm font-extrabold tracking-[0.08em] text-[#173b56]">UGEL AMBO</span>
+              <span className="mt-0.5 block text-[10px] font-medium tracking-wide text-[#49819a]">Educación que transforma</span>
+            </span>
           </Link>
 
           {/* Menú Desktop  */}
@@ -63,7 +67,7 @@ export default function Menu() {
           {/* Botón Mobile */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild className="xl:hidden">
-              <Button variant="ghost" size="icon" aria-label="Abrir menú de navegación" className="rounded-xl border border-[#049DD9]/20 bg-[#049DD9]/5 text-[#16668b] hover:bg-[#049DD9]/10">
+              <Button variant="ghost" size="icon" aria-label="Abrir menú de navegación" className="rounded-xl border border-[#049DD9]/20 bg-gradient-to-br from-[#e1f6fd] to-[#ccecf8] text-[#086b94] shadow-sm shadow-[#049DD9]/10 hover:bg-[#c3eaf7]">
                 <MenuIcon className="h-7 w-7" />
               </Button>
             </SheetTrigger>
