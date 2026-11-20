@@ -3,6 +3,7 @@
 import { useChat } from "@ai-sdk/react";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { Button } from "@/components/ui/button";
 import { ArrowDownCircle, X, Send, BotMessageSquare } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
@@ -101,7 +102,7 @@ export default function ChatPage() {
   return (
     <div>
       {/* Botón flotante siempre visible con animación */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+      <div className="fixed bottom-3 right-3 z-50 flex flex-col items-end gap-2 sm:bottom-5 sm:right-6">
 
         {/* Notificación flotante */}
         <AnimatePresence>
@@ -139,60 +140,27 @@ export default function ChatPage() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, type: "spring" }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <motion.div
-            animate={{
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
             <Button
               onClick={toggleChat}
               size="icon"
-              className="rounded-full w-14 h-14 p-8 lg:p-10 shadow-2xl bg-[#049DD9]/90 hover:bg-[#037bbd]/90 backdrop-blur-md text-white transition-all duration-300 relative border border-white/20"
+              className={isChatOpen
+                ? "relative h-14 w-14 rounded-full border border-white/30 bg-[#049DD9] p-0 text-white shadow-xl hover:bg-[#037bbd]"
+                : "relative h-24 w-24 rounded-full bg-transparent p-0 shadow-none hover:bg-transparent focus-visible:ring-2 focus-visible:ring-[#049DD9] focus-visible:ring-offset-2 sm:h-28 sm:w-28"}
               aria-label={isChatOpen ? "Cerrar chat" : "Abrir chat"}
+              aria-expanded={isChatOpen}
             >
               {!isChatOpen ? (
                 <>
-                  <BotMessageSquare className="w-7 h-7 lg:w-10 lg:h-10 size-14 relative z-10" aria-hidden="true" />
-                  {/* Pulso animado */}
-                  <motion.span
-                    className="absolute inset-0 rounded-full bg-[#049DD9]/30"
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [0.5, 0, 0.5],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-                  <motion.span
-                    className="absolute inset-0 rounded-full bg-white/20"
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.3, 0, 0.3],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 0.5
-                    }}
-                  />
+                  <span aria-hidden="true" className="absolute inset-[18%] rounded-full bg-[#049DD9]/30 blur-xl" />
+                  <Image src="/robot-asistente.gif" alt="" width={150} height={150} unoptimized className="relative z-10 h-full w-full object-contain drop-shadow-[0_5px_6px_rgba(20,62,91,0.3)]" />
                 </>
               ) : (
-                <ArrowDownCircle className="w-7 h-7 lg:w-10 lg:h-10 size-14 relative z-10" aria-hidden="true" />
+                <ArrowDownCircle className="size-7" aria-hidden="true" />
               )}
             </Button>
-          </motion.div>
         </motion.div>
       </div>
 
@@ -204,7 +172,7 @@ export default function ChatPage() {
             animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20, rotateX: 10 }}
             transition={{ duration: 0.4, type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-28 right-6 z-50 w-80 sm:w-96 h-[500px] flex flex-col overflow-hidden rounded-3xl shadow-2xl border border-white/20 backdrop-blur-xl bg-white/80 supports-backdrop-filter:bg-white/60"
+            className="fixed bottom-24 right-3 z-50 flex h-[min(500px,calc(100dvh-8rem))] w-[min(320px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-3xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-xl supports-backdrop-filter:bg-white/60 sm:right-6 sm:w-96"
           >
             <Card className="border-0 h-full px-0 py-0 bg-transparent shadow-none flex flex-col">
               <CardHeader className="bg-[#049DD9]/90 backdrop-blur-md text-white flex flex-row items-center justify-between space-y-0 pb-4 pt-4 px-5 border-b border-white/10 shrink-0">

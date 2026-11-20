@@ -4,15 +4,28 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import confetti from "canvas-confetti";
 
+const ANNIVERSARY_SESSION_KEY = "ugel-ambo-aniversario-13-visto";
+
 export default function AniversarioModal() {
   const [mounted, setMounted] = useState(false);
   const [isZooming, setIsZooming] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
+    try {
+      if (sessionStorage.getItem(ANNIVERSARY_SESSION_KEY)) return;
+    } catch {
+      // Si el almacenamiento no está disponible, se muestra el aviso normalmente.
+    }
+
     // 1. Iniciar aparición y crecimiento progresivo
     setMounted(true);
     const zoomTimer = setTimeout(() => {
+      try {
+        sessionStorage.setItem(ANNIVERSARY_SESSION_KEY, "1");
+      } catch {
+        // La celebración sigue funcionando aunque el navegador bloquee el almacenamiento.
+      }
       setIsZooming(true);
       lanzarConfetiAniversario();
       reproducirSonidoFestivo();
