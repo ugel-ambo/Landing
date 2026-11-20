@@ -782,14 +782,14 @@ export default function DirectorioPage() {
       <section className="relative overflow-hidden bg-gradient-to-b from-[#eaf7fc] to-[#f8fcfe] text-[#223F59]">
         <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-32 h-80 w-80 rounded-full bg-[#049DD9]/10 blur-3xl" />
         <div aria-hidden="true" className="pointer-events-none absolute -left-16 bottom-0 h-40 w-40 rounded-full bg-[#f4bc32]/10 blur-3xl" />
-        <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
+        <div className="relative mx-auto max-w-7xl px-4 pb-8 pt-7 sm:px-6 md:pb-10 md:pt-9">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-[#049DD9]/20 bg-[#049DD9]/10 px-3 py-1.5 text-xs font-semibold tracking-wide text-[#087da9]"><Building2 className="h-3.5 w-3.5" aria-hidden="true" /> UGEL AMBO</span>
-            <h1 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">Directorio <span className="text-[#049DD9]">institucional</span></h1>
-            <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-[#49d1ed] to-[#f4c34d]" />
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">Encuentra a nuestro equipo y contacta con las unidades de la UGEL Ambo.</p>
+            <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Directorio <span className="text-[#049DD9]">institucional</span></h1>
+            <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-[#49d1ed] to-[#f4c34d]" />
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">Encuentra a nuestro equipo y contacta con las unidades de la UGEL Ambo.</p>
           </div>
-          <div className="mt-7 flex flex-wrap gap-3 text-sm">
+          <div className="mt-4 flex flex-wrap gap-2 text-sm">
             <span className="inline-flex items-center gap-2 rounded-xl border border-[#d6eaf3] bg-white/80 px-4 py-2.5"><Users className="h-4 w-4 text-[#049DD9]" aria-hidden="true" /><strong>{directorioData.length}</strong> contactos</span>
             <span className="inline-flex items-center gap-2 rounded-xl border border-[#d6eaf3] bg-white/80 px-4 py-2.5"><Building2 className="h-4 w-4 text-[#049DD9]" aria-hidden="true" /><strong>{areas.length}</strong> unidades</span>
           </div>
@@ -797,7 +797,7 @@ export default function DirectorioPage() {
       </section>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <section aria-label="Buscar en el directorio" className="relative -mt-5 rounded-2xl border border-[#dcecf3] bg-white p-4 shadow-[0_14px_40px_-24px_rgba(15,58,84,0.35)] sm:p-6">
+        <section aria-label="Buscar en el directorio" className="relative -mt-4 rounded-2xl border border-[#dcecf3] bg-white p-4 shadow-[0_14px_40px_-24px_rgba(15,58,84,0.35)] sm:p-5">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end">
             <div className="min-w-0 flex-1">
               <label htmlFor="directorio-busqueda" className="mb-2 block text-sm font-bold text-[#23445b]">Buscar contacto</label>
@@ -817,7 +817,7 @@ export default function DirectorioPage() {
               </div>
             </div>
           </div>
-          <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-[#e9f1f5] pt-4" aria-label="Filtrar por unidad">
+          <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-[#e9f1f5] pt-3" aria-label="Filtrar por unidad">
             <span className="mr-1 text-xs font-semibold uppercase tracking-wider text-slate-500">Unidad</span>
             {["", ...areas].map((area) => (
               <button key={area || "todos"} type="button" onClick={() => setSelectedArea(area)} aria-pressed={selectedArea === area} title={area ? getUnitFullName(area) : "Todas las unidades"} className={`rounded-full px-4 py-2 text-xs font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#049DD9] ${selectedArea === area ? "bg-[#087da9] text-white shadow-sm shadow-[#087da9]/25" : "bg-[#edf6fa] text-[#38677c] hover:bg-[#dceff6]"}`}>{area || "Todas"}</button>
@@ -825,7 +825,7 @@ export default function DirectorioPage() {
           </div>
         </section>
 
-        <div className="mb-4 mt-8 flex flex-wrap items-end justify-between gap-2">
+        <div className="mb-4 mt-6 flex flex-wrap items-end justify-between gap-2">
           <div><h2 className="text-xl font-bold text-[#173b56]">Nuestro equipo</h2><p className="mt-1 text-sm text-slate-500">{selectedArea ? getUnitFullName(selectedArea) : "Todas las unidades"}</p></div>
           <p role="status" className="text-sm text-slate-500"><strong className="text-[#087da9]">{filteredItems.length}</strong> {filteredItems.length === 1 ? "contacto" : "contactos"}</p>
         </div>
