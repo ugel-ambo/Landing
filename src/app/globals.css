@@ -194,3 +194,37 @@
     0 0 40px 10px rgba(4, 45, 101, 0.12),
     0 8px 30px rgba(4, 45, 101, 0.18);
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .group:hover .service-card-spark,
+  .group:focus-visible .service-card-spark {
+    animation: service-spark-in 450ms ease-out both;
+  }
+}
+
+@keyframes service-spark-in {
+  from { opacity: 0; transform: translate(-8px, 8px) scale(0.4) rotate(-40deg); }
+  to { opacity: 1; transform: translate(0, 0) scale(1) rotate(0); }
+}
+
+/* ── Ruleta / Marquee Infinito de Enlaces de Interés ── */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}
+

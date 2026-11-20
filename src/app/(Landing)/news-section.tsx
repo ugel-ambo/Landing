@@ -11,7 +11,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Clock } from "lucide-react";
+import { ArrowUpRight, Clock } from "lucide-react";
 import Image from "next/image";
 import SectionHeader from "@/components/section-header";
 import { Newspaper } from "lucide-react";
@@ -31,12 +31,19 @@ const NewsImage = ({ src, alt }: { src: string; alt: string }) => {
       src={imgSrc}
       alt={alt}
       fill
-      className="object-cover group-hover:scale-105 transition-transform duration-300"
+      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
       unoptimized
       onError={() => setImgSrc("/Logo1.jpg")}
     />
   );
 };
+
+const FacebookLogo = () => (
+  <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" aria-hidden="true">
+    <circle cx="12" cy="12" r="12" fill="#1877F2" />
+    <path fill="#fff" d="M13.5 21v-8.2h2.8l.4-3.2h-3.2v-2c0-.9.3-1.5 1.6-1.5h1.7V3.2c-.3 0-1.3-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21h3.4Z" />
+  </svg>
+);
 
 const isRecentNews = (news: NewsItem) => {
   if (news.rawDate) {
@@ -118,12 +125,6 @@ export default function NewsSection() {
     }
   };
 
-  const handleNewsClick = (url?: string) => {
-    if (url) {
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-  };
-
   if (loading) {
     return (
       <section className="py-8 md:py-10 bg-muted/30 w-full">
@@ -180,8 +181,10 @@ export default function NewsSection() {
   }
 
   return (
-    <section id="noticias" className="py-8 md:py-10 bg-muted/30 w-full">
-      <div className="w-full px-4 md:px-10">
+    <section id="noticias" className="relative w-full overflow-hidden bg-gradient-to-b from-white via-[#f1faff] to-[#f8fcfe] py-12 md:py-16">
+      <div aria-hidden="true" className="pointer-events-none absolute -right-16 top-16 h-64 w-64 rounded-full bg-[#049DD9]/10 blur-3xl" />
+      <div aria-hidden="true" className="pointer-events-none absolute -left-20 bottom-10 h-48 w-48 rounded-full bg-[#f4bc32]/10 blur-3xl" />
+      <div className="relative w-full px-4 md:px-10">
         <SectionHeader
           badgeIcon={<Newspaper className="w-3.5 h-3.5 text-[#049DD9]" />}
           badgeText="Actualidad UGEL"
@@ -190,22 +193,26 @@ export default function NewsSection() {
           description="Mantente informado sobre los ultimos comunicados oficiales, directivas y eventos de UGEL Ambo"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {newsItems.length === 0 && <p className="rounded-2xl border border-[#dcecf3] bg-white p-8 text-center text-sm text-slate-500">Por el momento no hay noticias disponibles.</p>}
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {newsItems.map((news, index) => (
             <Card
               key={news.id}
-              className={`overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group ${
+              className={`overflow-hidden rounded-2xl border border-[#dcecf3] bg-white py-0 shadow-[0_8px_25px_-22px_rgba(19,57,79,0.4)] transition duration-300 hover:-translate-y-1 hover:border-[#a7dce9] hover:shadow-[0_18px_35px_-22px_rgba(4,125,169,0.4)] focus-within:-translate-y-1 focus-within:border-[#a7dce9] motion-reduce:transform-none motion-reduce:transition-none ${
                 index >= 3 ? "hidden md:flex flex-col" : "flex flex-col"
               }`}
-              onClick={() => handleNewsClick(news.url)}
             >
-              <div className="relative h-48 w-full overflow-hidden">
+              <a href={news.url || undefined} target={news.url ? "_blank" : undefined} rel={news.url ? "noopener noreferrer" : undefined} className="group flex h-full flex-col rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#049DD9]">
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#e9f6fb]">
                 <NewsImage src={news.image} alt={news.title} />
+                <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#123b55]/25 via-transparent to-transparent" />
+                <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white px-2 py-1 text-xs font-semibold text-[#174779] shadow-md"><FacebookLogo /> Facebook</span>
+                {news.url && <span aria-hidden="true" className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#087da9] shadow-md backdrop-blur-sm transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none"><ArrowUpRight className="h-4 w-4" /></span>}
               </div>
-              <CardHeader>
+              <CardHeader className="gap-0 px-5 pt-5 pb-0">
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div className="flex items-center gap-2">
-                    <Badge variant="secondary" className="font-medium">
+                    <Badge variant="secondary" className="border border-[#cdeaf4] bg-[#eaf7fc] font-semibold text-[#087da9]">
                       {news.category}
                     </Badge>
                     {isRecentNews(news) && (
@@ -227,11 +234,13 @@ export default function NewsSection() {
                   {news.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription className="line-clamp-3">
+              <CardContent className="flex flex-1 flex-col px-5 pt-3 pb-5">
+                <CardDescription className="line-clamp-3 flex-1 leading-relaxed text-slate-600">
                   {news.description}
                 </CardDescription>
+                {news.url && <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#087da9]"><FacebookLogo /> Ver publicación <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none motion-reduce:transition-none" aria-hidden="true" /></span>}
               </CardContent>
+              </a>
             </Card>
           ))}
         </div>
