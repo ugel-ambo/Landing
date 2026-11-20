@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Calendar,
@@ -12,6 +11,7 @@ import {
   FileText,
   ChevronDown,
   ChevronUp,
+  BriefcaseBusiness,
 } from "lucide-react";
 import {
   Convocatoria,
@@ -56,8 +56,8 @@ export default function ConvocatoriaList({
     if (!archivo.documentos || archivo.documentos.length === 0) return null;
 
     return (
-      <div key={archivo.id || archivo.etapa} className="mb-4 last:mb-0">
-        <h4 className="text-sm font-semibold text-gray-700 mb-2">
+      <div key={archivo.id || archivo.etapa} className="mb-5 last:mb-0">
+        <h4 className="mb-2 text-xs font-bold uppercase tracking-wider text-[#52778a]">
           {ETAPA_LABELS[archivo.etapa] || archivo.etapa}
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -67,13 +67,13 @@ export default function ConvocatoriaList({
               href={doc.urlDrive}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center p-2 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors group"
+              className="group flex min-w-0 items-center gap-3 rounded-xl border border-[#e2edf2] bg-white p-3 transition-colors hover:border-[#9bd6e9] hover:bg-[#f3fbfe] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#049DD9]"
             >
-              <FileText className="w-4 h-4 text-red-500 mr-2" />
-              <span className="text-sm text-gray-600 group-hover:text-gray-900 truncate flex-1">
+              <FileText className="h-4 w-4 shrink-0 text-[#049DD9]" aria-hidden="true" />
+              <span className="min-w-0 flex-1 break-words text-sm text-[#23445b]">
                 {doc.nombreArchivo}
               </span>
-              <Download className="w-4 h-4 text-gray-400 group-hover:text-[#049DD9]" />
+              <Download className="h-4 w-4 shrink-0 text-[#83a6b5] group-hover:text-[#049DD9]" aria-hidden="true" />
             </a>
           ))}
         </div>
@@ -83,21 +83,28 @@ export default function ConvocatoriaList({
 
   return (
     <div className="space-y-6">
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+      <div className="rounded-2xl border border-[#dcecf3] bg-white p-4 shadow-[0_10px_30px_-24px_rgba(15,58,84,0.35)] sm:p-5">
+        <label htmlFor="buscar-convocatoria" className="mb-2 block text-sm font-bold text-[#223F59]">Encuentra una convocatoria</label>
+        <div className="relative">
+        <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#66a2b9]" aria-hidden="true" />
         <Input
+          id="buscar-convocatoria"
           type="text"
           placeholder="Buscar convocatoria..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-10 py-6 text-lg shadow-sm"
+          className="h-12 rounded-xl border-[#d9e9f0] bg-[#f7fbfd] pl-12 text-sm shadow-none focus-visible:ring-[#049DD9]/30"
         />
+        </div>
+        <p role="status" className="mt-3 text-sm text-slate-500"><strong className="text-[#087da9]">{filteredConvocatorias.length}</strong> {filteredConvocatorias.length === 1 ? "proceso encontrado" : "procesos encontrados"}</p>
       </div>
 
       <div className="space-y-4">
         {filteredConvocatorias.length === 0 ? (
-          <div className="text-center py-12 text-muted-foreground">
-            No se encontraron convocatorias que coincidan con tu búsqueda.
+          <div className="rounded-2xl border border-dashed border-[#c4dfe9] bg-white px-6 py-16 text-center">
+            <Search className="mx-auto h-8 w-8 text-[#83b6c9]" aria-hidden="true" />
+            <p className="mt-4 font-bold text-[#23445b]">{searchTerm ? "No encontramos convocatorias" : "No hay convocatorias disponibles"}</p>
+            <p className="mt-1 text-sm text-slate-500">{searchTerm ? "Prueba con otra búsqueda." : "Vuelve a consultar más adelante."}</p>
           </div>
         ) : (
           filteredConvocatorias.map((conv, index) => (
@@ -108,18 +115,22 @@ export default function ConvocatoriaList({
               transition={{ delay: index * 0.05 }}
             >
               <Card
-                className={`overflow-hidden transition-all duration-300 ${
+                className={`overflow-hidden rounded-2xl border bg-white py-0 transition-all duration-300 ${
                   expandedId === conv._id
-                    ? "ring-2 ring-[#049DD9] shadow-lg"
-                    : "hover:shadow-md"
+                    ? "border-[#9dd8ea] shadow-[0_12px_30px_-20px_rgba(4,125,169,0.4)]"
+                    : "border-[#dfedf3] shadow-[0_6px_24px_-20px_rgba(19,57,79,0.35)] hover:border-[#b8dfe9] hover:shadow-md"
                 }`}
               >
-                <div
-                  className="p-6 cursor-pointer"
+                <button
+                  type="button"
+                  aria-expanded={expandedId === conv._id}
+                  className="w-full p-5 text-left focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#049DD9] sm:p-6"
                   onClick={() => toggleExpand(conv._id)}
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div className="flex-1">
+                    <div className="flex min-w-0 flex-1 gap-4">
+                      <span className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#eaf7fc] text-[#049DD9] sm:flex"><BriefcaseBusiness className="h-6 w-6" aria-hidden="true" /></span>
+                      <div className="min-w-0">
                       <div className="flex items-center gap-2 mb-2">
                         <Badge
                           className={`${getEstadoColor(
@@ -129,7 +140,7 @@ export default function ConvocatoriaList({
                           {getEstadoTexto(conv.estado)}
                         </Badge>
                       </div>
-                      <h3 className="text-lg font-bold text-gray-900 leading-tight">
+                      <h3 className="text-base font-bold leading-snug text-[#223F59] sm:text-lg">
                         {conv.nombre}
                       </h3>
                       <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-muted-foreground">
@@ -142,9 +153,10 @@ export default function ConvocatoriaList({
                           </span>
                         </div>
                       </div>
+                      </div>
                     </div>
-                    <div className="flex items-center justify-between md:justify-end w-full md:w-auto mt-2 md:mt-0">
-                      <Button variant="ghost" size="sm" className="ml-auto">
+                    <div className="flex items-center justify-end">
+                      <span className="inline-flex items-center rounded-full bg-[#eaf7fc] px-4 py-2 text-sm font-semibold text-[#087da9]">
                         {expandedId === conv._id ? (
                           <>
                             Menos detalles{" "}
@@ -156,10 +168,10 @@ export default function ConvocatoriaList({
                             <ChevronDown className="ml-2 w-4 h-4" />
                           </>
                         )}
-                      </Button>
+                      </span>
                     </div>
                   </div>
-                </div>
+                </button>
 
                 <AnimatePresence>
                   {expandedId === conv._id && (
@@ -169,7 +181,7 @@ export default function ConvocatoriaList({
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="px-6 pb-6 pt-0 border-t border-gray-100 bg-gray-50/50">
+                      <div className="border-t border-[#e3eff4] bg-[#f7fbfd] px-5 pb-6 pt-0 sm:px-6">
                         <div className="pt-4 space-y-4">
                           {conv.archivos && conv.archivos.length > 0 ? (
                             conv.archivos.map((archivo) =>
