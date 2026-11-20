@@ -11,27 +11,22 @@ function TeamCard({ name, position, image }: Employee) {
   const initials = name.trim().split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join("").toUpperCase();
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#dcecf3] bg-white shadow-[0_8px_25px_-20px_rgba(16,64,89,0.4)] transition duration-300 hover:-translate-y-1 hover:border-[#9dd6e7] hover:shadow-[0_20px_35px_-22px_rgba(4,125,169,0.4)] motion-reduce:transform-none motion-reduce:transition-none">
-      <div className="relative h-24 overflow-hidden bg-gradient-to-br from-[#d3f0fa] via-[#e9f8fc] to-[#f7fbfd]">
-        <span aria-hidden="true" className="absolute -right-4 -top-16 h-40 w-40 rounded-full border border-[#049DD9]/15 transition-transform duration-500 group-hover:scale-110 motion-reduce:transform-none motion-reduce:transition-none" />
-        <span aria-hidden="true" className="absolute right-12 top-3 h-16 w-16 rounded-full bg-[#049DD9]/15 blur-xl" />
-        <span aria-hidden="true" className="absolute bottom-3 right-5 h-1.5 w-1.5 rounded-full bg-[#e2b94a]/70 shadow-[-12px_-8px_0_0_rgba(4,157,217,0.25)]" />
-      </div>
-      <div className="relative flex flex-1 flex-col px-5 pb-5">
-        <div className="relative -mt-14 h-28 w-28 shrink-0 rounded-[1.4rem] bg-white p-1 shadow-[0_10px_22px_-10px_rgba(16,64,89,0.45)] transition-transform duration-300 group-hover:-translate-y-1 motion-reduce:transform-none motion-reduce:transition-none sm:h-32 sm:w-32">
+    <article className="group relative flex h-full items-center gap-4 overflow-hidden rounded-2xl border border-[#dcecf3] bg-white p-4 shadow-[0_8px_25px_-20px_rgba(16,64,89,0.4)] transition duration-300 hover:-translate-y-1 hover:border-[#9dd6e7] hover:shadow-[0_20px_35px_-22px_rgba(4,125,169,0.4)] motion-reduce:transform-none motion-reduce:transition-none">
+      <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-[#049DD9] to-[#a7dfef]" />
+      <div className="relative h-24 w-24 shrink-0 rounded-[1.2rem] bg-white p-1 shadow-[0_8px_18px_-10px_rgba(16,64,89,0.4)] transition-transform duration-300 group-hover:-translate-y-1 motion-reduce:transform-none motion-reduce:transition-none">
           <div className="relative h-full w-full overflow-hidden rounded-[1.15rem] bg-[#e8f6fb]">
           {image && !imageFailed ? (
-            <Image src={image} alt={name} fill sizes="128px" unoptimized className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-110 motion-reduce:transform-none motion-reduce:transition-none" onError={() => setImageFailed(true)} />
+            <Image src={image} alt={name} fill sizes="96px" unoptimized className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-110 motion-reduce:transform-none motion-reduce:transition-none" onError={() => setImageFailed(true)} />
           ) : (
             <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#d9f2fa] to-[#bde4f2] text-2xl font-bold text-[#087da9]">{initials}</div>
           )}
           </div>
           <span aria-hidden="true" className="absolute -bottom-1 -right-1 h-4 w-4 rotate-45 rounded-sm border-[3px] border-white bg-[#e8bd48] shadow-sm" />
-        </div>
-        <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.14em] text-[#087da9]">Equipo de Dirección</p>
+      </div>
+      <div className="min-w-0">
+        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#087da9]">Equipo de Dirección</p>
         <h3 className="mt-1.5 break-words text-base font-bold leading-snug text-[#223F59]">{name}</h3>
         <p className="mt-2 break-words text-sm leading-relaxed text-slate-600">{position}</p>
-        <span aria-hidden="true" className="mt-5 h-0.5 w-8 rounded-full bg-[#a3dceb] transition-all duration-300 group-hover:w-16 group-hover:bg-[#049DD9] motion-reduce:transition-none" />
       </div>
     </article>
   );
