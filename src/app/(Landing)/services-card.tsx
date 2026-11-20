@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import SectionHeader from "@/components/section-header";
 import { Sparkles } from "lucide-react";
 import {
@@ -114,6 +115,12 @@ const services = [
   },
 ];
 
+const serviceColors: Record<number, string> = {
+  1: "#049dd9", 2: "#ef4654", 3: "#25a45a", 4: "#168bd4",
+  5: "#ad52bc", 6: "#e2a017", 7: "#ec4651", 8: "#049dd9",
+  9: "#1887b8", 10: "#e94b54", 11: "#e4434f", 12: "#e04c5c",
+};
+
 export default function ServicesCards() {
   return (
     <section id="servicios" className="relative w-full overflow-hidden bg-gradient-to-b from-[#f0faff] via-white to-white py-14 md:py-20">
@@ -138,18 +145,28 @@ export default function ServicesCards() {
                 href={service.href}
                 target={service.external ? "_blank" : undefined}
                 rel={service.external ? "noopener noreferrer" : undefined}
-                className="group block rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#049DD9]"
+                style={{ "--service-color": serviceColors[service.id] } as CSSProperties}
+                className="group relative block rounded-2xl transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-[1.025] focus-visible:-translate-y-2 focus-visible:scale-[1.025] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#049DD9] motion-reduce:transform-none motion-reduce:transition-none"
               >
+                <span aria-hidden="true" className="pointer-events-none absolute inset-x-[8%] bottom-0 h-1/3 rounded-full bg-[var(--service-color)] opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-40 group-focus-visible:opacity-40 motion-reduce:transition-none" />
+                <span aria-hidden="true" className="pointer-events-none absolute -inset-1 rounded-[1.25rem] bg-[var(--service-color)] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-25 group-focus-visible:opacity-25 motion-reduce:transition-none" />
                 {service.image ? (
-                  /* La imagen ES el botón: se muestra completa, sin recorte */
+                  <>
+                  <div className="relative overflow-hidden rounded-2xl shadow-md transition-shadow duration-300 group-hover:shadow-[0_16px_28px_-12px_var(--service-color)] group-focus-visible:shadow-[0_16px_28px_-12px_var(--service-color)] motion-reduce:transition-none">
                   <Image
                     src={service.image}
                     alt={service.title}
                     width={400}
                     height={300}
                     style={{ width: "100%", height: "auto" }}
-                    className="rounded-2xl shadow-md service-card-glow transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl motion-reduce:transform-none motion-reduce:transition-none"
+                    className="rounded-2xl transition-[filter] duration-300 group-hover:brightness-[1.04] group-focus-visible:brightness-[1.04] motion-reduce:transition-none"
                   />
+                  <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-[left,opacity] duration-700 ease-out group-hover:left-[120%] group-hover:opacity-100 group-focus-visible:left-[120%] group-focus-visible:opacity-100 motion-reduce:hidden" />
+                  <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-2xl ring-2 ring-inset ring-[var(--service-color)] opacity-0 transition-opacity duration-300 group-hover:opacity-50 group-focus-visible:opacity-50 motion-reduce:transition-none" />
+                  <span aria-hidden="true" className="pointer-events-none absolute bottom-0 left-1/2 h-1 w-0 -translate-x-1/2 rounded-full bg-[var(--service-color)] transition-[width] duration-300 group-hover:w-1/2 group-focus-visible:w-1/2 motion-reduce:transition-none" />
+                  </div>
+                  <span aria-hidden="true" className="service-card-spark pointer-events-none absolute -right-1 -top-1 flex h-7 w-7 items-center justify-center rounded-full border border-white/80 bg-[var(--service-color)] text-white shadow-md opacity-0 motion-reduce:hidden"><Sparkles className="h-4 w-4" /></span>
+                  </>
                 ) : (
                   /* Fallback solo si no hay imagen */
                   <div className="w-full aspect-4/3 rounded-2xl bg-primary/10 flex flex-col items-center justify-center gap-3 shadow-md service-card-glow group-hover:shadow-xl group-hover:scale-[1.03] transition-all duration-300 text-primary border border-primary/20">

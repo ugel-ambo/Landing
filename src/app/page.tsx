@@ -5,8 +5,9 @@ import NewsSection from "./(Landing)/news-section";
 import ServicesCards from "./(Landing)/services-card";
 import TramitesSection from "./(Landing)/tramites-section";
 import Menu from "./(Landing)/menu";
-import ConvocatoriasSection from "./(Landing)/convocatorias-section";
+// import ConvocatoriasSection from "./(Landing)/convocatorias-section";
 import TutorialesSection from "./(Landing)/tutoriales-section";
+import RuletaEnlaces from "./(Landing)/ruleta-enlaces";
 import {
   PushNotificationManager,
   InstallPrompt,
@@ -28,12 +29,12 @@ export default async function Home() {
       <Hero initialImages={heroImages} />
       <ServicesCards />
       <NewsSection />
-      <ConvocatoriasSection />
+      {/* <ConvocatoriasSection /> */}
       <TramitesSection />
       <TutorialesSection />
       <MapsPage />
 
-      {/* Sección PWA */}
+      {/* Sección PWA (Comentado temporalmente)
       <section className="py-12 px-4 bg-linear-to-b from-background to-muted/20">
         <div className="container mx-auto max-w-6xl">
           <SectionHeader
@@ -49,6 +50,10 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      */}
+
+      {/* Ruleta infinita de Enlaces de Interés (ubicada encima del pie de página) */}
+      <RuletaEnlaces />
     </>
   );
 }
