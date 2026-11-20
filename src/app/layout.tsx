@@ -9,7 +9,8 @@ import Footer from "./(Landing)/footer";
 import Mascota from "./(Landing)/mascota";
 import { PWAInstallToast } from "@/components/pwa-install-toast";
 import NoticiaModal from "@/components/noticia-modal";
-import { Facebook, FileDown } from "lucide-react";
+import { ContactRound, Facebook, FileDown } from "lucide-react";
+import Link from "next/link";
 
 // asdasda
 
@@ -193,6 +194,14 @@ export default function RootLayout({
           <FileDown className="h-5 w-5 shrink-0" aria-hidden="true" />
           <span className="text-xs font-bold">FUT</span>
         </a>
+        <Link
+          href="/Nosotros/Directorio"
+          aria-label="Ir al directorio de UGEL Ambo"
+          className="group flex items-center gap-1.5 rounded-l-xl border border-r-0 border-white/30 bg-[#e6ab21] px-3 py-3 text-[#173b56] shadow-lg shadow-[#17364e]/20 transition-colors hover:bg-[#f7c74c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17364e] motion-reduce:transition-none"
+        >
+          <ContactRound className="h-5 w-5 shrink-0" strokeWidth={2.5} aria-hidden="true" />
+          <span className="text-xs font-bold">Directorio</span>
+        </Link>
         </div>
         {children}
         <Analytics />
