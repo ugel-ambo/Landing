@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowUpRight, Building2, ListChecks, Users } from "lucide-react";
 import type { AreaContent, Employee } from "./area-section";
 
-function TeamCard({ name, position, image }: Employee) {
+function TeamCard({ name, position, image, teamLabel }: Employee & { teamLabel: string }) {
   const [imageFailed, setImageFailed] = useState(false);
   const initials = name.trim().split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join("").toUpperCase();
 
@@ -24,7 +24,7 @@ function TeamCard({ name, position, image }: Employee) {
           <span aria-hidden="true" className="absolute -bottom-1 -right-1 h-4 w-4 rotate-45 rounded-sm border-[3px] border-white bg-[#e8bd48] shadow-sm" />
       </div>
       <div className="min-w-0">
-        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#087da9]">Equipo de Dirección</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#087da9]">{teamLabel}</p>
         <h3 className="mt-1.5 break-words text-base font-bold leading-snug text-[#223F59]">{name}</h3>
         <p className="mt-2 break-words text-sm leading-relaxed text-slate-600">{position}</p>
       </div>
@@ -32,7 +32,7 @@ function TeamCard({ name, position, image }: Employee) {
   );
 }
 
-export function DirectionModern({ hero, functions, employees, functionsIntro, teamIntro }: AreaContent) {
+export function DirectionModern({ hero, functions, employees, functionsIntro, teamIntro, teamLabel = "Equipo de Dirección" }: AreaContent & { teamLabel?: string }) {
   return (
     <section className="mx-auto w-full max-w-7xl space-y-12 md:space-y-16">
       <div className="overflow-hidden rounded-3xl border border-[#e2eef3] bg-white shadow-[0_18px_45px_-32px_rgba(19,65,87,0.3)]">
@@ -81,7 +81,7 @@ export function DirectionModern({ hero, functions, employees, functionsIntro, te
           <div className="max-w-3xl"><span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#087da9]"><Users className="h-4 w-4" aria-hidden="true" /> Nuestro equipo</span><h2 className="mt-2 text-2xl font-extrabold text-[#223F59] sm:text-3xl">Personal del área</h2><p className="mt-2 text-sm leading-6 text-slate-600 sm:text-base">{teamIntro ?? "Conoce a las personas que brindan soporte especializado a nuestra comunidad educativa."}</p></div>
           <Link href="/Nosotros/Directorio" className="inline-flex items-center gap-1.5 rounded-full bg-[#eaf7fc] px-4 py-2 text-sm font-semibold text-[#087da9] transition-colors hover:bg-[#d5eef7] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#049DD9]">Ver directorio <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
         </div>
-        {employees.length > 0 ? <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{employees.map((employee) => <TeamCard key={employee.id || employee.name} {...employee} />)}</div> : <p className="rounded-2xl border border-[#dcecf3] bg-white p-5 text-sm text-slate-500">No hay personal disponible para mostrar en este momento.</p>}
+        {employees.length > 0 ? <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{employees.map((employee) => <TeamCard key={employee.id || employee.name} {...employee} teamLabel={teamLabel} />)}</div> : <p className="rounded-2xl border border-[#dcecf3] bg-white p-5 text-sm text-slate-500">No hay personal disponible para mostrar en este momento.</p>}
       </div>
     </section>
   );
