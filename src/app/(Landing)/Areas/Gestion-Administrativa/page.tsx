@@ -1,4 +1,4 @@
-import { AreaSection } from "../components/area-section";
+import { DirectionModern } from "../components/direction-modern";
 import connectMongoDB from "@/lib/mongodbConnection";
 import { PersonalModel } from "@/models/Personal";
 import { getMediaUrl } from "@/lib/media";
@@ -74,9 +74,9 @@ async function getEmployeesFromDB() {
 export default async function GestionAdministrativa() {
   const employees = (await getEmployeesFromDB()) || fallbackEmployees;
   return (
-    <main className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <AreaSection {...areaStaticData} employees={employees} />
+    <main className="min-h-screen bg-gradient-to-b from-[#f5fbfe] via-white to-[#f6fbfd]">
+      <div className="container mx-auto px-4 py-8 md:py-12">
+        <DirectionModern {...areaStaticData} employees={employees} teamLabel="Equipo de Gestión Administrativa" />
       </div>
     </main>
   );
