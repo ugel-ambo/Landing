@@ -56,18 +56,19 @@ export default function ConvocatoriaList({
     if (!archivo.documentos || archivo.documentos.length === 0) return null;
 
     return (
-      <div key={archivo.id || archivo.etapa} className="mb-5 last:mb-0">
-        <h4 className="mb-2 text-xs font-bold uppercase tracking-wider text-[#52778a]">
+      <div key={archivo.id || archivo.etapa} className="min-w-0 rounded-xl border border-[#dcebf2] bg-white p-4 shadow-sm">
+        <h4 className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#38677c]">
+          <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-[#049DD9]" />
           {ETAPA_LABELS[archivo.etapa] || archivo.etapa}
         </h4>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <div className="grid gap-2">
           {archivo.documentos.map((doc, idx) => (
             <a
               key={idx}
               href={doc.urlDrive}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex min-w-0 items-center gap-3 rounded-xl border border-[#e2edf2] bg-white p-3 transition-colors hover:border-[#9bd6e9] hover:bg-[#f3fbfe] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#049DD9]"
+              className="group flex min-w-0 items-center gap-3 rounded-lg bg-[#f4fafd] p-3 transition-colors hover:bg-[#e7f5fb] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#049DD9]"
             >
               <FileText className="h-4 w-4 shrink-0 text-[#049DD9]" aria-hidden="true" />
               <span className="min-w-0 flex-1 break-words text-sm text-[#23445b]">
@@ -181,9 +182,10 @@ export default function ConvocatoriaList({
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="border-t border-[#e3eff4] bg-[#f7fbfd] px-5 pb-6 pt-0 sm:px-6">
-                        <div className="pt-4 space-y-4">
-                          {conv.archivos && conv.archivos.length > 0 ? (
+                      <div className="border-t border-[#e3eff4] bg-[#f3f9fc] px-5 py-5 sm:px-6">
+                        <h4 className="mb-3 flex items-center gap-2 text-sm font-bold text-[#223F59]"><FileText className="h-4 w-4 text-[#049DD9]" aria-hidden="true" /> Documentos de la convocatoria</h4>
+                        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                          {conv.archivos?.some((archivo) => archivo.documentos?.length > 0) ? (
                             conv.archivos.map((archivo) =>
                               renderArchivosEtapa(archivo)
                             )
