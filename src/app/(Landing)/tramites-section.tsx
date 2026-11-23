@@ -68,16 +68,11 @@ export default function TramitesSection() {
                 key={tramite.title}
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#dcecf3] bg-white shadow-[0_8px_25px_-20px_rgba(16,64,89,0.4)] transition duration-300 hover:-translate-y-1 hover:border-[#a9dbe9] hover:shadow-[0_18px_35px_-22px_rgba(4,125,169,0.4)] motion-reduce:transform-none motion-reduce:transition-none"
               >
-                <div className="relative flex items-center justify-between gap-3 overflow-hidden bg-gradient-to-r from-[#e4f6fc] via-[#f1fafd] to-[#fbf8ea] px-5 py-4">
-                  <span aria-hidden="true" className="absolute -right-5 -top-14 h-28 w-28 rounded-full border border-[#049DD9]/15 transition-transform duration-500 group-hover:scale-110 motion-reduce:transform-none motion-reduce:transition-none" />
-                  <span className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[#049DD9] shadow-sm transition-transform duration-300 group-hover:-translate-y-1 motion-reduce:transform-none motion-reduce:transition-none">
-                    <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
-                  </span>
-                  <span className="relative rounded-full border border-[#d6eaf3] bg-white/80 px-3 py-1 text-xs font-semibold text-[#52778a]">
-                    {tramite.label}
-                  </span>
-                </div>
                 <div className="flex flex-1 flex-col p-5">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#eaf7fc] text-[#049DD9] transition-transform duration-300 group-hover:-translate-y-1 motion-reduce:transform-none motion-reduce:transition-none"><Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" /></span>
+                  <span className="text-xs font-semibold text-[#52778a]">{tramite.label}</span>
+                </div>
                 <h3 className="text-lg font-bold leading-snug text-[#223F59]">{tramite.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">{tramite.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2 border-t border-[#edf3f6] pt-4">
