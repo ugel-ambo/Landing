@@ -3,8 +3,10 @@ import Hero from "./(Landing)/hero";
 import MapsPage from "./(Landing)/maps";
 import NewsSection from "./(Landing)/news-section";
 import ServicesCards from "./(Landing)/services-card";
-import TramitesSection from "./(Landing)/tramites-section";
+import { DirectorPresentation, TeamBanner } from "./(Landing)/institucional-inicio";
+// import TramitesSection from "./(Landing)/tramites-section";
 import Menu from "./(Landing)/menu";
+import AccesosInstitucionales from "./(Landing)/accesos-institucionales";
 // import ConvocatoriasSection from "./(Landing)/convocatorias-section";
 import TutorialesSection from "./(Landing)/tutoriales-section";
 import RuletaEnlaces from "./(Landing)/ruleta-enlaces";
@@ -26,11 +28,14 @@ export default async function Home() {
     <>
       <AniversarioModal />
       <Menu />
+      <AccesosInstitucionales />
       <Hero initialImages={heroImages} />
       <ServicesCards />
+      <DirectorPresentation />
+      <TeamBanner />
       <NewsSection />
       {/* <ConvocatoriasSection /> */}
-      <TramitesSection />
+      {/* <TramitesSection /> */}
       <TutorialesSection />
       <MapsPage />
 

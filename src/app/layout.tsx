@@ -9,7 +9,8 @@ import Footer from "./(Landing)/footer";
 import Mascota from "./(Landing)/mascota";
 import { PWAInstallToast } from "@/components/pwa-install-toast";
 import NoticiaModal from "@/components/noticia-modal";
-import { ContactRound, Facebook, FileDown } from "lucide-react";
+import { ContactRound, Facebook } from "lucide-react";
+import FloatingDocuments from "@/components/floating-documents";
 import Link from "next/link";
 
 // asdasda
@@ -185,15 +186,7 @@ export default function RootLayout({
           </svg>
           <span className="hidden max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold transition-all duration-200 group-hover:ml-2 group-hover:max-w-24 group-focus-visible:ml-2 group-focus-visible:max-w-24 sm:block motion-reduce:transition-none">TikTok</span>
         </a>
-        <a
-          href="/docs/FUT_UGEL_AMBO_ACTUALIZADO.pdf"
-          download="FUT_UGEL.pdf"
-          aria-label="Descargar el formato FUT en PDF"
-          className="flex items-center gap-1.5 rounded-l-xl border border-r-0 border-white/20 bg-[#087da9] px-3 py-3 text-white shadow-lg shadow-[#17364e]/20 transition-colors hover:bg-[#065f82] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17364e] motion-reduce:transition-none"
-        >
-          <FileDown className="h-5 w-5 shrink-0" aria-hidden="true" />
-          <span className="text-xs font-bold">FUT</span>
-        </a>
+        <FloatingDocuments />
         <Link
           href="/Nosotros/Directorio"
           aria-label="Ir al directorio de UGEL Ambo"
