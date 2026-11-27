@@ -41,5 +41,21 @@ export const INSTITUCIONES_EDUCATIVAS: InstitucionEducativa[] = [
     enlace: "https://www.facebook.com/profile.php?id=100060474985605",
     tipo: "facebook",
   },
-
+  {
+    id: "luisa-maria-cuculiza-33388",
+    nombre: "I.E. N.° 33388 Luisa María Cuculiza",
+    enlace: "https://www.facebook.com/share/1Ep7BordnB/",
+    tipo: "facebook",
+  },
+  {
+    id: "everardo-zevallos-avila-estancia-pata",
+    nombre: "I.E. Everardo Zevallos Avila Estancia Pata",
+    enlace: "https://www.facebook.com/people/Everardo-Zevallos-Avila-Estancia-Pata/pfbid02iJRDV16FcQNA8QgYJr2GeWpBaVraYtSnKkzi12YHmXdKLUD8h4hkBLtQGeaJMzYLl/",
+    tipo: "facebook",
+  },
 ];
+
+export const MAX_PLANCK_ENLACES = [
+  { nombre: "Facebook", enlace: "https://www.facebook.com/share/1DFwLYSrFL/", tipo: "facebook" },
+  { nombre: "Página web", enlace: "https://iestpmaxplanck.edu.pe/", tipo: "web" },
+] as const;
