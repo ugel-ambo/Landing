@@ -53,6 +53,12 @@ export const INSTITUCIONES_EDUCATIVAS: InstitucionEducativa[] = [
     enlace: "https://www.facebook.com/people/Everardo-Zevallos-Avila-Estancia-Pata/pfbid02iJRDV16FcQNA8QgYJr2GeWpBaVraYtSnKkzi12YHmXdKLUD8h4hkBLtQGeaJMzYLl/",
     tipo: "facebook",
   },
+  {
+    id: "32161-cped-matihuaca",
+    nombre: "I.E. N.° 32161 Cped Matihuaca",
+    enlace: "https://www.facebook.com/people/IE-32161-Cped-Matihuaca/61564613152715/",
+    tipo: "facebook",
+  },
 ];
 
 export const MAX_PLANCK_ENLACES = [
